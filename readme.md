@@ -1,4 +1,4 @@
-# React Basics
+# ReactJS - Basics
 
 > *Click &#9733; if you like the project. Your contributions are heartily ♡ welcome.*
 
@@ -216,6 +216,147 @@ export default function App() {
 ```
 
 **&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/destructuring-in-react-6fxnbh?file=/src/App.js)**
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## Q. Why is it necessary to start component names with a capital letter?
+
+In JSX, lower-case tag names are considered to be HTML tags. However, lower-case tag names with a dot (property accessor) aren\'t.
+
+When an element type starts with a lowercase letter, it refers to a built-in component like or and results in a string `<div>` or `<span>` passed to `React.createElement`. Types that start with a capital letter like compile to `React.createElement(Foo)` and correspond to a component defined or imported in your JavaScript file.
+
+* `<component />` compiles to `React.createElement('component')` (html tag)
+* `<Component />` compiles to `React.createElement(Component)`
+* `<obj.component />` compiles to `React.createElement(obj.component)`
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## Q. What are fragments?
+
+Fragments allows to group a list of children without adding extra nodes to the DOM.
+
+**Example:**
+
+```js
+class App extends React.Component {
+  render() {
+    return (
+      <React.Fragment>
+        <ChildA />
+        <ChildB />
+        <ChildC />
+      </React.Fragment>
+    )
+  }
+}
+```
+
+**Benefits:**
+
+* It\'s a tiny bit faster and has less memory usage (no need to create an extra DOM node). This only has a real benefit on very large and/or deep trees, but application performance often suffers from death by a thousand cuts. This is one cut less.
+* Some CSS mechanisms like Flexbox and CSS Grid have a special parent-child relationship, and adding divs in the middle makes it hard to keep the desired layout while extracting logical components.
+* The DOM inspector is less cluttered.
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## Q. What is Virtual DOM?
+
+In React, for every **DOM object**, there is a corresponding "virtual DOM object". A virtual DOM object is a representation of a DOM object, like a lightweight copy. A virtual DOM object has the same properties as a real DOM object, but it lacks the real thing\'s power to directly change what\'s on the screen.
+
+Manipulating DOM is slow, but manipulating Virtual DOM is fast as nothing gets drawn on the screen. So each time there is a change in the state of our application, virtual DOM gets updated first instead of the real DOM.
+
+**&#9885; [Virtual DOM Example](https://codesandbox.io/s/react-virtual-dom-2w52y?file=/src/index.js)**
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## Q. What is the difference between ShadowDOM and VirtualDOM?
+
+<p align="center">
+  <img src="assets/shadow-dom.png" alt="DOM" width="600px" />
+</p>
+
+**1. Document Object Model:**
+
+It a way of representing a structured document via objects. It is cross-platform and language-independent convention for representing and interacting with data in HTML, XML, and others. Web browsers handle the DOM implementation details, so we can interact with it using JavaScript and CSS.
+
+**2. Virtual DOM:**
+
+Virtual DOM is any kind of representation of a real DOM. Virtual DOM is about avoiding unnecessary changes to the DOM, which are expensive performance-wise, because changes to the DOM usually cause re-rendering of the page. It allows to collect several changes to be applied at once, so not every single change causes a re-render, but instead re-rendering only happens once after a set of changes was applied to the DOM.
+
+**3. Shadow DOM:**
+
+Shadow DOM is mostly about encapsulation of the implementation. A single custom element can implement more-or-less complex logic combined with more-or-less complex DOM. Shadow DOM refers to the ability of the browser to include a subtree of DOM elements into the rendering of a document, but not into the main document DOM tree.
+
+**Difference:**
+
+The virtual DOM creates an additional DOM. The shadow DOM simply hides implementation details and provides isolated scope for web components.
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## # 2. REACT SETUP
+
+<br/>
+
+## Q. How to set up a react project with create react app?
+
+Create React App is an officially supported way to create single-page React applications. It offers a modern build setup with no configuration. This tool is wrapping all of the required dependencies like **Webpack**, **Babel** for React project itself.
+
+**Requirements:**
+
+The Create React App is maintained by Facebook and can works on any platform, for example, macOS, Windows, Linux, etc. To create a React Project using create-react-app, you need to have installed the following things in your system.
+
+* [Node version >= 14](https://nodejs.org/en/download/)
+* [Visual Studio Code Editor](https://code.visualstudio.com/download)
+
+**Installation:**
+
+```js
+npx create-react-app my-app
+cd my-app
+npm start
+```
+
+**Output:**
+
+Running any of these commands will create a directory called **my-app** inside the current folder. Inside that directory, it will generate the initial project structure and install the transitive dependencies:
+
+```js
+my-app
+├── README.md
+├── node_modules
+├── package.json
+├── .gitignore
+├── public
+│   ├── favicon.ico
+│   ├── index.html
+│   ├── logo192.png
+│   ├── logo512.png
+│   ├── manifest.json
+│   └── robots.txt
+└── src
+    ├── App.css
+    ├── App.js
+    ├── App.test.js
+    ├── index.css
+    ├── index.js
+    ├── logo.svg
+    ├── serviceWorker.js
+    └── setupTests.js
+```
+
+**Reference:**
+
+* *[https://create-react-app.dev/docs/getting-started/](https://create-react-app.dev/docs/getting-started/)*
 
 <div align="right">
     <b><a href="#table-of-contents">↥ back to top</a></b>
