@@ -362,3 +362,129 @@ my-app
     <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
+## Q. What are the features of create react app?
+
+**Create React App** is a command-line program that lets us create a new React project easily and build the project into artifacts that we can deploy. It is created by the React team and creates a scaffold to the app.
+
+Below are the list of some of the features provided by create react app.
+
+* React, JSX, ES6, Typescript and Flow syntax support.
+* Autoprefixed CSS
+* CSS Reset/Normalize
+* Live-editing CSS and JS in local development server.
+* A fast interactive unit test runner with built-in support for coverage reporting
+* A build script to bundle JS, CSS, and images for production, with hashes and sourcemaps
+* An offline-first service worker and a web app manifest, meeting all the Progressive Web App criteria.
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## Q. What does eject do in create react app?
+
+The `create-react-app` commands generate **React App** with an excellent configuration and helps you build your React app with the best practices in mind to optimize it. However, running the `eject` script will remove the single build dependency from your project. That means it will copy the configuration files and the transitive dependencies (e.g. `Webpack`, `Babel`, etc.) as dependencies in the `package.json` file. If you do that, you\'ll have to ensure that the dependencies are installed before building your project.
+
+After running the `eject`, commands like `npm start` and `npm run build` will still work, but they will point to the copied scripts so you can tweak them. It won\'t be possible to run it again since all scripts will be available except the eject one.
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## Q. How to put React in production mode?
+
+Create a simple `hello-world-app` using [create-react-app](https://create-react-app.dev/docs/getting-started).
+
+```js
+npx create-react-app hello-world-app
+```
+
+Modify the `App.js` file as shown below.
+
+```js
+import './App.css';
+
+function App() {
+  return (
+    <div className="App">
+      <header className="App-header">
+        <h1>Hello world app</h1>
+      </header>
+    </div>
+  );
+}
+
+export default App;
+```
+
+Run the app local server by running the following command
+
+```js
+npm start
+```
+
+On the local server (http://localhost:3000) you can see a simple React app displaying a "hello world" message. The next step is to make this app production-ready for deployment. Inside the root directory run the following command:
+
+```js
+npm run build
+```
+
+This creates a build directory inside the root directory, which bundles your React app and minifies it into simple HTML, CSS, and JavaScript files. This build folder serves your app via a simple entry point, `index.html`, where your entire React app resides. Running your app via a remote server means running this `index.html` file on the server.
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## Q. What are the common folder structures for React?
+
+React doesn\'t have opinions on how you put files into folders. That said there are a few common approaches popular in the ecosystem you may want to consider.
+
+**1. Grouping by features or routes:**
+
+One common way to structure projects is to locate CSS, JS, and tests together inside folders grouped by feature or route.
+
+```js
+common/
+  Avatar.js
+  Avatar.css
+  APIUtils.js
+  APIUtils.test.js
+feed/
+  index.js
+  Feed.js
+  Feed.css
+  FeedStory.js
+  FeedStory.test.js
+  FeedAPI.js
+profile/
+  index.js
+  Profile.js
+  ProfileHeader.js
+  ProfileHeader.css
+  ProfileAPI.js
+```
+
+**2. Grouping by file type:**
+
+Another popular way to structure projects is to group similar files together, for example:
+
+```js
+api/
+  APIUtils.js
+  APIUtils.test.js
+  ProfileAPI.js
+  UserAPI.js
+components/
+  Avatar.js
+  Avatar.css
+  Feed.js
+  Feed.css
+  FeedStory.js
+  FeedStory.test.js
+  Profile.js
+  ProfileHeader.js
+  ProfileHeader.css
+```
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
