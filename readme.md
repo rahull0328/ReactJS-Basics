@@ -488,3 +488,265 @@ components/
 <div align="right">
     <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
+
+## Q. What are the popular React-specific linter?
+
+**1. ESLint:**
+
+ESLint is a popular JavaScript linter. There are plugins available that analyse specific code styles. One of the most common for React is an npm package called `eslint-plugin-react`.
+
+```js
+npm install -g eslint-plugin-react
+```
+
+This will install the plugin we need, and in our ESLint config file, we just need a few extra lines.
+
+```js
+"extends": [
+    "eslint:recommended",
+    "plugin:react/recommended"
+]
+```
+
+```js
+"scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject",
+    "lint": "eslint src/**/*.js src/**/*.jsx"
+}
+```
+
+**2. eslint-plugin-jsx-a11y:**
+
+It will help fix common issues with accessibility. As JSX offers slightly different syntax to regular HTML, issues with `alt` text and `tabindex`, for example, will not be picked up by regular plugins.
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## Q. What is the browser support for react applications?
+
+By default, **Create React App** generated project supports all modern browsers. Support for Internet Explorer 9, 10, and 11 requires polyfills. For a set of polyfills to support older browsers, use **react-app-polyfill**.
+
+The `browserslist` configuration controls the outputted JavaScript so that the emitted code will be compatible with the browsers specified.
+
+**Example:**
+
+```js
+// package.json
+
+"browserslist": {
+  "production": [
+    ">0.2%",
+    "not dead",
+    "not op_mini all"
+  ],
+  "development": [
+    "last 1 chrome version",
+    "last 1 firefox version",
+    "last 1 safari version"
+  ]
+}
+```
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## Q. Explain the use of Webpack and Babel in React?
+
+**1. Babel:**
+
+Babel is a JS transpiler that converts new JS code into old ones. It is a very flexible tool in terms of transpiling. One can easily add presets such as `es2015`, `es2016`, `es2017`, or `env`; so that Babel compiles them to ES5. Babel allows us to have a clean, maintainable code using the latest JS specifications without needing to worry about browser support.
+
+**2. Webpack:**
+
+Webpack is a modular build tool that has two sets of functionality — Loaders and Plugins. Loaders transform the source code of a module. For example, style-loader adds CSS to DOM using style tags. sass-loader compiles SASS files to CSS. babel-loader transpiles JS code given the presets. Plugins are the core of Webpack. They can do things that loaders can\'t. For example, there is a plugin called UglifyJS that minifies and uglifies the output of webpack.
+
+**3. create-react-app:**
+
+[create-react-app](https://create-react-app.dev/docs/getting-started/), a popular tool that lets you set up a React app with just one command. You don\'t need to get your hands dirty with Webpack or Babel because everything is preconfigured and hidden away from you.
+
+**Example:** Quick Start
+
+```bash
+npx create-react-app my-app
+cd my-app
+npm start
+```
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## Q. What is the difference between ReactDOM and React?
+
+The ReactDOM module exposes DOM-specific methods, while React has the core tools intended to be shared by React on different platforms (e.g. React Native).
+
+**React** package contains: `React.createElement()`, `React.createClass()`, `React.Component()`, `React.PropTypes()`, `React.Children()`
+
+**ReactDOM** package contains: `ReactDOM.render()`, `ReactDOM.unmountComponentAtNode()`, `ReactDOM.findDOMNode()`, and react-dom/server that including: `ReactDOMServer.renderToString()` and `ReactDOMServer.renderToStaticMarkup()`.
+
+**Example:**
+
+```js
+/**
+ * React vs ReactDOM
+ */
+import { createRoot } from "react-dom/client";
+
+export default function App() {
+  return <h1>Hello React</h1>;
+}
+
+const rootElement = document.getElementById("root");
+const root = createRoot(rootElement);
+
+root.render(<App />);
+```
+
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-vs-reactdom-o52zfc?file=/src/index.js)**
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## Q. What is ReactDOM?
+
+ReactDOM is a package that provides DOM specific methods that can be used at the top level of a web app to enable an efficient way of managing DOM elements of the web page.
+
+ReactDOM provides the developers with an API containing the following methods
+
+* render()
+* findDOMNode()
+* unmountComponentAtNode()
+* hydrate()
+* createPortal()
+
+**1. render():**
+
+```js
+ReactDOM.render(element, container, callback)
+```
+
+Render a React element into the DOM in the supplied container and return a reference to the component (or returns null for stateless components). If the React element was previously rendered into container, this will perform an update on it and only mutate the DOM as necessary to reflect the latest React element. If the optional callback is provided, it will be executed after the component is rendered or updated.
+
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/reactdom-render-cyddr?file=/src/index.js)**
+
+**2. hydrate():**
+
+```js
+ReactDOM.hydrate(element, container, callback)
+```
+
+This method is equivalent to the `render()` method but is implemented while using server-side rendering. This function attempts to attach event listeners to the existing markup and returns a reference to the component or null if a stateless component was rendered.
+
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-hydrate-e2bw5?file=/src/index.js)**
+
+**3. unmountComponentAtNode():**
+
+```js
+ReactDOM.unmountComponentAtNode(container)
+```
+
+This function is used to unmount or remove the React Component that was rendered to a particular container. It returns true if a component was unmounted and false if there was no component to unmount.
+
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-unmountcomponentatnode-yued6)**
+
+**4. findDOMNode():**
+
+```js
+ReactDOM.findDOMNode(component)
+```
+
+If this component has been mounted into the DOM, this returns the corresponding native browser DOM element. This method is useful for reading values out of the DOM, such as form field values and performing DOM measurements.
+
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-finddomnode-ft936?file=/src/index.js)**
+
+**5. createPortal():**
+
+```js
+ReactDOM.createPortal(child, container)
+```
+
+createPortal allow us to render a component into a DOM node that resides outside the current DOM hierarchy of the parent component.
+
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-portal-v2h6q?file=/src/index.js)**
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## Q. How to build a progressive web app with react?
+
+*ToDo*
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## Q. What is the difference between create-react-app and webpack?
+
+*ToDo*
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## Q. What is the difference between grunt and webpack?
+
+*ToDo*
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## # 3. REACT JSX
+
+<br/>
+
+## Q. What is JSX?
+
+JSX ( **JavaScript Expression** ) allows us to write HTML elements in JavaScript and place them in the DOM without any `createElement()` or `appendChild()` methods. JSX converts HTML tags into react elements. React uses JSX for templating instead of regular JavaScript. It is not necessary to use it, however, following are some pros that come with it.
+
+* It is faster because it performs optimization while compiling code to JavaScript.
+* It is also type-safe and most of the errors can be caught during compilation.
+* It makes it easier and faster to write templates.
+
+When JSX compiled, they actually become regular JavaScript objects. For instance, the code below:
+
+```js
+const hello = <h1 className = "greet"> Hello World </h1>
+```
+
+will be compiled to
+
+```js
+const hello = React.createElement {
+    type: "h1",
+    props: {
+      className: "greet",  
+      children: "Hello World"
+    }
+}
+```
+
+**Example:**
+
+```js
+export default function App() {
+  return (
+    <div className="App">
+      <h1>Hello World!</h1>
+    </div>
+  );
+}
+```
+
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-jsx-zjmxvb?file=/src/App.js)**
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
