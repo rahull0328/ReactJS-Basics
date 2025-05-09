@@ -31,66 +31,6 @@ Input:
 <details><summary><b>Answer</b></summary>
 
 ```js
-// MultiLevelDropdown.jsx
-import React, { useState } from 'react';
-import './MultiLevelDropdown.css'; // external CSS for styles
-
-const menuData = [
-  { label: "Menu 1" },
-  {
-    label: "Menu 2",
-    submenu: [{ label: "Sub Menu 1" }, { label: "Sub Menu 2" }],
-  },
-  {
-    label: "Menu 3",
-    submenu: [
-      { label: "Sub Menu 1" },
-      { label: "Sub Menu 2" },
-      { label: "Sub Menu 3" },
-      { label: "Sub Menu 4" },
-    ],
-  },
-  {
-    label: "Menu 4",
-    submenu: [{ label: "Sub Menu 1" }, { label: "Sub Menu 2" }],
-  },
-];
-
-const MultiLevelDropdown = () => {
-  const [openIndex, setOpenIndex] = useState(null);
-
-  const toggleMenu = (index) => {
-    setOpenIndex(openIndex === index ? null : index);
-  };
-
-  return (
-    <div className="dropdown-container">
-      <ul className="dropdown">
-        {menuData.map((item, index) => (
-          <li
-            key={index}
-            className="dropdown-item"
-            onMouseEnter={() => toggleMenu(index)}
-            onMouseLeave={() => toggleMenu(null)}
-          >
-            {item.label}
-            {item.submenu && (
-              <ul className={`submenu ${openIndex === index ? 'show' : ''}`}>
-                {item.submenu.map((subItem, subIndex) => (
-                  <li key={subIndex} className="submenu-item">
-                    {subItem.label}
-                  </li>
-                ))}
-              </ul>
-            )}
-          </li>
-        ))}
-      </ul>
-    </div>
-  );
-};
-
-export default MultiLevelDropdown;
 
 ```
 
@@ -254,6 +194,188 @@ function App() {
 ```
 
 **&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-calculator-8ud1d?file=/src/index.js)**
+
+</details>
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. Create a simple counter in react?
+
+<details><summary><b>Answer</b></summary>
+
+```js
+const App = () => {
+  const [counter, setCounter] = useState(0);
+
+  const handleClick = (type) => {
+    type === "increment" ? setCounter(counter + 1) : setCounter(counter - 1);
+  };
+
+  return (
+    <div>
+      <h2>Counter: {counter}</h2>
+      <div className="buttons">
+        <button onClick={() => handleClick("increment")}>Increment</button>
+        <button onClick={() => handleClick("decrement")}>Decrement</button>
+      </div>
+    </div>
+  );
+};
+```
+
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-counter-bhp4q?file=/src/App.js)**
+
+</details>
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. Write a program to pass values to child using context in React?
+
+<details><summary><b>Answer</b></summary>
+
+```js
+// Counter.js
+
+const { useState, useContext } = React;
+
+const CountContext = React.createContext();
+
+const Counter = () => {
+  const { count, increase, decrease } = useContext(CountContext);
+  return (
+    <h2>
+      <button onClick={decrease}>Decrement</button>
+      <span className="count">{count}</span>
+      <button onClick={increase}>Increment</button>
+    </h2>
+  );
+};
+```
+
+```js
+// App.js
+
+const App = () => {
+  const [count, setCount] = useState(0);
+
+  const increase = () => {
+    setCount(count + 1);
+  };
+  const decrease = () => {
+    setCount(count - 1);
+  };
+
+  return (
+    <div>
+      <CountContext.Provider value={{ count, increase, decrease }}>
+        <Counter />
+      </CountContext.Provider>
+    </div>
+  );
+};
+```
+
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-context-api-v8syu?file=/src/index.js)**
+
+</details>
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. Create a ToDo list app using React?
+
+<details><summary><b>Answer</b></summary>
+
+```js
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      userInput: "",
+      list: []
+    };
+  }
+
+  // Set a user input value
+  updateInput(value) {
+    this.setState({
+      userInput: value
+    });
+  }
+
+  // Add item if user input in not empty
+  addItem() {
+    if (this.state.userInput !== "") {
+      const userInput = {
+        // Add a random id which is used to delete
+        id: Math.random(),
+
+        // Add a user value to list
+        value: this.state.userInput
+      };
+
+      // Update list
+      const list = [...this.state.list];
+      list.push(userInput);
+
+      // reset state
+      this.setState({
+        list,
+        userInput: ""
+      });
+    }
+  }
+
+  // Function to delete item from list use id to delete
+  deleteItem(key) {
+    const list = [...this.state.list];
+
+    // Filter values and leave value which we need to delete
+    const updateList = list.filter((item) => item.id !== key);
+
+    // Update list in state
+    this.setState({
+      list: updateList
+    });
+  }
+
+  render() {
+    return (
+      <>
+        <h1>TODO LIST</h1>
+        <div>
+          <input
+            type="text"
+            placeholder="add item . . . "
+            value={this.state.userInput}
+            onChange={(item) => this.updateInput(item.target.value)}
+          />
+          <input type="button" onClick={() => this.addItem()} value="ADD" />
+        </div>
+        <div>
+          <ul>
+            {/* map over and print items */}
+            {this.state.list.map((item) => {
+              return (
+                <li key={item.id} onClick={() => this.deleteItem(item.id)}>
+                  {item.value}
+                </li>
+              );
+            })}
+          </ul>
+        </div>
+      </>
+    );
+  }
+}
+```
+
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-todo-list-hw45y?file=/src/App.js)**
 
 </details>
 
