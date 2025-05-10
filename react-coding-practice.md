@@ -382,3 +382,229 @@ class App extends React.Component {
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
 </div>
+
+## Q. Create a search filter component in react?
+
+```js
+Input:
+
+const people = [
+  "Shashi Koshy",
+  "Dhriti Taneja",
+  "Dipa Mishra",
+  "Ansh Thakkar",
+  "Lakshmi Thaker",
+  "Sushila Matthai",
+  "Shresth Nigam",
+  "Bhavana Biswas",
+  "Vasudha Mangat",
+  "Priya Saran"
+];
+```
+
+<details><summary><b>Answer</b></summary>
+
+```js
+function App() {
+  const [searchTerm, setSearchTerm] = React.useState("");
+  const [searchResults, setSearchResults] = React.useState([]);
+
+  const handleChange = (e) => {
+    setSearchTerm(e.target.value);
+  };
+
+  React.useEffect(() => {
+    const results = people.filter((person) =>
+      person.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+    setSearchResults(results);
+  }, [searchTerm]);
+
+  return (
+    <div className="App">
+      <input
+        type="text"
+        placeholder="Search"
+        value={searchTerm}
+        onChange={handleChange}
+      />
+      <ul>
+        {searchResults.map((item) => (
+          <li>{item}</li>
+        ))}
+      </ul>
+    </div>
+  );
+}
+```
+
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-search-list-u1s8b?file=/src/index.js)**
+
+</details>
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. Create a Fizz Buzz program in React?
+
+```js
+Counting incrementally, replacing any number divisible by three with the word "fizz", 
+and any number divisible by five with the word "buzz".
+```
+
+<details><summary><b>Answer</b></summary>
+
+```js
+class FizzBuzz extends React.Component {
+  state = {
+    count: 1
+  };
+
+  handleDecrement = () => {
+    if (this.state.count > 1) {
+      this.setState((prevState) => ({ count: prevState.count - 1 }));
+    }
+  };
+
+  handleIncrement = () => {
+    this.setState((prevState) => ({ count: prevState.count + 1 }));
+  };
+
+  render() {
+    return (
+      <div>
+        <h1> React Fizz Buzz </h1>
+        <p> Counting incrementally, replacing any number divisible by three with
+          the word "fizz", and any number divisible by five with the word
+          "buzz". </p>
+
+        <h2>
+          {this.state.count % 15 === 0
+            ? "FizzBuzz"
+            : this.state.count % 3 === 0
+            ? "Fizz"
+            : this.state.count % 5 === 0
+            ? "Buzz"
+            : this.state.count}
+        </h2>
+        <button onClick={this.handleDecrement}> - </button>
+        <button onClick={this.handleIncrement}> + </button>
+      </div>
+    );
+  }
+}
+```
+
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-fizz-buzz-qtk36?file=/src/index.js)**
+
+</details>
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. Write a program to call child method from parent in React?
+
+<details><summary><b>Answer</b></summary>
+
+**1. Using React.forwardRef():**
+
+```js
+import { forwardRef, useRef, useImperativeHandle } from "react";
+
+const Child = forwardRef((props, ref) => {
+  useImperativeHandle(ref, () => ({
+    getMessage() {
+      alert("Message from Child");
+    }
+  }));
+
+  return <h1>Child Component</h1>;
+});
+
+const Parent = () => {
+  const childRef = useRef();
+
+  return (
+    <div>
+      <Child ref={childRef} />
+      <button onClick={() => childRef.current.getMessage()}>Click</button>
+    </div>
+  );
+};
+```
+
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-forwardref-3serh?file=/src/index.js)**
+
+**2. Using Class Component:**
+
+```js
+
+class Parent extends React.Component {
+  constructor(props) {
+    super(props);
+    this.child = React.createRef();
+  }
+
+  onClick = () => {
+    this.child.current.getMessage();
+  };
+
+  render() {
+    return (
+      <div>
+        <Child ref={this.child} />
+        <button onClick={this.onClick}>Click</button>
+      </div>
+    );
+  }
+}
+
+class Child extends React.Component {
+  getMessage() {
+    alert("Message from Child");
+  }
+
+  render() {
+    return <h1>Child Component</h1>;
+  }
+}
+```
+
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-createref-t0gud?file=/src/index.js)**
+
+**3. Using callback Ref API:**
+
+```js
+class Parent extends React.Component {
+  render() {
+    return (
+      <div>
+        <Child ref={(instance) => { this.child = instance; }} />
+        <button onClick={() => { this.child.getMessage(); }} >
+          Click
+        </button>
+      </div>
+    );
+  }
+}
+
+class Child extends React.Component {
+  getMessage() {
+    alert("Message from Child");
+  }
+
+  render() {
+    return <h2>Child Component</h2>;
+  }
+}
+```
+
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-callback-ref-api-kp30y?file=/src/index.js)**
+
+</details>
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
