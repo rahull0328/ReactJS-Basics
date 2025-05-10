@@ -750,3 +750,130 @@ export default function App() {
 <div align="right">
     <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
+
+## Q. How JSX prevents Injection Attacks?
+
+React DOM escapes any values embedded in JSX before rendering them. Thus it ensures that you can never inject anything that\'s not explicitly written in your application. Everything is converted to a string before being rendered.
+
+For example, you can embed user input as below,
+
+```js
+export default class JSXInjectionExample extends React.Component {
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      userContent: `JSX prevents Injection Attacks Example 
+          <script src="http://example.com/malicious-script.js></script>`
+    };
+  }
+
+  render() {
+    return (
+      <div>User content: {this.state.userContent}</div>
+    );
+  }
+}
+
+// Output
+User content: JSX prevents Injection Attacks Example 
+<script src="http://example.com/malicious-script.js></script>
+```
+
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-jsxinjection-ckmu8z?file=/src/App.js)**
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## Q. What are the benefits of new JSX transform?
+
+The React 17 release provides support for a new version of the JSX transform. There are three major benefits of new JSX transform,
+
+* It enables you to use JSX without having to import React.
+* The compiled output relatively improves the bundle size.
+* The future improvements provides the flexibility to reduce the number of concepts to learn React.
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## Q. Is it possible to use React without rendering HTML?
+
+It is possible with latest version (>=16.2). Below are the possible options:
+
+```js
+render() {
+  return false
+}
+```
+
+```js
+render() {
+  return null
+}
+```
+
+```js
+render() {
+  return []
+}
+```
+
+```js
+render() {
+  return <React.Fragment></React.Fragment>
+}
+```
+
+```js
+render() {
+  return <></>
+}
+```
+
+Note that React can also run on the server side so, it will be possible to use it in such a way that it doesn\'t involve any DOM modifications (but maybe only the virtual DOM computation).
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## Q. How to write comments in React and JSX?
+
+Writing comments in React components can be done just like comment in regular JavaScript classes and functions.
+
+**React comments:**
+
+```js
+function App() {
+
+  // Single line Comment
+
+  /*
+  * multi
+  * line
+  * comment
+  **/
+
+  return (
+    <h1>My Application</h1>
+  );
+}
+```
+
+**JSX comments:**
+
+```js
+export default function App() {
+  return (
+    <div>
+      {/* A JSX comment */}
+      <h1>My Application</h1>
+    </div>
+  );
+}
+```
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
