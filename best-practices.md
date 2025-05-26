@@ -239,3 +239,232 @@ return <div style={bodyStyle}>
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
 </div>
+
+## Use Object Destructuring
+
+Use object destructuring to your advantage. Let\'s say you need to show a user\'s details.
+
+**Bad:**
+
+```jsx
+return (
+  <>
+    <div> {user.name} </div>
+    <div> {user.age} </div>
+    <div> {user.profession} </div>
+  </>  
+)
+```
+
+**Good:**
+
+```jsx
+const { name, age, profession } = user;
+
+return (
+  <>
+    <div> {name} </div>
+    <div> {age} </div>
+    <div> {profession} </div>
+  </>  
+)
+```
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## String Props do not need Curly Braces
+
+When passing string props to a children component.
+
+**Bad:**
+
+```jsx
+return(
+  <Navbar title={"My Special App"} />
+)
+```
+
+**Good:**
+
+```jsx
+return(
+  <Navbar title="My Special App" />  
+)
+```
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Remove JS Code From JSX
+
+Move any JS code out of JSX if that doesn\'t serve any purpose of rendering or UI functionality.
+
+**Bad:**
+
+```jsx
+return (
+  <ul>
+    {posts.map((post) => (
+      <li onClick={event => {
+        console.log(event.target, 'clicked!'); // <- THIS IS BAD
+        }} key={post.id}>{post.title}
+      </li>
+    ))}
+  </ul>
+);
+```
+
+**Good:**
+
+```jsx
+const onClickHandler = (event) => {
+   console.log(event.target, 'clicked!'); 
+}
+
+return (
+  <ul>
+    {posts.map((post) => (
+      <li onClick={onClickHandler} key={post.id}> {post.title} </li>
+    ))}
+  </ul>
+);
+```
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Use Template Literals
+
+Use template literals to build large strings. Avoid using string concatenation. It\'s nice and clean.
+
+**Bad:**
+
+```jsx
+const userDetails = user.name + "'s profession is" + user.proffession
+
+return (
+  <div> {userDetails} </div>  
+)
+```
+
+**Good:**
+
+```jsx
+const userDetails = `${user.name}'s profession is ${user.proffession}`
+
+return (
+  <div> {userDetails} </div>  
+)
+```
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Import in Order
+
+Always try to import things in a certain order. It improves code readability.
+
+**Bad:**
+
+```jsx
+import React from 'react';
+import ErrorImg from '../../assets/images/error.png';
+import styled from 'styled-components/native';
+import colors from '../../styles/colors';
+import { PropTypes } from 'prop-types';
+```
+
+**Good:**
+
+The rule of thumb is to keep the import order like this:
+Built-in
+External
+Internal
+So the example above becomes:
+
+```jsx
+import React from 'react';
+
+import { PropTypes } from 'prop-types';
+import styled from 'styled-components/native';
+
+import ErrorImg from '../../assets/images/error.png';
+import colors from '../../styles/colors';
+```
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Use Implicit return
+
+Use the JavaScript feature of implicit return to write beautiful code. Let\'s say your function does a simple calculation and returns the result.
+
+**Bad:**
+
+```jsx
+const add = (a, b) => {
+  return a + b;
+}
+```
+
+**Good:**
+
+```jsx
+const add = (a, b) => a + b;
+```
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Component Naming
+
+Always use PascalCase for components and camelCase for instances.
+
+**Bad:**
+
+```jsx
+import reservationCard from './ReservationCard';
+
+const ReservationItem = <ReservationCard />;
+```
+
+**Good:**
+
+```jsx
+import ReservationCard from './ReservationCard';
+
+const reservationItem = <ReservationCard />;
+```
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Reserved Prop Naming
+
+Do not use DOM component prop names for passing props between components because others might not expect these names.
+
+**Bad:**
+
+```jsx
+<MyComponent style="dark" />
+
+<MyComponent className="dark" />
+```
+
+**Good:**
+
+```jsx
+<MyComponent variant="fancy" />
+```
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
