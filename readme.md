@@ -877,3 +877,299 @@ export default function App() {
 <div align="right">
     <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
+
+## Q. How to add custom DOM attributes in JSX?
+
+Custom attributes are supported natively in React 16. This means that adding a custom attribute to an element is now as simple as adding it to a render function, like so:
+
+**Example:**
+
+```js
+// 1. Custom DOM Attribute
+render() {
+  return (
+    <div custom-attribute="some-value" />
+  );
+}
+
+// 2. Data Attribute ( starts with "data-" )
+render() {
+  return (
+    <div data-id="10" />
+  );
+}
+
+// 3. ARIA Attribute ( starts with "aria-" )
+render() {
+  return (
+    <button aria-label="Close" onClick={onClose} />
+  );
+}
+```
+
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-custom-attribute-8enl34?file=/src/App.js)**
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## Q. How many outermost elements can be there in a JSX expression?
+
+A JSX expression must have only one outer element. For Example:
+
+```js
+const headings = (
+    <div id = "outermost-element">
+       <h1>I am a heading </h1>
+       <h2>I am also a heading</h2>
+    </div>
+)
+```
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## Q. How to loop inside JSX?
+
+You can simply use `Array.prototype.map` with ES6 arrow function syntax.
+
+**Example:**
+
+```js
+/**
+ * Loop inside JSX
+ */
+const animals = [
+  { id: 1, animal: "Dog" },
+  { id: 2, animal: "Bird" },
+  { id: 3, animal: "Cat" },
+  { id: 4, animal: "Mouse" },
+  { id: 5, animal: "Horse" }
+];
+
+export default function App() {
+  return (
+    <ul>
+      {animals.map((item) => (
+        <li key={item.id}>{item.animal}</li>
+      ))}
+    </ul>
+  );
+}
+```
+
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-jsx-loop-9x2pi?file=/src/App.js)**
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## Q. How do you print false values in JSX?
+
+In React, boolean values (`true` and `false`), `null`, and `undefined` are valid children, but these values will not be rendered in UI if you put them directly inside {} in JSX.
+
+For example, all these JSX expressions will result in the same empty div:
+
+```js
+<div />
+<div></div>
+<div>{false}</div>
+<div>{null}</div>
+<div>{undefined}</div>
+<div>{true}</div>
+```
+
+If you want a value like `false`, `true`, `null`, or `undefined` to show in the output, you have to convert it to a string first.
+
+```js
+<div>{String(true)}</div>
+<div>{String(false)}</div>
+<div>{String(undefined)}</div>
+<div>{String(null)}</div>
+```
+
+In the output, this will render `true`, `false`, `undefined`, and `null` respectively.
+
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-rendering-false-values-1g1rm?file=/src/App.js)**
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## Q. How to use React label element?
+
+If you try to render a `<label>` element bound to a text input using the standard `for` attribute, then it produces HTML missing that attribute and prints a warning to the console.
+
+```js
+<label for={'user'}>{'User'}</label>
+<input type={'text'} id={'user'} />
+```
+
+Since `for` is a reserved keyword in JavaScript, use `htmlFor` instead.
+
+```js
+<label htmlFor={'user'}>{'User'}</label>
+<input type={'text'} id={'user'} />
+```
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## Q. How to use InnerHtml in React?
+
+The **innerHTML** is risky because it is easy to expose users to a cross-site scripting (XSS) attack. React provides **dangerouslySetInnerHTML** as a replacement for innerHTML. It allows to set HTML directly from React by using `dangerouslySetInnerHTML` and passing an object with a `__html` key that holds HTML.
+
+**Example:**
+
+```js
+/**
+ * InnerHtml in React
+ */
+import React from "react";
+
+export default function App() {
+  return (
+    <div
+      dangerouslySetInnerHTML={{
+        __html: "<p>This text is set using <b>dangerouslySetInnerHTML</b></p>"
+      }}
+    ></div>
+  );
+}
+```
+
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-dangerouslysetinnerhtml-i4wqq?file=/src/App.js)**
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## Q. How to show and hide elements in React
+
+**1. Returning Null:**
+
+```js
+const AddToCart = ({ available }) => {
+  if (!available) return null
+
+  return (
+    <div className="full tr">
+      <button className="product--cart-button">Add to Cart</button>
+    </div>
+  )
+}
+```
+
+**2. Ternary Display:**
+
+When you need to control whether one element vs. another is displayed, or even one element vs. nothing at all (null), you can use the ternary operator embedded inside of a larger portion of JSX.
+
+```js
+<div className="half">
+  <p>{description}</p>
+
+  {remaining === 0 ? (
+    <span className="product-sold-out">Sold Out</span>
+  ) : (
+    <span className="product-remaining">{remaining} remaining</span>
+  )}
+</div>
+```
+
+In this case, if there are no products remaining, we will display "Sold Out"; otherwise we will display the number of products remaining.
+
+**3. Shortcut Display:**
+
+It involves using a conditional inside of your JSX that looks like `checkIfTrue && <span>display if true</span>`. Because if statements that use `&&` operands stop as soon as they find the first value that evaluates to false, it won\'t reach the right side (the JSX) if the left side of the equation evaluates to false.
+
+```js
+<h2>
+  <span className="product--title__large">{nameFirst}</span>
+  {nameRest.length > 0 && (
+    <span className="product--title__small">{nameRest.join(" ")}</span>
+  )}
+</h2>
+```
+
+**4. Using Style Property:**
+
+```js
+<div style={{ display: showInfo ? "block" : "none" }}>info</div>
+```
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## # 4. REACT COMPONENTS
+
+<br/>
+
+## Q. What are React components?
+
+Components are the building blocks of any React app and a typical React app will have many of these. Simply put, a component is a JavaScript class or function that optionally accepts inputs i.e. properties(`props`) and returns a React element that describes how a section of the UI (User Interface) should appear.
+
+In React, a **Stateful Component** is a component that holds some state. A **Stateless component**, by contrast, has no state. Note that both types of components can use props.
+
+**1. Stateless Component:**
+
+```js
+import React from 'react'
+
+const ExampleComponent = (props) => {
+    return <h1>Stateless Component - {props.message}</h1>;
+};
+
+const App = () => {
+  const message = 'React Interview Questions'
+  return (
+    <div>
+      <ExampleComponent message={message} />
+    </div>
+  );
+};
+
+export default App;
+```
+
+The above example shows a stateless component named ExampleComponent which is inserted in the `<App/>` component. The `ExampleComponent` just comprises of a `<h1>` element. Although the **Stateless component** has no state, it still receives data via props from a parent component.
+
+**2. Stateful Component:**
+
+```js
+import React, { useState } from 'react'
+
+const ExampleComponent = (props) => {
+  const [email, setEmail] = useState(props.defaultEmail)
+
+  const changeEmailHandler = (e) => {
+    setEmail(e.target.value)
+  }
+
+  return (
+    <input type="text" value={email} onChange={changeEmailHandler} />
+  );
+}
+
+
+const App = () => {
+  const defaultEmail = "suniti.mukhopadhyay@gmail.com"
+  return (
+    <div>
+      <ExampleComponent defaultEmail={defaultEmail} />
+    </div>
+  );
+};
+
+export default App;
+```
+
+The above example shows a stateful component named **ExampleComponent** which is inserted in the `<App/>` component. The **ExampleComponent** contains a `<input>`. First of all, in the **ExampleComponent**, we need to assign **defaultEmail** by props to a local **state** by a `useState()` hook in **ExampleComponent**.
+
+Next, we have to pass **email** to **value** property of a input tag and pass a function **changeEmailHandler** to an `onChange()` event for a purpose keeping track of the current value of the input.
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
