@@ -1173,3 +1173,196 @@ Next, we have to pass **email** to **value** property of a input tag and pass a 
 <div align="right">
     <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
+
+## Q. What is the difference between Component and Container in React?
+
+The **presentational** components are concerned with the look, **container** components are concerned with making things work.
+
+For example, this is a presentational component. It gets data from its props, and just focuses on showing an element
+
+```js
+/**
+ * Presentational Component 
+ */
+const Users = props => (
+  <ul>
+    {props.users.map(user => (
+      <li>{user}</li>
+    ))}
+  </ul>
+)
+```
+
+On the other hand this is a container component. It manages and stores its own data, and uses the presentational component to display it.
+
+```js
+/**
+ * Container Component 
+ */
+class UsersContainer extends React.Component {
+  constructor() {
+    this.state = {
+      users: []
+    }
+  }
+
+  componentDidMount() {
+    axios.get('/users').then(users =>
+      this.setState({ users: users }))
+    )
+  }
+
+  render() {
+    return <Users users={this.state.users} />
+  }
+}
+```
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## Q. How to import and export components using React.js?
+
+```js
+// Importing combination
+import React, { Component } from 'react';
+import ReactDOM from 'react-dom';
+
+// Wrapping components with braces if no default exports
+import { Button }  from './Button';
+
+// Default exports ( recommended )
+import  Button  from './Button';
+ 
+class DangerButton extends Component {
+    render()
+    {
+        return <Button color="red" />;
+    }
+}
+
+export default DangerButton; 
+// or export DangerButton;
+```
+
+By using default you express that\'s going to be member in that module which would be imported if no specific member name is provided. You could also express you want to import the specific member called DangerButton by doing so: `import { DangerButton } from './comp/danger-button';` in this case, no default is needed
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## Q. What is difference between declarative and imperative in React.js?
+
+**1. Imperative programming:**
+
+It is a programming paradigm that uses statements that change a program\'s state.
+
+```js
+const string = "Hi there , I'm a web developer";
+let removeSpace = "";
+for (let i = 0; i < i.string.length; i++) {
+  if (string[i] === " ") removeSpace += "-";
+  else removeSpace += string[i]; 
+}
+console.log(removeSpace);
+```
+
+In this example, we loop through every character in the string, replacing spaces as they occur. Just looking at the code, it doesn\'t say much. Imperative requires lots of comments in order to understand code. Whereas in the declarative program, the syntax itself describes what should happen and the details of how things happen are abstracted way.
+
+**2. Declarative programming:**
+
+It is a programming paradigm that expresses the logic of a computation without describing its control flow.
+
+**Example:**
+
+```js
+const { render } = ReactDOM
+const Welcome = () => (
+  <div id="App">
+    //your HTML code 
+    //your react components
+  </div>
+)
+render(
+<App />,
+document.getElementById('root')
+)
+```
+
+React is declarative. Here, the **Welcome** component describes the DOM that should be rendered. The render function uses the instructions declared in the component to build the DOM, abstracting away the details of how the DOM is to be rendered. We can clearly see that we want to render our **Welcome** component into the element with the ID of 'target'.
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## Q. What is the difference between Element and Component?
+
+**1. React Element:**
+
+It is a simple object that describes a DOM node and its attributes or properties. It is an immutable description object and you can not apply any methods on it.
+
+```js
+const element = <h1>React Element Example!</h1>;
+ReactDOM.render(element, document.getElementById('app'));
+```
+
+**2. React Component:**
+
+It is a function or class that accepts an input and returns a React element. It has to keep references to its DOM nodes and to the instances of the child components.
+
+```js
+function Message() {
+  return <h2>React Component Example!</h2>;
+}
+ReactDOM.render(<Message />, document.getElementById('app'));
+```
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## Q. How to conditionally render components in react?
+
+Conditional rendering is a term to describe the ability to render different user interface (UI) markup if a condition is true or false. In React, it allows us to render different elements or components based on a condition.
+
+**1. Element Variables:**
+
+You can use variables to store elements. This can help you conditionally render a part of the component while the rest of the output doesn\'t change.
+
+```js
+function LogInComponent(props) {
+  const isLoggedIn = props.isLoggedIn;
+  if (isLoggedIn) {
+    return <UserComponent />;
+  }
+  return <GuestComponent />;
+}
+
+ReactDOM.render(
+  <LogInComponent isLoggedIn={false} />,
+  document.getElementById('root')
+);
+```
+
+**2. Inline If-Else with Conditional Operator:**
+
+```js
+render() {
+  const isLoggedIn = this.state.isLoggedIn;
+  return (
+    <div>
+      {isLoggedIn
+        ? <LogoutButton onClick={this.handleLogoutClick} />
+        : <LoginButton onClick={this.handleLoginClick} />
+      }
+    </div>
+  );
+}
+```
+
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-conditional-render-xjvr10?file=/src/App.js)**
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
