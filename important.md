@@ -419,3 +419,198 @@ class Table extends React.Component {
 <div align="right">
     <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
+
+## Q. How do you set a timer to update every second?
+
+Using `setInterval()` inside React components allows us to execute a function or some code at specific intervals. A function or block of code that is bound to an interval executes until it is stopped. To stop an interval, we can use the `clearInterval()` method.
+
+**Example:**
+
+```js
+class Clock extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      time: new Date().toLocaleString()
+    }
+  }
+  componentDidMount() {
+    this.intervalID = setInterval(
+      () => this.tick(),
+      1000
+    )
+  }
+  componentWillUnmount() {
+    clearInterval(this.intervalID)
+  }
+  tick() {
+    this.setState({
+      time: new Date().toLocaleString()
+    })
+  }
+  render() {
+    return (
+      <p className="App-clock">
+        The time is {this.state.time}.
+      </p>
+    )
+  }
+}
+```
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## Q. What is the purpose of using super constructor with props argument?
+
+The `super()` keyword is used to call the parent constructor. `super(props)` would pass `props` to the parent constructor.
+
+```js
+/**
+ * super constructor
+ */
+class App extends React.Component {
+  constructor(props) {
+      super(props)
+      this.state = {}
+   }
+
+  // React says we have to define render()
+  render() {
+    return <div>Hello world</div>
+  }
+}
+
+export default App
+```
+
+Here, `super(props)` would call the `React.Component` constructor passing in props as the argument.
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## Q. What is the purpose of render() function in React?
+
+The React class components uses render() function. It is used to update the UI.
+
+**Purpose of render():**
+
+* React renders HTML to the web page by using a function called render().
+* The purpose of the function is to display the specified HTML code inside the specified HTML element.
+* In the render() method, we can read props and state and return our JSX code to the root component of our app.
+* In the render() method, we cannot change the state, and we cannot cause side effects ( such as making an HTTP request to the webserver).
+
+```js
+/**
+ * render() function
+ * 
+ * React v18.0.0
+ */
+import React from "react";
+import { createRoot } from "react-dom/client";
+
+class App extends React.Component {
+  render() {
+    return <h1>Render() Method Example</h1>;
+  }
+}
+
+const container = document.getElementById("root");
+const root = createRoot(container);
+root.render(<App />);
+```
+
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-render-l2q7qk?file=/src/index.js)**
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## Q. What are the different phases of React component lifecycle?
+
+React provides several methods that notify us when certain stage of this process occurs. These methods are called the component lifecycle methods and they are invoked in a predictable order. The lifecycle of the component is divided into four phases.
+
+<p align="center">
+  <img src="assets/react-lifecycle.png" alt="React component lifecycle" width="800px" />
+</p>
+
+**1. Mounting:**  
+
+These methods are called in the following order when an instance of a component is being created and inserted into the DOM:
+
+* `constructor()`
+* `getDerivedStateFromProps()`
+* `render()`
+* `componentDidMount()`
+
+**2. Updating:**  
+
+The next phase in the lifecycle is when a component is updated. A component is updated whenever there is a change in the component\'s state or props.
+
+React has five built-in methods that gets called, in this order, when a component is updated:
+
+* `getDerivedStateFromProps()`
+* `shouldComponentUpdate()`
+* `render()`
+* `getSnapshotBeforeUpdate()`
+* `componentDidUpdate()`
+
+**3. Unmounting:**  
+
+The next phase in the lifecycle is when a component is removed from the DOM, or unmounting as React likes to call it.
+
+* `componentWillUnmount()`
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## Q. How to make component to perform an action only once when the component initially rendered?
+
+**1. Using Class Component:**
+
+The `componentDidMount()` lifecycle hook can be used with class components. Any actions defined within a `componentDidMount()` lifecycle hook are called only once when the component is first mounted.
+
+**Example:**
+
+```js
+class Homepage extends React.Component {
+  componentDidMount() {
+    trackPageView('Homepage')
+  }
+  render() {
+    return <div>Homepage</div>
+  }
+}
+```
+
+**2. Using Function Component:**
+
+The `useEffect()` hook can be used with function components. The `useEffect()` hook is more flexible than the lifecycle methods used for class components. It receives two parameters:
+
+* The first parameter it takes is a callback function to be executed.
+* The optional second parameter it takes is an array containing any variables that are to be tracked.
+
+The value passed as the second argument controls when the callback is executed:
+
+* If the second parameter is **undefined**, the callback is executed every time that the component is rendered.
+* If the second parameter contains an array of variables, then the callback will be executed as part of the first render cycle and will be executed again each time an item in the array is modified.
+* If the second parameter contains an empty array, the callback will be executed only once as part of the first render cycle.
+
+**Example:**
+
+```js
+const Homepage = () => {
+  useEffect(() => {
+    trackPageView('Homepage')
+  }, [])
+  
+  return <div>Homepage</div>
+}
+```
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
