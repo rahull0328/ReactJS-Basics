@@ -608,3 +608,160 @@ class Child extends React.Component {
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
 </div>
+
+## Q. Write a program to show and hide element in React?
+
+<details><summary><b>Answer</b></summary>
+
+```js
+export default function App() {
+
+  const [show, toggleShow] = React.useState(true);
+
+  return (
+    <div>
+      <button onClick={() => toggleShow(!show)}>
+        Toggle: {show ? "Show" : "Hide"}
+      </button>
+      {show && <h2>Hello World!</h2>}
+    </div>
+  );
+}
+```
+
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-toggle-gipub?file=/src/App.js)**
+
+</details>
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. How to update the parent state in React?
+
+<details><summary><b>Answer</b></summary>
+
+**Using function as a Prop:**
+
+```js
+class Parent extends Component {
+  state = {
+    text: "Click Me !"
+  };
+
+  // Function to update state
+  handleUpdate = (newState) => {
+    this.setState({ text: newState });
+  };
+
+  render() {
+    return (
+      <div>
+        <Child
+          text={this.state.text}
+          // Passing a function to child
+          updateState={this.handleUpdate}
+        ></Child>
+      </div>
+    );
+  }
+}
+
+class Child extends Component {
+  render() {
+    return (
+      <button
+        // Using parent props to update parent state
+        onClick={() => this.props.updateState("Parent State Changed")}
+      >
+        {this.props.text}
+      </button>
+    );
+  }
+}
+```
+
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-function-as-a-prop-2unfh?file=/src/App.js)**
+
+</details>
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. How do I reference a local image in React?
+
+<details><summary><b>Answer</b></summary>
+
+```js
+import React, { Component } from "react";
+import logo from "./react_photo-goose.jpg";
+
+export default class Header extends Component {
+  render() {
+    return (
+      <div className="row">
+        <div className="logo">
+          <img src={logo} width="100%" alt="Googe Pic" />
+        </div>
+      </div>
+    );
+  }
+}
+```
+
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/image-in-react-ud0ry?file=/src/App.js)**
+
+</details>
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. How to access a child state in React?
+
+<details><summary><b>Answer</b></summary>
+
+**Using createRef():**
+
+```js
+export default class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.ChildElement = React.createRef();
+  }
+
+  handleClick = () => {
+    const childelement = this.ChildElement.current;
+    alert("Current state of child is: " + childelement.state.name);
+  };
+
+  render() {
+    return (
+      <div>
+        <Child ref={this.ChildElement} />
+        <h2>Access child state from parent component</h2>
+        <button onClick={this.handleClick}> CLICK ME </button>
+      </div>
+    );
+  }
+}
+
+class Child extends React.Component {
+  state = {
+    name: "Hello React"
+  };
+
+  render() {
+    return <></>;
+  }
+}
+```
+
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/access-child-state-p2iip?file=/src/App.js)**
+
+</details>
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
