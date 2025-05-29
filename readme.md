@@ -1366,3 +1366,292 @@ render() {
 <div align="right">
     <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
+
+## Q. How to conditionally add attributes to React components?
+
+Inline conditionals in attribute props
+
+```js
+/**
+ * Conditionally add attributes
+ */
+import React from "react";
+
+export default function App() {
+  const [mood] = React.useState("happy");
+
+  const greet = () => alert("Hi there! :)");
+
+  return (
+    <button onClick={greet} disabled={"happy" === mood ? false : true}>
+      Say Hi
+    </button>
+  );
+}
+```
+
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/conditional-attributes-n13jg0?file=/src/App.js)**
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## Q. How would you prevent a component from rendering?
+
+React **shouldComponentUpdate()** is a performance optimization method, and it tells React to avoid re-rendering a component, even if state or prop values may have changed. This method only used when a component will stay static or pure.
+
+The React `shouldComponentUpdate()` method return `true` if it needs to re-render or `false` to avoid being re-render.
+
+**Syntax:**
+
+```js
+shouldComponentUpdate(nextProps, nextState){ }
+```
+
+**Example:**
+
+```js
+/**
+ * Prevent a component from rendering
+ */
+export default class App extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      countOfClicks: 0
+    };
+    this.handleClick = this.handleClick.bind(this);
+  }
+
+  handleClick() {
+    this.setState({
+      countOfClicks: this.state.countOfClicks + 1
+    });
+  }
+
+  shouldComponentUpdate(nextProps, nextState) {
+    console.log("this.state.countOfClicks", this.state.countOfClicks);
+    console.log("nextState.countOfClicks", nextState.countOfClicks);
+    return true;
+  }
+
+  render() {
+    return (
+      <div>
+        <h2>shouldComponentUpdate Example</h2>
+        <p>Count of clicks: <b>{this.state.countOfClicks}</b></p>
+        <button onClick={this.handleClick}>CLICK ME</button>
+      </div>
+    );
+  }
+}
+```
+
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-shouldcomponentupdate-mryjv?file=/src/App.js)**
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## Q. When would you use StrictMode component in React?
+
+The **StrictMode** is a tool for highlighting potential problems in an application. Like `Fragment`, `StrictMode` does not render any visible UI. It activates additional checks and warnings for its descendants.
+
+Strict mode checks are run in development mode only; they do not impact the production build.
+
+**Example:**
+
+```js
+/**
+ * StrictMode
+ */
+import { StrictMode } from "react";
+import MyComponent from "./MyComponent";
+
+export default function App() {
+  return (
+    <StrictMode>
+      <MyComponent />
+    </StrictMode>
+  );
+}
+```
+
+React StrictMode, in order to be efficient and avoid potential problems by any side-effects, needs to trigger some methods and lifecycle hooks twice. These are:
+
+* Class component constructor() method
+* The render() method
+* setState() updater functions (the first argument)
+* The static getDerivedStateFromProps() lifecycle
+* React.useState() function
+
+**Benefits of StrictMode:**
+
+* Identifying components with unsafe lifecycles
+* Warning about legacy string ref API usage
+* Warning about deprecated findDOMNode usage
+* Detecting unexpected side effects
+* Detecting legacy context API
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## Q. Why to avoid using setState() after a component has been unmounted?
+
+Calling `setState()` after a component has unmounted will emit a warning. The "setState warning" exists to help you catch bugs, because calling `setState()` on an unmounted component is an indication that your app/component has somehow failed to clean up properly.
+
+Specifically, calling `setState()` in an unmounted component means that your app is still holding a reference to the component after the component has been unmounted - which often indicates a memory leak.
+
+**Example:**
+
+```js
+/**
+ * setState() in unmounted component
+ */
+import React, { Component } from "react";
+import axios from "axios";
+
+export default class App extends Component {
+  _isMounted = false; // flag to check Mounted
+
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      news: []
+    };
+  }
+
+  componentDidMount() {
+    this._isMounted = true;
+
+    axios
+      .get("https://hn.algolia.com/api/v1/search?query=react")
+      .then((result) => {
+        if (this._isMounted) {
+          this.setState({
+            news: result.data.hits
+          });
+        }
+      });
+  }
+
+  componentWillUnmount() {
+    this._isMounted = false;
+  }
+
+  render() {
+    return (
+      <ul>
+        {this.state.news.map((topic) => (
+          <li key={topic.objectID}>{topic.title}</li>
+        ))}
+      </ul>
+    );
+  }
+}
+```
+
+Here, even though the component got unmounted and the request resolves eventually, the flag in component will prevent to set the state of the React component after it got unmounted.
+
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-setstate-in-unmount-qmjn7m?file=/src/App.js)**
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## Q. What is Lifting State Up in ReactJS?
+
+The common approach to share **state** between two components is to move the state to common parent of the two components. This approach is called as lifting state up in React.js. With the shared state, changes in state reflect in relevant components simultaneously.
+
+**Example:**
+
+The App component containing PlayerContent and PlayerDetails component. PlayerContent shows the player name buttons. PlayerDetails shows the details of the in one line.
+
+The app component contains the state for both the component. The selected player is shown once we click on the one of the player button.
+
+```js
+/**
+ * Lifting State Up
+ */
+import React from "react";
+import PlayerContent from "./PlayerContent";
+import PlayerDetails from "./PlayerDetails";
+
+export default class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { selectedPlayer: [0, 0], playerName: "" };
+    this.updateSelectedPlayer = this.updateSelectedPlayer.bind(this);
+  }
+  updateSelectedPlayer(id, name) {
+    const arr = [0, 0, 0, 0];
+    arr[id] = 1;
+    this.setState({
+      playerName: name,
+      selectedPlayer: arr
+    });
+  }
+  render() {
+    return (
+      <div>
+        <PlayerContent
+          active={this.state.selectedPlayer[0]}
+          clickHandler={this.updateSelectedPlayer}
+          id={0}
+          name="Player 1"
+        />
+        <PlayerContent
+          active={this.state.selectedPlayer[1]}
+          clickHandler={this.updateSelectedPlayer}
+          id={1}
+          name="Player 2"
+        />
+        <PlayerDetails name={this.state.playerName} />
+      </div>
+    );
+  }
+}
+```
+
+```js
+/**
+ * PlayerContent
+ */
+import React, { Component } from "react";
+
+export default class PlayerContent extends Component {
+  render() {
+    return (
+      <button
+        onClick={() => {
+          this.props.clickHandler(this.props.id, this.props.name);
+        }}
+        style={{ color: this.props.active ? "red" : "blue" }}
+      >
+        {this.props.name}
+      </button>
+    );
+  }
+}
+```
+
+```js
+/**
+ * PlayerDetails
+ */
+import React, { Component } from "react";
+
+export default class PlayerDetails extends Component {
+  render() {
+    return <h2>{this.props.name}</h2>;
+  }
+}
+```
+
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-lifting-state-up-z8xkci?file=/src/App.js)**
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
