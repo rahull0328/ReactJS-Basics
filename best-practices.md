@@ -468,3 +468,170 @@ Do not use DOM component prop names for passing props between components because
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
 </div>
+
+## Quotes
+
+Use double quotes for JSX attributes and single quotes for all other JS.
+
+**Bad:**
+
+```jsx
+<Foo bar='bar' />
+
+<Foo style={{ left: "20px" }} />
+```
+
+**Good:**
+
+```jsx
+<Foo bar="bar" />
+
+<Foo style={{ left: '20px' }} />
+```
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Prop Naming
+
+Always use camelCase for prop names or PascalCase if the prop value is a React component.
+
+**Bad:**
+
+```jsx
+<Component
+  UserName="hello"
+  phone_number={12345678}
+/>
+```
+
+**Good:**
+
+```jsx
+<MyComponent
+  userName="hello"
+  phoneNumber={12345678}
+  Component={SomeComponent}
+/>
+```
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## JSX in Parentheses
+
+If your component spans more than one line, always wrap it in parentheses.
+
+**Bad:**
+
+```jsx
+return <MyComponent variant="long">
+           <MyChild />
+         </MyComponent>;
+```
+
+**Good:**
+
+```jsx
+return (
+    <MyComponent variant="long">
+      <MyChild />
+    </MyComponent>
+);
+```
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Self-Closing Tags
+
+If your component doesn\'t have any children, then use self-closing tags. It improves readability.
+
+**Bad:**
+
+```jsx
+<SomeComponent variant="stuff"></SomeComponent>
+```
+
+**Good:**
+
+```jsx
+<SomeComponent variant="stuff" />
+```
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Underscore in Method Name
+
+Do not use underscores in any internal React method.
+
+**Bad:**
+
+```jsx
+const _onClickHandler = () => {
+  // do stuff
+}
+```
+
+**Good:**
+
+```jsx
+const onClickHandler = () => {
+  // do stuff
+}
+```
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Alt Prop
+
+Always include an alt prop in your `<img >` tags. And do not use picture or image in your alt property because the screenreaders already announce img elements as images. No need to include that.
+
+**Bad:**
+
+```jsx
+<img src="hello.jpg" />
+
+<img src="hello.jpg" alt="Picture of me rowing a boat" />
+```
+
+**Good:**
+
+```jsx
+<img src="hello.jpg" alt="Me waving hello" />
+```
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Short-Circuit evaluation in JSX
+
+**Bad:**
+
+```jsx
+// Avoid
+const sampleComponent = () => {
+  return isTrue ? <p>True!</p> : null
+};
+```
+
+**Good:**
+
+```jsx
+// Recommended: short-circuit evaluation
+const sampleComponent = () => {
+  return isTrue && <p>True!</p>
+};
+```
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
