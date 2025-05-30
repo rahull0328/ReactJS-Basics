@@ -6,17 +6,14 @@
 
 ## Related Topics
 
-* *[HTML Basics](https://github.com/learning-zone/html-basics)*
-* *[CSS Basics](https://github.com/learning-zone/css-basics)*
-* *[JavaScript Basics](https://github.com/learning-zone/javascript-basics)*
 * *[React Coding Practice](react-coding-practice.md)*
 * *[React Quick Reference](react-quick-reference.md)*
 * *[Redux Quick Reference](redux-quick-reference.md)*
 * *[Jest Quick Reference](jest-quick-reference.md)*
 * *[React Best Practices](best-practices.md)*
+* *[React MCQ's](react-mcq.md)*
 * *[React Unit Testing](https://github.com/learning-zone/react-unit-testing)*
-* *[React Project - ToDo App](https://github.com/learning-zone/react-todo-app)*
-* *[React Project - My Store App](https://github.com/learning-zone/my-store-app)*
+* *[React Project - ToDo App](https://github.com/rahull0328/ToDo-React)*
 
 <br/>
 
