@@ -253,3 +253,267 @@ function Example() {
   );
 }
 ```
+
+## References
+
+Allows access to DOM nodes.
+
+```javascript
+class MyComponent extends Component {
+
+  render () {
+    return (
+      <div>
+        <input ref={el => this.input = el} />
+      </div>
+    )
+  }
+
+  componentDidMount () {
+    this.input.focus()
+  }
+}
+```
+
+## DOM Events
+
+Pass functions to attributes like `onChange()`.
+
+```javascript
+class MyComponent extends Component {
+
+  render () {
+    <input type="text"
+        value={this.state.value}
+        onChange={event => this.onChange(event)} />
+  }
+
+  onChange (event) {
+    this.setState({ value: event.target.value })
+  }
+}
+```
+
+## Transferring props
+
+Propagates `src="..."` down to the sub-component.
+
+```javascript
+<VideoPlayer src="video.mp4" />
+
+class VideoPlayer extends Component {
+  render () {
+    return <VideoEmbed {...this.props} />
+  }
+}
+```
+
+## JSX patterns
+
+## Style shorthand
+
+Inline styles
+
+```javascript
+const style = { height: 10 }
+return <div style={style}></div>
+return <div style={{ margin: 0, padding: 0 }}></div>
+```
+
+## Conditionals
+
+```javascript
+<Fragment>
+  {showMyComponent
+    ? <MyComponent />
+    : <OtherComponent />}
+</Fragment>
+```
+
+## Lists
+
+```javascript
+class TodoList extends Component {
+
+  render () {
+    const { items } = this.props
+
+    return <ul>
+      {items.map(item =>
+        <TodoItem item={item} key={item.key} />)}
+    </ul>
+  }
+}
+```
+
+## Short-circuit evaluation
+
+```javascript
+<Fragment>
+  {showPopup && <Popup />}
+  ...
+</Fragment>
+```
+
+##  Fragments and Arrays
+
+```javascript
+// Arrays
+
+render () {
+  // Don't forget the keys!
+  return [
+    <li key="A">First item</li>,
+    <li key="B">Second item</li>
+  ]
+}
+
+// Fragments
+render () {
+  // Fragments don't require keys!
+  return (
+    <Fragment>
+      <li>First item</li>
+      <li>Second item</li>
+    </Fragment>
+  )
+}
+```
+
+## Errors
+
+Catch errors via `componentDidCatch()`.
+
+```javascript
+class MyComponent extends Component {
+  ···
+  componentDidCatch (error, info) {
+    this.setState({ error })
+  }
+}
+```
+
+## Portals
+
+This renders `this.props.children` into any location in the DOM.
+
+```javascript
+render () {
+  return React.createPortal(
+    this.props.children,
+    document.getElementById('menu')
+  )
+}
+```
+
+## Hydration
+
+Use `ReactDOM.hydrate()` instead of using `ReactDOM.render()` if you are rendering over the output of ReactDOMServer.
+
+```javascript
+const el = document.getElementById('app')
+ReactDOM.hydrate(<App />, el)
+```
+
+## PropTypes
+
+Typechecking with PropTypes
+
+```javascript
+import PropTypes from 'prop-types';
+```
+
+|Property             | Description |
+|---------------------|-------------|
+|any                  |Anything     |
+|string               |             |
+|number               |             |
+|func                 |Function     |
+|bool                 |True or false|
+|oneOf(any)           |Enum types   |
+|oneOfType(type array)|Union        |
+|array                |             |
+|arrayOf(…)	          |             |
+|object               |             |
+|objectOf(…)          | Object with values of a certain type|
+|instanceOf(…)        |Instance of a class|
+|shape(…)             |             |
+|element              |React element|
+|node                 |DOM node     |
+|(···).isRequired     |Required     |
+
+
+## Basic types
+
+```javascript
+MyComponent.propTypes = {
+  email:      PropTypes.string,
+  seats:      PropTypes.number,
+  callback:   PropTypes.func,
+  isClosed:   PropTypes.bool,
+  any:        PropTypes.any
+}
+```
+
+## Required Types
+
+```javascript
+MyCo.propTypes = {
+  name:  PropTypes.string.isRequired
+}
+```
+
+## Elements
+
+```javascript
+MyCo.propTypes = {
+  // React element
+  element: PropTypes.element,
+
+  // num, string, element, or an array of those
+  node: PropTypes.node
+}
+```
+
+## Enumerables (oneOf)
+
+```javascript
+MyCo.propTypes = {
+  direction: PropTypes.oneOf([
+    'left', 'right'
+  ])
+}
+```
+
+## Custom validation
+
+```javascript
+MyCo.propTypes = {
+ 
+  customProp: (props, key, componentName) => {
+    if (!/matchme/.test(props[key])) {
+      return new Error('Validation failed!')
+    }
+  }
+}
+```
+
+## Arrays and Objects
+
+Use `.arrayOf()`, `.objectOf()`, `.instanceOf()`, `.shape()`.
+
+```javascript
+MyCo.propTypes = {
+  list: PropTypes.array,
+  ages: PropTypes.arrayOf(PropTypes.number),
+  user: PropTypes.object,
+  user: PropTypes.objectOf(PropTypes.number),
+  message: PropTypes.instanceOf(Message)
+}
+MyCo.propTypes = {
+  user: PropTypes.shape({
+    name: PropTypes.string,
+    age:  PropTypes.number
+  })
+}
+```
