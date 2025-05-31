@@ -1652,3 +1652,222 @@ export default class PlayerDetails extends Component {
 <div align="right">
     <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
+
+## Q. What is "Children" in React?
+
+In React, **children** refer to the generic box whose contents are **unknown** until they\'re passed from the parent component. Children allows to pass components as data to other components, just like any other prop you use.
+
+The special thing about children is that React provides support through its `ReactElement API` and `JSX`. XML children translate perfectly to React children!
+
+**Example:**
+
+```js
+/**
+ * Children in React
+ */
+const Picture = (props) => {
+  return (
+    <div>
+      <img src={props.src}/>
+      {props.children}
+    </div>
+  )
+}
+```
+
+This component contains an `<img>` that is receiving some props and then it is displaying `{props.children}`.
+Whenever this component is invoked `{props.children}` will also be displayed and this is just a reference to what is between the opening and closing tags of the component.
+
+```js
+/**
+ * App.js
+ */
+
+render () {
+  return (
+    <div className='container'>
+      <Picture key={picture.id} src={picture.src}>
+          {/** what is placed here is passed as props.children **/}
+      </Picture>
+    </div>
+  )
+}
+```
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## Q. What is Compound Components in React?
+
+The Compound components are a pattern in which components are used together such that they share an implicit state that lets them communicate with each other in the background.
+
+Internally they are built to operate on a set of data that is passed in through children instead of props. Behind the scenes they make use of React\'s lower level API such as `React.children.map()`, and `React.cloneElement()`. Using these methods, the component is able to express itself in such a way that promotes patterns of composition and extensibility.
+
+**Example:**
+
+```js
+function App() {
+  return (
+    <Menu>
+      <MenuButton>
+        Actions <span aria-hidden>▾</span>
+      </MenuButton>
+      <MenuList>
+        <MenuItem onSelect={() => alert('Download')}>Download</MenuItem>
+        <MenuItem onSelect={() => alert('Copy')}>Create a Copy</MenuItem>
+        <MenuItem onSelect={() => alert('Delete')}>Delete</MenuItem>
+      </MenuList>
+    </Menu>
+  )
+}
+```
+
+In this example, the `<Menu>` establishes some shared implicit state. The `<MenuButton>`, `<MenuList>`, and `<MenuItem>` components each access and/or manipulate that state, and it\'s all done implicitly. This allows you to have the expressive API you're looking for.
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## # 4.1. FUNCTIONAL COMPONENTS
+
+<br/>
+
+## Q. What are functional components in react?
+
+A React functional component is a simple JavaScript function that accepts **props** and returns a React element. It also referred as **stateless** components as it simply accept data and display them in some form.
+
+After the introduction of React Hooks, writing functional components has become the ​standard way of writing React components in modern applications.
+
+**Example:**
+
+```js
+function Welcome(props) {
+  return <h1>Hello, {props.name}</h1>;
+}
+
+const element = <Welcome name="World!" />;
+
+ReactDOM.render(
+  element,
+  document.getElementById('root')
+);
+```
+
+**&#9885; [Try this example on CodeSandbox](https://codepen.io/learning-zone/pen/MWmEmRj?editors=0010)**
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## # 4.2. CLASS COMPONENTS
+
+<br/>
+
+## Q. What are class components in react?
+
+The class component, a stateful/container component, is a regular ES6 class that extends the component class of the React library. It is called a stateful component because it controls how the state changes and the implementation of the component logic. Aside from that, they have access to all the different phases of a React lifecycle method.
+
+**Example:**
+
+```js
+class Welcome extends React.Component {
+  render() {
+    return <h1>Hello, {this.props.name}</h1>;
+  }
+}
+
+const element = <Welcome name="World!" />;
+
+ReactDOM.render(
+  element,
+  document.getElementById('root')
+);
+```
+
+**&#9885; [Try this example on CodeSandbox](https://codepen.io/learning-zone/pen/BaRwZyB)**
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## Q. What is the recommended ordering of methods in class component?
+
+* static methods
+* constructor()
+* getChildContext()
+* componentWillMount()
+* componentDidMount()
+* componentWillReceiveProps()
+* shouldComponentUpdate()
+* componentWillUpdate()
+* componentDidUpdate()
+* componentWillUnmount()
+* click handlers or event handlers like `onClickSubmit()` or `onChangeDescription()`
+* getter methods for render like `getSelectReason()` or `getFooterContent()`
+* optional render methods like `renderNavigation()` or `renderProfilePicture()`
+* render()
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## Q. How to create a dynamic table in react?
+
+```js
+/**
+ * Generate dynamic table in React
+ */
+class Table extends React.Component {
+   constructor(props) {
+      super(props)
+      this.state = {
+         employees: [
+            { id: 10, name: 'Swarna Sachdeva', email: 'swarna@email.com' },
+            { id: 20, name: 'Sarvesh Date', email: 'sarvesh@email.com' },
+            { id: 30, name: 'Diksha Meka', email: 'diksha@email.com' }
+         ]
+      }
+   }
+
+   renderTableHeader() {
+      let header = Object.keys(this.state.employees[0])
+      return header.map((key, index) => {
+         return <th key={index}>{key.toUpperCase()}</th>
+      })
+   }
+
+   renderTableData() {
+      return this.state.employees.map((employee, index) => {
+         const { id, name, email } = employee 
+         return (
+            <tr key={id}>
+               <td>{id}</td>
+               <td>{name}</td>
+               <td>{email}</td>
+            </tr>
+         )
+      })
+   }
+
+   render() {
+      return (
+         <div>
+            <h1 id='title'>React Dynamic Table</h1>
+            <table id='employees'>
+               <tbody>
+                  <tr>{this.renderTableHeader()}</tr>
+                  {this.renderTableData()}
+               </tbody>
+            </table>
+         </div>
+      )
+   }
+}
+```
+
+**&#9885; [Try this example on CodeSandbox](https://codepen.io/learning-zone/pen/wvdeqBm?editors=0110)**
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
