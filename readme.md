@@ -1871,3 +1871,248 @@ class Table extends React.Component {
 <div align="right">
     <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
+
+## Q. How to prevent component from rendering in React?
+
+You can prevent component from rendering by returning `null` based on specific condition. This way it can conditionally render component.
+
+In the example below, the `<WarningBanner />` is rendered depending on the value of the prop called warn. If the value of the prop is `false`, then the component does not render:
+
+```js
+function WarningBanner(props) {
+  if (!props.warn) {
+    return null;
+  }
+
+  return (
+    <div className="warning">
+      Warning!
+    </div>
+  );
+}
+```
+
+```js
+class Page extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {showWarning: true};
+    this.handleToggleClick = this.handleToggleClick.bind(this);
+  }
+
+  handleToggleClick() {
+    this.setState(state => ({
+      showWarning: !state.showWarning
+    }));
+  }
+
+  render() {
+    return (
+      <div>
+        { /* Prevent component render if value of the prop is false */}
+        <WarningBanner warn={this.state.showWarning} />
+        <button onClick={this.handleToggleClick}>
+          {this.state.showWarning ? 'Hide' : 'Show'}
+        </button>
+      </div>
+    );
+  }
+}
+
+ReactDOM.render(
+  <Page />,
+  document.getElementById('root')
+);
+```
+
+**&#9885; [Try this example on CodeSandbox](https://codepen.io/learning-zone/pen/GRmMvWr?editors=0110)**
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## Q. How do you set a timer to update every second?
+
+Using `setInterval()` inside React components allows us to execute a function or some code at specific intervals. A function or block of code that is bound to an interval executes until it is stopped. To stop an interval, we can use the `clearInterval()` method.
+
+**Example:**
+
+```js
+class Clock extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      time: new Date().toLocaleString()
+    }
+  }
+  componentDidMount() {
+    this.intervalID = setInterval(
+      () => this.tick(),
+      1000
+    )
+  }
+  componentWillUnmount() {
+    clearInterval(this.intervalID)
+  }
+  tick() {
+    this.setState({
+      time: new Date().toLocaleString()
+    })
+  }
+  render() {
+    return (
+      <p className="App-clock">
+        The time is {this.state.time}.
+      </p>
+    )
+  }
+}
+```
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## Q. Differentiate between stateful and stateless components?
+
+Stateful and stateless components have many different names. They are also known as:
+
+– Container vs Presentational components  
+– Smart vs Dumb components  
+
+The literal difference is that one has state, and the other does not. That means the stateful components are keeping track of changing data, while stateless components print out what is given to them via props, or they always render the same thing.
+
+**Example:** Stateful/Container/Smart component
+
+```js
+class Welcome extends React.Component {
+  render() {
+    return <h1>This is a React Class Component</h1>;
+  }
+}
+```
+
+**Example:** Stateless/Presentational/Dumb component
+
+```js
+function welcome(props) {
+  return <h1>This is a React Functional Component</h1>;
+}
+```
+
+|Class Components                               |Functional Components                                 |
+|-----------------------------------------------|-------------------------------------------------------|
+|Class components need to extend the component from "React.Component" and create a render function that returns the required element. | Functional components are like normal functions which take "props" as the argument and return the required element.|
+|They are also known as stateful components.    |They are also known as stateless components.|
+|They implement logic and the state of the component.|They accept some kind of data and display it in the UI.|
+|Lifecycle methods can be used inside them.     |Lifecycle methods cannot be used inside them.|
+|It needs to store state therefore constructors are used.|Constructors are not used in it.|
+|It has to have a "render()" method inside that. |It does not require a render method.|
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## Q. What is the purpose of using super constructor with props argument?
+
+The `super()` keyword is used to call the parent constructor. `super(props)` would pass `props` to the parent constructor.
+
+```js
+/**
+ * super constructor
+ */
+class App extends React.Component {
+  constructor(props) {
+      super(props)
+      this.state = {}
+   }
+
+  // React says we have to define render()
+  render() {
+    return <div>Hello world</div>
+  }
+}
+
+export default App
+```
+
+Here, `super(props)` would call the `React.Component` constructor passing in props as the argument.
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## Q. What is the difference between Element, Component and Component instance in React?
+
+**1. React Elements:**
+
+A React Element is just a plain old JavaScript Object without own methods. It has essentially four properties:
+
+* **type**: a String representing an HTML tag or a reference referring to a React Component
+* **key**: a String to uniquely identify an React Element
+* **ref**: a reference to access either the underlying DOM node or React Component Instance)
+* **props**: (properties Object)
+
+A React Element is not an instance of a React Component. It is just a simplified "description" of how the React Component Instance to be created should look like.
+
+**2. React Components and React Component Instances:**
+
+A React Component is used by extending `React.Component`. If a React Component is instantiated it expects a props Object and returns an instance, which is referred to as a React Component Instance.
+
+A React Component can contain state and has access to the React Lifecycle methods. It must have at least a `render` method, which returns a React Element(-tree) when invoked.
+
+**Example:**
+
+```js
+/**
+ * React Component Instances
+ */
+import React from 'react'
+import ReactDOM from 'react-dom'
+
+class MyComponent extends React.Component {
+  constructor(props) {
+    super(props)
+    console.log('This is a component instance:' + this)
+  }
+
+  render() {
+    const another_element = <div>Hello, World!</div>
+    console.log('This is also an element:' + another_element)
+    return another_element
+  }
+}
+
+console.log('This is a component:' + MyComponent)
+
+const element = <MyComponent/>
+console.log('This is an element:' + element)
+
+ReactDOM.render(element, document.getElementById('root'));
+```
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## Q. What does shouldComponentUpdate do and why is it important?
+
+The `shouldComponentUpdate()` method allows Component to exit the Update life cycle if there is no reason to apply a new render. React does not deeply compare `props` by default. When `props` or `state` is updated React assumes we need to re-render the content.
+
+The default implementation of this function returns true so to stop the re-render you need to return false here:
+
+```js
+shouldComponentUpdate(nextProps, nextState) {
+  console.log(nextProps, nextState)
+  console.log(this.props, this.state)
+  return false  
+}
+```
+
+**Preventing unnecessary renders:**
+
+The `shouldComponentUpdate()` method is the first real life cycle optimization method that we can leverage in React. It checks the current props and state, compares it to the next props and state and then returns true if they are different, or false if they are the same. This method is not called for the initial render or when `forceUpdate()` is used.
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
