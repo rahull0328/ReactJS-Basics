@@ -408,3 +408,140 @@ const Heading = () => {
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
 </div>
+
+#### Q. To create a constant in JavaScript, which keyword do you use?
+
+- [x] const
+- [ ] let
+- [ ] constant
+- [ ] var
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+#### Q. What do you call a React component that catches JavaScript errors anywhere in the child component tree?
+
+- [ ] error bosses
+- [ ] error catchers
+- [ ] error helpers
+- [x] error boundaries
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+#### Q. In which lifecycle method do you make requests for data in a class component?
+
+- [ ] constructor
+- [x] componentDidMount
+- [ ] componentWillReceiveProps
+- [ ] componentWillMount
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+#### Q. React components are composed to create a user interface. How are components composed?
+
+- [ ] by putting them in the same file
+- [x] by nesting components
+- [ ] with webpack
+- [ ] with code splitting
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+#### Q. All React components must act like **\_** with respect to their props.
+
+- [ ] monads
+- [x] pure functions
+- [ ] recursive functions
+- [ ] higher-order functions
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+#### Q. What is `[e.target.id]` called in this code snippet?
+
+```javascript
+const handleChange = (e) => {
+  setState((prevState) => ({ ...prevState, [e.target.id]: e.target.value }));
+};
+```
+
+- [ ] a computed property name
+- [ ] a set value
+- [x] a dynamic key
+- [ ] a JSX code string
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+#### Q. What is the name of this component?
+
+```javascript
+class Clock extends React.Component {
+  render() {
+    return <h1>Look at the time: {time}</h1>;
+  }
+}
+```
+
+- [x] Clock
+- [ ] It does not have a name prop.
+- [ ] React.Component
+- [ ] Component
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+#### Q. What is sent to an `Array.map()` function?
+
+- [x] a callback function that is called once for each element in the array
+- [ ] the name of another array to iterate over
+- [ ] the number of times you want to call the function
+- [ ] a string describing what the function should do
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+#### Q. Why is it a good idea to pass a function to `setState` instead of an object?
+
+- [ ] It provides better encapsulation.
+- [ ] It makes sure that the object is not mutated.
+- [ ] It automatically updates a component.
+- [x] `setState` is asynchronous and might result in out of sync values.
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+**Explanation:** Because `this.props` and `this.state` may be updated asynchronously, you should not rely on their values for calculating the next state.
+
+#### Q. What package contains the render() function that renders a React element tree to the DOM?
+
+- [ ] `React`
+- [x] `ReactDOM`
+- [ ] `Render`
+- [ ] `DOM`
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+#### Q. How do you set a default value for an uncontrolled form field?
+
+- [ ] Use the `value` property.
+- [x] Use the `defaultValue` property.
+- [ ] Use the `default` property.
+- [ ] It assigns one automatically.
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
