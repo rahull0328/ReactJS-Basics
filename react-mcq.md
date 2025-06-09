@@ -545,3 +545,294 @@ class Clock extends React.Component {
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
 </div>
+
+#### Q. What do you need to change about this code to get it to run?
+
+```js
+const clock = (props) => {
+  return <h1>Look at the time: {props.time}</h1>;
+};
+```
+
+- [ ] Add quotes around the return value
+- [ ] Remove `this`
+- [ ] Remove the render method
+- [x] Capitalize `clock`
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+**Explanation:** In JSX, lower-case tag names are considered to be HTML tags.
+
+#### Q. Which Hook could be used to update the document's title?
+
+- [x] `useEffect(function updateTitle() { document.title = name + ' ' + lastname; });`
+- [ ] `useEffect(() => { title = name + ' ' + lastname; });`
+- [ ] `useEffect(function updateTitle() { name + ' ' + lastname; });`
+- [ ] `useEffect(function updateTitle() { title = name + ' ' + lastname; });`
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+#### Q. Which function from React can you use to wrap Component imports to load them lazily?
+
+- [ ] `fallback`
+- [ ] `split`
+- [x] `lazy`
+- [ ] `memo`
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+#### Q. How do you invoke setDone only when component mounts, using hooks?
+
+```javascript
+function MyComponent(props) {
+  const [done, setDone] = useState(false);
+
+  return <h1>Done: {done}</h1>;
+}
+```
+
+- [ ] `useEffect(() => { setDone(true); });`
+- [x] `useEffect(() => { setDone(true); }, []);`
+- [ ] `useEffect(() => { setDone(true); }, [setDone]);`
+- [ ] `useEffect(() => { setDone(true); }, [done, setDone]);`
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+#### Q. Currently, `handleClick` is being called instead of passed as a reference. How do you fix this?
+
+```javascript
+<button onClick={this.handleClick()}>Click this</button>
+```
+
+- [ ] `<button onClick={this.handleClick.bind(handleClick)}>Click this</button>`
+- [ ] `<button onClick={handleClick()}>Click this</button>`
+- [x] `<button onClick={this.handleClick}>Click this</button>`
+- [ ] `<button onclick={this.handleClick}>Click this</button>`
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+#### Q. Which answer best describes a function component?
+
+- [ ] A function component is the same as a class component.
+- [x] A function component accepts a single props object and returns a React element.
+- [ ] A function component is the only way to create a component.
+- [ ] A function component is required to create a React component.
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+#### Q. Which library does the `fetch()` function come from?
+
+- [ ] FetchJS
+- [ ] ReactDOM
+- [x] No library. `fetch()` is supported by most browsers.
+- [ ] React
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+#### Q. What will happen when this useEffect Hook is executed, assuming name is not already equal to John?
+
+```javascript
+useEffect(() => {
+  setName('John');
+}, [name]);
+```
+
+- [ ] It will cause an error immediately.
+- [ ] It will execute the code inside the function, but only after waiting to ensure that no other component is accessing the name variable.
+- [x] It will update the value of name once and not run again until name is changed from the outside.
+- [ ] It will cause an infinite loop.
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+#### Q. Which choice will not cause a React component to rerender?
+
+- [ ] if the component calls `this.setState(...)`
+- [ ] the value of one of the component's props changes
+- [ ] if the component calls `this.forceUpdate()`
+- [x] one of the component's siblings rerenders
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+#### Q. You have created a new method in a class component called handleClick, but it is not working. Which code is missing?
+
+```javascript
+class Button extends React.Component{
+
+  constructor(props) {
+    super(props);
+    // Missing line
+  }
+
+  handleClick() {...}
+}
+```
+
+- [ ] `this.handleClick.bind(this);`
+- [ ] `props.bind(handleClick);`
+- [ ] `this.handleClick.bind();`
+- [x] `this.handleClick = this.handleClick.bind(this);`
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+#### Q. React does not render two sibling elements unless they are wrapped in a fragment. Below is one way to render a fragment. What is the shorthand for this?
+
+```javascript
+<React.Fragment>
+  <h1>Our Staff</h1>
+  <p>Our staff is available 9-5 to answer your questions</p>
+</React.Fragment>
+```
+
+- [ ] A
+
+```javascript
+<...>
+  <h1>Our Staff</h1>
+  <p>Our staff is available 9-5 to answer your questions</p>
+</...>
+```
+
+- [ ] B
+
+```javascript
+<//>
+  <h1>Our Staff</h1>
+  <p>Our staff is available 9-5 to answer your questions</p>
+<///>
+```
+
+- [x] C
+
+```javascript
+<>
+  <h1>Our Staff</h1>
+  <p>Our staff is available 9-5 to answer your questions</p>
+</>
+```
+
+- [ ] D
+
+```javascript
+<Frag>
+  <h1>Our Staff</h1>
+  <p>Our staff is available 9-5 to answer your questions</p>
+</Frag>
+```
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+#### Q. If you wanted to display the count state value in the component, what do you need to add to the curly braces in the `h1`?
+
+```javascript
+class Ticker extends React.component {
+  constructor(props) {
+    super(props);
+    this.state = { count: 0 };
+  }
+  render() {
+    return <h1>{}</h1>;
+  }
+}
+```
+
+- [x] this.state.count
+- [ ] count
+- [ ] state
+- [ ] state.count
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+#### Q. Per the following code, when is the Hello component assigned to greeting?
+
+```javascript
+const greeting = isLoggedIn ? <Hello /> : null;
+```
+
+- [ ] never
+- [x] when `isLoggedIn` is true
+- [ ] when a user logs in
+- [ ] when the Hello function is called
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+#### Q. In the following code block, what type is orderNumber?
+
+```javascript
+ReactDOM.render(<Message orderNumber="16" />, document.getElementById('root'));
+```
+
+- [x] string
+- [ ] boolean
+- [ ] object
+- [ ] number
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+#### Q. You have added a style property to the `h1` but there is an unexpected token error when it runs. How do you fix this?
+
+```javascript
+const element = <h1 style={ backgroundColor: "blue" }>Hi</h1>;
+```
+
+- [ ] `const element = <h1 style="backgroundColor: "blue""}>Hi</h1>;`
+- [x] `const element = <h1 style={{backgroundColor: "blue"}}>Hi</h1>;`
+- [ ] `const element = <h1 style={blue}>Hi</h1>;`
+- [ ] `const element = <h1 style="blue">Hi</h1>;`
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+#### Q. Which function is used to update state variables in a React class component?
+
+- [ ] `replaceState`
+- [ ] `refreshState`
+- [ ] `updateState`
+- [x] `setState`
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+#### Q. Consider the following component. What is the default color for the star?
+
+```javascript
+const Star = ({ selected = false }) => <Icon color={selected ? 'red' : 'grey'} />;
+```
+
+- [ ] black
+- [ ] red
+- [x] grey
+- [ ] white
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
