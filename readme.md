@@ -2116,3 +2116,213 @@ The `shouldComponentUpdate()` method is the first real life cycle optimization m
 <div align="right">
     <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## Q. What is the purpose of render() function in React?
+
+The React class components uses render() function. It is used to update the UI.
+
+**Purpose of render():**
+
+* React renders HTML to the web page by using a function called render().
+* The purpose of the function is to display the specified HTML code inside the specified HTML element.
+* In the render() method, we can read props and state and return our JSX code to the root component of our app.
+* In the render() method, we cannot change the state, and we cannot cause side effects ( such as making an HTTP request to the webserver).
+
+```js
+/**
+ * render() function
+ * 
+ * React v18.0.0
+ */
+import React from "react";
+import { createRoot } from "react-dom/client";
+
+class App extends React.Component {
+  render() {
+    return <h1>Render() Method Example</h1>;
+  }
+}
+
+const container = document.getElementById("root");
+const root = createRoot(container);
+root.render(<App />);
+```
+
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-render-l2q7qk?file=/src/index.js)**
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## # 4.2.1. REACT LIFECYCLE
+
+<br/>
+
+## Q. What are the different phases of React component lifecycle?
+
+React provides several methods that notify us when certain stage of this process occurs. These methods are called the component lifecycle methods and they are invoked in a predictable order. The lifecycle of the component is divided into four phases.
+
+<p align="center">
+  <img src="assets/react-lifecycle.png" alt="React component lifecycle" width="800px" />
+</p>
+
+**1. Mounting:**  
+
+These methods are called in the following order when an instance of a component is being created and inserted into the DOM:
+
+* `constructor()`
+* `getDerivedStateFromProps()`
+* `render()`
+* `componentDidMount()`
+
+**2. Updating:**  
+
+The next phase in the lifecycle is when a component is updated. A component is updated whenever there is a change in the component\'s state or props.
+
+React has five built-in methods that gets called, in this order, when a component is updated:
+
+* `getDerivedStateFromProps()`
+* `shouldComponentUpdate()`
+* `render()`
+* `getSnapshotBeforeUpdate()`
+* `componentDidUpdate()`
+
+**3. Unmounting:**  
+
+The next phase in the lifecycle is when a component is removed from the DOM, or unmounting as React likes to call it.
+
+* `componentWillUnmount()`
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## Q. How to make component to perform an action only once when the component initially rendered?
+
+**1. Using Class Component:**
+
+The `componentDidMount()` lifecycle hook can be used with class components. Any actions defined within a `componentDidMount()` lifecycle hook are called only once when the component is first mounted.
+
+**Example:**
+
+```js
+class Homepage extends React.Component {
+  componentDidMount() {
+    trackPageView('Homepage')
+  }
+  render() {
+    return <div>Homepage</div>
+  }
+}
+```
+
+**2. Using Function Component:**
+
+The `useEffect()` hook can be used with function components. The `useEffect()` hook is more flexible than the lifecycle methods used for class components. It receives two parameters:
+
+* The first parameter it takes is a callback function to be executed.
+* The optional second parameter it takes is an array containing any variables that are to be tracked.
+
+The value passed as the second argument controls when the callback is executed:
+
+* If the second parameter is **undefined**, the callback is executed every time that the component is rendered.
+* If the second parameter contains an array of variables, then the callback will be executed as part of the first render cycle and will be executed again each time an item in the array is modified.
+* If the second parameter contains an empty array, the callback will be executed only once as part of the first render cycle.
+
+**Example:**
+
+```js
+const Homepage = () => {
+  useEffect(() => {
+    trackPageView('Homepage')
+  }, [])
+  
+  return <div>Homepage</div>
+}
+```
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## Q. What is the typical pattern for rendering a list of components from an array of data?  
+
+The usual pattern for rendering lists of components often ends with delegating all of the responsibilities of each child component to the entire list container component. But with a few optimizations, we can make a change in a child component not cause the parent component to re-render.
+
+**Example:** using custom `shouldComponentUpdate()`
+
+```js
+/**
+ * shouldComponentUpdate()
+ */
+class AnimalTable extends React.Component<Props, never> {
+  shouldComponentUpdate(nextProps: Props) {
+    return !nextProps.animalIds.equals(this.props.animalIds);
+  }
+  ...
+```
+
+Here, `shouldComponentUpdate()` will return false if the props its receiving are equal to the props it already has. And because the AnimalTable is receiving just a List of string IDs, a change in the adoption status won\'t cause AnimalTable to receive a different set of IDs.
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## Q. What is difference between useEffect() vs componentDidMount()?
+
+In react when we use class based components we get access to lifecycle methods ( like `componentDidMount()`, `componentDidUpdate(), etc ). But when we want use a functional component and also we want to use lifecycle methods, then using useEffect() we can implement those lifecycle methods.
+
+**1. componentDidMount():**
+
+The `componentDidMount()` and `useEffect()` run after the mount. However useEffect() runs after the paint has been committed to the screen as opposed to before. This means we would get a flicker if needed to read from the DOM, then synchronously set state to make new UI.
+
+The `useLayoutEffect()` was designed to have the same timing as componentDidMount(). So `useLayoutEffect(fn, [])` is a much closer match to componentDidMount() than useEffect(fn, []) -- at least from a timing standpoint.
+
+```js
+/**
+ * componentDidMount() in Class Component
+ */
+import React, { Component } from "react";
+
+export default class SampleComponent extends Component {
+  componentDidMount() {
+    // code to run on component mount
+  }
+  render() {
+    return <>componentDidMount Example</>;
+  }
+}
+```
+
+**2. useEffect():**
+
+```js
+/**
+ * useEffect() in Functional Component
+ */
+import React, { useEffect } from "react";
+
+const SampleComponent = () => {
+  useEffect(() => {
+    // code to run on component mount
+  }, []);
+  return <>useEffect Example</>;
+};
+export default SampleComponent;
+```
+
+When `useEffect()` is used to get data from server.
+
+* The first argument is a callback that will be fired after browser layout and paint. Therefore it does not block the painting process of the browser.
+* The second argument is an array of values (usually props).
+* If any of the value in the array changes, the callback will be fired after every render.
+* When it is not present, the callback will always be fired after every render.
+* When it is an empty list, the callback will only be fired once, similar to componentDidMount.
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
