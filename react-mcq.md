@@ -836,3 +836,150 @@ const Star = ({ selected = false }) => <Icon color={selected ? 'red' : 'grey'} /
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
 </div>
+
+#### Q. What is the difference between the click behaviors of these two buttons(assuming that this.handleClick is not bound correctly)
+
+```javascript
+  A. <button onClick=this.handleClick>Click Me</button>
+  B. <button onClick={event => this.handleClick(event)}>Click Me</button>
+```
+
+- [ ] `Button A will not have access to the event object on click of the button`
+- [x] `Button A will not fire the handler this.handleClick successfully`
+- [ ] `There is no difference`
+- [ ] `Button B will not fire the handler this.handleClick successfully`
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+#### Q. How would you add to this code, from React Router, to display a component called About?
+
+```javascript
+<Route path="/:id" />
+```
+
+- [x] A
+
+```javascript
+<Route path="/:id">
+  {' '}
+  <About />
+</Route>
+```
+
+- [ ] B
+
+```javascript
+<Route path="/tid" about={Component} />
+```
+
+- [ ] C
+
+```javascript
+<Route path="/:id" route={About} />
+```
+
+- [ ] D
+
+```javascript
+<Route>
+  <About path="/:id" />
+</Route>
+```
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+#### Q. Which class-based component is equivalent to this function component?
+
+```javascript
+const Greeting = ({ name }) => <h1>Hello {name}!</h1>;
+```
+
+- [ ] A
+
+```javascript
+class Greeting extends React.Component {
+  constructor() {
+    return <h1>Hello {this.props.name}!</h1>;
+  }
+}
+```
+
+- [ ] B
+
+```javascript
+class Greeting extends React.Component {
+  <h1>Hello {this.props.name}!</h1>;
+}
+```
+
+- [x] C
+
+```javascript
+class Greeting extends React.Component {
+  render() {
+    return <h1>Hello {this.props.name}!</h1>;
+  }
+}
+```
+
+- [ ] D
+
+```javascript
+class Greeting extends React.Component {
+  render({ name }) {
+    return <h1>Hello {name}!</h1>;
+  }
+}
+```
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+#### Q. Give the code below, what does the second argument that is sent to the render function describe?
+
+```javascript
+ReactDOM.render(
+  <h1>Hi<h1>,
+    document.getElementById('root')
+)
+```
+
+- [x] where the React element should be added to the DOM
+- [ ] where to call the function
+- [ ] where the root component is
+- [ ] where to create a new JavaScript file
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+#### Q. Why should you use React Router's Link component instead of a basic `<a>` tag in React?
+
+- [ ] The link component allows the user to use the browser's `Back` button.
+- [ ] There is no difference--the `Link` component is just another name for the `<a>` tag.
+- [ ] The `<a>` tag will cause an error when used in React.
+- [x] The `<a>` tag triggers a full page reload, while the `Link` component does not.
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+#### Q. What is the first argument, `x`, that is sent to the `createElement` function?
+
+```javascript
+React.createElement(x, y, z);
+```
+
+- [x] the element that should be created
+- [ ] the order in which this element should be placed on the page
+- [ ] the properties of the element
+- [ ] data that should be displayed in the element
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
