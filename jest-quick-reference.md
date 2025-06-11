@@ -249,3 +249,199 @@ test('async test', async () => {
   expect(result).toBe(true)
 })
 ```
+
+### Promises
+
+_Return_ a Promise from your test:
+
+```js
+test('async test', () => {
+  expect.assertions(1)
+  return runAsyncOperation().then(result => {
+    expect(result).toBe(true)
+  })
+})
+```
+
+### done() callback
+
+Wrap your assertions in try/catch block, otherwise Jest will ignore failures:
+
+```js
+test('async test', done => {
+  expect.assertions(1)
+  runAsyncOperation()
+  setTimeout(() => {
+    try {
+      const result = getAsyncOperationResult()
+      expect(result).toBe(true)
+      done()
+    } catch (err) {
+      done.fail(err)
+    }
+  })
+})
+```
+
+## Mocks
+
+### Mock functions
+
+```js
+test('call the callback', () => {
+  const callback = jest.fn()
+  fn(callback)
+  expect(callback).toBeCalled()
+  expect(callback.mock.calls[0][1].baz).toBe('pizza') // Second argument of the first call
+  // Match the first and the last arguments but ignore the second argument
+  expect(callback).toHaveBeenLastCalledWith('meal', expect.anything(), 'margarita');
+})
+```
+
+You can also use snapshots:
+
+```js
+test('call the callback', () => {
+  const callback = jest.fn().mockName('Unicorn') // mockName is available in Jest 22+
+  fn(callback)
+  expect(callback).toMatchSnapshot()
+  // ->
+  // [MockFunction Unicorn] {
+  //   "calls": Array [
+  // ...
+})
+```
+
+And pass an implementation to `jest.fn` function:
+
+```js
+const callback = jest.fn(() => true)
+```
+
+[Mock functions docs](https://facebook.github.io/jest/docs/mock-function-api.html)
+
+### Returning, resolving and rejecting values
+
+Your mocks can return values:
+
+```js
+const callback = jest.fn().mockReturnValue(true);
+const callbackOnce = jest.fn().mockReturnValueOnce(true);
+```
+
+Or resolve values:
+
+```js
+const promise = jest.fn().mockResolvedValue(true);
+const promiseOnce = jest.fn().mockResolvedValueOnce(true);
+```
+
+They can even reject values:
+
+```js
+const failedPromise = jest.fn().mockRejectedValue("Error");
+const failedPromiseOnce = jest.fn().mockRejectedValueOnce("Error");
+```
+
+You can even combine these:
+
+```js
+const callback = jest.fn()
+  .mockReturnValueOnce(false)
+  .mockReturnValue(true);
+
+// ->
+//  call 1: false
+//  call 2+: true
+```
+
+### Mock modules using `jest.mock` method
+
+```js
+jest.mock('lodash/memoize', () => a => a) // The original lodash/memoize should exist
+jest.mock('lodash/memoize', () => a => a, { virtual: true }) // The original lodash/memoize isn’t required
+```
+
+[jest.mock docs](https://facebook.github.io/jest/docs/jest-object.html#jestmockmodulename-factory-options)
+
+> Note: When using `babel-jest`, calls to `jest.mock` will automatically be hoisted to the top of the code block. Use `jest.doMock` if you want to explicitly avoid this behavior.
+
+### Mock modules using a mock file
+
+1.  Create a file like `__mocks__/lodash/memoize.js`:
+
+    ```js
+    module.exports = a => a
+    ```
+
+2.  Add to your test:
+
+    ```js
+    jest.mock('lodash/memoize')
+    ```
+
+> Note: When using `babel-jest`, calls to `jest.mock` will automatically be hoisted to the top of the code block. Use `jest.doMock` if you want to explicitly avoid this behavior.
+
+[Manual mocks docs](https://facebook.github.io/jest/docs/manual-mocks.html)
+
+### Mock object methods
+
+```js
+const spy = jest.spyOn(console, 'log').mockImplementation(() => {})
+expect(console.log.mock.calls).toEqual([['dope'], ['nope']])
+spy.mockRestore()
+```
+
+```js
+const spy = jest.spyOn(ajax, 'request').mockImplementation(() => Promise.resolve({ success: true }))
+expect(spy).toHaveBeenCalled()
+spy.mockRestore()
+```
+
+### Mock getters and setters (Jest 22.1.0+)
+
+```js
+const location = {}
+const getTitle = jest.spyOn(location, 'title', 'get').mockImplementation(() => 'pizza')
+const setTitle = jest.spyOn(location, 'title', 'set').mockImplementation(() => {})
+```
+
+### Mock getters and setters
+
+```js
+const getTitle = jest.fn(() => 'pizza')
+const setTitle = jest.fn()
+const location = {}
+Object.defineProperty(location, 'title', {
+  get: getTitle,
+  set: setTitle
+})
+```
+
+### Clearing and restoring mocks
+
+For one mock:
+
+```js
+fn.mockClear() // Clears mock usage date (fn.mock.calls, fn.mock.instances)
+fn.mockReset() // Clears and removes any mocked return values or implementations
+fn.mockRestore() // Resets and restores the initial implementation
+```
+
+> Note: `mockRestore` works only with mocks created by `jest.spyOn`.
+
+For all mocks:
+
+```js
+jest.clearAllMocks()
+jest.resetAllMocks()
+jest.restoreAllMocks()
+```
+
+### Accessing the original module when using mocks
+
+```js
+jest.mock('fs')
+const fs = require('fs') // Mocked module
+const fs = require.requireActual('fs') // Original module
+```
