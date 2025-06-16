@@ -445,3 +445,124 @@ jest.mock('fs')
 const fs = require('fs') // Mocked module
 const fs = require.requireActual('fs') // Original module
 ```
+
+### Timer mocks
+
+Write synchronous test for code that uses native timer functions (`setTimeout`, `setInterval`, `clearTimeout`, `clearInterval`).
+
+```js
+// Enable fake timers
+jest.useFakeTimers()
+
+test('kill the time', () => {
+  const callback = jest.fn()
+  
+  // Run some code that uses setTimeout or setInterval
+  const actual = someFunctionThatUseTimers(callback)
+  
+  // Fast-forward until all timers have been executed
+  jest.runAllTimers()
+  
+  // Check the results synchronously
+  expect(callback).toHaveBeenCalledTimes(1)
+})
+```
+
+Or adjust timers by time with [advanceTimersByTime()](https://jestjs.io/docs/en/timer-mocks#advance-timers-by-time):
+
+```js
+// Enable fake timers
+jest.useFakeTimers()
+
+test('kill the time', () => {
+  const callback = jest.fn()
+  
+  // Run some code that uses setTimeout or setInterval
+  const actual = someFunctionThatUseTimers(callback)
+  
+  // Fast-forward for 250 ms
+  jest.advanceTimersByTime(250)
+  
+  // Check the results synchronously
+  expect(callback).toHaveBeenCalledTimes(1)
+})
+```
+
+Use [jest.runOnlyPendingTimers()](https://jestjs.io/docs/en/timer-mocks#run-pending-timers) for special cases.
+
+**Note:** you should call `jest.useFakeTimers()` in your test case to use other fake timer methods.
+
+## Data-driven tests (Jest 23+)
+
+Run the same test with different data:
+
+```js
+test.each([[1, 1, 2], [1, 2, 3], [2, 1, 3]])('.add(%s, %s)', (a, b, expected) => {
+  expect(a + b).toBe(expected)
+})
+```
+
+Or the same using template literals:
+
+```js
+test.each`
+  a    | b    | expected
+  ${1} | ${1} | ${2}
+  ${1} | ${2} | ${3}
+  ${2} | ${1} | ${3}
+`('returns $expected when $a is added $b', ({ a, b, expected }) => {
+  expect(a + b).toBe(expected)
+})
+```
+
+Or on `describe` level: 
+
+```js
+describe.each([['mobile'], ['tablet'], ['desktop']])('checkout flow on %s', (viewport) => {
+  test('displays success page', () => {
+    // 
+  })
+})
+```
+
+[describe.each() docs](https://jestjs.io/docs/en/api.html#describeeachtablename-fn-timeout), [test.each() docs](https://jestjs.io/docs/en/api.html#testeachtablename-fn-timeout), 
+
+## Skipping tests
+
+Do not run these tests:
+
+```js
+describe.skip('makePoniesPink'...
+tests.skip('make each pony pink'...
+```
+
+Run only these tests:
+
+```js
+describe.only('makePoniesPink'...
+tests.only('make each pony pink'...
+```
+
+## Testing modules with side effects
+
+Node.js and Jest will cache modules you `require`. To test modules with side effects you’ll need to reset the module registry between tests:
+
+```js
+const modulePath = '../module-to-test'
+
+afterEach(() => {
+  jest.resetModules()
+})
+
+test('first test', () => {
+  // Prepare conditions for the first test
+  const result = require(modulePath)
+  expect(result).toMatchSnapshot()
+})
+
+test('second text', () => {
+  // Prepare conditions for the second test
+  const fn = () => require(modulePath)
+  expect(fn).toThrow()
+})
+```
