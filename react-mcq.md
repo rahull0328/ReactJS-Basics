@@ -983,3 +983,157 @@ React.createElement(x, y, z);
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
 </div>
+
+#### Q. Which class-based lifecycle method would be called at the same time as this effect Hook?
+
+```javascript
+useEffect(() => {
+  // do things
+}, []);
+```
+
+- [ ] componentWillUnmount
+- [x] componentDidMount
+- [ ] render
+- [ ] componentDidUpdate
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+#### Q. What is the name of the base component of this component?
+
+```javascript
+class Comp extends React.Component {
+  render() {
+    return <h1>Look at the time: {time}</h1>;
+  }
+}
+```
+
+- [ ] Comp
+- [ ] h1
+- [ ] React.Component
+- [x] Component
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+#### Q. When using a portal, what is the first argument?
+
+```javascript
+ReactDOM.createPortal(x, y);
+```
+
+- [ ] the current state
+- [x] the element to render
+- [ ] the App component
+- [ ] the page
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+#### Q. What is `setCount`?
+
+```javascript
+const [count, setCount] = useState(0);
+```
+
+- [ ] the initial state value
+- [ ] a variable
+- [ ] a state object
+- [x] a function to update the state
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+#### Q. What is the use of map function below?
+
+```javascript
+const database = [{ data: 1 }, { data: 2 }, { data: 3 }];
+database.map((user) => <h1>{user.data}</h1>);
+```
+
+- [ ] gives a map of all the entries in database
+- [x] returns a heading tag for every entry in the database containing it's data
+- [ ] returns one heading tag for all the entries in database
+- [ ] checks which entry in the database is suitable for heading tag
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+#### Q. Describe what is happening in this code?
+
+```javascript
+const { name: firstName } = props;
+```
+
+- [ ] It is creating a new object that contains the same name property as the props object.
+- [ ] It is assigning the value of the props object's firstName property to a constant called name.
+- [ ] It is retrieving the value of props.name.firstName.
+- [x] It is assigning the value of the props object's name property to a constant called firstName.
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+#### Q. What is wrong with this code?
+
+```javascript
+const MyComponent = ({ names }) => (
+  <h1>Hello</h1>
+  <p>Hello again</p>
+);
+```
+
+- [ ] React components cannot be defined using functions.
+- [x] React does not allow components to return more than one element.
+- [ ] The component needs to use the return keyword.
+- [ ] String literals must be surrounded by quotes.
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+#### Q. When using a portal, what is the second argument?
+
+```javascript
+ReactDOM.createPortal(x, y);
+```
+
+- [ ] the App component
+- [ ] the page
+- [ ] the current state
+- [x] the DOM element that exists outside of the parent component
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+#### Q. Given this code, what will be printed in the `<div>` tag?
+
+```javascript
+const MyComponent = ({ children }) => (
+  <div>{children.length}</div>
+);
+...
+<MyComponent>
+<p>
+  Hello <span>World!</span>
+</p>
+<p>Goodbye</p>
+</MyComponent>
+```
+
+- [ ] It will produce an error saying "cannot read property "length" of undefined."
+- [ ] 1
+- [ ] undefined
+- [x] 2
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
