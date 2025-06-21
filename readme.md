@@ -2637,3 +2637,224 @@ On the other hand, we should not use `PureComponent()` as a base component if:
 <div align="right">
     <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
+
+## # 4.4. HIGHER ORDER COMPONENTS
+
+<br/>
+
+## Q. What are Higher Order Components in React.js?
+
+A **Higher-Order Component(HOC)** is a function that takes a component and returns a new component. It is the advanced technique in React.js for reusing a component logic.
+
+<p align="center">
+  <img src="assets/Higher-Order-Components.jpg" alt="Higher Order Components" width="300px" />
+</p>
+
+Higher-Order Components are not part of the React API. They are the pattern that emerges from React\'s compositional nature. The component transforms props into UI, and a higher-order component converts a component into another component. The examples of HOCs are Redux\'s connect and Relay\'s createContainer.
+
+```js
+/**
+ * Higher Order Component
+ */
+import React, { Component } from "react";
+
+export default function Hoc(HocComponent) {
+  return class extends Component {
+    render() {
+      return (
+        <div>
+          <HocComponent></HocComponent>
+        </div>
+      );
+    }
+  };
+}
+```
+
+```js
+/**
+ * App.js
+ */
+import React, { Component } from "react";
+import Hoc from "./HOC";
+
+export default class App extends Component {
+  render() {
+    return <h2>Higher Order Component!</h2>;
+  }
+}
+App = Hoc(App);
+```
+
+**Note:**
+
+* A HOC does not modify or mutate components. It creates a new one.
+* A HOC is used to compose components for code reuse.
+* A HOC is a pure function. It has no side effects, returning only a new component.
+
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-hoc-3qrt5b?file=/src/App.js)**
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## Q. What are the benefits of using HOC?
+
+**Benefits:**
+
+* Importantly they provided a way to reuse code when using ES6 classes.
+* No longer have method name clashing if two HOC implement the same one.
+* It is easy to make small reusable units of code, thereby supporting the single responsibility principle.
+* Apply multiple HOCs to one component by composing them. The readability can be improve using a compose function like in Recompose.
+
+**Problems:**
+
+* Boilerplate code like setting the **displayName** with the HOC function name e.g. (**`withHOC(Component)`**) to help with debugging.
+* Ensure all relevant props are passed through to the component.
+* Hoist static methods from the wrapped component.
+* It is easy to compose several HOCs together and then this creates a deeply nested tree making it difficult to debug.
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## Q. What are Higher Order Component factory implementations?
+
+Creating a higher order component basically involves manipulating WrappedComponent which can be done in two ways:
+
+* Props Proxy
+* Inheritance Inversion
+
+Both enable different ways of manipulating the WrappedComponent.
+
+**1. Props Proxy:**
+
+In this approach, the render method of the HOC returns a React Element of the type of the WrappedComponent. We also pass through the props that the HOC receives, hence the name **Props Proxy**.
+
+**Example:**
+
+```js
+function ppHOC(WrappedComponent) {
+   return class PP extends React.Component {
+     render() {
+       return <WrappedComponent {...this.props}/>
+     }
+   }
+}
+```
+
+Props Proxy can be implemented via a number of ways
+
+* Manipulating props
+* Accessing the instance via Refs
+* Abstracting State
+* Wrapping the WrappedComponent with other elements
+
+**2. Inheritance Inversion:**
+
+Inheritance Inversion allows the HOC to have access to the WrappedComponent instance via `this` keyword, which means it has access to the `state`, `props`, component lifecycle hooks and the `render` method.
+
+**Example:**
+
+```js
+function iiHOC(WrappedComponent) {
+   return class Enhancer extends WrappedComponent {
+     render() {
+       return super.render()
+     }
+   }
+}
+```
+
+Inheritance Inversion can be used in:
+
+* Conditional Rendering (Render Highjacking)
+* State Manipulation
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## Q. Explain Inheritance Inversion (iiHOC) in react?
+
+Inheritance Inversion gives the HOC access to the WrappedComponent instance via this, which means we can use the `state`, `props`, component lifecycle and even the `render` method.
+
+**Example:**
+
+```js
+/**
+ * Inheritance Inversion
+ */
+class Welcome extends React.Component {
+  render() {
+    return (
+      <div> Welcome {his.props.user}</div>
+    )
+  }
+}
+
+const withUser = (WrappedComponent) => {
+  return class extends React.Component {
+    render() {
+      if(this.props.user) {
+        return  (
+          <WrappedComponent {...this.props} />
+        )
+      }
+      return <div>Welcome Guest!</div>
+    }
+  }
+}
+
+const withLoader = (WrappedComponent) => {
+  return class extends WrappedComponent {
+    render() {
+      const { isLoader } = this.props
+      if(!isLoaded) {
+        return <div>Loading...</div>
+      }
+      return super.render()
+    }
+  }
+}
+
+export default withLoader(withUser(Welcome))
+```
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## Q. How to create props proxy for Higher Order Component component?
+
+It\'s nothing more than a function, propsProxyHOC, that receives a Component as an argument (in this case we\'ve called the argument WrappedComponent) and returns a new component with the WrappedComponent within.
+
+When we return the Wrapped Component we have the possibility to manipulate props and to abstract state, even passing state as a prop into the Wrapped Component.
+
+We can create `props` passed to the component using props proxy pattern as below
+
+```js
+const propsProxyHOC = (WrappedComponent) => {
+
+  return class extends React.Component {
+    render() {
+      const newProps = {
+        user: currentLoggedInUser
+      }
+
+      return <WrappedComponent {...this.props} {...newProps} />
+    }
+  }
+}
+```
+
+**Props Proxy HOCs are useful to the following situations:**
+
+* Manipulating props
+* Accessing the instance via Refs (be careful, avoid using refs)
+* Abstracting State
+* Wrapping/Composing the WrappedComponent with other elements
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
