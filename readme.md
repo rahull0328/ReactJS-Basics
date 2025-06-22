@@ -2858,3 +2858,152 @@ const propsProxyHOC = (WrappedComponent) => {
 <div align="right">
     <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
+
+## Q. How to use decorators in React?
+
+Decorators provide a way of calling Higher-Order functions. It simply take a function, modify it and return a new function with added functionality. The key here is that they don\'t modify the original function, they simply add some extra functionality which means they can be reused at multiple places.
+
+**Example:**
+
+```js
+export const withUniqueId = (Target) => {
+  return class WithUniqueId extends React.Component {
+    uid = uuid();
+
+    render() {
+      return <Target {...this.props} uuid={this.uid} />;
+    }
+  };
+}
+```
+
+```js
+@withUniqueId
+class UniqueIdComponent extends React.Component {
+  render() {
+    return <div>Generated Unique ID is: {this.props.uuid}</div>;
+  }
+}
+
+const App = () => (
+  <div>
+    <h2>Decorators in React!</h2>
+    <UniqueIdComponent />
+  </div>
+);
+```
+
+*Note: Decorators are an experimental feature in React that may change in future releases.*
+
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-decorators-386v5?file=/src/index.js:113-361)**
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## Q. What is the purpose of displayName class property?
+
+The **displayName** string is used in debugging messages. Usually, you don\'t need to set it explicitly because it\'s inferred from the name of the function or class that defines the component. You might want to set it explicitly if you want to display a different name for debugging purposes or when you create a higher-order component.
+
+**Example:**
+
+```js
+function withSubscription(WrappedComponent) {
+  
+  class WithSubscription extends React.Component {/* ... */}
+  
+  WithSubscription.displayName = `WithSubscription(${getDisplayName(WrappedComponent)})`;
+  return WithSubscription;
+}
+
+function getDisplayName(WrappedComponent) {
+  return WrappedComponent.displayName || WrappedComponent.name || 'Component';
+}
+```
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## # 4.5. LAZY LOADING
+
+<br/>
+
+## Q. How to set up lazy loading components in React?
+
+**1. REACT.LAZY():**
+
+**React.lazy** is a function that lets you load components lazily through what is called code splitting without help from any external libraries. It makes possible for us to dynamically import components but they are rendered like regular components. This means that the bundle containing the component will only be loaded when the component is rendered.
+
+React.lazy() takes a function that returns a promise as it\'s argument, the function returns a promise by calling import() to load the content. The returned Promise resolves to a module with a default containing the React Component.
+
+```js
+// Without Lazy
+import MyComponent from './MyComponent';
+ 
+// With Lazy
+const MyComponent = React.lazy(() => import('./MyComponent'));
+```
+
+**2. SUSPENSE:**
+
+**React.Suspense** is a component that can be used to wrap lazy components. A React.Suspense takes a fallback prop that can be any react element, it renders this prop as a placeholder to deliver a smooth experience and also give user feedback while the lazy component is being loaded.
+
+```js
+/**
+ * Suspense
+ */
+import React, { Suspense } from 'react';
+
+const MyComponent = React.lazy(() => import('./MyComponent'));
+
+const App = () => {
+  return (
+    <div>
+      <Suspense fallback={<div>Loading ... </div>}>
+        <MyComponent />
+      </Suspense>
+    </div>
+  );
+}
+```
+
+**Example:**
+
+```js
+/**
+ * React Lazy Loading Routes
+ */
+import React, { Suspense, lazy } from "react";
+import { Switch, BrowserRouter as Router, Route, Link } from "react-router-dom";
+
+const Home = lazy(() => import("./Home"));
+const ContactUs = lazy(() => import("./ContactUs"));
+const HelpPage = lazy(() => import("./Help"));
+
+export default function App() {
+  return (
+      <Router>
+        <ul>
+          <li><Link to="/">Home</Link></li>
+          <li><Link to="/contact-us">ContactUs</Link></li>
+          <li><Link to="/help">HelpPage</Link></li>
+        </ul>
+        <hr />
+        <Suspense fallback={<h1>Loading...</h1>}>
+          <Switch>
+            <Route exact component={Home} path="/" />
+            <Route component={ContactUs} path="/contact-us" />
+            <Route component={HelpPage} path="/help" />
+          </Switch>
+        </Suspense>
+      </Router>
+  );
+}
+```
+
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-lazy-loading-967o2?file=/src/App.js)**
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
