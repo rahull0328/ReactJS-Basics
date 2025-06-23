@@ -1317,3 +1317,209 @@ class StarTrekkin extends React.Component {
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
 </div>
+
+#### Q. How might you check property types without using Flow or TypeScript?
+
+- [ ] Check Manually.
+- [ ] Use `prop-helper`.
+- [x] use `prop-types`.
+- [ ] user `checker-types`.
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+#### Q. How do you add an id of heading to the following h1 element?
+
+```javascript
+let dish = <h1>Mac and Cheese</h1>;
+```
+
+- [ ] `let dish = <h1 id={heading}>Mac and Cheese</h1>;`
+- [x] `let dish = <h1 id="heading">Mac and Cheese</h1>;`
+- [ ] `let dish = <h1 id:"heading">Mac and Cheese</h1>;`
+- [ ] `let dish = <h1 class="heading">Mac and Cheese</h1>;`
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+#### Q. What value of button will allow you to pass the name of the person to be hugged?
+
+```javascript
+class Huggable extends React.Component {
+  hug(id) {
+    console.log("hugging " + id);
+  }
+  render() {
+    let name = "kitten";
+    let button = // Missing code
+    return button;
+  }
+}
+```
+
+- [ ] `<button onClick={(name) => this.hug(name)}>Hug Button</button>;`
+- [ ] `<button onClick={this.hug(e, name)}>Hug Button</button>;`
+- [ ] `<button onClick={(e) => hug(name, e)}>Hug Button</button>;`
+- [x] `<button onClick={(e) => this.hug(name, e)}>Hug Button</button>;`
+
+**Explanation:**
+This question test knowledge of react class components. You need to use `this` in order to call methods declared inside class components.
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+#### Q. What syntax do you use to create a component in React?
+
+- [ ] a generator
+- [x] a function or a class
+- [ ] a service worker
+- [ ] a tag
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+**Explanation:**
+React Components are like functions that return HTML elements. Components are independent and reusable bits of code. They serve the same purpose as JavaScript functions, but work in isolation and return HTML. Components come in two types, Class components and Function components.
+
+#### Q. You want to disable a button so that it does not emit any events onClick. Which prop do you use to acomplish this?
+
+- [ ] onBlur
+- [ ] onPress
+- [ ] defaultValue
+- [x] disabled
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+#### Q. In this function, which is the best way to describe the Dish component?
+
+```javascript
+function Dish() {
+  return (
+    <>
+      <Ingredient />
+      <Ingredient />
+    </>
+  );
+}
+```
+
+- [ ] child component
+- [x] parent component
+- [ ] nested component
+- [ ] sibling component
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+#### Q. When does the componentDidMount function fire?
+
+- [x] right after the component is added to the DOM
+- [ ] before the component is added to the DOM
+- [ ] right after the component is updated
+- [ ] right after an API call
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+#### Q. What might you use webpack for in React development?
+
+- [ ] to fetch remote dependencies used by your app
+- [x] to split your app into smaller chunks that can be more easily loaded by the browser
+- [ ] to format your code so that it is more readable
+- [ ] to ensure your app is not vulnerable to code injection
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+#### Q. When using the React Developer Tools Chrome extension, what does it mean if the React icon is red?
+
+- [x] You are using the development build of React.
+- [ ] You are using the production build of React.
+- [ ] You are using webpack.
+- [ ] You are using Create React App.
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+#### Q. How would you modify the constructor to fix this error: "ReferenceError: Must call super constructor in derived class before accessing 'this'..."?
+
+```javascript
+class TransIsBeautiful extends React.Component {
+  constructor(props){
+  // Missing line
+  console.log(this) ;
+  }
+  ...
+}
+```
+
+- [ ] render(props);
+- [x] super(props);
+- [ ] super(this);
+- [ ] this.super();
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+#### Q. Which language can you not use with React?
+
+- [x] Swift.
+- [ ] JSX.
+- [ ] Javascipt.
+- [ ] TypeScript.
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+#### Q. This code is part of an app that collects Pokemon. How would you print the list of the ones collected so far?
+
+```javascript
+constructor(props) {
+    super(props);
+    this.state = {
+        pokeDex: []
+    };
+}
+```
+
+- [ ] console.log(props.pokeDex);
+- [ ] console.log(this.props.pokeDex);
+- [ ] console.log(pokeDex);
+- [x] console.log(this.state.pokeDex);
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+#### Q. What would be the result of running this code?
+
+```javascript
+function add(x = 1, y = 2) {
+  return x + y;
+}
+
+add();
+```
+
+- [ ] null
+- [x] 3
+- [ ] 0
+- [ ] undefined
+
+![image](https://user-images.githubusercontent.com/62549240/160531605-bf8790d5-5eb9-4291-a9bd-4232f2fd7b6e.png?raw=png)
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
