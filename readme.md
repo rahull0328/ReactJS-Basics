@@ -3007,3 +3007,326 @@ export default function App() {
 <div align="right">
     <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
+
+## # 5. REACT PROPS
+
+<br/>
+
+## Q. What is props in React?
+
+**Props** is a special keyword in React, which stands for properties and is being used for passing data from one component to another. However, callback functions can also be passed, which can be executed inside the child to initiate an update.
+
+Props are **immutable** so we cannot modify the props from inside the component. These attributes are available in the class component as **this.props** and can be used to render dynamic data in our render method.
+
+**Example:**
+
+```js
+function Welcome(props) {
+  return <h1>Hello, {props.name}</h1>;
+}
+
+const element = <Welcome name="World!" />;
+```
+
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-props-2k0081?file=/src/App.js)**
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## Q. Why props in React are read only?
+
+When you declare a component as a function or a class, it must never modify its own props.
+
+Consider this sum function:
+
+```js
+function sum(a, b) {
+  return a + b;
+}
+```
+
+Such functions are called **pure** because they do not attempt to change their inputs, and always return the same result for the same inputs. All React components must act like pure functions with respect to their props. A component should only manage its own state, but it should not manage its own props.
+
+In fact, props of a component is concretely "the state of the another component (parent component)". So props must be managed by their component owner. That\'s why all React components must act like pure functions with respect to their props (not to mutate directly their props).
+
+**&#9885; [Try this example on CodeSandbox](https://codepen.io/learning-zone/pen/zYwPYwP?editors=1010)**
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## Q. What are default props?
+
+The defaultProps is a React component property that allows you to set default values for the props argument. If the prop property is passed, it will be changed.
+
+The `defaultProps` can be defined as a property on the component class itself to set the default props for the class. `defaultProps` is used for **undefined** props, not for **null** props.
+
+```js
+/**
+ * Default Props
+ */
+class MessageComponent extends React.Component {
+   render() {
+        return (
+          <div>Hello, {this.props.value}.</div>
+        )
+    }
+}
+
+// Default Props
+MessageComponent.defaultProps = {
+  value: 'World'  
+}
+
+ReactDOM.render(
+  <MessageComponent />, 
+  document.getElementById('default')
+)
+
+ReactDOM.render(
+  <MessageComponent value='Folks'/>, 
+  document.getElementById('custom')
+)
+```
+
+**&#9885; [Try this example on CodeSandbox](https://codepen.io/learning-zone/pen/oNWoNPm?editors=1010)**
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## Q. How to access props inside quotes in React JSX?
+
+React JSX doesn\'t support variable interpolation inside an attribute value, but we can put any JS expression inside curly braces as the entire attribute value.
+
+**Approach 1**: Putting js expression inside curly braces
+
+```js
+<img className="image" src={"images/" + this.props.image} />
+```
+
+**Approach 2**: Using ES6 template literals.
+
+```js
+<img className="image" src={`images/${this.props.image}`} />
+```
+
+**Example:**
+
+```js
+/**
+ * Access Props
+ */
+class App extends Component {
+  render() {
+    return (
+      <div>
+        <img
+          alt="React Logo"
+  
+          // Using ES6 template literals
+          src={`${this.props.image}`} 
+        />
+      </div>
+    );
+  }
+}
+  
+export default App;
+```
+
+**&#9885; [Try this example on CodeSandbox](https://codepen.io/learning-zone/pen/VwbrYwo)**
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## Q. How to pass numbers to React component?
+
+In react, numbers can be passed via curly braces(`{}`) where as strings in quotes (`""`);
+
+**Example:**
+
+```js
+function App() {
+  return <Greetings name="Nathan" age={27} occupation="Software Developer" />;
+}
+
+// Greetings Component
+function Greetings(props) {
+  return (
+    <h2>
+      Hello! I'm {props.name}, a {props.age} years old {props.occupation}.
+      Pleased to meet you!
+    </h2>
+  );
+}
+```
+
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-number-props-tw1r1?file=/src/App.js)**
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## Q. How are boolean props used in React?
+
+React JSX has exactly two ways of passing true, `<MyComponent prop />` and `<MyComponent prop={true} />` and exactly one way of passing false `<MyComponent prop={false} />`.
+
+**Example:**
+
+```js
+/**
+ * Boolean Props
+ */
+const MyComponent = ({ prop1, prop2 }) => (
+  <div>
+    <div>Prop1: {String(prop1)}</div>
+    <div>Prop2: {String(prop2)}</div>
+  </div>
+) 
+
+function App() {
+  return (
+    <div>
+      <MyComponent prop1={true} prop2={false} />
+      <MyComponent prop1 prop2 />
+      <MyComponent prop1={false} prop2 />
+    </div>
+  );
+}
+```
+
+**&#9885; [Try this example on CodeSandbox](https://codepen.io/learning-zone/pen/abWVzJx)**
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## Q. How to apply validation on Props in React?
+
+Props are an important mechanism for passing the **read-only** attributes to React components. React provides a way to validate the props using `PropTypes`. This is extremely useful to ensure that the components are used correctly.
+
+**Example:**
+
+```js
+/**
+ * Props Validation
+ */
+import React from "react";
+import PropTypes from "prop-types";
+
+export default class App extends React.Component {
+  render() {
+    return (
+      <>
+        <h3>Boolean: {this.props.propBool ? "True" : "False"}</h3>
+        <h3>Array: {this.props.propArray}</h3>
+        <h3>Number: {this.props.propNumber}</h3>
+        <h3>String: {this.props.propString}</h3>
+      </>
+    );
+  }
+}
+
+App.defaultProps = {
+  propBool: true,
+  propArray: [10, 20, 30],
+  propNumber: 100,
+  propString: "Hello React!"
+};
+
+App.propTypes = {
+  propBool: PropTypes.bool.isRequired,
+  propArray: PropTypes.array.isRequired,
+  propNumber: PropTypes.number,
+  propString: PropTypes.string
+};
+```
+
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-proptypes-41qmyz?file=/src/App.js)**
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## Q. How to specify the shape of an object with PropTypes
+
+The `PropTypes.shape()` validator can be used when describing an object whose keys are known ahead of time, and may represent different types.
+
+**Example:**
+
+```js
+/**
+ * PropTypes.shape()
+ * @param {*} props
+ */
+import PropTypes from "prop-types";
+
+const Component = (props) => (
+  <div>
+    Component badge: {props.badge ? JSON.stringify(props.badge) : "none"}
+  </div>
+);
+
+// PropTypes validation for the prop object
+Component.propTypes = {
+  badge: PropTypes.shape({
+    src: PropTypes.string.isRequired,
+    alt: PropTypes.string.isRequired
+  })
+};
+
+const App = () => (
+  <div>
+    <Component badge={{ src: "horse.png", alt: "Running Horse" }} />
+    {/*<Component badge={{src:null, alt: 'this one gives an error'}}/>*/}
+    <Component />
+  </div>
+);
+
+export default App;
+```
+
+Output:
+
+```js
+Component badge: {"src":"horse.png","alt":"Running Horse"}
+Component badge: none
+```
+
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-proptypes-khi20j?file=/src/App.js)**
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## Q. How PropTypes.objectOf is different from PropTypes.shape?
+
+The `PropTypes.objectOf()` validator is used when describing an object whose keys might not be known ahead of time, and often represent the same type.
+
+**Example:**
+
+```js
+/**
+ * PropTypes
+ */
+import PropTypes from 'prop-types';
+
+// Expected prop object - dynamic keys (i.e. user ids)
+const myProp = {
+  25891102: 'Shila Jayashri',
+  34712915: 'Employee',
+  76912999: 'shila.jayashri@email.com'
+};
+
+// PropTypes validation for the prop object
+MyComponent.propTypes = {
+  myProp: PropTypes.objectOf(PropTypes.number)
+};
+```
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
