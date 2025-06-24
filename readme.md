@@ -3330,3 +3330,196 @@ MyComponent.propTypes = {
 <div align="right">
     <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
+
+## Q. What are the benefits of using Render Props?
+
+**Benefits:**
+
+* Reuse code across components when using ES6 classes.
+* The lowest level of indirection - it\'s clear which component is called and the state is isolated.
+* No naming collision issues for props, state and class methods.
+* No need to deal with boiler code and hoisting static methods.
+
+**Problems:**
+
+* Caution using **`shouldComponentUpdate()`** as the render prop might close over data it is unaware of.
+* There could also be minor memory issues when defining a closure for every render. But be sure to measure first before  making performance changes as it might not be an issue for your app.
+* Another small annoyance is the render props callback is not so neat in JSX as it needs to be wrapped in an expression.  Rendering the result of an HOC does look cleaner.
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## Q. How do you create Higher Order Component using render props?
+
+It is possible to implement most higher-order components (HOC) using a regular component with a render prop. This way render props gives the flexibility of using either pattern.
+
+**Example:**
+
+```js
+function withMouse(Component) {
+  return class extends React.Component {
+    render() {
+      return (
+        <Mouse render={mouse => (
+          <Component {...this.props} mouse={mouse} />
+        )}/>
+      );
+    }
+  }
+}
+```
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## Q. Explain HOC vs render props in react.js?
+
+The Higher-Order Components, Render Props and Hooks are three patterns to implement **state-** or **behaviour*-** sharing between components. All three have their own use cases and none of them is a full replacement of the others.
+
+**1. Higher-order components:**
+
+Essentially HOC are similar to the decorator pattern, a function that takes a component as the first parameter and returns a new component. This is where you apply your crosscutting functionality.
+
+**Example:**
+
+```js
+function withExample(Component) {
+  return function(props) {
+    // cross cutting logic added here
+    return <Component {...props} />;
+  };
+}
+```
+
+**2. Render Props:**
+
+A render prop is where a component\'s prop is assigned a function and this is called in the render method of the component. Calling the function can return a React element or component to render.
+
+**Example:**
+
+```js
+render(){
+  <FetchData render={(data) => {
+    return <p>{data}</p>
+  }} />
+}
+```
+
+The React community is moving away from HOC (higher order components) in favor of render prop components (RPC). For the most part, HOC and render prop components solve the same problem. However, render prop components provide are gaining popularity because they are more declarative and flexible than an HOC.
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## Q. What is children props?
+
+The `{this.props.children}` is a special prop, automatically passed to every component, that can be used to render the content included between the opening and closing tags when invoking a component.
+
+**Example:**
+
+```js
+/**
+ * React Children Props
+ */
+class MyComponent extends React.Component {
+  render() {
+    return (
+      <div>
+        <h1>React Children Props Example</h1>
+        {this.props.children}
+      </div>
+    );
+  }
+}
+
+class OtherComponent extends React.Component {
+  render() {
+    return <div>Other Component Props</div>;
+  }
+}
+
+ReactDOM.render(
+  <MyComponent>
+    <p>React DOM Props</p> {/* Children Props*/}
+    <OtherComponent />
+  </MyComponent>,
+  document.getElementById("root")
+);
+```
+
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-children-props-952wx?file=/src/index.js)**
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## Q. When we should use React.cloneElement vs this.props.children?
+
+The `React.cloneElement()` works if child is a single React element.
+
+For almost everything `{this.props.children}` is used. Cloning is useful in some more advanced scenarios, where a parent sends in an element and the child component needs to change some props on that element or add things like `ref` for accessing the actual DOM element.
+
+**React.Children:**  
+
+Since `{this.props.children}` can have one element, multiple elements, or none at all, its value is respectively a single child node, an array of child nodes or undefined. Sometimes, we want to transform our children before rendering them — for example, to add additional props to every child. If we wanted to do that, we\'d have to take the possible types of `this.props.children` into account. For example, if there is only one child, we can not map it.
+
+**Example:**
+
+```js
+/**
+ * React Children Props
+ */
+export default class App extends React.Component {
+  render() {
+    return (
+      <div>
+        <b>Children ({this.props.children.length}):</b>
+        {this.props.children}
+      </div>
+    );
+  }
+}
+
+class Widget extends React.Component {
+
+  render() {
+    return 
+      <div>
+        <h2>First Example:</h2>
+        <App>
+          <div>10</div>
+          <div>20</div>
+          <div>30</div>
+        </App>
+        <h2>Second Example:</h2>
+        <App>
+          <div>A</div>
+          <div>B</div>
+        </App>
+      </div>
+  }
+}
+```
+
+Output
+
+```js
+First Example:
+Children (3):
+10
+20
+30
+
+Second Example:
+Children (2):
+A
+B
+```
+
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-children-props-7ry7cc?file=/src/App.js)**
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
