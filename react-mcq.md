@@ -1523,3 +1523,180 @@ add();
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
 </div>
+
+#### Q. Why might you use a React.ref?
+
+- [ ] to refer to another JS file
+- [ ] to bind the function
+- [ ] to call a function
+- [x] to directly access the DOM node
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+#### Q. What pattern is being used in this code block?
+
+```javascript
+const { tree, lake } = nature;
+```
+
+- [ ] function defaults
+- [ ] array destructuring
+- [ ] PRPL pattern
+- [x] destructuring assignment
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+#### Q. How would you correct this code block to make sure that the sent property is set to the Boolean value false?
+
+```javascript
+ReactDom.render(
+  <Message sent=false />,
+  document.getElementById("root")
+);
+```
+
+- [x] A
+
+```javascript
+<Message sent={false} />,
+```
+
+- [ ] B
+
+```javascript
+ReactDom.render(<Message sent="false" />, document.getElementById('root'));
+```
+
+- [ ] C
+
+```javascript
+<Message sent="false" />,
+```
+
+- [ ] D
+
+```javascript
+ReactDom.render(<Message sent="false" />, document.getElementById('root'));
+```
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+#### Q. This code is part of an app that collects Pokemon. The useState hook below is a piece of state holding onto the names of the Pokemon collected so far. How would you access the collected Pokemon in state?
+
+```javascript
+const PokeDex = (props) => {
+  const [pokeDex, setPokeDex] = useState([]);
+  /// ...
+};
+```
+
+- [ ] props.pokeDex
+- [ ] this.props.pokeDex
+- [ ] setPokeDex()
+- [x] pokeDex
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+#### Q. When using a portal, what is the second argument?
+
+```javascript
+ReactDOM.createPortal(x, y);
+```
+
+- [ ] the current state
+- [ ] the rendered element
+- [ ] the App component
+- [x] the DOM element that exists outside of the parent component
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+#### Q. What would you pass to the onClick prop that wil allow you to pass the initName prop into the greeet handler?
+
+```javascript
+const Greeting = ({ initName }) => {
+  const greet = (name) => console.log("Hello, " + name + "!");
+  return <button onClick={ ... }>Greeting Button </button>
+}
+```
+
+- [ ] hug
+- [ ] this.hug(initName)
+- [ ] (name) => this.hug(name)
+- [x] () => hug(initName)
+
+Explanation: Apparently the question misstyped `greet` as `hug`. Putting this aside, we can still learn from this question.
+
+- In a function, the global object is the default binding for `this`. In a browser window the global object is [object Window].
+  This is a functional Component, so `this` from `this.hug` actually refers to browser window.
+  Since it is a functional component, we can directly refer to hug without using `this`.
+- To pass a handler to onClick, we should always pass a function rather than execute a function. So we need to use callback here.
+  `initName` is available in Greeting's function scope, so we can directly supply as an argument to hug().
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+#### Q. What is the name of the compiler used to transform JSX into JavaScript?
+
+- [x] Babel
+- [ ] JSX Editor
+- [ ] Browser Buddy
+- [ ] ReactDOM
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+#### Q. Which hook is used to prevent a function from being recreated on every component render?
+
+- [x] useCallback
+- [ ] useMemo
+- [ ] useRef
+- [ ] useTransition
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+#### Q. Why might you use the `useRef` hook?
+
+- [ ] To bind the function
+- [ ] To call a function
+- [x] To directly access a DOM
+- [ ] To refer to another JS file
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+#### Q. Which of the following is required to use React?
+
+- [x] JavaScript
+- [ ] React Router
+- [ ] Redux
+- [ ] Prop-Types
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+#### Q. What is the correct way to get a value from context?
+
+- [ ] const value = useContext(MyContext.Consumer)
+- [ ] const value = useContext(MyContext.Provider)
+- [x] const value = useContext(MyContext)
+- [ ] const value = useContext({value: "intiial value"})
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
