@@ -3523,3 +3523,200 @@ B
 <div align="right">
     <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
+
+## Q. What do these three dots in React do?
+
+The ES6 Spread operator or Rest Parameters is use to pass `props` to a React component. Let us take an example for a component that expects two props:
+
+```js
+function App() {
+  return <Hello firstName="Pallav" lastName="Hegde" />
+}
+```
+
+Using the Spread operator, it become like this
+
+```js
+function App() {
+  const props = {firstName: 'Pallav', lastName: 'Hegde'}
+  return <Hello {...props} />
+}
+```
+
+When we use the `...props` syntax, actaully it expand the props object from the parent component, which means all its attributes are passed down the child component that may not need them all. This will make things like debugging harder.
+
+**Using the Spread Operator with setState() for Setting the Nested State:**
+
+Let us suppose we have a state with a nested object in our component:
+
+```js
+this.state = {
+  stateObj: {
+    attr1: '',
+    attr2: '',
+  },
+}
+```
+
+We can use the Spread syntax to update the nested state object.
+
+```js
+this.setState(state => ({
+  person: {
+    ...state.stateObj,
+    attr1: 'value1',
+    attr2: 'value2',
+  },
+}))
+```
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## Q. Why we need to be careful when spreading props on DOM elements?
+
+When we spread props we run into the risk of adding unknown HTML attributes, which is a bad practice.
+
+**Problem:** This will try to add the unknown HTML attribute `flag` to the DOM element.
+
+```js
+const Sample = () => (<Spread flag={true} className="content"/>);
+const Spread = (props) => (<div {...props}>Test</div>);
+```
+
+**Solution:** By creating props specifically for DOM attribute, we can safely spread.
+
+```js
+const Sample = () => (<Spread flag={true} domProps={{className: "content"}}/>);
+const Spread = (props) => (<div {...props.domProps}>Test</div>);
+```
+
+Or alternatively we can use prop destructuring with `...rest`:
+
+```js
+const Sample = () => (<Spread flag={true} className="content"/>);
+const Spread = ({ flag, ...domProps }) => (<div {...domProps}>Test</div>);
+```
+
+**Note:**
+
+*In scenarios where you use a PureComponent, when an update happens it re-renders the component even if domProps did not change. This is because PureComponent only shallowly compares the objects.*
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## Q. What will happen if you use props in initial state?
+
+Using props to generate state in `getInitialState` often leads to duplication of "source of truth", i.e. where the real data is. This is because getInitialState is only invoked when the component is first created.
+
+The danger is that if the `props` on the component are changed without the component being *'refreshed'*, the new prop value will never be displayed because the constructor function (or getInitialState) will never update the current state of the component. The initialization of state from `props` only runs when the component is first created.
+
+**Bad:**
+
+The below component won\'t display the updated input value
+
+```js
+class App extends React.Component {
+
+  // constructor function (or getInitialState)
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      records: [],
+      inputValue: this.props.inputValue
+    }
+  }
+
+  render() {
+    return <div>{this.state.inputValue}</div>
+  }
+}
+```
+
+**Good:**
+
+Using props inside render method will update the value:
+
+```js
+class App extends React.Component {
+
+  // constructor function (or getInitialState)
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      records: []
+    }
+  }
+
+  render() {
+    return <div>{this.props.inputValue}</div>
+  }
+}
+```
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## Q. What is the difference between createElement and cloneElement?
+
+JSX elements will be transpiled to `React.createElement()` functions to create React elements which are going to be used for the object representation of UI. Whereas cloneElement is used to clone an element and pass it new props.
+
+The `React.cloneElement()` function returns a copy of a specified element. Additional props and children can be passed on in the function. We shoul use this function when a parent component wants to add or modify the `props` of its children.
+
+```js
+import React from 'react'
+
+export default class App extends React.Component {
+  // rendering the parent and child component
+  render() {
+    return (
+      <ParentComp>
+        <MyButton/>
+        <br/>
+        <MyButton/>
+      </ParentComp>
+    )
+  }
+}
+
+/**
+ * The parent component
+ */
+class ParentComp extends React.Component {
+  render() {
+    // The new prop to the added.
+    let newProp = 'red'
+      // Looping over the parent's entire children,
+      // cloning each child, adding a new prop.
+    return (
+      <div>
+        {React.Children.map(this.props.children,
+          child => {
+            return React.cloneElement(child,
+            {newProp}, null)
+        })}
+      </div>
+    )
+  }
+}
+
+/**
+ * The child component
+ */
+class MyButton extends React.Component {
+  render() {
+    return <button style =
+    {{ color: this.props.newProp }}>
+    Hello World!</button>
+  }
+}
+```
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
