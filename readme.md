@@ -3720,3 +3720,175 @@ class MyButton extends React.Component {
 <div align="right">
     <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
+
+## Q. When should I be using React.cloneElement vs this.props.children?
+
+The `React.cloneElement` only works if your child is a single React element.
+
+**Example:**
+
+```js
+<ReactCSSTransitionGroup
+     component="div"
+     transitionName="example"
+     transitionEnterTimeout={500}
+     transitionLeaveTimeout={500}
+     >
+     {React.cloneElement(this.props.children, {
+       key: this.props.location.pathname
+      })}
+</ReactCSSTransitionGroup>
+```
+
+For almost everything `{this.props.children}` is used. Cloning is useful in some more advanced scenarios, where a parent sends in an element and the child component needs to change some props on that element or add things like `ref` for accessing the actual DOM element.
+
+**Example:**
+
+```js
+class Users extends React.Component {
+  render() {
+    return (
+      <div>
+        <h2>Users</h2>
+        {this.props.children}
+      </div>
+    )
+  }
+}
+```
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## Q. How to pass JSON Objects from Child to Parent Component?
+
+**Using callback function:** 
+
+```js
+/**
+ * Parent Component
+ */
+export default class App extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      message: ""
+    };
+    this.onSubmitMessage = this.onSubmitMessage.bind(this);
+  }
+
+  onSubmitMessage(message) {
+    this.setState({ message: message });
+  }
+
+  render() {
+    const { message } = this.state;
+
+    return (
+      <div>
+        <h3>Parent component</h3>
+        <div>The message coming from the child component is : {message}</div>
+        <hr />
+        <Child
+          // passing as callback function
+          onSubmitMessage={this.onSubmitMessage}
+        />
+      </div>
+    );
+  }
+}
+```
+
+```js
+/**
+ * Child Component
+ */
+export default class Child extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      greetingMessag: ""
+    };
+    this.onMessageChange = this.onMessageChange.bind(this);
+    this.onSubmit = this.onSubmit.bind(this);
+  }
+
+  onMessageChange(event) {
+    let message = event.target.value;
+    this.setState({ greetingMessag: message });
+  }
+
+  // pass message to parent component using callback
+  onSubmit() {
+    this.props.onSubmitMessage(this.state.greetingMessag);
+  }
+
+  render() {
+    return (
+      <div>
+        <h3>Child Component</h3>
+        <input
+          type="text"
+          onChange={this.onMessageChange}
+          placeholder="Enter a message"
+        />
+        <button onClick={this.onSubmit}>Submit</button>
+      </div>
+    );
+  }
+}
+```
+
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-callback-function-i2wv6?file=/src/App.js)**
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## Q. What is the use of this props?
+
+It is called spread operator (ES6 feature) and its aim is to make the passing of props easier.
+
+**Example:**
+
+```js
+<div {...this.props}>
+  Content Here
+</div>
+```
+
+It is equal to Class Component
+
+```js
+const person = {
+    name: "Alex",
+    age: 26,
+    country: "India"
+}
+
+class SpreadExample extends React.Component {
+    render() {
+      const {name, age, country} = {...this.props}
+      return (
+        <div>
+            <h3> Person Information: </h3>
+            <ul>
+              <li>name={name}</li>
+              <li>age={age}</li>
+              <li>country={country}</li>
+            </ul>
+        </div>
+      )
+    }
+}
+
+ReactDOM.render(
+    <SpreadExample {...person}/>
+    , mountNode
+)
+```
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
