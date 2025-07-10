@@ -1700,3 +1700,201 @@ Explanation: Apparently the question misstyped `greet` as `hug`. Putting this as
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
 </div>
+
+#### Q. Why is ref used?
+
+- [ ] to bind function
+- [ ] to call function
+- [x] to directly access DOM node
+- [ ] to refer to another JS file
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+#### Q. Choose the method which should be overridden to stop the component from updating?
+
+- [ ] componentDidMount
+- [ ] componentDidUpdate
+- [ ] willComponentUpdate
+- [x] shouldComponentUpdate
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+#### Q. What is the functionality of a “webpack” command?
+
+- [x] Runs react local development server
+- [ ] Transfers all JS files to down into one file
+- [ ] A module builder
+- [ ] None of the above
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+#### Q. Choose the method which is not a part of ReactDOM?
+
+- [ ] ReactDOM.createPortal()
+- [ ] ReactDOM.hydrate()
+- [x] ReactDOM.destroy()
+- [ ] ReactDOM.findDOMnode()
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+#### Q. In react, the key should be?
+
+- [x] Unique among his siblings
+- [ ] Unique in DOM
+- [ ] Does not requires to be unique
+- [ ] all of the above
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+#### Q. Which company developed ReactJS?
+
+- [ ] Google
+- [x] Meta (ex Facebook)
+- [ ] Apple
+- [ ] Twitter
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+#### Q. Choose the library which is most often associated with react?
+
+- [ ] Chai
+- [ ] Sinon
+- [x] Jest
+- [ ] Mocha
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+#### Q. What of the following is used in React.js to increase performance?
+
+- [ ] Original DOM
+- [x] Virtual DOM
+- [ ] Both of the above
+- [ ] None of the above
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+#### Q. Among The following options, choose the one which helps react for keeping their data uni-directional?
+
+- [ ] DOM
+- [x] flux
+- [ ] JSX
+- [ ] Props
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+#### Q. What is this pattern called?
+
+```javascript
+const [count, setCount] = useState(0);
+```
+
+- [ ] code pushing
+- [ ] object destructuring
+- [ ] spread operating
+- [x] array destructuring
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+#### Q. This code is part of an app that collects Pokemon. The useState hook below is a piece of state holding onto the names of the Pokemon collected so far. How would you access the collected Pokemon in state?
+
+```javascript
+const PokeDex = (props) => {
+  const [pokeDex, setPokeDex] = useState([]);
+  //...
+};
+```
+
+- [x] pokeDex
+- [ ] this.props.pokeDex
+- [ ] setPokeDex()
+- [ ] props.pokeDex
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+#### Q. What company open-sourced React?
+
+- [ ] Amazon
+- [x] Facebook
+- [ ] Google
+- [ ] Twitter
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+#### Q. What is JSX?
+
+- [ ] A testing library for React.
+- [x] An HTML-like language that compiles to JavaScript.
+- [ ] An HTML-like language that compiles to CSS.
+- [ ] An HTTP API library for React.
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+#### Q. What is one way that JSX and HTML differ?
+
+- [x] JSX uses className instead of class. 
+- [ ] JSX uses `<container>` instead of `<div>`.
+- [ ] HTML is for creating a user interface.
+- [ ] JSX uses `<textinput>` instead of `<input>`.
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+#### Q. Why does React typically require a build step?
+
+- [ ] To transpile HTML to JSX
+- [ ] To transpile JSX to CSS
+- [ ] To transpile JSX to HTML
+- [x] To transpile JSX to Javascript
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+#### Q. Why do you have to worry about version conflicts in React, but not need to with native web components?
+
+- [ ] Native web components have an adapter layer.
+- [ ] Native web components don't use JavaScript.
+- [ ] When a new version of React is released, you can't use old versions.
+- [x] React has a runtime, web components don't.
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+#### Q. What pattern does React use for handling data flows?
+
+- [x] One-way binding
+- [ ] Auto-binding
+- [ ] Three-way binding
+- [ ] Two-way binding
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
