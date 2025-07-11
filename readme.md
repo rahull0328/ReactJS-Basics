@@ -3892,3 +3892,156 @@ ReactDOM.render(
 <div align="right">
     <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
+
+## # 6. REACT STATE
+
+<br/>
+
+## Q. What is State in React?
+
+The state is a built-in object that is used to contain data about the component. A component\'s state can change over time; whenever it changes, the component re-renders.
+
+**Example:**
+
+```js
+/**
+ * React State
+ */
+export default class Employee extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      id: 100,
+      name: "Sarita Mangat"
+    };
+  }
+
+  render() {
+    return (
+      <div>
+        <div>ID: {this.state.id}</div>
+        <div>Name: {this.state.name}</div>
+      </div>
+    );
+  }
+}
+```
+
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-state-8d815y?file=/src/App.js)**
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## Q. What does setState() do?
+
+The component state can be updated in response to event handlers, server responses, or prop changes. This is done using the **setState()** method. The setState() method enqueues all of the updates made to the component state and instructs React to re-render the component and its children with the updated state.
+
+Always use the setState() method to change the state object, since it will ensure that the component knows it\'s been updated and calls the `render()` method.
+
+**Example:**
+
+```js
+/**
+ * React setState()
+ */
+export default class App extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      color: "blue"
+    };
+  }
+
+  handleColor = () => {
+    this.setState({ color: "red" });
+  };
+
+  render() {
+    return (
+      <div>
+        <h3>Color: {this.state.color}</h3>
+
+        <button type="button" onClick={this.handleColor}>
+          Change Color
+        </button>
+      </div>
+    );
+  }
+}
+```
+
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-setstate-d58xff?file=/src/App.js)**
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## Q. Why is setState() in React async instead of sync?
+
+The **setState()** does not immediately mutate `this.state()` but creates a pending state transition. Accessing `this.state()` after calling this method can potentially return the existing value. There is no guarantee of synchronous operation of calls to setState() and calls may be batched for performance gains.
+
+This is because setState() alters the state and causes rerendering. This can be an expensive operation and making it synchronous might leave the browser unresponsive. Thus the setState() calls are asynchronous as well as batched for better UI experience and performance.
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## Q. What is the second argument that can optionally be passed to setState() and what is its purpose?
+
+A **callback function** which will be invoked when `setState()` has finished and the component is re-rendered. The setState() is asynchronous, which is why it takes in a second callback function. Typically it\'s best to use another lifecycle method rather than relying on this callback function, but it is good to know it exists.
+
+**Example:**
+
+```js
+this.setState(
+  { username: 'Lila' },
+  () => console.log('setState has finished and the component has re-rendered.')
+)
+```
+
+The setState() will always lead to a re-render unless `shouldComponentUpdate()` returns **false**. To avoid unnecessary renders, calling setState() only when the new state differs from the previous state makes sense and can avoid calling setState() in an infinite loop within certain lifecycle methods like `componentDidUpdate()`.
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## Q. What are the possible ways of updating objects in state?
+
+Instead of directly modifying the state using `this.state()`, we use `this.setState()`. This is a function available to all React components that use state, and allows us to let React know that the component state has changed. This way the component knows it should re-render, because its state has changed and its UI will most likely also change.
+
+**Example:**
+
+```js
+this.state = {
+  user: { name: 'Vasuda Handa', age: 22 }
+}
+```
+
+* **Using Object.assign()**
+
+```js
+this.setState(prevState => {
+  let user = Object.assign({}, prevState.user);  // creating copy of state variable user
+  user.name = 'Sai Gupta';                            // update the name property, assign a new value
+  return { user };                                 // return new object user object
+})
+```
+
+* **Using spread syntax**
+
+```js
+this.setState(prevState => ({
+    user: {                   // object that we want to update
+        ...prevState.user,    // keep all other key-value pairs
+        name: 'Niraj Gara'       // update the value of specific key
+    }
+}))
+```
+
+**&#9885; [Try this example on CodeSandbox](https://codepen.io/learning-zone/pen/abWVaKr?editors=0010)**
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
