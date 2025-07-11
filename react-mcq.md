@@ -1898,3 +1898,110 @@ const PokeDex = (props) => {
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
 </div>
+
+#### Q. What is a benefit of React's single file approach?
+
+- [ ] Designers have a separate file to work with.
+- [ ] It enhances security.
+- [ ] It honors the rule of least power.
+- [x] You can read, understand, and work with each autonomous file in isolation.
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+#### Q. Why is React inherently more flexible than many popular competitors?
+
+- [x] React is an library. 
+- [ ] React's API is HTML-oriented instead of JavaScript-oriented.
+- [ ] React is a comprehensive framework.
+- [ ] React embeds HTTP calls, testing, and internationalization.
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+#### Q. What is the benefit of React's virtual DOM?
+
+- [ ] It transpiles JSX before converting to DOM nodes.
+- [ ] It reduces React's bundle size.
+- [ ] It fascilitates inter-component communication via JSON.
+- [x] It improves performance by minimizing DOM changes.
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+#### Q. What is a benefit of React's library approach mentioned in this module?
+
+- [ ] Clear and comprehensive opinions are built in
+- [ ] Enforced consistency
+- [x] It's light-weight and configurable
+- [ ] Less setup overhead
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+#### Q. When do we store variables on the component itself (vs on a component instance)
+
+- [x] When the variable is not related on a component instance
+- [ ] When the variable is a fixed constant value
+- [ ] When the variable holds a function
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+#### Q. What can we do if components A and B are siblings and they require access to the same state element?
+
+- [ ] Place the state in either A or B
+- [x] Place the state in the parent component of A and B
+- [ ] Place the state in a third component C that is a sibling to A and B
+- [ ] Restructure the application to have A and B be related differently
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+#### Q. What's the right syntax to assign the function doSomething as the handler of a click event?
+
+- [ ] onClick={() => doSomething}
+- [x] onClick={doSomething}
+- [ ] onClick={doSomething()}
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+#### Q. When is not a good idea to introduce a new state element?
+
+- [ ] When that element is itself an array or object
+- [ ] When a change on that element should drive a change in the UI
+- [ ] When other elements needs to compute their value based on this new element
+- [x] When that element can be computed from other elements
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+#### Q. We have a boolean X. We want to render component A if X is true, and component B if X is false. Which is correct?
+
+- [ ] <{ X ? A : B } />
+- [x] { X ? <A /> : <B /> }
+- [ ] { if (X) { A } else { B } }
+- [ ] { if  X then A else B }
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+#### Q. What function can be used to change the state of a React component?
+
+- [ ] this.state = {}
+- [x] this.setState
+- [ ] this.changeState
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
