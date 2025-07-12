@@ -4045,3 +4045,178 @@ this.setState(prevState => ({
 <div align="right">
     <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
+
+## Q. What will happen if you use setState() in constructor?
+
+When we use `setState()`, then apart from assigning to the object state react also rerenders the component and all it\'s children. Which we don\'t need in the constructor, since the component hasn\'t been rendered anyway.
+
+Inside constructor uses `this.state = {}` directly, other places use `this.setState({ })`
+
+**Example:**
+
+```js
+import React, { Component } from 'react'
+
+class Food extends Component {
+
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      fruits: ['apple', 'orange'],
+      count: 0
+    }
+  }
+  render() {
+    return (
+      <div className = "container">
+        <h2> Hello!!!</h2>
+        <p> I have {this.state.count} fruit(s)</p>
+      </div>
+    )
+  }
+}
+```
+
+**&#9885; [Try this example on CodeSandbox](https://codepen.io/learning-zone/pen/bGWYmBK?editors=0010)**
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## Q. Why should not we update the state directly?
+
+The **setState()** does not immediately mutate `this.state()` but creates a pending state transition. Accessing `this.state()` after calling this method can potentially return the existing value.
+
+The setState() will always trigger a re-render unless conditional rendering logic is implemented in **shouldComponentUpdate()**. If mutable objects are being used and the logic cannot be implemented in shouldComponentUpdate(), calling setState() only when the new state differs from the previous state will avoid unnecessary re-renders.
+
+**Example:**
+
+```js
+import React, { Component } from 'react'
+
+class App extends Component {
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      list: [
+        { id: '1', age: 42 },
+        { id: '2', age: 33 },
+        { id: '3', age: 68 },
+      ],
+    }
+  }
+
+  onRemoveItem = id => {
+    this.setState(state => {
+      const list = state.list.filter(item => item.id !== id)
+
+      return {
+        list,
+      }
+    })
+  }
+
+  render() {
+    return (
+      <div>
+        <ul>
+          {this.state.list.map(item => (
+            <li key={item.id}>
+              The person is {item.age} years old.
+              <button
+                type="button"
+                onClick={() => this.onRemoveItem(item.id)}
+              >
+                Remove
+              </button>
+            </li>
+          ))}
+        </ul>
+      </div>
+    )
+  }
+}
+
+export default App
+```
+
+**&#9885; [Try this example on CodeSandbox](https://codepen.io/learning-zone/pen/mdmqzmB?editors=0010)**
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## Q. How to delete an item from state array?
+
+When using React, we should never mutate the state directly. If an object is changed, we should create a new copy. The better approach is to use `Array.prototype.filter()` method which creates a new array.
+
+**Example:**
+
+```js
+onDeleteByIndex(index) {
+  this.setState({
+    users: this.state.users.filter((item, i) => i !== index)
+  });
+}
+```
+
+**&#9885; [Try this example on CodeSandbox](https://codepen.io/learning-zone/pen/vYmWvZE?editors=0010)**
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## Q. Why should not call setState() in componentWillUnmount()?
+
+We should not call `setState()` in `componentWillUnmount()` because the component will never be re-rendered. Once a component instance is unmounted, it will never be mounted again.
+
+The `componentWillUnmount()` is invoked immediately before a component is unmounted and destroyed. This method can be used to perform any necessary cleanup method, such as invalidating timers, canceling network requests, or cleaning up any subscriptions that were created in `componentDidMount()`.
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## Q. How can you re-render a component without using setState() function?
+
+React components automatically re-render whenever there is a change in their state or props. A simple update of the state, from anywhere in the code, causes all the User Interface (UI) elements to be re-rendered automatically.
+
+However, there may be cases where the render() method depends on some other data. After the initial mounting of components, a re-render will occur.
+
+**Using forceUpdate():**
+
+The following example generates a random number whenever it loads. Upon clicking the button, the `forceUpdate()` function is called which causes a new, random ​number to be rendered:
+
+```js
+/**
+ * forceUpdate()
+ */
+export default class App extends React.Component {
+  constructor(){
+    super();
+    this.forceUpdateHandler = this.forceUpdateHandler.bind(this);
+  };
+  
+  forceUpdateHandler(){
+    this.forceUpdate();
+  };
+  
+  render(){
+    return(
+      <div>
+        <button onClick= {this.forceUpdateHandler} >FORCE UPDATE</button>
+        <h4>Random Number : { Math.random() }</h4>
+      </div>
+    );
+  }
+}
+```
+
+**&#9885; [Try this example on CodeSandbox](https://codepen.io/learning-zone/pen/ZEKaqWN?editors=0010)**
+
+*Note: We should try to avoid all uses of `forceUpdate()` and only read from `this.props` and `this.state` in render().*
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
