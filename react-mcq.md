@@ -2005,3 +2005,152 @@ const PokeDex = (props) => {
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
 </div>
+
+#### Q. What instance property can be used to access the properties of a class component?
+
+- [ ] this.properties
+- [ ] this.attrs
+- [x] this.props
+- [ ] this.attributes
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+#### Q. What is the format of the data returned by the Github API?
+
+- [ ] YAML
+- [ ] XML
+- [x] JSON
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+#### Q. How do you get a random number in JavaScript?
+
+- [x] Math.random()
+- [ ] Number.random()
+- [ ] rand()
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+#### Q. When is the class component syntax needed?
+
+- [ ] Only for components that are children of class components
+- [ ] Never
+- [ ] Always
+- [x] When we need to manage state or use lifecycle methods
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+#### Q. How do you render a React component?
+
+- [x] Pass a React element and a DOM element to the ReactDOM.render function
+- [ ] Call the React elements toString() method
+- [ ] Implement a render function that returns a JSX expression
+- [ ] Provide values for each prop of a React component
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+#### Q. Why is JSX used in React applications?
+
+- [ ] Because HTML is xml-like
+- [x] To specify the composition of React components
+- [ ] To be able to mix markup and code together
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+#### Q. What does a JSX expression compile to?
+
+- [ ] HTML
+- [ ] JSX byte code
+- [x] A call to the React.createElement function
+- [ ] A call to the ReactDOM.render function
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+#### Q. What is the primary technique for passing data out of a React component?
+
+- [ ] Use a JavaScript class component
+- [x] Pass the data to a function passed in as a prop
+- [ ] Dispatch an action to a state container
+- [ ] Return the data from the render method
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+#### Q. What is the name of React's normalized event abstraction?
+
+- [x] SyntheticEvent
+- [ ] on*
+- [ ] Event
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+#### Q. How can routing be added to a React application?
+
+- [ ] By implementing server-side rendering
+- [ ] By using the React.route function
+- [ ] By using the <Route /> component
+- [x] By adding a HTML5 pushState API based router library
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+#### Q. The facility that allows a component to have local, mutable data is called?
+
+- [ ] Function components
+- [ ] Webpack
+- [ ] Props
+- [x] State
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+#### Q. React is...
+
+- [ ] an optimizing compiler for JavaScript.
+- [x] a client-side library providing rendering and event handling.
+- [ ] a comprehensive client-side application framework.
+- [ ] a library that represents asynchronous data streams with observables.
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+#### Q. A Redux 'action' is...
+
+- [x] the same thing as a model-view-intent 'intent'.
+- [ ] the same thing as a model-view-intent 'model'.
+- [ ] the same thing as a model-view-intent 'view'.
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+#### Q. Which of the following is NOT provided by React?
+
+- [ ] Cross-browser support
+- [ ] An event handing system
+- [ ] Server-side rendering
+- [x] A router
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
