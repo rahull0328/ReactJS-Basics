@@ -2154,3 +2154,108 @@ const PokeDex = (props) => {
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
 </div>
+
+#### Q. When working with the useState hook, what is the first parameter passed to useState?
+
+- [ ] useState does not take any parameters
+- [ ] The timeout value for how long the state will be set
+- [ ] A lambda function whose purpose is to set the value of state
+- [x] The initial value of the state
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+#### Q. If the dependency array that is passed into the useEffect React Hook is an empty array, what is the expected result?
+
+- [ ] The function passed into the useEffect hook will never be executed.
+- [x] The function passed into the useEffect hook will be executed one time only.
+- [ ] The function passed into the useEffect hook will not be affected.
+- [ ] The function passed into the useEffect hook will be executed on every render.
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+#### Q. When building a React tree of components, what does "prop drilling" refer to in the React app itself?
+
+- [ ] Referencing a property by reference instead of by value
+- [ ] Deleting a property so deep it can never be recovered
+- [x] Passing properties through one or more layers of a component hierarchy
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+#### Q. In a reducer function, what is the reason for spreading state (...state) as part of the return of that function?
+
+- [ ] So you can visualize the state in the debugger making it easier to find bugs
+- [x] To guarantee that all existing properties of state are copied into the new returned state
+- [ ] To make sure that no previously passed in state values return to the caller of the reducer
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+#### Q. What is the second parameter of the useReducer React hooks best described as?
+
+- [ ] The reducer function
+- [x] The initial state
+- [ ] A call the parent reducer
+- [ ] The cancellation token passed to the reducer
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+#### Q. What is the default return value for a typical reducer function that you would associate with useReducer?
+
+- [ ] A state array
+- [ ] null
+- [x] state
+- [ ] An empty string
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+#### Q. In a class component, what call would you use if you want to reference a DOM element?
+
+- [ ] React.initRef()
+- [ ] React.newRef()
+- [x] React.createRef()
+- [ ] React.useRef()
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+#### Q. You have an empty array as the second parameter to your useEffect hook. Which statement is true?
+
+- [ ] in a class component lifecycle, componentDidMount will be called on every component render.
+- [ ] in a class component lifeycle, componentDidUpdate will never be called more than once.
+- [x] In a class component lifecycle, componentDidMount will get called once.
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+#### Q. When you build new React Hooks that contain other combined React Hooks, which statement is true?
+
+- [ ] Combined React Hooks cannot contain useEffect, but they can contain all other React Hooks.
+- [ ] Combined React Hooks cannot be nested with other combined React Hooks.
+- [x] Combined React Hooks can contain their own useEffect as well as other React Hooks.
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+#### Q. When you create new React Custom Hooks, what is true about passing in parameters to these new Custom Hooks?
+
+- [ ] Only parameters from React Hooks that are being combined can be passed into the custom React Hook.
+- [ ] Only const objects can be passed into a custom React Hook.
+- [x] Any JavaScript object can be passed to a custom React Hook.
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
