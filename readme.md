@@ -4220,3 +4220,185 @@ export default class App extends React.Component {
 <div align="right">
     <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
+
+## Q. Why we need to pass a function to setState()?
+
+The reason behind for this is that `setState()` is an asynchronous operation. React batches state changes for performance reasons, so the state may not change immediately after `setState()` is called. That means we should not rely on the current state when calling `setState()`.
+
+The solution is to **pass a function to setState()**, with the previous state as an argument. By doing this we can avoid issues with the user getting the old state value on access due to the asynchronous nature of `setState()`.
+
+**Problem:**
+
+```js
+// assuming this.state.count === 0
+this.setState({count: this.state.count + 1});
+this.setState({count: this.state.count + 1});
+this.setState({count: this.state.count + 1});
+// this.state.count === 1, not 3
+```
+
+**&#9885; [Try this example on CodeSandbox](https://codepen.io/learning-zone/pen/jOmYEGG?editors=0010)**
+
+**Solution:**
+
+```js
+this.setState((prevState) => ({
+  count: prevState.count + 1
+}));
+this.setState((prevState) => ({
+  count: prevState.count + 1
+}));
+this.setState((prevState) => ({
+  count: prevState.count + 1
+}));
+// this.state.count === 3 as expected
+```
+
+**&#9885; [Try this example on CodeSandbox](https://codepen.io/learning-zone/pen/qBmpEoz?editors=0010)**
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## Q. How to update nested state properties in React.js?
+
+We can pass the old nested object using the spread operator and then override the particular properties of the nested object.
+
+**Example:**
+
+```js
+// Nested object
+state = {
+  name: 'Vyasa Agarwal',
+  address: {
+    colony: 'Old Cross Rds, Mehdipatnam',
+    city: 'Patna',
+    state: 'Jharkhand'
+  }
+};
+  
+handleUpdate = () => {
+  // Overriding the city property of address object
+  this.setState({ address: { ...this.state.address, city: "Ranchi" } })
+}
+```
+
+**&#9885; [Try this example on CodeSandbox](https://codepen.io/learning-zone/pen/VwbyYqv?editors=0010)**
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## Q. What is the difference between state and props?
+
+|Props                             |State                             |
+|----------------------------------|----------------------------------|
+|Props are read-only.              |State changes can be asynchronous.|
+|Props are immutable.              |State is mutable.                 |
+|Props allow you to pass data from one component to other components as an argument.|	State holds information about the components.|
+|Props can be accessed by the child component.    |State cannot be accessed by child components.|
+|Props are used to communicate between components.|States can be used for rendering dynamic changes with the component.|
+|Stateless component can have Props.            |Stateless components cannot have State.|
+|Props make components reusable.                 |State cannot make components reusable.|
+|Props are external and controlled by whatever renders the component.|The State is internal and controlled by the React Component itself.|
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## Q. How to set state with a dynamic key name?
+
+If you are using ES6 or the Babel transpiler to transform your JSX code then you can accomplish this with *computed property* names.
+
+```js
+inputChangeHandler : function (event) {
+  this.setState({ [event.target.id]: event.target.value });
+
+  // alternatively using template strings for strings
+  // this.setState({ [`key${event.target.id}`]: event.target.value });
+}
+```
+
+**&#9885; [Try this example on CodeSandbox](https://codepen.io/learning-zone/pen/QWvayKp?editors=0010)**
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## Q. How to listen state change in React.js?
+
+The following lifecycle methods will be called when state changes. You can use the provided arguments and the current state to determine if something meaningful changed.
+
+```js
+componentWillUpdate(object nextProps, object nextState)
+componentDidUpdate(object prevProps, object prevState)
+```
+
+In functional component, listen state changes with useEffect hook like this
+
+```js
+export function MyComponent(props) {
+    const [myState, setMystate] = useState('initialState')
+
+    useEffect(() => {
+        console.log(myState, '- Has changed')
+    },[myState]) // <-- here put the parameter to listen
+}
+```
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## Q. How to access child\'s state in React?
+
+**Using Refs:**
+
+In React we can access the child\'s state using `React.createRef()`. We will assign a Refs for the child component in the parent component, then using Refs we can access the child\'s state.
+
+```js
+// App.js
+
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.ChildElement = React.createRef();
+  }
+  handleClick = () => {
+    const childelement = this.ChildElement.current;
+    childelement.getMsg("Message from Parent Component!");
+  };
+  render() {
+    return (
+      <div>
+        <Child ref={this.ChildElement} />
+        <button onClick={this.handleClick}>CLICK ME</button>
+      </div>
+    );
+  }
+}
+```
+
+```js
+// Child.js
+
+class Child extends React.Component {
+  state = {
+    name: "Message from Child Component!"
+  };
+  getMsg = (msg) => {
+    this.setState({
+      name: msg
+    });
+  };
+  render() {
+    return <h2>{this.state.name}</h2>;
+  }
+}
+```
+
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-access-childs-state-n5uzr)**
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
