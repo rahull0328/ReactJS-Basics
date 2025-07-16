@@ -4402,3 +4402,197 @@ class Child extends React.Component {
 <div align="right">
     <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
+
+## Q. How to change the state of a child component from its parent in React?
+
+To change child component\'s state from parent component with React, we can pass props.
+
+```js
+/**
+ * Change Child state from its Parent
+ * @param {*} param0
+ */
+const Child = ({ open }) => {
+  return <h2>Child State: {open.toString()}</h2>;
+};
+
+const Parent = () => {
+  const [isOpen, setIsOpen] = React.useState(false);
+
+  const toggleChild = () => {
+    setIsOpen((prevValue) => !prevValue);
+  };
+
+  return (
+    <div>
+      <button onClick={toggleChild}>Click Me</button>
+      {/* Pass a callback to Child */}
+      <Child open={isOpen} />
+    </div>
+  );
+};
+
+export default Parent;
+```
+
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/agitated-aryabhata-26wdz5?file=/src/App.js)**
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## Q. Why is it advised to pass a callback function to setState() as opposed to an object?
+
+Because `this.props` and `this.state` may be updated asynchronously, we should not rely on their values for calculating the next state.
+
+**Example**: setState Callback in a Class Component
+
+```js
+import React, { Component } from 'react'
+
+class App extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      age: 0,
+    }
+  }
+  
+  // this.checkAge is passed as the callback to setState
+  updateAge = (value) => {
+    this.setState({ age: value}, this.checkAge)
+  }
+
+  checkAge = () => {
+    const { age } = this.state
+    if (age !== 0 && age >= 21) {
+      // Make API call to /beer
+    } else {
+      // Throw error 404, beer not found
+    }
+  }
+
+  render() {
+    const { age } = this.state
+    return (
+      <div>
+        <p>Drinking Age Checker</p>
+        <input
+          type="number"
+          value={age}
+          onChange={e => this.updateAge(e.target.value)}
+        />
+      </div>
+    )
+  }
+}
+export default App
+```
+
+**Example:** setState Callback in a Functional Component
+
+```js
+import React, { useEffect, useState } from 'react'
+
+function App() {
+  const [age, setAge] = useState(0)
+  
+  updateAge(value) {
+    setAge(value)
+  }
+
+  useEffect(() => {
+    if (age !== 0 && age >= 21) {
+      // Make API call to /beer
+    } else {
+      // Throw error 404, beer not found
+    }
+  }, [age])
+
+  return (
+    <div>
+      <p>Drinking Age Checker</p>
+      <input
+        type="number"
+        value={age} 
+        onChange={e => setAge(e.target.value)}
+      />
+    </div>
+  )
+}
+
+export default App
+```
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## Q. How does the state differ from props in React?
+
+**1. State:**
+
+This is data maintained inside a component. It is local or owned by that specific component. The component itself will update the state using the `setState()` function.
+
+**Example:**
+
+```js
+class AppComponent extends React.component {
+  state = {
+      msg : 'Hello World!'
+  }
+
+  render() {
+      return <div>Message {this.state.msg}</div>
+  }
+}
+```
+
+**2. Props:**
+
+Data passed in from a parent component. `props` are read-only in the child component that receives them. However, callback functions can also be passed, which can be executed inside the child to initiate an update.
+
+**Example:** The parent can pass a props by using this
+
+```js
+<ChildComponent color='red' />
+```
+
+Inside the ChildComponent constructor we could access the props
+
+```js
+class ChildComponent extends React.Component {
+  constructor(props) {
+    super(props)
+    console.log(props.color)
+  }
+}
+```
+
+Props can be used to set the internal state based on a prop value in the constructor, like this
+
+```js
+class ChildComponent extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state.colorName = props.color
+  }
+}
+```
+
+Props should never be changed in a child component. Props are also used to allow child components to access methods defined in the parent component. This is a good way to centralize managing the state in the parent component, and avoid children to have the need to have their own state.
+
+**Difference between State and Props:**
+
+|  Props                                          | State                            |
+|-------------------------------------------------|----------------------------------|
+|Props are read-only.                             |State changes can be asynchronous.|
+|Props allow to pass data from one component to other components as an argument.| State holds information about the components.|
+|Props can be accessed by the child component.    |State cannot be accessed by child components.|
+|Props are used to communicate between components.|States can be used for rendering dynamic changes with the component.|
+|Stateless component can have Props.              |Stateless components cannot have State.|
+|Props are external and controlled by whatever renders the component.| The State is internal and controlled by the React Component itself.|
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
