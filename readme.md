@@ -4596,3 +4596,146 @@ Props should never be changed in a child component. Props are also used to allow
 <div align="right">
     <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
+
+## # 7. REACT EVENTS
+
+<br/>
+
+## Q. What is meant by event handling in React?
+
+Handling events with React elements is very similar to handling events on DOM elements. There are some syntax differences:
+
+* React events are named using camelCase, rather than lowercase.
+* With JSX you pass a function as the event handler, rather than a string.
+
+**Example:**
+
+```js
+/**
+ * Event Handling in React
+ */
+export default class Toggle extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { isToggleOn: true };
+  }
+
+  handleClick() {
+    this.setState((state) => ({
+      isToggleOn: !state.isToggleOn
+    }));
+  }
+
+  render() {
+    return (
+      <button onClick={() => this.handleClick()}>
+        {this.state.isToggleOn ? "ON" : "OFF"}
+      </button>
+    );
+  }
+}
+```
+
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-event-handling-coshzh?file=/src/App.js)**
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## Q. How to pass a parameter to event handlers in React?
+
+**Example:**
+
+```js
+const message = "Hey there!";
+export default class App extends React.Component {
+  displayMessage(message) {
+    alert(message);
+  }
+
+  render() {
+    return (
+      <button onClick={() => this.displayMessage(message)}>CLICK ME</button>
+    );
+  }
+}
+```
+
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-event-handler-g2ugs?file=/src/App.js)**
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## Q. How do you pass an event handler to a component?
+
+**Example:**
+
+```js
+import React, {useState} from "react";
+import "./styles.css";
+
+export default function App() {
+  return (
+    <Container/>
+  );
+}
+
+const Container = () => {
+  const [counter, setCounter] = useState(0);
+  
+  const handleCustomClick = () => {
+    setCounter(counter + 1)
+  }
+
+  return (
+    <div>
+      <div>Counter: {counter}</div>
+      <CustomButton onCustomClick={handleCustomClick}/>
+    </div>
+  );
+}
+
+const CustomButton = ({onCustomClick}) => {
+  return (
+    <button onClick={onCustomClick}>
+      My Custom Button
+    </button>
+  );
+}
+```
+
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-event-handler-ijru1?file=/src/App.js)**
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## Q. What is the difference between HTML and React event handling?
+
+In HTML, the attribute name is in all lowercase and is given a string invoking a function defined somewhere:
+
+```js
+<button onclick="handleClick()"></button>
+```
+
+In React, the attribute name is camelCase and are passed the function reference inside curly braces:
+
+```js
+<button onClick={handleClick} />
+```
+
+In HTML, `false` can be returned to prevent default behavior, whereas in React `preventDefault()` has to be called explicitly.
+
+```js
+<a href="#" onclick="console.log('The link was clicked.'); return false" />
+
+function handleClick(e) {
+  e.preventDefault()
+  console.log("The link was clicked.")
+}
+```
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
