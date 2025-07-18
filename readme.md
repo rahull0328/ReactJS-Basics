@@ -4739,3 +4739,161 @@ function handleClick(e) {
 <div align="right">
     <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
+
+## Q. How to bind methods or event handlers in JSX callbacks?
+
+There are 3 possible ways to achieve this
+
+**1. Event Handler in Render Method:**
+
+We can bind the handler when it is called in the render method using `bind()` method.
+
+```js
+handleClick() {
+  // ...       
+}
+
+<button onClick={this.handleClick.bind(this)}>Click</button> 
+```
+
+**&#9885; [Try this example on CodeSandbox](https://codepen.io/learning-zone/pen/jOmYGMp?editors=0010)**
+
+**2. Event Handler using Arrow Function:**
+
+In this approach we are binding the event handler implicitly. This approach is the best if you want to pass parameters to your event.
+
+```js
+handleClick() {
+  // ...       
+}
+
+<button onClick={() => this.handleClick()}>Click</button> 
+```
+
+**&#9885; [Try this example on CodeSandbox](https://codepen.io/learning-zone/pen/QWvaqdB?editors=0010)**
+
+**3. Event Handler in Constructor:**
+
+This has performance benefits as the events aren\'t binding every time the method is called, as opposed to the previous two approaches.
+
+```js
+constructor(props) {
+
+  // This binding is necessary to make `this` work in the callback
+  this.handleClick = this.handleClick.bind(this);
+}
+
+handleClick() {
+  // ...       
+}
+
+<button onClick={this.handleClick}>Click</button>
+```
+
+**&#9885; [Try this example on CodeSandbox](https://codepen.io/learning-zone/pen/zYwpEwO?editors=0010)**
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## Q. Why do we need to bind methods inside class component constructor?
+
+In Class Components, when we pass the event handler function reference as a callback like this
+
+```js
+<button type="button" onClick={this.handleClick}>Click Me</button>
+```
+
+the event handler method loses its **implicitly bound** context. When the event occurs and the handler is invoked, the `this` value falls back to **default binding** and is set to `undefined`, as class declarations and prototype methods run in strict mode.
+
+When we bind the `this` of the event handler to the component instance in the constructor, we can pass it as a callback without worrying about it losing its context.
+
+Arrow functions are exempt from this behavior because they use **lexical** `this` binding which automatically binds them to the scope they are defined in.
+
+**Example:**
+
+```js
+/**
+ * Event Handling in React
+ */
+import React from "react";
+
+export default class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.handleClick = this.handleClick.bind(this);
+  }
+
+  handleClick(event) {
+    alert("Click event triggered!");
+  }
+
+  render() {
+    return <button onClick={this.handleClick}>Click Me</button>;
+  }
+}
+```
+
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-event-handling-k0hugz?file=/src/App.js)**
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## Q. How do I pass a parameter to an event handler or callback?
+
+You can use an **arrow function** to wrap around an event handler and pass parameters:
+
+```js
+<button onClick={() => this.handleClick(id)} />
+```
+
+This is equivalent to calling `.bind`
+
+```js
+<button onClick={this.handleClick.bind(this, id)} />
+```
+
+**Example:**
+
+```js
+/**
+ * Pass parameter to an event handler
+ */
+const A = 65; // ASCII character code
+
+export default class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      justClicked: null,
+      letters: Array.from({ length: 26 }, (_, i) => String.fromCharCode(A + i))
+    };
+  }
+
+  handleClick(letter) {
+    this.setState({ justClicked: letter });
+  }
+  
+  render() {
+    return (
+      <>
+        Just clicked: {this.state.justClicked}
+        <ul>
+          {this.state.letters.map((letter) => (
+            <li key={letter} onClick={() => this.handleClick(letter)}>
+              {letter}
+            </li>
+          ))}
+        </ul>
+      </>
+    );
+  }
+}
+```
+
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-event-parameter-br87ji?file=/src/App.js)**
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
