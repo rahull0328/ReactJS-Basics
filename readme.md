@@ -5256,3 +5256,83 @@ export default class App extends React.Component {
 <div align="right">
     <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
+
+## Q. Explain synthetic event in React js?
+
+Inside React event handlers, the event object is wrapped in a `SyntheticEvent` object. These objects are pooled, which means that the objects received at an event handler will be reused for other events to increase performance. This also means that accessing the event object\'s properties asynchronously will be impossible since the event\'s properties have been reset due to reuse.
+
+The following piece of code will log null because event has been reused inside the SyntheticEvent pool:
+
+```js
+function handleClick(event) {
+  setTimeout(function () {
+    console.log(event.target.name)
+  }, 1000)
+}
+```
+
+To avoid this we need to store the event\'s property:
+
+```js
+function handleClick(event) {
+  let name = event.target.name
+  setTimeout(function () {
+    console.log(name)
+  }, 1000)
+}
+```
+
+**SyntheticEvent Object:**
+
+```js
+void preventDefault()
+void stopPropagation()
+boolean isPropagationStopped()
+boolean isDefaultPrevented()
+void persist()
+boolean bubbles
+boolean cancelable
+DOMEventTarget currentTarget
+boolean defaultPrevented
+number eventPhase
+boolean isTrusted
+DOMEvent nativeEvent
+DOMEventTarget target
+number timeStamp
+string type
+```
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## Q. What is Event Pooling in React?
+
+The `SyntheticEvent` is pooled. This means that the SyntheticEvent object will be reused and all properties will be nullified after the event callback has been invoked. This is for performance reasons. As such, you cannot access the event in an `asynchronous` way.
+
+**Example:**
+
+```js
+function onClick(event) {
+  console.log(event) // => nullified object.
+  console.log(event.type) // => "click"
+  const eventType = event.type // => "click"
+
+  setTimeout(function() {
+    console.log(event.type) // => null
+    console.log(eventType) // => "click"
+  }, 0)
+
+  // Won't work. this.state.clickEvent will only contain null values.
+  this.setState({clickEvent: event})
+
+  // You can still export event properties.
+  this.setState({eventType: event.type})
+}
+```
+
+If we want to access the event properties in an asynchronous way, we should call `event.persist()` on the event, which will remove the synthetic event from the pool and allow references to the event to be retained by user code.
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
