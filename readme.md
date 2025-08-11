@@ -5336,3 +5336,268 @@ If we want to access the event properties in an asynchronous way, we should call
 <div align="right">
     <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
+
+## Q. How to trigger click event programmatically?
+
+We can use `ref` prop to acquire a reference to the underlying `HTMLInputElement` object through a callback, store the reference as a class property, then use that reference to later trigger a click from your event handlers using the `HTMLElement.click` method.
+
+**Example:**
+
+```js
+class MyComponent extends React.Component {
+
+  render() {
+    return (
+      <div onClick={this.handleClick}>
+        <input ref={input => this.inputElement = input} />
+      </div>
+    )
+  }
+
+  handleClick = (e) => {
+    this.inputElement.click()
+  }
+}
+```
+
+*Note: The `ES6 arrow function` provides the correct lexical scope for `this` in the callback.*
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## Q. How to listen for click events that are outside of a component?
+
+**Example:**
+
+```js
+class OutsideAlerter extends Component {
+  // ...
+  componentDidMount() {
+    document.addEventListener("mousedown", this.handleClickOutside);
+  }
+
+  componentWillUnmount() {
+    document.removeEventListener("mousedown", this.handleClickOutside);
+  }
+
+  /**
+   * Set the wrapper ref
+   */
+  setWrapperRef(node) {
+    this.wrapperRef = node;
+  }
+
+  /**
+   * Alert if clicked on outside of element
+   */
+  handleClickOutside(event) {
+    if (this.wrapperRef && !this.wrapperRef.contains(event.target)) {
+      alert("You clicked outside of me!");
+    }
+  }
+
+  render() {
+    return <div ref={this.setWrapperRef}>{this.props.children}</div>;
+  }
+}
+
+OutsideAlerter.propTypes = {
+  children: PropTypes.element.isRequired
+};
+
+```
+
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-click-event-jdf3f?file=/src/App.js)**
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## Q. How to convert text to uppercase on user input entered?
+
+```js
+import React from "react";
+
+const toInputUppercase = (e) => {
+  e.target.value = ("" + e.target.value).toUpperCase();
+};
+
+export default function App() {
+  const [name, setName] = React.useState("");
+
+  return (
+    <input
+      name={name}
+      onChange={(e) => setName(e.target.value)}
+      onInput={toInputUppercase} // apply on input which do you want to be capitalize
+    />
+  );
+}
+```
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## Q. How to set a dynamic key for state?
+
+**1. Dynamic Key:**
+
+```js
+onChange(e) {
+  const key = e.target.name
+  const value = e.target.value
+  this.setState({ [key]: value })
+}
+```
+
+**2. Nested States:**
+
+```js
+handleSetState(cat, key, val) {
+  const category = {...this.state[cat]}
+  category[key] = val
+  this.setState({ [cat]: category })
+}
+```
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## Q. What are the pointer events in React?
+
+Pointer events, in essence, are very similar to mouse events (mousedown, mouseup, etc.) but are hardware-agnostic and thus can handle all input devices such as a mouse, stylus or touch. This is great since it removes the need for separate implementations for each device and makes authoring for cross-device pointers easier.
+
+The API of pointer events works in the same manner as existing various event handlers. Pointer events are added as attributes to React component and are passed a callback that accepts an event. Inside the callback we process the event.
+
+The following event types are now available in React DOM
+
+* onPointerDown
+* onPointerMove
+* onPointerUp
+* onPointerCancel
+* onGotPointerCapture
+* onLostPointerCapture
+* onPointerEnter
+* onPointerLeave
+* onPointerOver
+* onPointerOut
+
+**Example:** Drag and Drop using Point Events
+
+```js
+// App Component
+import React, { Component } from 'react'
+import logo from './logo.svg'
+import './App.css'
+import DragItem from './DragItem'
+
+class App extends Component {
+   render() {
+      return (
+        <div className="App">
+          <header className="App-header">
+            <img src={logo} className="App-logo" alt="logo" />
+            <h1 className="App-title">Welcome to React sample of Point Events</h1>
+          </header>
+          <div className="App-intro">
+            <DragItem />
+          </div>
+        </div>
+      )
+   }
+}
+export default App
+```
+
+DragItem Component
+
+```js
+import React from 'react'
+const CIRCLE_DIAMETER = 100
+
+export default class DragItem extends React.Component {
+
+  state = {
+     gotCapture: false,
+     circleLeft: 500,
+     circleTop: 100
+  }
+  isDragging = false
+  previousLeft = 0
+  previousTop = 0
+
+  onDown = e => {
+     this.isDragging = true
+     e.target.setPointerCapture(e.pointerId)
+     this.getDelta(e)
+  }
+  onMove = e => {
+      if (!this.isDragging) {
+         return
+      }
+  
+      const {left, top} = this.getDelta(e)
+      this.setState(({circleLeft, circleTop}) => ({
+         circleLeft: circleLeft + left,
+         circleTop: circleTop + top
+      }))
+  }
+  onUp = e => (this.isDragging = false)
+  onGotCapture = e => this.setState({gotCapture: true})
+  onLostCapture = e => this.setState({gotCapture: false})
+  getDelta = e => {
+      const left = e.pageX
+      const top = e.pageY
+      const delta = {
+         left: left - this.previousLeft,
+         top: top - this.previousTop,
+      }
+      this.previousLeft = left
+      this.previousTop = top
+
+      return delta
+  }
+  render() {
+      const {gotCapture, circleLeft, circleTop} = this.state
+      const boxStyle = {
+         border: '2px solid #cccccc',
+         margin: '10px 0 20px',
+         minHeight: 400,
+         width: '100%',
+         position: 'relative',
+      }
+      const circleStyle = {
+         width: CIRCLE_DIAMETER,
+         height: CIRCLE_DIAMETER,
+         borderRadius: CIRCLE_DIAMETER / 2,
+         position: 'absolute',
+         left: circleLeft,
+         top: circleTop,
+         backgroundColor: gotCapture ? 'red' : 'green',
+         touchAction: 'none',
+      }
+      return (
+         <div style={boxStyle}>
+            <div
+               style={circleStyle}
+               onPointerDown={this.onDown}
+               onPointerMove={this.onMove}
+               onPointerUp={this.onUp}
+               onPointerCancel={this.onUp}
+               onGotPointerCapture={this.onGotCapture}
+               onLostPointerCapture={this.onLostCapture}
+            />
+         </div>
+      )
+  }
+}
+```
+
+*Note: It work only in browsers that support the Pointer Events specification*
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
