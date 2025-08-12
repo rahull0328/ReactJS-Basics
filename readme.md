@@ -5601,3 +5601,147 @@ export default class DragItem extends React.Component {
 <div align="right">
     <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
+
+## Q. What is an alternative way to avoid having to bind to this in event callback methods?
+
+**1. Bind in Constructor:**
+
+```js
+class App extends Component {
+
+  constructor(props) {
+    super(props)
+    this.handleClick = this.handleClick.bind(this)
+  }
+  handleClick() {
+    console.log('Clicked !')
+  }
+  render() {
+    return <button onClick={this.handleClick}>Click Me</button>
+  }
+}
+```
+
+**2. Bind in Render:**
+
+```js
+class App extends Component {
+
+  handleClick() {
+    console.log('Clicked !')
+  }
+  render() {
+    return <button onClick={this.handleClick.bind(this)}>Click Me</button>
+  }
+}
+```
+
+**3. Arrow Function in Render:**
+
+```js
+class App extends Component {
+
+  handleClick() {
+    console.log('Clicked !')
+  }
+  render() {
+    return <button onClick={() => this.handleClick()}>Click Me</button>
+  }
+}
+```
+
+Using an arrow function in render creates a new function each time the component renders, which may break optimizations based on strict identity comparison.
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## Q. What is the alternative of binding `this` in the constructor?
+
+**Arrow Function**: This creates and binds the function all at once. Inside render (and elsewhere), the function is already bound because the arrow function preserves the this binding.
+
+**Example:**
+
+```js
+class Button extends React.Component {
+  // no binding
+  handleClick = (e) => {
+    console.log('clicked !');
+  }
+  render() {
+    return <button onClick={this.handleClick}>Click Me</button>;
+  }
+}
+```
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## # 8. REACT LISTS
+
+<br/>
+
+## Q. Explain the Lists in React?
+
+Using JSX we can show lists using JavaScript\'s built-in `Array.map()` method. The `.map()` method is often used to take one piece of data and convert it to another.
+
+Keys are unique identifiers that must be attached to the top-level element inside a map. Keys are used by React to know how to update a list whether adding, updating, or deleting items. This is part of how React is so fast with large lists.
+
+**Example:**
+
+```js
+/**
+ * React List
+ */
+export default class App extends Component {
+  state = {
+    lists: [
+      { id: 0, context: "Success" },
+      { id: 1, context: "Warning" },
+      { id: 2, context: "Danger" }
+    ]
+  };
+
+  render() {
+    return (
+      <>
+        <h2>React List</h2>
+        <ul className="list-group">
+          {this.state.lists.map((list) => (
+            <li key={list.id}>{list.context}</li>
+          ))}
+        </ul>
+      </>
+    );
+  }
+}
+```
+
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-list-h3wvmz?file=/src/App.js)**
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## Q. Why do I need Keys in React Lists?
+
+Keys help React identify which items have changed, are added, or are removed. Keys should be given to the elements inside the array to give the elements a stable identity:
+
+**Example:**
+
+```js
+const numbers = [10, 20, 30, 40, 50];
+
+const listItems = numbers.map((number) =>
+  <li key={number.toString()}>
+    {number}
+  </li>
+);
+```
+
+React recommends that you do not use indexes as keys, if the order of items may change. It could impact performance negatively and could lead to some unstable component behaviour.
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
