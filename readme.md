@@ -5745,3 +5745,233 @@ React recommends that you do not use indexes as keys, if the order of items may 
 <div align="right">
     <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
+
+## Q. How to display an array of strings in react component?
+
+```js
+const data = ["this is line #1", "this is line #2", "this is line #3"];
+
+export default function App() {
+  return (
+    <div>
+      {data.map((item, index) => (
+        <div key={index}>{item}</div>
+      ))}
+    </div>
+  );
+}
+```
+
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-array-of-strings-zz45l?file=/src/App.js)**
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## Q. How do you render Array, Strings and Numbers in React?
+
+```js
+/**
+ * Array Component
+ */
+const items = [
+  { name: "AngularJS", description: "" },
+  { name: "React", description: "" },
+  { name: "Vue.js", description: "" }
+];
+const ArrayList = (props) => (
+  <div>
+    <h2>Render Array List</h2>
+    {items.map((item, index) => (
+      <div key={index}>{item.name}</div>
+    ))}
+  </div>
+);
+
+
+/**
+ * String Component
+ */
+const StringList = (props) => (
+  <div>
+    <h2>Render String List</h2>
+    {["test", "render", "array", "list"]}
+  </div>
+);
+
+
+/**
+ * Number Component
+ */
+const numbers = [10, 20, 30];
+const NumberList = (props) => (
+  <div>
+    <h2>Render Number List</h2>
+    {numbers.map((item, index) => (
+      <div key={index}>{item}</div>
+    ))}
+  </div>
+);
+```
+
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-array-list-uxl6n?file=/src/index.js)**
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## # 9. React RESTful API
+
+<br/>
+
+## Q. How to make a API calls in React?
+
+Consuming REST APIs in a React Application can be done in various ways. Some popular are Axios, fetch etc.
+
+**Example:**
+
+```js
+/**
+ * API call using fetch()
+ */
+export default class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      users: []
+    };
+  }
+
+  componentDidMount() {
+    fetch("https://api.github.com/users")
+      .then((res) => res.json())
+      .then((result) => {
+        this.setState({ users: result });
+      });
+  }
+
+  render() {
+    const { users } = this.state;
+    return (
+      <ul>
+        {users.map((user) => (
+          <li key={user.id}>
+            <img src={user.avatar_url} alt={user.login} width="100px" />
+          </li>
+        ))}
+      </ul>
+    );
+  }
+}
+```
+
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-api-call-llvlbj?file=/src/App.js)**
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## Q. How to display API data using Axios in React?
+
+Axios is a promise based HTTP client for making HTTP requests from a browser to any web server.
+
+**Example:**
+
+```js
+/**
+ * GET Request using Axios
+ */
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+
+export default function App() {
+  const [users, setUsers] = useState([]);
+
+  const fetchData = () => {
+    axios.get("https://jsonplaceholder.typicode.com/users").then((response) => {
+      setUsers(response.data);
+    });
+  };
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  return (
+    <div>
+      {users.length > 0 && (
+        <ul>
+          {users.map((user) => (
+            <li key={user.id}>{user.name}</li>
+          ))}
+        </ul>
+      )}
+    </div>
+  );
+}
+```
+
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-axios-7bhnjt?file=/src/App.js)**
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## Q. How to make a post call using Axios in React?
+
+**Example:**
+
+```js
+/**
+ * POST Request using Axios
+ */
+
+import React from "react";
+import axios from "axios";
+
+export default class PersonList extends React.Component {
+  state = {
+    name: "",
+    result: []
+  };
+
+  handleChange = (event) => {
+    this.setState({ name: event.target.value });
+  };
+
+  handleSubmit = (event) => {
+    event.preventDefault();
+
+    const user = {
+      name: this.state.name
+    };
+
+    axios
+      .post(`https://jsonplaceholder.typicode.com/users`, { user })
+      .then((res) => {
+        this.setState({ result: res.data.user.name });
+      });
+  };
+
+  render() {
+    return (
+      <div>
+        <form onSubmit={this.handleSubmit}>
+          <label>
+            Person Name:
+            <input type="text" name="name" onChange={this.handleChange} />
+          </label>
+          <button type="submit">Add</button>
+        </form>
+        <h4>Result: {this.state.result}</h4>
+      </div>
+    );
+  }
+}
+```
+
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-post-request-qp77q5?file=/src/App.js)**
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
