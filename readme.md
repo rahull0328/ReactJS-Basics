@@ -5975,3 +5975,232 @@ export default class PersonList extends React.Component {
 <div align="right">
     <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
+
+## Q. What are the benefits of using Axios() over Fetch() for making http requests?
+
+**1. Fetch()**:
+
+The Fetch API provides a `fetch()` method defined on the window object. It also provides a JavaScript interface for accessing and manipulating parts of the HTTP pipeline (requests and responses). The fetch method has one mandatory argument- the URL of the resource to be fetched. This method returns a Promise that can be used to retrieve the response of the request.
+
+**Example:**
+
+```js
+fetch('path-to-the-resource-to-be-fetched')
+  .then((response) => {
+    // Code for handling the response
+  })
+  .catch((error) => {
+    // Error Handling
+  });
+```
+
+**2. Axios()**:
+
+Axios is a Javascript library used to make HTTP requests from node.js or XMLHttpRequests from the browser and it supports the Promise API that is native to JS ES6. It can be used intercept HTTP requests and responses and enables client-side protection against XSRF. It also has the ability to cancel requests.
+
+**Example:**
+
+```js
+axios.get('url')
+  .then((response) => {
+    // Code for handling the response
+  })
+  .catch((error) => {
+    // Error Handling
+  });
+```
+
+**Differences:**
+
+| Axios()                         | Fetch()                            |
+|---------------------------------|------------------------------------|
+|Axios has **url** in request object. | Fetch has no url in request object.|
+|Axios is a stand-alone third party package that can be easily installed.|Fetch is built into most modern browsers|
+|Axios has built-in XSRF protection.|Fetch does not.|
+|Axios uses the **data** property.  |Fetch uses the **body** property.|
+|Axios data contains the object.    |Fetch\'s body has to be stringified.|
+|Axios request is ok when status is 200 and statusText is 'OK'.|Fetch request is ok when response object contains the ok property.|
+|Axios performs automatic transforms of JSON data.|Fetch is a two-step process when handling JSON data- first, to make the actual request; second, to call the `.json()` method on the response.|
+|Axios allows cancelling request and request timeout.|Fetch does not.|
+|Axios has the ability to intercept HTTP requests.|Fetch, by default, doesn\'t provide a way to intercept requests.|
+|Axios has built-in support for download progress.|Fetch does not support upload progress.|
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## Q. How does Axios Interceptors work in React?
+
+Axios interceptors are the default configurations that are added automatically to every request or response that a user receives. It is useful to check response status code for every response that is being received.
+
+Interceptors are methods which are triggered before or after the main method. There are two types of interceptors:
+
+**1. Request Interceptor:**
+
+It allows you to write or execute a piece of your code before the request gets sent. For example, an authentication token could be injected into all requests.
+
+**Example:**
+
+```js
+// Request Handler
+const requestHandler = (request) => {
+  const token = localStorageService.getAccessToken()
+  if (token) {
+    request.headers['Authorization'] = 'Bearer ' + token
+  }
+  return request
+}
+
+// Request Interceptor
+axios.interceptors.request.use(
+  request => requestHandler(request)
+)
+```
+
+**2. Response Interceptor:**
+
+It allows you to write or execute a piece of your code before response reaches the calling end.
+
+**Example:**
+
+```js
+// Response Handlers
+const errorHandler = (error) => {
+  if (isHandlerEnabled(error.config)) {
+    // Handle errors
+  }
+  return Promise.reject({ ...error })
+}
+
+const successHandler = (response) => {
+  if (isHandlerEnabled(response.config)) {
+    // Handle responses
+  }
+  return response
+}
+
+// Response Interceptors
+axios.interceptors.response.use(
+  response => successHandler(response),
+  error => errorHandler(error)
+)
+```
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## Q. How to do caching in React?
+
+In React, caching data can be achieved in multiple ways
+
+* Local Storage
+* Redux Store
+* Keep data between mouting and unmounting
+* useMemo()
+
+**1. Memoizing Fetched Data:**
+
+Memoization is a technique we would use to make sure that we don\'t hit the API if we have made some kind of request to fetch it at some initial phase. Storing the result of expensive fetch calls will save the users some load time, therefore, increasing overall performance.
+
+**Example:**
+
+```js
+const cache = {}
+
+const useFetch = (url) => {
+  const [status, setStatus] = useState('idle')
+  const [data, setData] = useState([])
+
+  useEffect(() => {
+    if (!url) return
+
+    const fetchData = async () => {
+      setStatus('fetching')
+
+      if (cache[url]) {
+        const data = cache[url]
+        setData(data)
+        setStatus('fetched')
+      } else {
+        const response = await fetch(url)
+        const data = await response.json()
+        cache[url] = data // set response in cache
+        setData(data)
+        setStatus('fetched')
+      }
+    }
+
+    fetchData()
+  }, [url])
+
+  return { status, data }
+}
+```
+
+Here, we\'re mapping URLs to their data. So, if we make a request to fetch some existing data, we set the data from our local cache, else, we go ahead to make the request and set the result in the cache. This ensures we do not make an API call when we have the data available to us locally.
+
+**2. Memoizing Data With useRef():**
+
+With `useRef()`, we can set and retrieve mutable values at ease and its value persists throughout the component\'s lifecycle.
+
+```js
+const useFetch = (url) => {
+  const cache = useRef({})
+  const [status, setStatus] = useState('idle')
+  const [data, setData] = useState([])
+
+  useEffect(() => {
+    if (!url) return
+
+    const fetchData = async () => {
+      setStatus('fetching')
+
+      if (cache.current[url]) {
+        const data = cache.current[url]
+        setData(data)
+        setStatus('fetched')
+      } else {
+        const response = await fetch(url)
+        const data = await response.json()
+        cache.current[url] = data // set response in cache
+        setData(data)
+        setStatus('fetched')
+      }
+    }
+
+    fetchData()
+  }, [url])
+
+  return { status, data }
+}
+```
+
+**3. Using localStorage():**
+
+```js
+const InitialState = {
+   someState: 'a'
+}
+class App extends Component {
+
+ constructor(props) {
+  super(props)
+
+  // Retrieve the last state
+  this.state = localStorage.getItem("appState") ? JSON.parse(localStorage.getItem("appState")) : InitialState
+
+}
+
+componentWillUnmount() {
+  // Remember state for the next mount
+  localStorage.setItem('appState', JSON.stringify(this.state))
+}
+
+render() {
+  ...
+ }
+}
+
+export default App
+```
