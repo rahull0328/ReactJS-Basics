@@ -6504,3 +6504,243 @@ The ConsumerA and ConsumerB components keep a state counter individual. In their
 <div align="right">
     <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
+
+## # 10. REACT FORMS
+
+<br/>
+
+## Q. How dynamically generate menu options for `<select>` from an array?
+
+**Example:**
+
+```js
+class App extends React.Component {
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      colors: {}
+    };
+    this.selectColor = this.selectColor.bind(this);
+  }
+
+  selectColor = (e) => {
+    console.log("Selected Color: ", e.target.value);
+  };
+
+  componentDidMount() {
+    this.setState({
+      colors: {
+        "#ff0000": "Red",
+        "#00ff00": "Green",
+        "#0000ff": "Blue"
+      }
+    });
+  }
+
+  render() {
+    const { colors } = this.state;
+
+    let colorsList = Object.keys(colors).map((k) => {
+      return (
+        <option key={k} value={k}>
+          {colors[k]}
+        </option>
+      );
+    }, this);
+
+    return (
+      <div>
+        <select onChange={this.selectColor}>{colorsList}</select>
+      </div>
+    );
+  }
+}
+```
+
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-select-dropdown-1oz9f?file=/src/App.js)**
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## Q. How would you create a form in React?
+
+**Example:**
+
+```js
+import React from "react";
+import "./styles.css";
+
+const countries = ["Austria", "India", "Italy", "Russia", "United States"];
+
+export default function App() {
+  const [email, setEmail] = React.useState("");
+  const [password, setPassword] = React.useState("");
+  const [country, setCountry] = React.useState("");
+  const [acceptedTerms, setAcceptedTerms] = React.useState(false);
+
+  const handleSubmit = (event) => {
+    console.log(`
+      Email: ${email}
+      Password: ${password}
+      Country: ${country}
+      Accepted Terms: ${acceptedTerms}
+    `);
+    event.preventDefault();
+  };
+
+  return (
+    <form onSubmit={handleSubmit}>
+      <h1>Create Account</h1>
+
+      <label>Email:
+        <input name="email" type="email" value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          required
+        />
+      </label>
+
+      <label>Password:
+        <input name="password" type="password" value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          required
+        />
+      </label>
+
+      <label>Country:
+        <select name="country" value={country}
+          onChange={(e) => setCountry(e.target.value)}
+          required
+        >
+          <option key=""></option>
+          {countries.map((country) => (
+            <option key={country}>{country}</option>
+          ))}
+        </select>
+      </label>
+
+      <label><input name="acceptedTerms" type="checkbox"
+          onChange={(e) => setAcceptedTerms(e.target.value)}
+          required
+        />
+        I accept the terms of service
+      </label>
+
+      <button>Submit</button>
+    </form>
+  );
+}
+```
+
+**Output:**
+
+<p align="center">
+  <img src='assets/react-form.png' alt='React Form' width='500px' />
+</p>
+
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-form-p9z2y)**
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## Q. How to use react hook form with material-ui?
+
+**Installation:**
+
+```js
+npm install react-hook-form
+npm install material-ui
+```
+
+**Example:**
+
+```js
+import React from "react";
+import { makeStyles } from "@material-ui/core";
+import TextField from "@material-ui/core/TextField";
+import Button from "@material-ui/core/Button";
+import { useForm, Controller } from "react-hook-form";
+
+const useStyles = makeStyles((theme) => ({
+  root: {
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+    alignItems: "center",
+    padding: theme.spacing(2),
+
+    "& .MuiTextField-root": {
+      margin: theme.spacing(1),
+      width: "300px"
+    },
+    "& .MuiButtonBase-root": {
+      margin: theme.spacing(2)
+    }
+  }
+}));
+
+const Form = ({ handleClose }) => {
+  const classes = useStyles();
+  const { handleSubmit, control } = useForm();
+
+  const onSubmit = (data) => {
+    console.clear();
+    console.log(data);
+  };
+
+  return (
+    <form className={classes.root} onSubmit={handleSubmit(onSubmit)}>
+      <Controller
+        name="email"
+        control={control}
+        defaultValue=""
+        render={({ field: { onChange, value }, fieldState: { error } }) => (
+          <TextField
+            label="Email"
+            variant="filled"
+            value={value}
+            onChange={onChange}
+            error={!!error}
+            helperText={error ? error.message : null}
+            type="email"
+          />
+        )}
+        rules={{ required: "Email required" }}
+      />
+      <Controller
+        name="password"
+        control={control}
+        defaultValue=""
+        render={({ field: { onChange, value }, fieldState: { error } }) => (
+          <TextField
+            label="Password"
+            variant="filled"
+            value={value}
+            onChange={onChange}
+            error={!!error}
+            helperText={error ? error.message : null}
+            type="password"
+          />
+        )}
+        rules={{ required: "Password required" }}
+      />
+      <div>
+        <Button variant="contained" onClick={handleClose}>
+          Cancel
+        </Button>
+        <Button type="submit" variant="contained" color="primary">
+          Signup
+        </Button>
+      </div>
+    </form>
+  );
+};
+```
+
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-hook-form-dc8m7)**
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
