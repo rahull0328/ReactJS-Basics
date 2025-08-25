@@ -6744,3 +6744,283 @@ const Form = ({ handleClose }) => {
 <div align="right">
     <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
+
+## Q. Why You Should Choose React Hook Form Over Formik and Redux-Form?
+
+Below are the main reasons to recommend React Hook Form Over Formik and Redux-Form,
+
+**1. Isolate Component Re-Rendering:**
+
+React Hook Form isolates the component and avoids the other components from re-rending. This feature will improve the performance by avoiding unwanted rendering in other child components. However, libraries like Formik and Redux-Form re-render the other child components along with the form component.
+
+**2. Reduce Rendering:**
+
+Besides isolating the component, it also limits its own (form components) form re-rendering on particular events such as onChange, onBlur, etc.
+
+**3. Faster Mounting:**
+
+Mounting time is about 13% faster than Formik and 25% faster than Redux-Form. In other words, the form\'s DOM elements will be inserted into the DOM tree quicker, leading to fast rendering compared with other libraries.
+
+**4. Input Change Subscriptions:**
+
+React Hook Form allows you to subscribe to each input element without going through the re-rendering of each element inside the form component.
+
+**5. Typescript Support:**
+
+React Hook Form is built with TypeScript and can define a FormData type to support form values.
+
+**6. Less Code to Maintain:**
+
+The React Hook Form provides a hook called `useForm()`, consisting of methods and props handleSubmit, register, and errors. They would handle the submit events, the input via refs using register, and display any errors. However, in the other two libraries, you need to write your custom handlers for events and validations.
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## Q. What are controlled and uncontrolled components in React?
+
+In a controlled component, form data is handled by a React component. The alternative is uncontrolled components, where form data is handled by the DOM itself.
+
+**1. Controlled Components:**  
+
+In a controlled component, the form data is handled by the state within the component. The state within the component serves as “the single source of truth” for the input elements that are rendered by the component.
+
+**Example:**
+
+```js
+/**
+ * Controlled Components
+ */
+import React, { Component } from "react";
+
+export default class App extends Component {
+  state = {
+    message: ""
+  };
+  updateMessage = (newText) => {
+    console.log(newText);
+    this.setState(() => ({
+      message: newText
+    }));
+  };
+  render() {
+    return (
+      <div className="App">
+        <div className="container">
+          <input
+            type="text"
+            placeholder="Your message here.."
+            value={this.state.message}
+            onChange={(event) => this.updateMessage(event.target.value)}
+          />
+          <h3>Message: {this.state.message}</h3>
+        </div>
+      </div>
+    );
+  }
+}
+```
+
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-controlled-components-1ilt72?file=/src/App.js)**
+
+**2. Uncontrolled Components:**  
+
+Uncontrolled components act more like traditional HTML form elements. The data for each input element is stored in the DOM, not in the component. Instead of writing an event handler for all of your state updates, It uses `ref` to retrieve values from the DOM. `Refs` provide a way to access DOM nodes or React elements created in the render method.
+
+```js
+/**
+ * Uncontrolled Component
+ */
+import React, { Component } from "react";
+
+export default class App extends Component {
+  constructor(props) {
+    super(props);
+    this.handleChange = this.handleChange.bind(this);
+    this.input = React.createRef();
+  }
+  handleChange = (newText) => {
+    console.log(newText);
+  };
+  render() {
+    return (
+      <div className="App">
+        <div className="container">
+          <input
+            type="text"
+            placeholder="Your message here.."
+            ref={this.input}
+            onChange={(event) => this.handleChange(event.target.value)}
+          />
+        </div>
+      </div>
+    );
+  }
+}
+```
+
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-uncontrolled-component-4o7lw7?file=/src/App.js)**
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## Q. How do you set default value for uncontrolled components?
+
+React provides **defaultValue** attribute that pre-populate the input field with the default Value without overriding any value input by the user.
+
+**Example:**
+
+```js
+/**
+ * React defaultValue
+ */
+render() {
+  return (
+    <form onSubmit={this.handleSubmit}>
+      <label>
+        Name:
+        <input
+          defaultValue="Samir Chahal"
+          type="text"
+          ref={this.input} />
+      </label>
+      <input type="submit" value="Submit" />
+    </form>
+  );
+}
+```
+
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-form-qmx9s?file=/src/App.js)**
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## # 11. REACT HOOKS
+
+<br/>
+
+## Q. What are React Hooks?
+
+React Hooks are in-built functions that allow to use **state** and **lifecycle** methods inside functional components, they also work together with existing code, so they can easily be adopted into a codebase.
+
+**Rules of Hooks:**
+
+* Hooks should not be called inside loops, conditions, or nested functions.
+* Hooks should be used inside React function components
+
+**Built-in Hooks:**
+
+| Hooks               | Description                                                                     |
+|---------------------|---------------------------------------------------------------------------------|
+|useState()           |To manage states. Returns a stateful value and an updater function to update it. |
+|useEffect()          |To manage side-effects like API calls, subscriptions, timers, mutations, and more.|
+|useContext()         |To return the current value for a context.|
+|useReducer()         |A useState alternative to help with complex state management.|
+|useCallback()        |It returns a memorized version of a callback to help a child component not re-render unnecessarily.|
+|useMemo()            |It returns a memoized value that helps in performance optimizations.|
+|useRef()             |It returns a ref object with a `.current` property. The ref object is mutable. It is mainly used to access a child component imperatively.|
+|useImperativeHandle()|It customizes the instance value that is exposed to parent components when using ref.|
+|useLayoutEffect()    |It fires at the end of all DOM mutations. It\'s best to use useEffect as much as possible over this one as the useLayoutEffect fires synchronously.|
+|useDebugValue()      |Helps to display a label in React DevTools for custom hooks.
+
+**Example:**
+
+```js
+/**
+ * useState() Hooks
+ */
+import React, { useState } from "react";
+
+export default function App() {
+  const [isButtonClicked, setIsButtonClickedStatus] = useState(false);
+
+  return (
+    <button onClick={() => setIsButtonClickedStatus(!isButtonClicked)}>
+      {isButtonClicked ? "Clicked" : "Click Me, Please"}
+    </button>
+  );
+}
+```
+
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-usestate-mqb4jb?file=/src/App.js)**
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## Q. What are advantages of using React Hooks?
+
+* Hooks are easier to work with and to test (as separated functions from React components*) and make the code look cleaner, easier to read — a related logic can be tightly coupled in a custom hook.
+* Hooks allow to do by breaking the logic between components into small functions and using them inside the components.
+* Improved code reuse
+* Better code composition
+* Better defaults
+* Sharing non-visual logic with the use of custom hooks
+* Flexibility in moving up and down the components tree.
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## Q. How to create custom Hooks?
+
+React also allows us to create custom Hooks with unique features that extracts component logic into reusable functions.
+
+A custom Hooks has following features:
+
+* As a function, it takes input and returns output.
+* Its name starts with **use** like useQuery, useMedia…
+* Unlike functional components, custom hooks return a normal, non-jsx data.
+* Unlike normal functions, custom hooks can use other hooks such as useState, useRef… and other custom hooks.
+
+**Example:** Custom Hook - useFetch()
+
+```js
+/**
+ * Custom Hook
+ */
+import { useState, useEffect } from "react";
+
+const useFetch = (url) => {
+  const [data, setData] = useState(null);
+
+  useEffect(() => {
+    fetch(url)
+      .then((res) => res.json())
+      .then((data) => setData(data));
+  }, [url]);
+
+  return [data];
+};
+
+export default useFetch;
+```
+
+```js
+/**
+ * App Component
+ */
+import "./styles.css";
+import useFetch from "./useFetch";
+
+export default function App() {
+  // custom hook
+  const [data] = useFetch("https://jsonplaceholder.typicode.com/todos");
+  return (
+    <>
+      {data &&
+        data.map((item) => {
+          return <p key={item.id}>{item.title}</p>;
+        })}
+    </>
+  );
+}
+```
+
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-custom-hooks-2x8eu9?file=/src/App.js)**
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
