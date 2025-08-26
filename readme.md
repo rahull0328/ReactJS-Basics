@@ -7024,3 +7024,228 @@ export default function App() {
 <div align="right">
     <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
+
+## Q. How to fetch data with React Hooks?
+
+The **useState()** is a hook used to maintain local states in function components and **useEffect()** hook is used to execute functions after a component gets rendered (to "perform side effects").
+
+**Example:**
+
+```js
+/**
+ * useState() and useEffect() Hooks
+ */
+import React, { useState, useEffect } from "react";
+
+export default function App() {
+  const [users, setUsers] = useState([]);
+
+  useEffect(() => {
+    fetch("https://api.github.com/users")
+      .then((response) => response.json())
+      .then((data) => {
+        setUsers(data);
+      });
+  }, []);
+
+  return (
+    <div>
+      {users.map((user) => (
+        <div key={user.id}>
+          <span>
+            <img src={user.avatar_url} width={"30px"} alt={user.avatar_url} />
+          </span>
+          <span> {user.login.toUpperCase()}</span>
+        </div>
+      ))}
+    </div>
+  );
+}
+```
+
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-hooks-siuu6t?file=/src/App.js)**
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## Q. Do Hooks replace render props and higher-order components?
+
+**1. Using React Hooks:**
+
+Hooks were designed to replace `class` and provide another great alternative to compose behavior into your components. Higher Order Components are also useful for composing behavior. Hooks encapsulate the functionality to easily reusable functions
+
+```js
+const [active, setActive] = useState(defaultActive)
+```
+
+There are few build-in Hooks
+
+```js
+import {
+  useState,
+  useReducer,
+  useEffect,
+  useCallback,
+  useMemo,
+  useRef,
+  ...
+} from 'react'
+```
+
+**2. Using Higher Order Components:**
+
+A Higher Order Component (HOC) is a component that takes a component and returns a component. HOCs are composable using point-free, declarative function composition.
+
+**Example:** logger API
+
+```js
+import React, { useEffect } from 'react'
+
+const withLogging = Component => props => {
+  useEffect(() => {
+    fetch(`/logger?location=${ window.location}`)
+  }, [])
+  return <Component {...props } />
+}
+export default withLogging
+```
+
+To use it, you can mix it into an HOC that you\’ll wrap around every page:
+
+```js
+import React from 'react'
+import withAuth from './with-auth.js'
+import withLogging from './with-logging.js'
+import withLayout from './with-layout.js'
+
+const page = compose(
+  withRedux,
+  withAuth,
+  withLogging,
+  withLayout('default'),
+)
+export default page
+```
+
+To use this for a page
+
+```js
+import page from '../hocs/page.js'
+import MyPageComponent from './my-page-component.js'
+
+export default page(MyPageComponent)
+```
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## Q. How to compare oldValues and newValues on React Hooks useEffect?
+
+We can store old values in a **ref** since assigning values to them won\'t trigger a re-rendering of the component but the value will persist after each render cycle.
+
+**Example:**
+
+```js
+// To store old values
+const usePrevious = (value) => {
+  const ref = useRef();
+  useEffect(() => {
+    ref.current = value;
+  });
+  return ref.current;
+};
+
+export default function App() {
+  const [count, setCount] = useState(0);
+  const prevCount = usePrevious(count);
+
+  useEffect(() => {
+    console.log("prevCount: ", prevCount, "count: ", count);
+  }, [prevCount, count]);
+
+  return (
+    <div>
+      <button onClick={() => setCount((c) => c + 10)}>Increment</button>
+      <p>{count}</p>
+    </div>
+  );
+}
+```
+
+Here, We create the **usePrevious** hook with the value parameter which is state we want to get the previous value from,
+In the hook, we create a ref with the **useRef** hook to create a non-reactive property. Then we add the **useEffect** hook with a callback that sets the **ref.current** to value to set the previous value.
+
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-hooks-useeffect-ho6vh?file=/src/App.js)**
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## Q. How to re-render the view when the browser is resized?
+
+**1. Using React Hooks:**
+
+```js
+import React, { useLayoutEffect, useState } from 'react'
+
+function useWindowSize() {
+
+  const [size, setSize] = useState([0, 0])
+
+  useLayoutEffect(() => {
+    function updateSize() {
+      setSize([window.innerWidth, window.innerHeight])
+    }
+    window.addEventListener('resize', updateSize)
+    updateSize()
+    return () => window.removeEventListener('resize', updateSize)
+  }, [])
+
+  return size
+}
+
+function ShowWindowDimensions(props) {
+
+  const [width, height] = useWindowSize()
+  return <span>Window size: {width} x {height}</span>
+}
+```
+
+**2. Using React Class:**
+
+```js
+import React from 'react'
+
+class ShowWindowDimensions extends React.Component {
+  
+  state = { width: 0, height: 0 }
+  
+  updateDimensions = () => {
+    this.setState({ width: window.innerWidth, height: window.innerHeight })
+  }
+  /**
+   * Add event listener
+   */
+  componentDidMount() {
+    window.addEventListener('resize', this.updateDimensions)
+  }
+  /**
+   * Remove event listener
+   */
+  componentWillUnmount() {
+    window.removeEventListener('resize', this.updateDimensions)
+  }
+
+  render() {
+    return (
+      <span>Window size: {this.state.width} x {this.state.height}</span>
+    )
+  }
+}
+```
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
