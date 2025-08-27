@@ -7249,3 +7249,186 @@ class ShowWindowDimensions extends React.Component {
 <div align="right">
     <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
+
+## Q. How can I force a component to re-render with hooks in React?
+
+The **useState()** or **useReducer()** hooks can be used to force a React component to rerender.
+
+The example below is equivalent to **forceUpdate()** method in class-based components. This hook works in the following way:
+
+* The `useState()` hook returns an array with two elements, a value and an updater function.
+* Here, we are instantly calling the updater function, which in this case is called with `undefined`, so it is the same as calling `updater(undefined)`.
+
+**Example:**
+
+```js
+/**
+ * Rerender Component with useState()
+ */
+import React, { useState } from "react";
+
+const useForceUpdate = () => useState()[1];
+
+export default function App() {
+  const forceUpdate = useForceUpdate();
+  console.log("Rendered");
+
+  return <button onClick={forceUpdate}>Update Me</button>;
+}
+```
+
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-re-render-with-hooks-9c3ui?file=/src/App.js)**
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## Q. What is useState() in React?
+
+The `useState()` is a Hook that allows to have state variables in functional components.
+
+```js
+import React, { useState } from 'react'
+
+const App = () => {
+  const [count, setCount] = React.useState(0)
+
+  const handleIncrease = () => {
+    setCount(count + 1)
+  }
+
+  const handleDecrease = () => {
+    setCount(count - 1)
+  }
+
+  return (
+    <div>
+      Count: {count}
+      <hr />
+      <div>
+        <button type="button" onClick={handleIncrease}>
+          Increase
+        </button>
+        <button type="button" onClick={handleDecrease}>
+          Decrease
+        </button>
+      </div>
+    </div>
+  )
+}
+```
+
+The useState() function takes as argument a value for the initial state. In this case, the count starts out with 0. In addition, the hook returns an array of two values: **count** and **setCount**. It\'s up to you to name the two values, because they are `destructured from the returned array` where renaming is allowed.
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## Q. Why do we use array destructuring in useState?
+
+The `useState` hook allows us to make our function components stateful. When called, `useState()` returns an array of two items. The first being our state value and the second being a function for setting or updating that value. The `useState` hook takes a single argument, the initial value for the associated piece of state, which can be of any Javascript data type.
+
+```js
+import React, { useState } from 'react';
+
+const Component = () => {
+    const [value, setValue] = useState(initial value)
+    ...
+```
+
+**Example:** State with Various Data Types
+
+```js
+const [count, setCount] = useState(0)
+const [color, setColor] = useState('#526b2d')
+const [isHidden, setIsHidden] = useState(true)
+const [products, setProducts] = useState([])
+const [user, setUser] = useState({
+    username: '',
+    avatar: '',
+    email: '',
+})
+```
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## Q. What is useReducer() in React?
+
+It accepts a reducer function with the application initial state, returns the current application state, then dispatches a function.
+
+Although `useState()` is a Basic Hook and `useReducer()` is an Additional Hook, `useState()` is actually implemented with `useReducer()`. This means `useReducer()` is primitive and we can use `useReducer()` for everything can do with useState(). Reducer is so powerful that it can apply for various use cases.
+
+**Example:**
+
+```js
+import React, { useReducer } from 'react'
+
+const initialState = 0
+const reducer = (state, action) => {
+  switch (action) {
+    case 'increment': return state + 1
+    case 'decrement': return state - 1
+    case 'reset': return 0
+    default: throw new Error('Unexpected action')
+  }
+}
+
+const ReducerExample = () => {
+  const [count, dispatch] = useReducer(reducer, initialState)
+  return (
+    <div>
+      {count}
+      <button onClick={() => dispatch('increment')}>+1</button>
+      <button onClick={() => dispatch('decrement')}>-1</button>
+      <button onClick={() => dispatch('reset')}>reset</button>
+    </div>
+  )
+}
+
+export default ReducerExample
+```
+
+Here, we first define an initialState and a reducer. When a user clicks a button, it will dispatch an action which updates the count and the updated count will be displayed. We could define as many actions as possible in the reducer, but the limitation of this pattern is that actions are finite.
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## Q. How does React renderer work exactly when we call setState?
+
+The `state` allows React components to change their output over time in response to user actions, network responses, and anything else, without violating this rule. Components defined as classes have some additional features. Local state is a feature available only to class Components.
+
+The `setState()` is the API method provided with the library so that the user is able to define and manipulate state over time.
+`setState()` is the only legitimate way to update state after the initial state setup.
+
+**Example:**
+
+```js
+import React, { Component } from 'react'
+
+class Search extends Component {
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      searchString: ''
+    }
+  }
+}
+```
+
+we are passing an empty string as a value and, to update the state of searchString, we have to call setState().
+
+```js
+setState({ searchString: event.target.value })
+```
+
+Here, we are passing an object to setState(). The object contains the part of the state we want to update which, in this case, is the value of searchString. This is basically kicking off a process that React calls **reconciliation**. The reconciliation process is the way React updates the DOM, by making changes to the component based on the change in state.
+
+When the request to `setState()` is triggered, React creates a new tree containing the reactive elements in the component (along with the updated state). This tree is used to figure out how the Search component\'s UI should change in response to the state change by comparing it with the elements of the previous tree.
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
