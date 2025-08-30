@@ -7636,3 +7636,191 @@ function useFriendStatus(friendID) {
 <div align="right">
     <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
+
+## Q. What is the difference between useEffect() and useLayoutEffect() hooks?
+
+The main difference between the useEffect() hook and the useLayoutEffect() hook is that the useEffect() hook serves **asynchronously**, whereas the useLayoutEffect() hook works **synchronously**.
+
+After all DOM mutations have been completed by React, useLayoutEffect executes synchronously. If you need to measure the DOM (for example, to determine the scroll position or other styles for an element) and then modify the DOM or cause a synchronous re-render by changing the state, this can be helpful.
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## Q. How to Memoize Components in React?
+
+If your component renders the same result given the same props, you can wrap it in a call to `React.memo` for a performance boost in some cases by memoizing the result. This means that React will skip rendering the component, and reuse the last rendered result.
+
+`React.memo` only checks for prop changes. If your function component wrapped in `React.memo` has a `useState`, `useReducer` or `useContext` Hook in its implementation, it will still rerender when state or context change.
+
+**Example:** Let\'s take an example of search functionality. In the example below, the App component contains:
+
+* Search input for the fruit name
+* A button and a child component where the user search will be displayed
+* A count of the number of times a user has clicked the button
+
+```js
+export default function App() {
+   const fruits = ["apple", "orange", "banana"];
+   const [fruitName, setFruitName] = useState("");
+   const [searchedFruit, setSearchedFruit] = useState(
+     "Search your favorite fruit"
+   );
+   const [count, setCount] = useState(0);
+   const searchFruitName = () => {
+     if (fruits.includes(fruitName)) {
+       setSearchedFruit(fruitName);
+     } else {
+       setSearchedFruit("No results Found");
+     }
+     setCount(count+1);
+   };
+    const showAllFruits = () => {
+     return fruits.map((fruit, index) => {
+       return (
+         <span key={index} className="fruitname">
+           {fruit}
+         </span>
+       );
+     });
+   };
+   return (
+     <div className="App">
+       <h3>Count: {count}</h3>
+       <div className="fruits">{showAllFruits()}</div>
+       <div>
+         <input
+           type="text"
+           placeholder="Search.."
+           onChange={event => setFruitName(event.target.value)}
+           value={fruitName}
+         />
+         <button onClick={searchFruitName}>Search</button>
+       </div>
+       <SearchComponent searchedFruitName={searchedFruit} />
+     </div>
+   );
+ }
+```
+
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-memo-yp7hb?file=/src/App.js)**
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## Q. How to prevent unnecessary updates using React.memo()?
+
+The **React.memo()** is a higher-order component that will memoize your component, very similar to **PureComponent**. It will shallowly compare current and new props of the component, and if nothing changes, React will skip the rendering of that component.
+
+```js
+// Memo.js
+
+const Text = (props) => {
+  console.log(`Text Component`);
+  return <div>Text Component re-render: {props.count} times </div>;
+};
+
+const MemoText = React.memo(
+  (props) => {
+    console.log(`MemoText Component`);
+    return <div>MemoText Component re-render: {props.count} times </div>;
+  },
+  (preprops, nextprops) => true
+);
+
+```
+
+```js
+// App.js
+
+const App = () => {
+  console.log(`App Component`);
+  const [count, setCount] = useState(0);
+  return (
+    <>
+      <h2>This is function component re-render: {count} times </h2>
+      <Text count={count} />
+      <MemoText count={count} />
+      <br />
+      <button
+        onClick={() => {
+          setCount(count + 1);
+        }}
+      >
+        CLICK ME
+      </button>
+    </>
+  );
+};
+```
+
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/reactmomo-v85l8?file=/src/index.js:187-196)**
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## # 12. REACT CONTEXT
+
+<br/>
+
+## Q. What is Context API in React?
+
+The React Context API allows to easily access data at different levels of the component tree, without having to pass data down through `props`.
+
+<p align="center">
+  <img src="assets/context-api.jpg" alt="Context API" width="800px" />
+</p>
+
+**Example:**
+
+```js
+/**
+ * Counter Component
+ */
+const { useState, useContext } = React;
+
+const CountContext = React.createContext();
+
+function Counter() {
+  const { count, increase, decrease } = useContext(CountContext);
+  return (
+    <h2>
+      <button onClick={decrease}>Decrement</button>
+      <span className="count">{count}</span>
+      <button onClick={increase}>Increment</button>
+    </h2>
+  );
+}
+```
+
+```js
+/**
+ * App Component
+ */
+export default function App() {
+  const [count, setCount] = useState(0);
+
+  const increase = () => {
+    setCount(count + 1);
+  };
+  const decrease = () => {
+    setCount(count - 1);
+  };
+
+  return (
+    <div>
+      <CountContext.Provider value={{ count, increase, decrease }}>
+        <Counter />
+      </CountContext.Provider>
+    </div>
+  );
+}
+```
+
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-context-api-v8syu?file=/src/index.js)**
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
