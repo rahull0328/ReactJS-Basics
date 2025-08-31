@@ -7824,3 +7824,202 @@ export default function App() {
 <div align="right">
     <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
+
+## Q. How do you solve performance corner cases while using context?
+
+Context provides a way to pass data or state through the component tree without having to pass props down manually through each nested component. It is designed to share data that can be considered as global data for a tree of React components, such as the current authenticated user or theme (e.g. color, paddings, margins, font-sizes).
+
+Context API uses Context. Provider and Context. Consumer Components pass down the data but it is very cumbersome to write the long functional code to use this Context API. So useContext hook helps to make the code more readable, less verbose and removes the need to introduce Consumer Component. The useContext hook is the new addition in React 16.8.
+
+**Syntax:**
+
+```js
+const authContext = useContext(initialValue);
+```
+
+The useContext accepts the value provided by React.createContext and then re-render the component whenever its value changes but you can still optimize its performance by using memorization.
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## Q. What is the purpose of default value in context?
+
+The **defaultValue** argument is **only** used when a component does not have a matching Provider above it in the tree. This can be helpful for testing components in isolation without wrapping them. Passing **undefined** as a Provider value does not cause consuming components to use **defaultValue**.
+
+```js
+/**
+ * Default value in Context API
+ */
+import { createContext, useContext } from "react";
+
+const Context = createContext("Default Value");
+
+/**
+ * Child1 Component
+ */
+function Child1() {
+  const context = useContext(Context);
+  return <h2>Child1: {context}</h2>;
+}
+
+/**
+ * Child2 Component
+ */
+function Child2() {
+  const context = useContext(Context);
+  return <h2>Child2: {context}</h2>;
+}
+
+/**
+ * App Component
+ */
+export default function App() {
+  return (
+    <>
+      <Context.Provider value={"Initial Value"}>
+        <Child1 /> {/* Child inside Provider will get "Initial Value" */}
+      </Context.Provider>
+      <Child2 /> {/* Child outside Provider will get "Default Value" */}
+    </>
+  );
+}
+```
+
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-default-value-in-context-1vh1c)**
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## Q. How to use contextType react?
+
+The **ContextType** property on a **class component** can be assigned a Context object created by `React.createContext()` method. This property lets you consume the nearest current value of the context using `this.context`. We can access `this.context` in any lifecycle method including the render functions.
+
+**Example:**
+
+```js
+/**
+ * ContextType()
+ */
+import React, { Component } from "react";
+import ReactDOM from "react-dom";
+
+const MyContext = React.createContext({
+  name: "Context Type"
+});
+
+const { Provider, Consumer } = MyContext;
+
+/**
+ * StoreProvider Component
+ */
+class StoreProvider extends Component {
+  state = {
+    count: 0
+  };
+
+  incrementCount = () => {
+    console.log("Increment");
+    const { count } = this.state;
+    this.setState({ count: count + 1 });
+  };
+
+  render() {
+    return (
+      <Provider
+        value={{
+          state: this.state,
+          incrementCount: this.incrementCount
+        }}
+      >
+        {this.props.children}
+      </Provider>
+    );
+  }
+}
+
+/**
+ * VoteCount Component
+ */
+class VoteCount extends Component {
+  static contextType = MyContext;
+
+  render() {
+    const { state, incrementCount } = this.context;
+
+    return (
+      <div>
+        <button onClick={incrementCount}>Click Me</button> {state.count}
+      </div>
+    );
+  }
+}
+
+const rootElement = document.getElementById("root");
+ReactDOM.render(
+  <StoreProvider>
+    <VoteCount />
+  </StoreProvider>,
+  rootElement
+);
+```
+
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-contexttype-q4l4pg?file=/src/index.js)**
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## Q. How to update React Context from inside a child component?
+
+The Context API allows data storage and makes it accessible to any child component who want to use it. This is valid whatever level of component graph the children is in.
+
+**Example:**
+
+```js
+/**
+ * React Context API
+ */
+import React, { useState, useContext } from "react";
+const MyContext = React.createContext();
+
+/**
+ * Child Component
+ */
+const MyComponent = () => {
+  const { count, increment } = useContext(MyContext);
+
+  return (
+    <div>
+      <button onClick={increment}>Click Me</button> {count}
+    </div>
+  );
+};
+
+/**
+ * App Component
+ */
+export default function App() {
+  const [count, updateCount] = useState(0);
+  function increment() {
+    updateCount(count + 1);
+  }
+
+  return (
+    <MyContext.Provider value={{ count, increment }}>
+      <div>
+        <MyComponent />
+      </div>
+    </MyContext.Provider>
+  );
+}
+```
+
+Here, We are storing data in component state in which we want to use context and we created a function that modify this state. We pass the state and function as context values. It then become possible from the child to get the function and to use it to update your context.
+
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-context-api-kdd2v0?file=/src/App.js)**
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
