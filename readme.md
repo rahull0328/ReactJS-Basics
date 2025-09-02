@@ -8023,3 +8023,234 @@ Here, We are storing data in component state in which we want to use context and
 <div align="right">
     <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
+
+## Q. What is prop drilling and how can you avoid it?
+
+React passes data to child components via props from top to bottom. While there are few props or child components, it is easy to manage and pass down data. But when the application grows, and want to pass data from the top level component to a 3rd or 4th level level component but we end up passing these data to components on each level of the tree. This is called **Prop-drilling**.
+
+**Using Context API:**  
+
+The Context API solves some of these prop drilling problems. It let pass data to all of the components in the tree without writing them manually in each of them. Shared data can be anything: state, functions, objects, we name it, and it is accessible to all nested levels that are in the scope of the context.
+
+**Example:**
+
+```js
+/**
+ * Prop Drilling
+ */
+import React, { useContext, createContext } from "react";
+
+// It returns an object with 2 values:
+// { Provider, Consumer }
+const NumberContext = createContext();
+
+function Display() {
+  const value = useContext(NumberContext);
+  return <h3>Contex Value: {value}</h3>;
+}
+
+export default function App() {
+  // Use the Provider to make a value available to all
+  // children and grandchildren
+  return (
+    <NumberContext.Provider value={100}>
+      <div>
+        <Display />
+      </div>
+    </NumberContext.Provider>
+  );
+}
+```
+
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-prop-drilling-knowbp?file=/src/App.js)**
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## # 13. REACT ROUTER
+
+<br/>
+
+## Q. What is React Router?
+
+React router enables the navigation among views of various components in a React Application, allows changing the browser URL, and keeps the UI in sync with the URL. It has a simple API with powerful features like lazy loading, dynamic route matching, and location transition handling.
+
+```js
+/**
+ * React Router v6
+ */
+import { BrowserRouter, Route, Routes, NavLink } from "react-router-dom";
+
+/**
+ * Home Component
+ */
+const Home = () => {
+  return <h1>Home Page</h1>;
+};
+
+/**
+ * Contacts Component
+ */
+const Contacts = () => {
+  return <h1>Contact Page</h1>;
+};
+
+/**
+ * App Component
+ */
+export default function App() {
+  return (
+    <div className="App">
+      <BrowserRouter>
+        <div className="navbar">
+          <NavLink to={"/"}>Home</NavLink>
+          <NavLink to={"/contact"}>Contact Us</NavLink>
+        </div>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/contact" element={<Contacts />} />
+        </Routes>
+      </BrowserRouter>
+    </div>
+  );
+}
+```
+
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-router-v6-xuycsq?file=/src/App.js)**
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## Q. What are the components of react router?
+
+The main components of React router are
+
+**1. BrowserRouter**:
+
+BrowserRouter is a router implementation that uses the HTML5 history API (pushState, replaceState and the popstate event) to keep your UI in sync with the URL. It is the parent component that is used to store all of the other components.
+
+**2. Routes**:
+
+It\'s a new component introduced in the v6 and a upgrade of the component. The main advantages of Routes over Switch that routes are chosen based on the best match instead of being traversed in order.
+
+**3. Route**:
+
+Route is the conditionally shown component that renders some UI when its path matches the current URL.
+
+**4. Link**:
+
+Link component is used to create links to different routes and implement navigation around the application. It works like HTML anchor tag.
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## Q. What is the difference between NavLink and Link?
+
+The `<Link>` component is used to navigate the different routes on the site. But `<NavLink>` is used to add the style attributes to the active routes.
+
+**Link:**
+
+```js
+<Link to="/">Home</Link>
+```
+
+**NavLink:**
+
+```js
+<NavLink to="/" activeClassName="active">Home</NavLink>
+```
+
+**Example:**
+
+index.css
+
+```css
+.active {
+  color: blue;
+}
+```
+
+Routes.js
+
+```js
+import ReactDOM from 'react-dom'
+import './index.css'
+import { Route, NavLink, BrowserRouter as Router, Switch } from 'react-router-dom'
+import App from './App'
+import Users from './users'
+import Contact from './contact'
+import Notfound from './notfound'
+
+const Routes = (
+  <Router>
+    <div>
+      <ul>
+        <li>
+          <NavLink exact activeClassName="active" to="/">
+            Home
+          </NavLink>
+        </li>
+        <li>
+          <NavLink activeClassName="active" to="/users">
+            Users
+          </NavLink>
+        </li>
+        <li>
+          <NavLink activeClassName="active" to="/contact">
+            Contact
+          </NavLink>
+        </li>
+      </ul>
+      <hr />
+      <Switch>
+        <Route exact path="/" component={App} />
+        <Route path="/users" component={Users} />
+        <Route path="/contact" component={Contact} />
+        <Route component={Notfound} />
+      </Switch>
+    </div>
+  </Router>
+)
+
+ReactDOM.render(Routes, document.getElementById('root'))
+```
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## Q. What is withRouter for in react-router-dom?
+
+`withRouter()` is a higher-order component that allows to get access to the `history` object\'s properties and the closest `<Route>`\'s match. `withRouter` will pass updated `match`, `location`, and `history` props to the wrapped component whenever it renders.
+
+**Example:**
+
+```js
+import React from "react"
+import PropTypes from "prop-types"
+import { withRouter } from "react-router"
+
+// A simple component that shows the pathname of the current location
+class ShowTheLocation extends React.Component {
+  static propTypes = {
+    match: PropTypes.object.isRequired,
+    location: PropTypes.object.isRequired,
+    history: PropTypes.object.isRequired
+  }
+
+  render() {
+    const { match, location, history } = this.props
+
+    return <div>You are now at {location.pathname}</div>
+  }
+}
+
+const ShowTheLocationWithRouter = withRouter(ShowTheLocation)
+```
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
