@@ -8254,3 +8254,308 @@ const ShowTheLocationWithRouter = withRouter(ShowTheLocation)
 <div align="right">
     <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
+
+## Q. How React Router is different from history library?
+
+React Router is a wrapper around the history library which handles interaction with the browser\'s `window.history` with its browser and hash histories. React Router provides two API\'s
+
+* BrowserRouter
+* HashRouter
+
+```js
+// <BrowserRouter>
+http://example.com/about
+
+// <HashRouter>
+http://example.com/#/about
+```
+
+The `<BrowserRouter>` is the more popular of the two because it uses the HTML5 History API to keep your UI in sync with the URL, whereas the `<HashRouter>` uses the hash portion of the URL (`window.location.hash`). If you need to support legacy browsers that don\'t support the History API, you should use `<HashRouter>`. Otherwise `<BrowserRouter>` is the better choice for most use cases.
+
+**Example:**
+
+```js
+// src/index.js
+
+import React from "react";
+import ReactDOM from "react-dom";
+import App from "./App";
+import { BrowserRouter } from "react-router-dom";
+
+ReactDOM.render(
+  <BrowserRouter>
+    <App />
+  </BrowserRouter>,
+  document.getElementById("root")
+);
+```
+
+The above code creates a history instance for our entire `<App>` component. Each `<Router>` component creates a history object that keeps track of the current location (`history.location`) and also the previous locations in a stack. The history object has methods such as `history.push`, `history.replace`, `history.goBack`, `history.goForward` etc.
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## Q. How to use useNavigate() in React Router v6?
+
+The **useNavigate()** hook is introduced in React Router v6 to replace the `useHistory()` hook. In the earlier version, the `useHistory()` hook accesses the React Router history object and navigates to the other routers using the push() or replace() methods.
+
+The `useNavigate()` hook returns a function that lets you navigate programmatically, for example after a form is submitted. If using `replace: true`, the navigation will replace the current entry in the history stack instead of adding a new one.
+
+```js
+/**
+ * useNavigate()
+ */
+import React from "react";
+import { NavLink, Link, Routes, Route,  useParams, useNavigate } from "react-router-dom";
+import "./styles.css";
+
+function Home() {
+  return <h1>Home Page</h1>;
+}
+
+function Users() {
+  return (
+    <ul>
+      <li><Link to={"/users/1"}>User 1</Link></li>
+    </ul>
+  );
+}
+
+function UserDetail() {
+  let { id } = useParams();
+  let navigate = useNavigate();
+
+  function handleClick() {
+    navigate("/users");
+  }
+  return (
+    <>
+      <h1>User Details Page: {id}</h1>
+      <button onClick={handleClick}>Back</button>
+    </>
+  );
+}
+
+function AppRoutes() {
+  return (
+    <Routes>
+      <Route path="/" element={<Home />} />
+      <Route path="users" element={<Users />} />
+      <Route path="users/:id" element={<UserDetail />} />
+    </Routes>
+  );
+}
+
+export default function App() {
+  return (
+    <div className="App">
+      <nav>
+        <ul>
+          <li><NavLink to="/" end>Home Page</NavLink></li>
+          <li><NavLink to="/users">Users Page</NavLink></li>
+        </ul>
+      </nav>
+      <AppRoutes />
+    </div>
+  );
+}
+```
+
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/cool-paper-vxgn15?file=/src/App.js)**
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## Q. How to get parameter value from query string?
+
+In order to get query parameters from the URL, we can use **URLSearchParams**. In simple words, URLSearchParams is a defined interface, implemented by modern browsers, that allows us to work with the query string. It does not require React Router or even React itself.
+
+**Example:**
+
+```js
+// http://localhost:3000/?id=100&name=react
+
+const queryParams = new URLSearchParams(window.location.search);
+
+const id = queryParams.get('id');
+const name = queryParams.get('name');
+
+console.log(id, name); // 100 react
+```
+
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-query-parameters-yqx7e?file=/src/ParamsExample.js)**
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## Q. How to access history object in React Router v6?
+
+The **useNavigate()** hook has been added to React Router v6 to replace the `useHistory()` hook.
+
+**Example:**
+
+```js
+/**
+ * React Router
+ */
+import { BrowserRouter, Routes, NavLink, Route, useParams, useNavigate } from "react-router-dom";
+
+export default function App() {
+  return (
+    <BrowserRouter>
+      <div>
+        <ul>
+          <li><NavLink to="/">Home</NavLink></li>
+          <li><NavLink to="/user/Bhavya/bhavyasingh@email.com">User Profile</NavLink></li>
+        </ul>
+        <Routes>
+          <Route path="/user/:name/:email" element={<User />} />
+          <Route path="/" element={<Home />} />
+        </Routes>
+        <HomeButton />
+      </div>
+    </BrowserRouter>
+  );
+}
+
+function Home() {
+  return <h2>Welcome Home</h2>;
+}
+
+function User() {
+  let { name, email } = useParams();
+  return (
+    <h2>Name: {name} <br /> Email: {email}</h2>
+  );
+}
+
+function HomeButton() {
+  const history = useNavigate();
+
+  function handleClick() {
+    history("/");
+  }
+
+  return (
+    <>
+      <button type="button" onClick={handleClick}>Go Home</button>
+    </>
+  );
+}
+```
+
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-usenavigate-j5fkzn?file=/src/App.js)**
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## Q. How to perform automatic redirect in React.js?
+
+In contrast to the Navigate component and its declarative redirect, we can perform a programmatic redirect by using React Router\'s **useNavigate()** Hook:
+
+**Example:**
+
+```js
+/**
+ * Automatic Redirect in router-v6
+ */
+import { NavLink, BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+
+export default function App() {
+  return (
+    <BrowserRouter>
+      <nav style={{ display: "flex", flexDirection: "row", gap: "1em" }}>
+        <NavLink to="/" children="Home" />
+        <NavLink to="/about" children="About" />
+        <NavLink to="/help" children="Help" />
+      </nav>
+      <Routes>
+        <Route index element={<Navigate replace to="home" />} />
+        <Route path="home" element={<h1>Home Page</h1>} />
+        <Route path="about" element={<h1>About Page</h1>} />
+        <Route path="help" element={<h1>Help Page</h1>} />
+      </Routes>
+    </BrowserRouter>
+  );
+}
+```
+
+*Note: To keep the history clean, you should set `replace` prop. This will avoid extra redirects after the user click back.*
+
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-automatic-redirect-odw0yn?file=/src/App.js)**
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## Q. How to pass additional data while redirecting to a route in React?
+
+**Using Link:**
+
+**Example:**
+
+```js
+/**
+ * Pass additional data while redirecting
+ */
+import { BrowserRouter, Link, Route, Routes, useLocation } from "react-router-dom";
+
+/**
+ * View User Component
+ */
+function ViewUser() {
+  const location = useLocation();
+  return (
+    <>
+      <h2>User Details</h2>
+      <div>Name:{location.state.name}</div>
+      <div>Email:{location.state.email}</div>
+    </>
+  );
+}
+
+/**
+ * User Component
+ */
+function User() {
+  return (
+    <div>
+      <h2>Pass additional data while redirecting</h2>
+      <Link
+        to="/view-user"
+        state={{
+          name: "Kalini Khalsa",
+          email: "kalini.khalsa@email.com"
+        }}
+      >
+        <button>View User</button>
+      </Link>
+    </div>
+  );
+}
+
+/**
+ * App Component
+ */
+export default function App() {
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route exact path="/" element={<User />} />
+        <Route exact path="/user" element={<User />} />
+        <Route exact path="/view-user" element={<ViewUser />} />
+      </Routes>
+    </BrowserRouter>
+  );
+}
+```
+
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-pass-data-using-router-br5kdb?file=/src/App.js)**
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
