@@ -8559,3 +8559,222 @@ export default function App() {
 <div align="right">
     <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
+
+## Q. How to pass props in React router v6?
+
+React Router uses a declarative, component-based approach to routing. `Route` allows you to map URL paths to different React components.
+
+**Example:**
+
+```js
+/**
+ * Pass props in React Router-v6
+ */
+import React from "react";
+import { BrowserRouter, Routes, Route, NavLink } from "react-router-dom";
+
+export function Greeting(props) {
+  const { text } = props;
+  return (
+    <>
+      <h2>Greetings Page</h2>
+      <p>{text}</p>
+    </>
+  );
+}
+
+const RouterExample = () => <h2>Home Page</h2>;
+
+const App = () => (
+  <BrowserRouter>
+    <ul>
+      <li><NavLink to="/">Home</NavLink></li>
+      <li><NavLink to="/greeting/pradeep">Greeting</NavLink></li>
+    </ul>
+    <hr />
+    <Routes>
+      <Route exact path="/" element={<RouterExample />} />
+      <Route path="/greeting/:name" element={<Greeting text="Hello World" />} />
+    </Routes>
+  </BrowserRouter>
+);
+
+export default App;
+```
+
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-pass-props-in-router-g9zjg4?file=/src/App.js)**
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## Q. How to get query parameters in react routing?
+
+**Using `useParams()`**
+
+**Example:**
+
+```js
+/**
+ * useParams()
+ */
+import React from "react";
+import { BrowserRouter, Route, Routes, Link, useParams } from "react-router-dom";
+
+export default function App() {
+  return (
+    <BrowserRouter>
+      <div>
+        <ul>
+          <li><Link to="/home">Home</Link></li>
+          <li><Link to="/contact-us">Contact Us</Link></li>
+          <li><Link to="/help">Help</Link></li>
+        </ul>
+        <Routes>
+          <Route path="/:id" element={<Child />} />
+        </Routes>
+      </div>
+    </BrowserRouter>
+  );
+}
+
+function Child() {
+  // `useParams` hook used here to access parameters
+  let { id } = useParams();
+
+  return <h2>Parameter: {id}</h2>;
+}
+```
+
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-get-query-parameters-ngsm3l?file=/src/App.js)**
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## Q. What is the difference between HashRouter and BrowserRouter in React?
+
+**1. BrowserRouter:**
+
+* The widely popular router and a router for modern browsers which user HTML5 pushState API. (i.e. `pushState`, `replaceState` and `popState` API).
+* It routes as normal URL in browser, you can\'t differentiate whether it is server rendered page or client rendered page through the URL.
+* It assumes, your server handles all the request URL (eg., `/`, `/about`) and points to root `index.html`. From there, BrowserRouter take care of routing the relevant page.
+* It accepts `forceRefresh` props to support legacy browsers which doesn\'t support HTML5 pushState API
+
+**Syntax:**
+
+```js
+/**
+ * https://example.com/home
+ * https://example.com/about
+ */
+
+<BrowserRouter
+  basename={optionalString}
+  forceRefresh={optionalBool}
+  getUserConfirmation={optionalFunc}
+  keyLength={optionalNumber}
+>
+  <App />
+</BrowserRouter>
+```
+
+**Example:**
+
+```js
+/**
+ * BrowserRouter()
+ */
+import { Link, BrowserRouter, Routes, Route } from "react-router-dom";
+
+const HomePage = () => {
+  return <h2>Home Page</h2>;
+};
+
+const AboutPage = () => {
+  return <h2>About Page</h2>;
+};
+
+export default function App() {
+  return (
+    <section className="App">
+      <BrowserRouter>
+        <ul>
+          <li><Link to="/home">Home</Link></li>
+          <li><Link to="/about">About</Link></li>
+        </ul>
+        <Routes>
+          <Route exact path="/home" element={<HomePage />} />
+          <Route exact path="/about" element={<AboutPage />} />
+        </Routes>
+      </BrowserRouter>
+    </section>
+  );
+}
+```
+
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-browserrouter-53zjvx?file=/src/App.js)**
+
+**2. HashRouter:**
+
+* A router which uses client side hash routing.
+* Whenever, there is a new route get rendered, it updated the browser URL with hash routes. (eg., `/#/about`)
+* Hash portion of the URL won\'t be handled by server, server will always send the `index.html` for every request and ignore hash value. Hash value will be handled by react router.
+* It is used to support legacy browsers which usually doesn\'t support HTML `pushState` API
+
+**Syntax:**
+
+```js
+/**
+ * https://example.com/#/home
+ * https://example.com/#/about
+ */
+
+<HashRouter
+  basename={optionalString}
+  getUserConfirmation={optionalFunc}
+  hashType={optionalString}
+>
+  <App />
+</HashRouter>
+```
+
+**Example:**
+
+```js
+/**
+ * HashRouter()
+ */
+import { Link, HashRouter, Routes, Route } from "react-router-dom";
+
+const HomePage = () => {
+  return <h2>Home Page</h2>;
+};
+
+const AboutPage = () => {
+  return <h2>About Page</h2>;
+};
+
+export default function App() {
+  return (
+    <section className="App">
+      <HashRouter>
+        <ul>
+          <li><Link to="/home">Home</Link></li>
+          <li><Link to="/about">About</Link></li>
+        </ul>
+        <Routes>
+          <Route exact path="/home" element={<HomePage />} />
+          <Route exact path="/about" element={<AboutPage />} />
+        </Routes>
+      </HashRouter>
+    </section>
+  );
+}
+```
+
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-hashrouter-pcn4dj?file=/src/App.js)**
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
