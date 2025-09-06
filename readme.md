@@ -8874,3 +8874,120 @@ function MyComponent() {
 <div align="right">
     <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
+
+## Q. What is dynamic import in react?
+
+`React.lazy` takes a function that must call a dynamic import(). This must return a Promise which resolves to a module with a default export containing a React component.
+
+The lazy component should then be rendered inside a Suspense component, which allows us to show some fallback content (such as a loading indicator) while we\'re waiting for the lazy component to load.
+
+**Example:**
+
+```js
+import React, { Suspense } from 'react';
+
+const UsersComponent = React.lazy(() => import('./UsersComponent'));
+
+function MyComponent() {
+  return (
+    <div>
+      <Suspense fallback={<div>Loading...</div>}>
+        <UsersComponent />
+      </Suspense>
+    </div>
+  );
+}
+```
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## Q. What are loadable components?
+
+If you want to do code-splitting in a server rendered app, it is recommend to use Loadable Components because `React.lazy` and `Suspense` is not available for server-side rendering. Loadable lets you render a dynamic import as a regular component.
+
+**Installation:**
+
+```js
+npm install @loadable/component
+```
+
+**Example:**
+
+```js
+import loadable from '@loadable/component'
+
+const UsersComponent = loadable(() => import('./UsersComponent'))
+
+function MyComponent() {
+  return (
+    <div>
+      <UsersComponent />
+    </div>
+  )
+}
+```
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## # 14. REACT ERROR BOUNDARIES
+
+<br/>
+
+## Q. What are error boundaries in React?
+
+Error boundaries are React components that catch JavaScript errors anywhere in their child component tree, log those errors, and display a fallback UI instead of the component tree that crashed. Error boundaries catch errors during rendering, in lifecycle methods, and in constructors of the whole tree below them.
+
+Use **static getDerivedStateFromError()** to render a fallback UI after an error has been thrown. Use **componentDidCatch()** to log error information.
+
+**Syntax:**
+
+```js
+<ErrorBoundary>
+   <User/>
+</ErrorBoundary>
+```
+
+**Example:**
+
+```js
+/**
+ * ErrorBoundary Component
+ */
+class ErrorBoundary extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { hasError: false };
+  }
+
+  static getDerivedStateFromError(error) {
+    // Update state so the next render will show the fallback UI.
+    return { hasError: true };
+  }
+
+  componentDidCatch(error, errorInfo) {
+    // You can also log the error to an error reporting service
+    logErrorToMyService(error, errorInfo);
+  }
+
+  render() {
+    if (this.state.hasError) {
+      // You can render any custom fallback UI
+      return <h1>Something went wrong.</h1>;
+    }
+
+    return this.props.children; 
+  }
+}
+```
+
+Here, We have a state object having two variables `isErrorOccured` and `errorMessage` which will be updated to true if any error occurs.
+
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-error-boundary-pfj9vt?file=/src/App.js)**
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
