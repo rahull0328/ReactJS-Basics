@@ -8991,3 +8991,162 @@ Here, We have a state object having two variables `isErrorOccured` and `errorMes
 <div align="right">
     <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
+
+## Q. What is the difference between try catch block and error boundaries?
+
+**1. Try…catch** is used in specific code blocks where you program the functionality of the application.
+
+```js
+try {
+  // Some Calculation
+} catch (error) {
+  console.log(`Error: ${error}`);
+}
+```
+
+**2. Error Boundaries** deal with declarative code. Imperative programming is how you do something and declarative programming is what you do.
+
+With error boundary, if there is an error, you can trigger a fallback UI; whereas, with `try…catch`, you can catch errors in your code.
+
+```js
+import ErrorBoundary from "error-boundary";
+
+function Users() {
+  return (
+    <div>
+      <ErrorBoundary>
+        <Users />
+      </ErrorBoundary>
+    </div>
+  )
+}
+```
+
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-vendor-prefix-k29wi?file=/src/App.js)**
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## Q. What is the benefit of component stack trace from error boundary?
+
+Component Stack Trace prints all errors that occurred during rendering to the console in development, even if the application accidentally swallows them. It also display the filenames and line numbers in the component stack trace.
+
+**Example:**
+
+<p align="center">
+  <img src="assets/stack-trace.png" alt="Component Stack Trace" />
+</p>
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## Q. What are the methods invoked during error handling?
+
+To create an error boundary, we simply have to create a class component and define a state variable for determining whether the error boundary has caught an error. Our class component should also have at least three methods:
+
+* A static method called **getDerivedStateFromError()**, which is used to update the error boundary\'s state
+* A **componentDidCatch()** lifecycle method for performing operations when our error boundaries catch an error, such as logging to an error logging service
+* A **render()** method for rendering our error boundary\'s child or the fallback UI in case of an error
+
+**Example:**
+
+```js
+/**
+ * Error Boundary in React
+ */
+class ErrorBoundary extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { hasError: false };
+  }
+
+  static getDerivedStateFromError(error) {
+    // Update state so the next render will show the fallback UI.
+    return { hasError: true };
+  }
+
+  componentDidCatch(error, errorInfo) {
+    // You can also log the error to an error reporting service
+    logErrorToMyService(error, errorInfo);
+  }
+
+  render() {
+    if (this.state.hasError) {
+      // You can render any custom fallback UI
+      return <h1>Something went wrong.</h1>;
+    }
+
+    return this.props.children; 
+  }
+}
+```
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## # 15. REACT REFS
+
+<br/>
+
+## Q. What do you understand by refs in React?
+
+The **Refs** provide a way to access DOM nodes or React elements created in the render method. React `Refs` are a useful feature that act as a means to reference a DOM element or a class component from within a parent component.
+
+Refs also provide some flexibility for referencing elements within a child component from a parent component, in the form of **ref forwarding**.
+
+**Example:**
+
+```javascript
+/**
+ * Refs
+ */
+class App extends React.Component {
+    constructor(props) {
+      super(props)
+      // create a ref to store the textInput DOM element
+      this.textInput = React.createRef()
+      this.state = {
+        value: ''
+      }
+    }
+  
+  // Set the state for the ref
+  handleSubmit = e => {
+    e.preventDefault()
+    this.setState({ value: this.textInput.current.value })
+  }
+
+  render() {
+    return (
+      <div>
+        <h1>React Ref - createRef</h1>
+         {/** This is what will update **/}
+        <h3>Value: {this.state.value}</h3>
+        <form onSubmit={this.handleSubmit}>
+          {/** Call the ref on <input> so we can use it to update the <h3> value **/}
+          <input type="text" ref={this.textInput} />
+          <button>Submit</button>
+        </form>
+      </div>
+    )
+  }
+}
+```
+
+**When to Use Refs:**  
+
+* Managing focus, text selection, or media playback.
+* Triggering imperative animations.
+* Integrating with third-party DOM libraries.
+
+**When not to use refs:**  
+
+* Should not be used with functional components because they dont have instances.
+* Not to be used on things that can be done declaritvely.
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
