@@ -9150,3 +9150,151 @@ class App extends React.Component {
 <div align="right">
     <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
+
+## Q. How can I use multiple refs for an array of elements with hooks?
+
+**Example:**
+
+```js
+/**
+ * Multiple Refs
+ */
+import React, { useRef } from "react";
+
+export default function App() {
+  const arr = [10, 20, 30];
+  // multiple refs
+  const refs = useRef([]); 
+
+  return (
+    <div>
+      {arr.map((item, index) => {
+        return (
+          <div
+            key={index}
+            ref={(element) => {
+              refs.current[index] = element;
+            }}
+          >
+            {item}
+          </div>
+        );
+      })}
+    </div>
+  );
+}
+```
+
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-multiple-refs-z2wqm?file=/src/App.js)**
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## Q. What is the difference between useRef() and createRef()?
+
+**1. useRef():**
+
+The useRef is a hook that uses the same ref throughout. It saves its value between re-renders in a functional component and doesn\'t create a new instance of the ref for every re-render. It persists the existing ref between re-renders.
+
+**Example:**
+
+```js
+/**
+ * useRef()
+ */
+export default function App() {
+  const [count, setCount] = useState(0);
+  const ref = useRef();
+
+  useEffect(() => {
+    ref.current = "SomeInitialValue";
+  }, []);
+
+  useEffect(() => {
+    console.log(count, ref.current);
+  }, [count]);
+
+  return (
+    <div className="App">
+      <button onClick={() => setCount((c) => c + 1)}>Increment</button>
+      <p>{count}</p>
+    </div>
+  );
+}
+```
+
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-useref-44wfd?file=/src/App.js)**
+
+**2. createRef():**
+
+The createRef is a function that creates a new ref every time. Unlike the useRef, it does not save its value between re-renders, instead creates a new instance of the ref for every re-render. Thus implying that it does not persist the existing ref between re-renders.
+
+**Example:**
+
+```js
+/**
+ * createRef()
+ */
+export default function App() {
+  const [count, setCount] = useState(0);
+  const ref = createRef();
+
+  useEffect(() => {
+    ref.current = "SomeInitialValue";
+  }, []);
+
+  useEffect(() => {
+    console.log(count, ref.current);
+  }, [count]);
+
+  return (
+    <div className="App">
+      <button onClick={() => setCount((c) => c + 1)}>Increment</button>
+      <p>{count}</p>
+    </div>
+  );
+}
+```
+
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-createref-pgu2x?file=/src/App.js)**
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## Q. Why are inline ref callback or function not recommended?
+
+If **ref callback** is defined as an inline function, it will get called twice during updates, first with `null` and then again with the DOM element. This is because a new instance of the function is created with each render, so React needs to clear the old ref and set up the new one.
+
+**Example:**
+
+```js
+/**
+ * Inline Ref Callback()
+ */
+import React from "react";
+
+export default class App extends React.Component {
+  handleSubmit = (e) => {
+    e.preventDefault();
+    console.log("Input Value is: " + this.input.value);
+  };
+  render() {
+    return (
+      <form onSubmit={(e) => this.handleSubmit(e)}>
+        <input type="text" ref={(input) => (this.input = input)} />
+        <button type="submit">Submit</button>
+      </form>
+    );
+  }
+}
+```
+
+Here, When the `<input>` element is rendered, React calls the function defined in the ref attribute, passing that function the `<input>` element as an argument.
+
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-ref-callback-6ry5o?file=/src/App.js)**
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
