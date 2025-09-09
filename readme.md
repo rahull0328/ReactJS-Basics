@@ -9298,3 +9298,121 @@ Here, When the `<input>` element is rendered, React calls the function defined i
 <div align="right">
     <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
+
+## Q. Which is the preferred option callback refs or findDOMNode()?
+
+It is preferred to use **callback refs** over `findDOMNode()` API. Because `findDOMNode()` prevents certain improvements in React in the future.
+
+The legacy approach of using `findDOMNode()`:
+
+```js
+class MyComponent extends Component {
+  componentDidMount() {
+    findDOMNode(this).scrollIntoView()
+  }
+
+  render() {
+    return <div />
+  }
+}
+```
+
+The recommended approach is:
+
+```js
+class MyComponent extends Component {
+  componentDidMount() {
+    this.node.scrollIntoView()
+  }
+
+  render() {
+    return <div ref={node => this.node = node} />
+  }
+}
+```
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## Q. How to set focus on an input field after rendering?
+
+Refs can be used to access DOM nodes or React components that are rendered in the render method. Refs are created with `React.createRef()` function. Refs can then be assigned to an element with ref-attribute. Following example shows a component that will focus to the text input when rendered.
+
+```js
+class AutoFocusTextInput extends React.Component {
+
+  constructor(props) {
+    super(props)
+    this.textInput = React.createRef()
+  }
+  componentDidMount() {
+    this.textInput.current.focus()
+  }
+  render() {
+    return <input ref={this.textInput} />
+  }
+}
+```
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## Q. Why are string refs considered legacy in React?
+
+> Although string refs are not deprecated, they are considered legacy, and will likely be deprecated at some point in the future. Callback refs are preferred.
+
+**Callback Refs:**
+
+Instead of passing a **ref** attribute created by `createRef()`, you pass a function. The function receives the React component instance or HTML DOM element as its argument, which can be stored and accessed elsewhere.
+
+**Example:**
+
+```js
+// Ref.js
+
+class CustomTextInput extends React.Component {
+  constructor(props) {
+    super(props);
+    this.textInput = null;
+
+    this.setTextInputRef = (element) => {
+      this.textInput = element;
+    };
+  }
+
+  handleSubmit = (e) => {
+    e.preventDefault();
+    console.log(this.textInput.value);
+  };
+
+  render() {
+    return (
+      <div>
+        <form onSubmit={(e) => this.handleSubmit(e)}>
+          <input type="text" ref={this.setTextInputRef} />
+          <button>Submit</button>
+        </form>
+      </div>
+    );
+  }
+}
+```
+
+```js
+// App.js
+
+const App = () => (
+  <div style={styles}>
+    <Hello name="React Refs" />
+    <CustomText />
+  </div>
+)
+```
+
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-refs-hiw59?file=/src/index.js)**
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
