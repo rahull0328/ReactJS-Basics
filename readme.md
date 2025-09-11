@@ -9513,3 +9513,117 @@ function App() {
 <p align="center">
   <img src="assets/forwardRef.png" alt="forwardRef()" width="500px" />
 </p>
+
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-forwardref-ccqgu?file=/src/index.js)**
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## Q. What is difference between useRef() and useState() in React?
+
+*ToDo*
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## # 16. REACT COMPOSITION
+
+<br/>
+
+## Q. Explain Inheritance in React?
+
+Inheritance uses the keyword **extends** to allow any component to use the properties and methods of another component connected with the parent. A class that is used as the basis for inheritance is called a superclass or base class. A class that inherits from a superclass is called a subclass or derived class.
+
+Using the **extends** keyword, it allows the current component to access all the component\'s properties, including the function, and trigger it from the child component.
+
+**Example:**
+
+```js
+import React from "react";
+
+/**
+ * Parent Class
+ */
+export class ParentClass extends React.Component {
+  constructor(props) {
+    super(props);
+    this.callMe = this.callMe.bind(this);
+  }
+
+  // ParentClass function
+  callMe() {
+    console.log("This is a method from parent class");
+  }
+
+  render() {
+    return false;
+  }
+}
+
+/**
+ * Child Class
+ */
+export default class App extends ParentClass {
+  render() {
+    return <button onClick={() => this.callMe()}>Call Parent</button>;
+  }
+}
+```
+
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-inheritance-c6uc64?file=/src/App.js)**
+
+*Note: React does not use inheritance except in the initial component class, which extends from the **react** package.*
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## Q. Explain Composition in React?
+
+Composition is also a familiar concept in Object Oriented Programming. Instead of inheriting properties from a base class, it describes a class that can reference one or more objects of another class as instances.
+
+**Example:**
+
+```js
+/**
+ * Composition in React
+ */
+import React, { useState } from "react";
+import Name from "./Name";
+
+export default function App() {
+  const [name, setName] = useState("");
+
+  return (
+    <form>
+      <h2>React Composition Example</h2>
+      <Name name={name} setName={setName} />
+      <h3>{name}</h3>
+    </form>
+  );
+}
+```
+
+```js
+/**
+ * Name Component
+ * @param {*} param0 - name
+ * @param {*} param1 - setName
+ */
+export default function Name({ name, setName }) {
+  return (
+    <div>
+      <label>Name: </label>
+      <input value={name} onChange={(event) => setName(event.target.value)} />
+    </div>
+  );
+}
+```
+
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-composition-kq6fpc?file=/src/App.js)**
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
