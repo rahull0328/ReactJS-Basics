@@ -9627,3 +9627,154 @@ export default function Name({ name, setName }) {
 <div align="right">
     <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
+
+## Q. How Composition is different from Inheritance in React?
+
+Inheritance used the `is-a` relationship method. Derived components had to inherit the properties of the base component and it was quite complicated while modifying the behavior of any component.
+
+Composition does not inherit properties, only the behavior. In inheritance, it was difficult to add new behavior because the derived component was inheriting all the properties of parent class and it was quite difficult to add new behavior. But in composition, we only inherit behavior and adding new behavior is fairly simple and easy.
+
+React recommends use of Composition over Inheritance, here is why. Everything in React is a component, and it follows a strong component based model. This is one of the primary reasons that composition is a better approach than inheritance for code reuse.
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## # 17. REACT CSS STYLING
+
+<br/>
+
+## Q. How to use styles in React.js?
+
+React Components can add styling in the following ways:
+
+**1. Inline Styling:**
+
+In JSX, JavaScript expressions are written inside curly braces, and since JavaScript objects also use curly braces, the styling in the example above is written inside two sets of curly braces `{{}}`. Since the inline CSS is written in a JavaScript object, properties with two names, like `background-color`, must be written with camel case syntax:
+
+**Example:**
+
+```js
+/**
+ * Inline Styling
+ */
+class HeaderComponent extends React.Component {
+  render() {
+    return (
+      <div>
+        <h1 style={{backgroundColor: "lightblue"}}>Header Component Style!</h1>
+        <p>Add a little style!</p>
+      </div>
+    );
+  }
+}
+```
+
+**&#9885; [Try this example on CodeSandbox](https://codepen.io/learning-zone/pen/BaRJmyG?editors=0010)**
+
+**2. JavaScript Object:**
+
+We can also create an object with styling information, and refer to it in the style attribute:
+
+**Example:**
+
+```js
+/**
+ * JavaScript Object
+ */
+class HeaderComponent extends React.Component {
+  render() {
+    const mystyle = {
+      color: "white",
+      backgroundColor: "DodgerBlue",
+      padding: "10px",
+      fontFamily: "Arial"
+    };
+    return (
+      <div>
+        <h1 style={mystyle}>Header Component Style!</h1>
+        <p>Add a little style!</p>
+      </div>
+    );
+  }
+}
+```
+
+**&#9885; [Try this example on CodeSandbox](https://codepen.io/learning-zone/pen/abWEVvp?editors=0010)**
+
+**3. CSS Stylesheet:**
+
+You can write your CSS styling in a separate file, just save the file with the .css file extension, and import it in your application.
+
+**Example:**
+
+```css
+/**  
+ * App.css 
+ */
+body {
+  background-color: #282c34;
+  color: white;
+  padding: 40px;
+  font-family: Arial;
+  text-align: center;
+}
+```
+
+```js
+/**
+ * CSS Stylesheet
+ */
+import './App.css';
+
+class HeaderComponent extends React.Component {
+  render() {
+    return (
+      <div>
+        <h1>Header Component Style!</h1>
+        <p>Add a little style!.</p>
+      </div>
+    );
+  }
+}
+```
+
+**4. CSS Modules:**
+
+CSS Modules are convenient for components that are placed in separate files
+
+**Example:**
+
+```css
+/**
+ * mystyle.module.css
+ */
+.bigblue {
+  color: DodgerBlue;
+  padding: 40px;
+  font-family: Arial;
+  text-align: center;
+}
+```
+
+```js
+/**
+ * CSS Modules
+ */
+import styles from './mystyle.module.css'; 
+
+class HeaderComponent extends React.Component {
+  render() {
+    return (
+      <div>
+        <h1 className={styles.bigblue}>Header Component Style!</h1>
+        <p>Add a little style!.</p>
+      </div>
+    );
+  }
+}
+```
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
