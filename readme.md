@@ -9778,3 +9778,172 @@ class HeaderComponent extends React.Component {
 <div align="right">
     <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
+
+## Q. How to conditionally apply CSS classes in React JS?
+
+**Example:** Using the ternary operator
+
+```js
+class App extends Component {
+  constructor() {
+    super()
+    this.state = { isRed: true }
+  }
+
+  render() {
+    const isRed = this.state.isRed
+
+    return <p style={{ color: isRed ? 'red' : 'blue' }}>Example Text</p>
+  }
+}
+```
+
+**&#9885; [Try this example on CodeSandbox](https://codepen.io/learning-zone/pen/BaRJGre?editors=0010)**
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## Q. How to combine multiple inline style objects?
+
+**Using Spread operator:**
+
+```js
+const box = {
+    color: "green",
+    fontSize: '23px'
+}
+
+const shadow = {
+    background: "orange",
+    boxShadow: "1px 1px 1px 1px #cccd"
+}
+
+export default function App(){
+    return (
+      <div style={{...box, ...shadow}}>
+         <h1>Hello React</h1>
+      </div>
+    )
+}
+```
+
+**&#9885; [Try this example on CodeSandbox](https://codepen.io/learning-zone/pen/RwVxqdv?editors=0010)**
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## Q. What are the popular package for animation in React JS?
+
+* [React Transition Group](https://reactcommunity.org/react-transition-group/)
+* [React Spring](https://react-spring.io/)
+* [Framer Motion](https://www.framer.com/motion/)
+* [React Motion](https://github.com/chenglou/react-motion)
+* [React Move](https://react-move.js.org/#/getting-started/features)
+* [React Animations](https://github.com/FormidableLabs/react-animations)
+* [React Reveal](https://www.react-reveal.com/)
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## Q. What is the benefit of styles modules?
+
+CSS module is a CSS file in which all class names and animation names are scoped locally by default. In the React application, we usually create a single `.css` file and import it to the main file so the CSS will be applied to all the components.
+
+But using CSS modules helps to create separate CSS files for each component and is local to that particular file and avoids class name collision.
+
+**Benefits of CSS modules:**
+
+* Using CSS modules avoid namespace collision for CSS classes
+* You can use the same CSS class in multiple CSS files
+* You can confidently update any CSS file without worrying about affecting other pages
+* Using CSS Modules generates random CSS classes when displayed in the browser
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## Q. What are styled components?
+
+The `Styled-components` is a CSS-in-JS styling framework that uses tagged template literals in JavaScript and the power of CSS to provide a platform that allows you to write actual CSS to style React components.
+
+The `styled-components` comes with a collection of helper methods, each corresponding to a DOM node for example `<h1>`, `<header>`, `<button>`, and SVG elements like `line` and `path`. The helper methods are called with a chunk of CSS, using an obscure JavaScript feature known as “tagged template literals”.
+
+**Example:**
+
+```js
+import styled from 'styled-components'
+
+const Button = styled.button`
+  color: black;
+  //...
+`
+
+const WhiteButton = Button.extend`
+  color: white;
+  //...
+`
+
+render(
+  <div>
+    <Button>A black button, like all buttons</Button>
+    <WhiteButton>A white button</WhiteButton>
+  </div>
+)
+```
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## Q. How to use useSpring() for animation?
+
+React Spring is a spring-physics based animation library that powers most UI related animation in React. It is a bridge on the two existing React animation libraries; `React Motion` and `Animated`. It inherits animated powerful interpolations and performance while maintaining react-motion\'s ease of use.
+
+There are 5 hooks in react-spring currently:
+
+* **useSpring** a single spring, moves data from a -> b
+* **useSprings** multiple springs, for lists, where each spring moves data from a -> b
+* **useTrail** multiple springs with a single dataset, one spring follows or trails behind the other
+* **useTransition** for mount/unmount transitions (lists where items are added/removed/updated)
+* **useChain** to queue or chain multiple animations together
+
+**1. useSpring():**
+
+It turns defined values into animated values. It does this in two ways, either by overwriting the existing props with a different set of props on component re-render or by passing an updater function that returns a different set of props that is then used to update the props using set.
+
+**Example:**
+
+```js
+/**
+ * useSpring()
+ */
+import React from "react";
+import "./styles.css";
+import { useSpring, animated } from "react-spring";
+
+export default function App() {
+  const [message, setMessage] = React.useState(false);
+  const contentProps = useSpring({
+    opacity: message ? 1 : 0,
+    marginTop: message ? 0 : -500
+  });
+  return (
+    <div className="container">
+      <div className="button-container">
+        <button onClick={() => setMessage((a) => !a)} className="button">
+          Click Here
+        </button>
+      </div>
+
+      <animated.div className="box" style={contentProps}>
+        <h1>React Spring</h1>
+      </animated.div>
+    </div>
+  );
+}
+```
+
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-usespring-rkhstc?file=/src/App.js)**
