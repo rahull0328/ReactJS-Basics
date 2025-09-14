@@ -9947,3 +9947,114 @@ export default function App() {
 ```
 
 **&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-usespring-rkhstc?file=/src/App.js)**
+
+**2. useSpring():**
+
+It works kind of like a mix between useSpring() and useTransition() in that it takes an array, maps over it, and uses the from and to properties to assign the animation. For our styles we can just pass in the values from each item in our array.
+
+**Example:**
+
+```js
+/**
+ * useSprings()
+ */
+import React, { useState } from "react";
+import { animated, useSprings } from "react-spring";
+
+export default function App() {
+  const [on, toggle] = useState(false);
+
+  const items = [
+    { color: "red", opacity: 1 },
+    { color: "blue", opacity: 0.6 },
+    { color: "green", opacity: 0.2 }
+  ];
+
+  const springs = useSprings(
+    items.length,
+    items.map((item) => ({
+      from: { color: "#fff", opacity: 0 },
+      to: {
+        color: on ? item.color : "#fff",
+        opacity: on ? item.opacity : 0
+      }
+    }))
+  );
+
+  return (
+    <div>
+      {springs.map((animation) => (
+        <animated.h1 style={animation}>Hello World</animated.h1>
+      ))}
+      <button onClick={() => toggle(!on)}>Click Here</button>
+    </div>
+  );
+}
+```
+
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-usespring-rkhstc?file=/src/App.js)**
+
+**3. useTrail():**
+
+It allows to create an effect similar to both useSpring() and useSprings(), it will allow us to attach an animation to multiple items but instead of being executed at the same time, they will be executed one after the other. It just takes a number for how many we want and the style object.
+
+**Example:**
+
+```js
+/**
+ * useTrail()
+ */
+import React, { useState } from "react";
+import { animated, useTrail } from "react-spring";
+
+export default function App() {
+  const [on, toggle] = useState(false);
+
+  const springs = useTrail(3, {
+    to: { opacity: on ? 1 : 0 },
+    config: { tension: 250 }
+  });
+
+  return (
+    <div>
+      {springs.map((animation, index) => (
+        <animated.h1 style={animation} key={index}>
+          Hello World
+        </animated.h1>
+      ))}
+      <button onClick={() => toggle(!on)}>Click Here</button>
+    </div>
+  );
+}
+```
+
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-usetrail-jc3qc5?file=/src/App.js)**
+
+**4. useTransition():**
+
+It allows to create an animated transition group. It takes in the elements of the list, their keys, and lifecycles. The animation is triggered on appearance and disappearance of the elements.
+
+**Example:**
+
+```js
+import React, { useState } from 'react'
+import { animated, useTransition } from 'react-spring'
+
+const [on, toggle] = useState(false)
+
+const transition = useTransition(on, null, {
+  from: { opacity: 0 },
+  enter: { opacity: 1 },
+  leave: { opacity: 0 }
+});
+
+return (
+<div>
+  {transition.map(({ item, key, props }) => (
+  item && <animated.div style={props} >Hello world</animated.div>
+  ))}
+
+  <button onClick={() => toggle(!on)}>Change</button>
+</div>
+)
+```
