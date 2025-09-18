@@ -10058,3 +10058,81 @@ return (
 </div>
 )
 ```
+
+**5. useChain():**
+
+It allows to set the execution sequence of previously defined animation hooks. To do this, we use `refs`, which will subsequently prevent the independent execution of the animation.
+
+**Example:**
+
+```js
+import React, { useState, useRef } from 'react'
+import { animated, useSpring, useTrail, useChain} from 'react-spring'
+
+
+const App = () => {
+  const [on, toggle] = useState(false)
+
+  const springRef = useRef()
+  const spring = useSpring({
+    ref: springRef,
+    from: { opacity: .5 },
+    to: { opacity: on ? 1 : .5 },
+    config: { tension: 250 }
+  })
+
+  const trailRef = useRef()
+  const trail = useTrail(5, {
+    ref: trailRef,
+    from: { fontSize: '10px' },
+    to: { fontSize: on ? '45px' : '10px' }
+  })
+
+  useChain(on ? [springRef, trailRef] : [trailRef, springRef])
+
+  return (
+    <div>
+      {trail.map((animation, index) => (
+        <animated.h1 style={{ ...animation, ...spring }} key={index}>Hello World</animated.h1>
+      ))}
+
+      <button onClick={() => toggle(!on)}>Change</button>
+    </div>
+  )
+}
+```
+
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-usechain-ltxk82?file=/src/App.js)**
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## Q. How many ways can we style the React Component?
+
+**1. CSS Stylesheet:**
+
+```css
+.DottedBox {
+  margin: 40px;
+  border: 5px dotted pink;
+}
+
+.DottedBox_content {
+  font-size: 15px;
+  text-align: center;
+}
+```
+
+```js
+import React from 'react'
+import './DottedBox.css'
+
+const DottedBox = () => (
+  <div className="DottedBox">
+    <p className="DottedBox_content">Get started with CSS styling</p>
+  </div>
+)
+
+export default DottedBox
+```
