@@ -10235,3 +10235,88 @@ export default OutsetBox
 <div align="right">
     <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
+
+## Q. How do you apply vendor prefixes to inline styles in React?
+
+In React, inline styles keys are camelCased in order to be consistent with accessing the properties on DOM nodes from JS (e.g. `node.style.backgroundImage`). Vendor prefixes other than `ms` should begin with a capital letter.
+
+```js
+const divStyle = {
+  background: "#eee",
+  color: "blue",
+  padding: "20px",
+  margin: "20px",
+  WebkitTransition: "all", // note the capital 'W' here
+  msTransition: "all" // 'ms' is the only lowercase vendor prefix
+};
+```
+
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-vendor-prefix-k29wi?file=/src/App.js)**
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## Q. What are the popular animation package in React?
+
+**ReactCSSTransitionGroup:**
+
+ReactCSSTransitionGroup is a high-level API based on ReactTransitionGroup and is an easy way to perform CSS transitions and animations when a React component enters or leaves the DOM. It has four components that display transitions from one component state to another using a declarative API used for mounting and unmounting of components:
+
+1. Transition
+2. CSSTransition
+3. SwitchTransition
+4. TransitionGroup
+
+**Example:**
+
+```js
+import ReactCSSTransitionGroup from 'react-transition-group'
+
+class AnimationComponent extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {items: ['hello', 'world', 'click', 'me']}
+    this.handleAdd = this.handleAdd.bind(this)
+  }
+
+  handleAdd() {
+    const newItems = this.state.items.concat([
+      prompt('Enter some text')
+    ])
+    this.setState({items: newItems})
+  }
+
+  handleRemove(i) {
+    let newItems = this.state.items.slice()
+    newItems.splice(i, 1)
+    this.setState({items: newItems})
+  }
+
+  render() {
+    const items = this.state.items.map((item, i) => (
+      <div key={item} onClick={() => this.handleRemove(i)}>
+        {item}
+      </div>
+    ))
+
+    return (
+      <div>
+        <button onClick={this.handleAdd}>Add Item</button>
+        <ReactCSSTransitionGroup
+          transitionName="example"
+          transitionEnterTimeout={500}
+          transitionLeaveTimeout={300}>
+          {items}
+        </ReactCSSTransitionGroup>
+      </div>
+    )
+  }
+}
+```
+
+In this component, when a new item is added to ReactCSSTransitionGroup it will get the `example-enter` CSS class and the `example-enter-active` CSS class added in the next tick. This is a convention based on the `transitionName` prop.
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
