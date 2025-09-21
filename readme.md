@@ -10320,3 +10320,121 @@ In this component, when a new item is added to ReactCSSTransitionGroup it will g
 <div align="right">
     <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
+
+## Q. How to display style based on props value?
+
+```js
+import styled from 'styled-components'
+
+const Button = styled.button`
+  background: ${props => props.primary ? 'palevioletred' : 'white'}
+  color: ${props => props.primary ? 'white' : 'palevioletred'}
+`;
+
+function MyPureComponent(props) {
+  return (
+    <div>
+      <Button>Normal</Button>
+      <Button primary>Primary</Button>
+    </div>
+  )
+}
+```
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## # 18. REACT INTERNATIONALIZATION
+
+<br/>
+
+## Q. How to translate your React app with react-i18next?
+
+**Installing dependencies:**
+
+```bash
+npm install react-i18next i18next i18next-browser-languagedetector --save
+```
+
+**Configure i18next:**
+
+Create a new file `i18n.js` beside your `index.js` containing following content:
+
+```js
+/**
+ * i18next Component
+ */
+import i18n from "i18next";
+import LanguageDetector from "i18next-browser-languagedetector";
+import { initReactI18next } from "react-i18next";
+
+i18n
+  .use(LanguageDetector)
+  .use(initReactI18next)
+  .init({
+    // we init with resources
+    resources: {
+      en: {
+        translations: {
+          "Welcome to React": "Welcome to React and react-i18next"
+        }
+      },
+      hi: {
+        translations: {
+          "Welcome to React": "React और react-i18next में आपका स्वागत है"
+        }
+      }
+    },
+    fallbackLng: "en",
+    debug: true,
+
+    // have a common namespace used around the full app
+    ns: ["translations"],
+    defaultNS: "translations",
+
+    keySeparator: false, // we use content as keys
+
+    interpolation: {
+      escapeValue: false
+    }
+  });
+
+export default i18n;
+```
+
+We pass the i18n instance to `react-i18next` which will make it available for all the components via the context api.
+
+```js
+/**
+ * useTranslation() in React
+ */
+import React from "react";
+import { useTranslation } from "react-i18next";
+
+export default function App() {
+  const { t, i18n } = useTranslation();
+
+  const changeLanguage = (lng) => {
+    i18n.changeLanguage(lng);
+  };
+
+  return (
+    <>
+      <h2>{t("Welcome to React")}</h2>
+      <button onClick={() => changeLanguage("en")}>English</button>
+      <button onClick={() => changeLanguage("hi")}>Hindi</button>
+    </>
+  );
+}
+```
+
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-usetranslation-5gb2jx?file=/src/App.js)**
+
+**Reference:**
+
+* *[https://react.i18next.com/guides/quick-start](https://react.i18next.com/guides/quick-start)*
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
