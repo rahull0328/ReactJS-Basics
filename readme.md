@@ -10438,3 +10438,126 @@ export default function App() {
 <div align="right">
     <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
+
+## # 19. REACT TESTING
+
+<br/>
+
+## Q. Why should we use Test-Driven Development (TDD) for ReactJS?
+
+Test-driven development is an approach when developers create a product backwards. TDD requires developers to write tests first and only then start to write the code. TDD is a development method that utilizes repetition of a short development cycle called Red-Green-Refactor.
+
+**Process:**
+
+1. Add a test
+1. Run all tests and see if the new test fails (red)
+1. Write the code to pass the test (green)
+1. Run all tests
+1. Refactor
+1. Repeat
+
+**Pros:**
+
+1. Design before implementation
+1. Helps prevent future regressions and bugs
+1. Increases confidence that the code works as expected
+
+**Cons:**
+
+1. Takes longer to develop (but it can save time in the long run)
+1. Testing edge cases is hard
+1. Mocking, faking, and stubbing are all even harder
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## Q. Explain react unit testing using Jest and Enzyme?
+
+**1. Jest:**
+
+Jest is a JavaScript unit testing framework, used by Facebook to test services and React applications. Jest acts as a **test runner**, **assertion library**, and **mocking library**.
+
+Jest also provides Snapshot testing, the ability to create a rendered *snapshot* of a component and compare it to a previously saved *snapshot*. The test will fail if the two do not match.
+
+**2. Enzyme:**
+
+Enzyme is a JavaScript Testing utility for React that makes it easier to assert, manipulate, and traverse your React Components output. Enzyme, created by Airbnb, adds some great additional utility methods for rendering a component (or multiple components), finding elements, and interacting with elements.
+
+**Setup with Create React App:**
+
+```bash
+# Set up a React application
+npx create-react-app counter-app
+
+# for rendering snapshots
+npm install  react-test-renderer --save-dev
+
+# for dom testing
+npm install enzyme --save-dev
+```
+
+```js
+/**
+ * App.js
+ */
+import React, { useState } from "react";
+
+export default function Counter() {
+  const [counter, setCounter] = useState(0);
+
+  const incrementCounter = () => {
+    setCounter((prevCounter) => prevCounter + 1);
+  };
+
+  return (
+    <>
+      <button onClick={incrementCounter}>Click Me</button>
+      <h2 data-testid="counter">{counter}</h2>
+    </>
+  );
+}
+```
+
+**Writing Test Cases:**
+
+```js
+/**
+ * App.test.js
+ */
+import React from "react";
+import { shallow } from "enzyme";
+import App from "./App";
+
+// Testing App Component
+describe("App component", () => {
+  it("starts with a count of 0", () => {
+    const wrapper = shallow(<App />);
+    const text = wrapper.find("h2").text();
+    expect(text).toEqual("0");
+  });
+});
+
+// Testing Button Event
+describe("App component", () => {
+  it("increments count by 1 when the increment button is clicked", () => {
+    const mockCallBack = jest.fn();
+
+    const button = shallow(<button onClick={mockCallBack}>Click Me</button>);
+    button.find("button").simulate("click");
+    expect(mockCallBack.mock.calls.length).toEqual(1);
+  });
+});
+
+```
+
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-test-qz363f?file=/src/App.test.js)**
+
+**Reference:**
+
+* *[https://jestjs.io/docs/en/tutorial-react](https://jestjs.io/docs/en/tutorial-react)*
+* *[https://enzymejs.github.io/enzyme/](https://enzymejs.github.io/enzyme/)*
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
