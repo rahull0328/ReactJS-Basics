@@ -10561,3 +10561,108 @@ describe("App component", () => {
 <div align="right">
     <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
+
+## Q. Explain unit test structure in React?
+
+```js
+describe('Component Description', () => {
+  beforeAll(() => {
+    /* Runs before all tests */
+  })
+  afterAll(() => {
+    /* Runs after all tests */
+  })
+  beforeEach(() => {
+    /* Runs before each test */
+  })
+  afterEach(() => {
+    /* Runs after each test */
+  })
+
+  test('test case decription', () => {
+    const actual = fn(['one', 'Two', 'Three'])
+    expect(actual).toEqual(['1 => One', '2 => Two', '3 => Three'])
+  })
+})
+```
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## Q. What are the matchers available in jest framework?
+
+**1. Basic matchers:**
+
+| Method   |Example                       | Description              |
+|----------|------------------------------|--------------------------|
+|toBe()    |expect(42).toBe(42)           | Strict equality (===)    |
+|not.toBe()|expect(42).not.toBe(3)        | Strict equality (!==)    |
+|toEqual() |expect({ a: undefined, b: 2 }).toEqual({ b: 2 }) |Deep equality|
+|not.toStrictEqual()|expect({ a: undefined, b: 2 }).not.toStrictEqual({ b: 2 })|Strict equality|
+
+**2. Truthiness:**
+
+| Method   |Example                       | Description              |
+|----------|------------------------------|--------------------------|
+|toBeTruthy()|expect('foo').toBeTruthy()| Matches anything that an if statement treats as true (not false, 0, '', null, undefined, NaN)|
+|toBeFalsy()|expect('').toBeFalsy() |Matches anything that an if statement treats as false (false, 0, '', null, undefined, NaN)|
+|toBeNull()|expect(null).toBeNull()|Matches only null|
+|toBeUndefined()|expect(undefined).toBeUndefined()|Matches only undefined|
+|toBeDefined()|expect(7).toBeDefined()|The opposite of toBeUndefined|
+|toEqual()  |expect(true).toEqual(expect.any(Boolean)) |Matches true or false|
+|toBeInTheDocument()|expect(getByText(/React/i)).toBeInTheDocument()| Return true/false |
+
+**3. Numbers:**
+
+| Method   |Example                       | Description              |
+|----------|------------------------------|--------------------------|
+|toBeGreaterThan()|expect(2).toBeGreaterThan(1)| |
+|toBeGreaterThanOrEqual()|expect(1).toBeGreaterThanOrEqual(1)| |
+|toBeLessThan() | expect(1).toBeLessThan(2)| |
+|toBeLessThanOrEqual()|expect(1).toBeLessThanOrEqual(1)| |
+|toBeCloseTo()|expect(0.2 + 0.1).toBeCloseTo(0.3, 5) | |
+|toEqual()    |expect(NaN).toEqual(expect.any(Number))| |
+
+**4. Strings:**
+
+| Method   |Example                       | Description              |
+|----------|------------------------------|--------------------------|
+|toMatch() |expect('long string').toMatch('str')| |
+|toEqual() |expect('string').toEqual(expect.any(String))| |
+|toMatch() |expect('coffee').toMatch(/ff/) | |
+|not.toMatch()|expect('pizza').not.toMatch('coffee')| |
+|toEqual() | expect(['pizza', 'coffee']).toEqual([expect.stringContaining('zz'), expect.stringMatching(/ff/)])| |
+
+**5. Arrays:**
+
+| Method   |Example                       | Description              |
+|----------|------------------------------|--------------------------|
+|toEqual() |expect([]).toEqual(expect.any(Array))|  |
+|toHaveLength()|expect(['Alice', 'Bob', 'Eve']).toHaveLength(3)| |
+|toContain() |expect(['Alice', 'Bob', 'Eve']).toContain('Alice')| |
+|toContainEqual()|expect([{ a: 1 }, { a: 2 }]).toContainEqual({ a: 1 })| |
+|toEqual() |expect(['Alice', 'Bob', 'Eve']).toEqual(expect.arrayContaining(['Alice', 'Bob']))| |
+
+**6. Objects:**
+
+| Method   |Example                       | Description              |
+|----------|------------------------------|--------------------------|
+|toHaveProperty()|expect({ a: 1 }).toHaveProperty('a')| |
+|toMatchObject()|expect({ a: 1, b: 2 }).toMatchObject({ a: 1 })| |
+
+**7. Exceptions:**
+
+```js
+const fn = () => { throw new Error('Throw some custom error!') }
+```
+
+| Method   |Example                       | Description              |
+|----------|------------------------------|--------------------------|
+|toThrow() |expect(fn).toThrow()| |
+|toThrow() |expect(fn).toThrow('Out of cheese')| |
+|toThrowErrorMatchingSnapshot()|expect(fn).toThrowErrorMatchingSnapshot()| |
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
