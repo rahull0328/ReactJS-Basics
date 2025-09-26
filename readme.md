@@ -10783,3 +10783,77 @@ it('can render and update a counter', () => {
 <div align="right">
     <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
+
+## Q. What is react-test-renderer package in React?
+
+This package provides a React renderer that can be used to render React components to pure JavaScript objects, without depending on the DOM or a native mobile environment.
+
+Essentially, this package makes it easy to grab a snapshot of the platform view hierarchy (similar to a DOM tree) rendered by a React DOM or React Native component without using a browser or `jsdom`.
+
+**Example:**
+
+```js
+import React from 'react'
+import renderer from 'react-test-renderer'
+import App from './app.js' // The component being tested
+
+/**
+ * Snapshot tests are a useful when UI does not change frequently.
+ *
+ * A typical snapshot test case for a mobile app renders a UI component, takes a snapshot,
+ * then compares it to a reference snapshot file stored alongside the test.
+ */
+describe('APP Component', () => {
+
+    test('Matches the snapshot', () => {
+      const tree = renderer.create(<App />).toJSON()
+      expect(tree).toMatchSnapshot()
+    })
+}
+```
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## Q. What are the benefits of using data-test selector over className or Id selector in Jest?
+
+HTML structure and css classes tend to change due to design changes. Which will cause to re-write tests quite often. Also, if we are using css-modules we can not rely on class names. Because of that, React provides `data-test` attribute for selecting elements in jsx.
+
+```js
+// APP Component
+import React from 'react'
+import './App.scss'
+
+function App() {
+  return (
+    <div data-testid='app-header'>
+      Hello React
+    </div>
+  )
+}
+export default App
+```
+
+```js
+import React from 'react'
+import { cleanup, render, screen } from "@testing-library/react";
+import App from './App'
+afterEach(cleanup);
+
+describe('APP Component', () => {
+
+  let wrapper
+  beforeEach(() => {
+    wrapper = render(<Header/>)
+  })
+
+  test('should check for the title', () => {
+    expect(screen.getByText(/Hello React/i)).toBeInTheDocument();
+  })
+})
+```
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
