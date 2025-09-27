@@ -10857,3 +10857,83 @@ describe('APP Component', () => {
 <div align="right">
     <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
+
+## Q. How to write unit test for multiple fetch with Promise.all using jest?
+
+*ToDo*
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## # 20. REACT MISCELLANEOUS
+
+<br/>
+
+## Q. What is React.cloneElement?
+
+The **React.cloneElement()** function returns a copy of a specified element. Additional props and children can be passed on in the function. This function is used when a parent component wants to add or modify the prop(s) of its children.
+
+```js
+React.cloneElement(element, [props], [...children])
+```
+
+The react.cloneElement() method accepts three arguments.
+
+* element: Element we want to clone.
+* props: props we need to pass to the cloned element.
+* children: we can also pass children to the cloned element (passing new children replaces the old children).
+
+**Example:**
+
+```js
+import React from 'react'
+
+export default class App extends React.Component {
+
+  // rendering the parent and child component
+  render() {
+    return (
+      <ParentComp>
+        <MyButton/>
+        <br></br>
+        <MyButton/>
+      </ParentComp>
+    )
+  }
+}
+
+// The parent component
+class ParentComp extends React.Component {
+  render() {
+    // The new prop to the added.
+    let newProp = 'red'
+      // Looping over the parent's entire children,
+      // cloning each child, adding a new prop.
+    return (
+      <div>
+        {React.Children.map(this.props.children,
+          child => {
+            return React.cloneElement(child,
+            {newProp}, null)
+        })}
+      </div>
+    )
+  }
+}
+
+// The child component
+class MyButton extends React.Component {
+  render() {
+    return <button style =
+    {{ color: this.props.newProp }}>
+    Hello World!</button>
+  }
+}
+```
+
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-cloneelement-6mecw?file=/src/App.js)**
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
