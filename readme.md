@@ -10937,3 +10937,55 @@ class MyButton extends React.Component {
 <div align="right">
     <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
+
+## Q. What is render hijacking in React?
+
+The phenomena of **render hijacking** is the ability to control what a component will output from another component. It actually means that, the users decorate their component by wrapping it into a Higher-Order component. By wrapping, they can inject additional props or make other changes, which can cause changing logic of rendering. It does not actually allow hijacking, but by using HOC, users can make the component behave in a different way.
+
+In Render Highjacking we can:
+
+* Read, add, edit, remove props in any of the React Elements outputted by render
+* Read, and modify the React Elements tree outputted by render
+* Conditionally display the elements tree
+* Wrapping the element\'s tree for styling purposes.
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## Q. What is windowing technique in react?
+
+**Windowing** or **List virtualization** is a concept of only rendering or write the visible portion in the current "window" to the DOM. The number of items that rendered at first time are smaller than the original one. The remaining items are rendered when you scroll down to it. The DOM nodes of items that exit the window are replaced by the new ones. This improves the performance of rendering a large list.
+
+**[react-window](https://react-window.vercel.app/#/examples/list/fixed-size)** and **[react-virtualized](https://bvaughn.github.io/react-virtualized/#/components/List)** are popular windowing libraries. They provide several reusable components for displaying lists, grids, and tabular data.
+
+**Example:** react-window
+
+```js
+function renderRow(props) {
+  const { index, style } = props;
+
+  return (
+    <ListItem button style={style} key={index}>
+      <ListItemText primary={`Item ${index + 1}`} />
+    </ListItem>
+  );
+}
+
+export default function VirtualizedList() {
+
+  return (
+    <div>
+      <FixedSizeList height={400} width={200} itemSize={46} itemCount={100000}>
+        {renderRow}
+      </FixedSizeList>
+    </div>
+  );
+}
+```
+
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-window-rz5hf?file=/src/App.js)**
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
