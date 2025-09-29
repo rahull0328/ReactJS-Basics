@@ -10989,3 +10989,63 @@ export default function VirtualizedList() {
 <div align="right">
     <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
+
+## Q. How to optimize React Performance?
+
+React uses many techniques to minimize the number of DOM operations for us already. For many applications, if you are using the production build, you may already meet or surpass your performance expectations. Nevertheless, there are several ways you can speed up your application.
+
+**1. React DevTools Profiler:**
+
+Experience performance problems with a specific component, the React DevTools Profiler is usually the first place to look.
+
+<p align="center">
+  <img src="assets/react-dev-tools.png"  alt="React DevTools" />
+</p>
+
+**2. `shouldComponentUpdate()` method**
+
+React provides a simple lifecycle method to indicate if a component needs re-rendering and that is, shouldComponentUpdate() which is triggered before the re-rendering process starts. The default implementation of this function returns **true**.
+
+If you know that in some situations your component doesn\'t need to update, you can return **false** from shouldComponentUpdate() instead, to skip the whole rendering process, including calling render() on component.
+
+```js
+shouldComponentUpdate(nextProps, nextState) {
+  return false;
+}
+```
+
+**3. Functional Components and PureComponent:**
+
+Functional components reduce the bundle size as they are better at minifying than classes and they prevent construction of class instances.
+
+Pure Components in React are the components which do not re-renders when the value of `state` and `props` has been updated with the same values. Pure Components restricts the re-rendering ensuring the higher performance of the Component.
+
+**4. React.memo():**
+
+React.memo is a higher order component. It\'s similar to `React.PureComponent` but for function components instead of classes.
+
+```js
+const MyComponent = React.memo(function MyComponent(props) {
+  /* render using props */
+})
+```
+
+If your function component renders the same result given the same props, you can wrap it in a call to `React.memo` for a performance boost in some cases by memoizing the result. This means that React will skip rendering the component, and reuse the last rendered result.
+
+`React.memo` only checks for `prop` changes. If your function component wrapped in `React.memo` has a `useState` or `useContext` Hook in its implementation, it will still rerender when `state` or `context` change.
+
+**5. Virtualizing Long Lists:**
+
+In order to address the issue with our long chat feed, the React team recommends a technique called windowing. This technique only renders the portion of the list that is visible to the user (+/- a given offset) in order to reduce the time to render. As the user scrolls, new list items are retrieved and rendered. `react-window` and `react-virtualized` are two libraries that provide components to help with list virtualization.
+
+**6. Use the Production Build:**
+
+React\'s production build improves react apps performance. The file size of the production build is significantly smaller, which means that the page loads faster as the browser has to download, parse, and execute fewer elements.
+
+**Reference:**
+
+* *[https://reactjs.org/docs/optimizing-performance.html](https://reactjs.org/docs/optimizing-performance.html)*
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
