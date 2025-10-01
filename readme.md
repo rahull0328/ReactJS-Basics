@@ -11107,3 +11107,80 @@ MVW is easy to manage in a simple application, with few models/controllers. But 
 <div align="right">
     <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
+
+## Q. How do you update render elements?
+
+React Elements are immutable i.e. once an element is created it is impossible to update its children or attribute. Thus, in order to update an element, we must use the `render()` method several times to update the value over time.
+
+**Example:**
+
+```js
+function showTime() {
+  const element = (
+    <div>
+      <h2>Current Time is: {new Date().toLocaleTimeString()}</h2>
+    </div>
+  );
+  ReactDOM.render(element, document.getElementById("root"));
+}
+
+setInterval(showTime, 1000);
+```
+
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-clock-1f5xp?file=/src/index.js)**
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## Q. What is the difference between rendering and mounting in ReactJS?
+
+**Rendering** is any time a function component gets called (or a class-based render method gets called) which returns a set of instructions for creating DOM. `render()` function will be invoked every time rerendering happens in the component. It may happen either through a `state` change or a `prop` change.
+
+**Mounting** is when React `renders` the component for the first time and actually builds the initial DOM from those instructions. Mounting a react component means the actual addition of the DOM elements created by the react component into the browser DOM for the first time.
+
+A **re-render** is when React calls the function component again to get a new set of instructions on an already mounted component.
+
+**Example:**
+
+```js
+/**
+ * React Render()
+ */
+import React from "react";
+
+/**
+ * Message Component
+ * @param {*} props
+ */
+function Message(props) {
+  return <h2>{props.name}</h2>;
+}
+
+/**
+ * App Component
+ */
+export default class App extends React.Component {
+  state = {
+    showMessage: false
+  };
+
+  render() {
+    return (
+      <div>
+        <button onClick={() => this.setState({ showMessage: true })}> Show Message </button>
+        <button onClick={() => this.setState({ showMessage: false })}> Hide Message </button>
+        {this.state.showMessage && <Message name="Hello React!" />}
+      </div>
+    );
+  }
+}
+```
+
+Internally, React will create an instance of `App` and will eventually call the `render()` method to get the first set of instructions for what it needs to build in the DOM. Anytime React calls the render method of a class-based component, we call that a **render**.
+
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-render-mh521n?file=/src/App.js)**
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
