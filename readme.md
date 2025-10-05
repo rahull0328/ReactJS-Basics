@@ -11302,3 +11302,84 @@ Fiber is currently available for use but it runs in compatibility mode with the 
 <div align="right">
     <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
+
+## Q. Does the static object work with ES6 classes in React?
+
+Although statics only works for `React.createClass()`, you can still write static methods in ES6 notation. If you are using ES7, then you can also write static properties.
+
+```js
+class Component extends React.Component {
+    static propTypes = {
+    ...
+    }
+
+    static someMethod(){
+    }
+}
+```
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## Q. How do you access imperative API of web components?
+
+Web Components often expose an imperative API to implement its functions. To access the imperative APIs of a web component, you will need to attach a **ref** to the component and interact with the DOM node directly. If you are using third-party web components, the recommended solution is to write a React component that behaves as a **wrapper** for your web component.
+
+**Example:** Using React in your Web Components
+
+```js
+var proto = Object.create(HTMLElement.prototype, {
+  createdCallback: {
+    value: function() {
+      var mountPoint = document.createElement('span');
+      this.createShadowRoot().appendChild(mountPoint);
+
+      var name = this.getAttribute('name');
+      var url = 'https://www.google.com/search?q=' + encodeURIComponent(name);
+      ReactDOM.render(<a href={url}>{name}</a>, mountPoint);
+    }
+  }
+});
+document.registerElement('x-search', {prototype: proto});
+```
+
+```js
+class SearchComponent extends React.Component {
+  render() {
+    return <div>Results: <x-search>{this.props.name}</x-search>!</div>;
+  }
+}
+```
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## Q. What is the purpose of eslint plugin for hooks?
+
+The ESLint plugin ( **eslint-plugin-react-hooks** ) enforces rules of Hooks to avoid bugs. It assumes that any function starting with "use" and a capital letter right after it is a Hook. In particular, the rule enforces that,
+
+* Calls to Hooks are either inside a PascalCase function (assumed to be a component) or another useSomething function (assumed to be a custom Hook).
+* Hooks are called in the same order on every render.
+
+```js
+// ESLint configuration
+{
+  "plugins": [
+    // ...
+    "react-hooks"
+  ],
+  "rules": {
+    // ...
+    "react-hooks/rules-of-hooks": "error", // Checks rules of Hooks
+    "react-hooks/exhaustive-deps": "warn" // Checks effect dependencies
+  }
+}
+```
+
+*Note: This plugin is included by default in Create React App.*
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
