@@ -11383,3 +11383,72 @@ The ESLint plugin ( **eslint-plugin-react-hooks** ) enforces rules of Hooks to a
 <div align="right">
     <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
+
+## Q. What is service worker in React.js?
+
+A service worker is a background worker that acts as a programmable proxy, allowing us to control what happens on a request-by-request basis. We can use it to make (parts of, or even entire) React apps work offline.
+
+Service workers depend on two APIs to work effectively: `Fetch` (a standard way to retrieve content from the network) and `Cache` (content storage for application data. This cache is independent from the browser cache or network status).
+
+**Service Worker Lifecycle:**
+
+Each service worker goes through three steps in its lifecycle: registration, installation and activation.
+
+<p align="center">
+  <img src="assets/service-worker.png" alt="Service Worker Lifecycle" width="400px" />
+</p>
+
+**Registration:**
+
+To install a service worker, you need to register it in script. Registration informs the browser where your service worker is located and lets it know it can start installing in the background.
+
+**Example:** Basic registration in your `index.html` could look like this
+
+```js
+// Check for browser support of service worker
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('service-worker.js')
+
+ .then(function(registration) {
+   // Successful registration
+   console.log('Registration successful, scope is:', registration.scope);
+
+ }).catch(function(err) {
+   // Failed registration, service worker won\'t be installed
+   console.log('Service worker registration failed, error:', error);
+
+ });
+}
+```
+
+**Installation and activation:**
+
+Service workers are event driven. The installation and activation processes fire off corresponding **install** and **activate** events to which the service workers can respond.
+
+With the service worker registered, the first time a user hits your PWA, the install event will be triggered and this is where you\'ll want to cache the static assets for the page. 
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## Q. What is the purpose of registerServiceWorker in React?
+
+React creates a service worker for you without any configuration by default. The service worker is a web API that helps you cache your assets and other files so that when the user is offline or on slow network, user can still see results on the screen.
+
+**Example:** Enable service worker in react
+
+```js
+// index.js
+
+import React from 'react';
+import ReactDOM from 'react-dom';
+import App from './App';
+import registerServiceWorker from './registerServiceWorker';
+
+ReactDOM.render(<App />, document.getElementById('root'));
+registerServiceWorker();
+```
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
