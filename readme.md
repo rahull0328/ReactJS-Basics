@@ -1,62 +1,63 @@
 # ReactJS - Basics
 
-> *Click &#9733; if you like the project. Your contributions are heartily ♡ welcome.*
+> _Click &#9733; if you like the project. Your contributions are heartily ♡ welcome._
 
 <br/>
 
 ## Related Topics
 
-* *[React Coding Practice](react-coding-practice.md)*
-* *[React Quick Reference](react-quick-reference.md)*
-* *[Redux Quick Reference](redux-quick-reference.md)*
-* *[Jest Quick Reference](jest-quick-reference.md)*
-* *[React Best Practices](best-practices.md)*
-* *[React MCQ's](react-mcq.md)*
-* *[React Unit Testing](https://github.com/learning-zone/react-unit-testing)*
-* *[React Project - ToDo App](https://github.com/rahull0328/ToDo-React)*
+- _[React Coding Practice](react-coding-practice.md)_
+- _[React Quick Reference](react-quick-reference.md)_
+- _[Redux Quick Reference](redux-quick-reference.md)_
+- _[Jest Quick Reference](jest-quick-reference.md)_
+- _[React Best Practices](best-practices.md)_
+- _[React MCQ's](react-mcq.md)_
+- _[React Unit Testing](https://github.com/learning-zone/react-unit-testing)_
+- _[React Project - ToDo App](https://github.com/rahull0328/ToDo-React)_
 
 <br/>
 
 ## Table of Contents
 
-* React
-  * [Introduction](#-1-introduction)
-  * [React Setup](#-2-react-setup)
-  * [React JSX](#-3-react-jsx)
-  * [React Components](#-4-react-components)
-    * [Functional Components](#-41-functional-components)
-    * [Class Components](#-42-class-components)
-      * [React Lifecycle](#-421-react-lifecycle)
-    * [Pure Components](#-43-pure-components)
-    * [Higher Order Components](#-44-higher-order-components)
-    * [Lazy Loading](#-45-lazy-loading)
-  * [React Props](#-5-react-props)
-  * [React State](#-6-react-state)
-  * [React Events](#-7-react-events)
-  * [React Lists](#-8-react-lists)
-  * [React RESTful API](#-9-react-restful-api)
-  * [React Forms](#-10-react-forms)
-  * [React Hooks](#-11-react-hooks)
-  * [React Context](#-12-react-context)
-  * [React Router](#-13-react-router)
-  * [React Error Boundaries](#-14-react-error-boundaries)
-  * [React Refs](#-15-react-refs)
-  * [React Composition](#-16-react-composition)
-  * [React CSS Styling](#-17-react-css-styling)
-  * [React Internationalization](#-18-react-internationalization)
-  * [React Testing](#-19-react-testing)
-  * [React Miscellaneous](#-20-react-miscellaneous)
+- React
 
-* Redux
-  * [Redux Overview](#-1-redux-overview)
-  * [Redux Setup](#-2-redux-setup)
-  * [Redux Data Flow](#-3-redux-data-flow)
-  * [Redux Store](#-4-redux-store)
-  * [Redux Actions](#-5-redux-actions)
-  * [Redux Reducers](#-6-redux-reducers)
-  * [Redux Middleware](#-7-redux-middleware)
-  * [Redux Forms](#-8-redux-forms)
-  * [Redux Miscellaneous](#-9-redux-miscellaneous)
+  - [Introduction](#-1-introduction)
+  - [React Setup](#-2-react-setup)
+  - [React JSX](#-3-react-jsx)
+  - [React Components](#-4-react-components)
+    - [Functional Components](#-41-functional-components)
+    - [Class Components](#-42-class-components)
+      - [React Lifecycle](#-421-react-lifecycle)
+    - [Pure Components](#-43-pure-components)
+    - [Higher Order Components](#-44-higher-order-components)
+    - [Lazy Loading](#-45-lazy-loading)
+  - [React Props](#-5-react-props)
+  - [React State](#-6-react-state)
+  - [React Events](#-7-react-events)
+  - [React Lists](#-8-react-lists)
+  - [React RESTful API](#-9-react-restful-api)
+  - [React Forms](#-10-react-forms)
+  - [React Hooks](#-11-react-hooks)
+  - [React Context](#-12-react-context)
+  - [React Router](#-13-react-router)
+  - [React Error Boundaries](#-14-react-error-boundaries)
+  - [React Refs](#-15-react-refs)
+  - [React Composition](#-16-react-composition)
+  - [React CSS Styling](#-17-react-css-styling)
+  - [React Internationalization](#-18-react-internationalization)
+  - [React Testing](#-19-react-testing)
+  - [React Miscellaneous](#-20-react-miscellaneous)
+
+- Redux
+  - [Redux Overview](#-1-redux-overview)
+  - [Redux Setup](#-2-redux-setup)
+  - [Redux Data Flow](#-3-redux-data-flow)
+  - [Redux Store](#-4-redux-store)
+  - [Redux Actions](#-5-redux-actions)
+  - [Redux Reducers](#-6-redux-reducers)
+  - [Redux Middleware](#-7-redux-middleware)
+  - [Redux Forms](#-8-redux-forms)
+  - [Redux Miscellaneous](#-9-redux-miscellaneous)
 
 <br/>
 
@@ -72,7 +73,7 @@ The main objective of ReactJS is to develop User Interfaces (UI) that improves t
 
 **Reference:**
 
-* *[https://reactjs.org/tutorial/tutorial.html](https://reactjs.org/tutorial/tutorial.html)*
+- _[https://reactjs.org/tutorial/tutorial.html](https://reactjs.org/tutorial/tutorial.html)_
 
 <div align="right">
     <b><a href="#table-of-contents">↥ back to top</a></b>
@@ -94,23 +95,23 @@ Unlike browser DOM elements, React elements are plain objects and are cheap to c
   <img src="assets/react-features.png" alt="React-Features" width="500px" />
 </p>
 
-**Advantages:**  
+**Advantages:**
 
-* It relies on a virtual-dom to know what is really changing in UI and will re-render only what has really changed, hence better performance wise
-* JSX makes components/blocks code readable. It displays how components are plugged or combined with.
-* React data binding establishes conditions for creation dynamic applications.
-* Prompt rendering. Using comprises methods to minimise number of DOM operations helps to optimise updating process and accelerate it.
-Testable. React native tools are offered for testing, debugging code.
-* SEO-friendly. React presents the first-load experience by server side rendering and connecting event-handlers on the side of the user:
-    * React.renderComponentToString is called on the server.
-    * React.renderComponent() is called on the client side.
-    * React preserves markup rendered on the server side, attaches event handlers.  
+- It relies on a virtual-dom to know what is really changing in UI and will re-render only what has really changed, hence better performance wise
+- JSX makes components/blocks code readable. It displays how components are plugged or combined with.
+- React data binding establishes conditions for creation dynamic applications.
+- Prompt rendering. Using comprises methods to minimise number of DOM operations helps to optimise updating process and accelerate it.
+  Testable. React native tools are offered for testing, debugging code.
+- SEO-friendly. React presents the first-load experience by server side rendering and connecting event-handlers on the side of the user:
+  - React.renderComponentToString is called on the server.
+  - React.renderComponent() is called on the client side.
+  - React preserves markup rendered on the server side, attaches event handlers.
 
-**Limitations:**  
+**Limitations:**
 
-* Learning curve. Being not full-featured framework it is required in-depth knowledge for integration user interface free library into MVC framework.
-* View-orientedness is one of the cons of ReactJS. It should be found 'Model' and 'Controller' to resolve 'View' problem.
-* Not using isomorphic approach to exploit application leads to search engines indexing problems.
+- Learning curve. Being not full-featured framework it is required in-depth knowledge for integration user interface free library into MVC framework.
+- View-orientedness is one of the cons of ReactJS. It should be found 'Model' and 'Controller' to resolve 'View' problem.
+- Not using isomorphic approach to exploit application leads to search engines indexing problems.
 
 <div align="right">
     <b><a href="#table-of-contents">↥ back to top</a></b>
@@ -122,16 +123,16 @@ It is also known as one-way data flow, which means the data has one, and only on
 
 In React this means that:
 
-* state is passed to the view and to child components
-* actions are triggered by the view
-* actions can update the state
-* the state change is passed to the view and to child components
+- state is passed to the view and to child components
+- actions are triggered by the view
+- actions can update the state
+- the state change is passed to the view and to child components
 
 The view is a result of the application state. State can only change when actions happen. When actions happen, the state is updated. One-way data binding provides us with some key advantages
 
-* Easier to debug, as we know what data is coming from where.
-* Less prone to errors, as we have more control over our data.
-* More efficient, as the library knows what the boundaries are of each part of the system.
+- Easier to debug, as we know what data is coming from where.
+- Less prone to errors, as we have more control over our data.
+- More efficient, as the library knows what the boundaries are of each part of the system.
 
 In React, a state is always owned by one component. Any changes made by this state can only affect the components below it, i.e its `children`. Changing state on a component will never affect its parent or its siblings, only the children will be affected. This is the main reason that the state is often moved up in the component tree so that it can be shared between the components that need to access it.
 
@@ -149,7 +150,6 @@ export const DELETEURL = "http://localhost:3000/api/v1/patterns/";
 
 export const DeleteButton = require("./images/delete-icon.png");
 export const LoadingWheel = require("./images/loading-wheel.gif");
-
 ```
 
 ```js
@@ -160,7 +160,7 @@ import * as Constants from "./Constants";
 const employee = {
   emp_id: 10,
   name: "Nakul Agate",
-  email: "nakul.agate@email.com"
+  email: "nakul.agate@email.com",
 };
 
 class App extends React.Component {
@@ -168,7 +168,9 @@ class App extends React.Component {
     return (
       <div>
         <div>Employee Details :{JSON.stringify(employee)}</div>
-        <div><img src={Constants.LoadingWheel} alt="Loading..." /></div>
+        <div>
+          <img src={Constants.LoadingWheel} alt="Loading..." />
+        </div>
       </div>
     );
   }
@@ -224,9 +226,9 @@ In JSX, lower-case tag names are considered to be HTML tags. However, lower-case
 
 When an element type starts with a lowercase letter, it refers to a built-in component like or and results in a string `<div>` or `<span>` passed to `React.createElement`. Types that start with a capital letter like compile to `React.createElement(Foo)` and correspond to a component defined or imported in your JavaScript file.
 
-* `<component />` compiles to `React.createElement('component')` (html tag)
-* `<Component />` compiles to `React.createElement(Component)`
-* `<obj.component />` compiles to `React.createElement(obj.component)`
+- `<component />` compiles to `React.createElement('component')` (html tag)
+- `<Component />` compiles to `React.createElement(Component)`
+- `<obj.component />` compiles to `React.createElement(obj.component)`
 
 <div align="right">
     <b><a href="#table-of-contents">↥ back to top</a></b>
@@ -247,16 +249,16 @@ class App extends React.Component {
         <ChildB />
         <ChildC />
       </React.Fragment>
-    )
+    );
   }
 }
 ```
 
 **Benefits:**
 
-* It\'s a tiny bit faster and has less memory usage (no need to create an extra DOM node). This only has a real benefit on very large and/or deep trees, but application performance often suffers from death by a thousand cuts. This is one cut less.
-* Some CSS mechanisms like Flexbox and CSS Grid have a special parent-child relationship, and adding divs in the middle makes it hard to keep the desired layout while extracting logical components.
-* The DOM inspector is less cluttered.
+- It\'s a tiny bit faster and has less memory usage (no need to create an extra DOM node). This only has a real benefit on very large and/or deep trees, but application performance often suffers from death by a thousand cuts. This is one cut less.
+- Some CSS mechanisms like Flexbox and CSS Grid have a special parent-child relationship, and adding divs in the middle makes it hard to keep the desired layout while extracting logical components.
+- The DOM inspector is less cluttered.
 
 <div align="right">
     <b><a href="#table-of-contents">↥ back to top</a></b>
@@ -312,8 +314,8 @@ Create React App is an officially supported way to create single-page React appl
 
 The Create React App is maintained by Facebook and can works on any platform, for example, macOS, Windows, Linux, etc. To create a React Project using create-react-app, you need to have installed the following things in your system.
 
-* [Node version >= 14](https://nodejs.org/en/download/)
-* [Visual Studio Code Editor](https://code.visualstudio.com/download)
+- [Node version >= 14](https://nodejs.org/en/download/)
+- [Visual Studio Code Editor](https://code.visualstudio.com/download)
 
 **Installation:**
 
@@ -353,7 +355,7 @@ my-app
 
 **Reference:**
 
-* *[https://create-react-app.dev/docs/getting-started/](https://create-react-app.dev/docs/getting-started/)*
+- _[https://create-react-app.dev/docs/getting-started/](https://create-react-app.dev/docs/getting-started/)_
 
 <div align="right">
     <b><a href="#table-of-contents">↥ back to top</a></b>
@@ -365,13 +367,13 @@ my-app
 
 Below are the list of some of the features provided by create react app.
 
-* React, JSX, ES6, Typescript and Flow syntax support.
-* Autoprefixed CSS
-* CSS Reset/Normalize
-* Live-editing CSS and JS in local development server.
-* A fast interactive unit test runner with built-in support for coverage reporting
-* A build script to bundle JS, CSS, and images for production, with hashes and sourcemaps
-* An offline-first service worker and a web app manifest, meeting all the Progressive Web App criteria.
+- React, JSX, ES6, Typescript and Flow syntax support.
+- Autoprefixed CSS
+- CSS Reset/Normalize
+- Live-editing CSS and JS in local development server.
+- A fast interactive unit test runner with built-in support for coverage reporting
+- A build script to bundle JS, CSS, and images for production, with hashes and sourcemaps
+- An offline-first service worker and a web app manifest, meeting all the Progressive Web App criteria.
 
 <div align="right">
     <b><a href="#table-of-contents">↥ back to top</a></b>
@@ -398,7 +400,7 @@ npx create-react-app hello-world-app
 Modify the `App.js` file as shown below.
 
 ```js
-import './App.css';
+import "./App.css";
 
 function App() {
   return (
@@ -440,24 +442,21 @@ React doesn\'t have opinions on how you put files into folders. That said there 
 One common way to structure projects is to locate CSS, JS, and tests together inside folders grouped by feature or route.
 
 ```js
-common/
-  Avatar.js
-  Avatar.css
-  APIUtils.js
-  APIUtils.test.js
-feed/
-  index.js
-  Feed.js
-  Feed.css
-  FeedStory.js
-  FeedStory.test.js
-  FeedAPI.js
-profile/
-  index.js
-  Profile.js
-  ProfileHeader.js
-  ProfileHeader.css
-  ProfileAPI.js
+common / Avatar.js;
+Avatar.css;
+APIUtils.js;
+APIUtils.test.js;
+feed / index.js;
+Feed.js;
+Feed.css;
+FeedStory.js;
+FeedStory.test.js;
+FeedAPI.js;
+profile / index.js;
+Profile.js;
+ProfileHeader.js;
+ProfileHeader.css;
+ProfileAPI.js;
 ```
 
 **2. Grouping by file type:**
@@ -465,21 +464,19 @@ profile/
 Another popular way to structure projects is to group similar files together, for example:
 
 ```js
-api/
-  APIUtils.js
-  APIUtils.test.js
-  ProfileAPI.js
-  UserAPI.js
-components/
-  Avatar.js
-  Avatar.css
-  Feed.js
-  Feed.css
-  FeedStory.js
-  FeedStory.test.js
-  Profile.js
-  ProfileHeader.js
-  ProfileHeader.css
+api / APIUtils.js;
+APIUtils.test.js;
+ProfileAPI.js;
+UserAPI.js;
+components / Avatar.js;
+Avatar.css;
+Feed.js;
+Feed.css;
+FeedStory.js;
+FeedStory.test.js;
+Profile.js;
+ProfileHeader.js;
+ProfileHeader.css;
 ```
 
 <div align="right">
@@ -616,16 +613,16 @@ ReactDOM is a package that provides DOM specific methods that can be used at the
 
 ReactDOM provides the developers with an API containing the following methods
 
-* render()
-* findDOMNode()
-* unmountComponentAtNode()
-* hydrate()
-* createPortal()
+- render()
+- findDOMNode()
+- unmountComponentAtNode()
+- hydrate()
+- createPortal()
 
 **1. render():**
 
 ```js
-ReactDOM.render(element, container, callback)
+ReactDOM.render(element, container, callback);
 ```
 
 Render a React element into the DOM in the supplied container and return a reference to the component (or returns null for stateless components). If the React element was previously rendered into container, this will perform an update on it and only mutate the DOM as necessary to reflect the latest React element. If the optional callback is provided, it will be executed after the component is rendered or updated.
@@ -635,7 +632,7 @@ Render a React element into the DOM in the supplied container and return a refer
 **2. hydrate():**
 
 ```js
-ReactDOM.hydrate(element, container, callback)
+ReactDOM.hydrate(element, container, callback);
 ```
 
 This method is equivalent to the `render()` method but is implemented while using server-side rendering. This function attempts to attach event listeners to the existing markup and returns a reference to the component or null if a stateless component was rendered.
@@ -645,7 +642,7 @@ This method is equivalent to the `render()` method but is implemented while usin
 **3. unmountComponentAtNode():**
 
 ```js
-ReactDOM.unmountComponentAtNode(container)
+ReactDOM.unmountComponentAtNode(container);
 ```
 
 This function is used to unmount or remove the React Component that was rendered to a particular container. It returns true if a component was unmounted and false if there was no component to unmount.
@@ -655,7 +652,7 @@ This function is used to unmount or remove the React Component that was rendered
 **4. findDOMNode():**
 
 ```js
-ReactDOM.findDOMNode(component)
+ReactDOM.findDOMNode(component);
 ```
 
 If this component has been mounted into the DOM, this returns the corresponding native browser DOM element. This method is useful for reading values out of the DOM, such as form field values and performing DOM measurements.
@@ -665,7 +662,7 @@ If this component has been mounted into the DOM, this returns the corresponding 
 **5. createPortal():**
 
 ```js
-ReactDOM.createPortal(child, container)
+ReactDOM.createPortal(child, container);
 ```
 
 createPortal allow us to render a component into a DOM node that resides outside the current DOM hierarchy of the parent component.
@@ -678,7 +675,7 @@ createPortal allow us to render a component into a DOM node that resides outside
 
 ## Q. How to build a progressive web app with react?
 
-*ToDo*
+_ToDo_
 
 <div align="right">
     <b><a href="#table-of-contents">↥ back to top</a></b>
@@ -686,7 +683,7 @@ createPortal allow us to render a component into a DOM node that resides outside
 
 ## Q. What is the difference between create-react-app and webpack?
 
-*ToDo*
+_ToDo_
 
 <div align="right">
     <b><a href="#table-of-contents">↥ back to top</a></b>
@@ -694,7 +691,7 @@ createPortal allow us to render a component into a DOM node that resides outside
 
 ## Q. What is the difference between grunt and webpack?
 
-*ToDo*
+_ToDo_
 
 <div align="right">
     <b><a href="#table-of-contents">↥ back to top</a></b>
@@ -708,14 +705,14 @@ createPortal allow us to render a component into a DOM node that resides outside
 
 JSX ( **JavaScript Expression** ) allows us to write HTML elements in JavaScript and place them in the DOM without any `createElement()` or `appendChild()` methods. JSX converts HTML tags into react elements. React uses JSX for templating instead of regular JavaScript. It is not necessary to use it, however, following are some pros that come with it.
 
-* It is faster because it performs optimization while compiling code to JavaScript.
-* It is also type-safe and most of the errors can be caught during compilation.
-* It makes it easier and faster to write templates.
+- It is faster because it performs optimization while compiling code to JavaScript.
+- It is also type-safe and most of the errors can be caught during compilation.
+- It makes it easier and faster to write templates.
 
 When JSX compiled, they actually become regular JavaScript objects. For instance, the code below:
 
 ```js
-const hello = <h1 className = "greet"> Hello World </h1>
+const hello = <h1 className="greet"> Hello World </h1>;
 ```
 
 will be compiled to
@@ -724,7 +721,7 @@ will be compiled to
 const hello = React.createElement {
     type: "h1",
     props: {
-      className: "greet",  
+      className: "greet",
       children: "Hello World"
     }
 }
@@ -760,7 +757,7 @@ export default class JSXInjectionExample extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      userContent: `JSX prevents Injection Attacks Example 
+      userContent: `JSX prevents Injection Attacks Example
           <script src="http://example.com/malicious-script.js></script>`
     };
   }
@@ -773,7 +770,7 @@ export default class JSXInjectionExample extends React.Component {
 }
 
 // Output
-User content: JSX prevents Injection Attacks Example 
+User content: JSX prevents Injection Attacks Example
 <script src="http://example.com/malicious-script.js></script>
 ```
 
@@ -787,9 +784,9 @@ User content: JSX prevents Injection Attacks Example
 
 The React 17 release provides support for a new version of the JSX transform. There are three major benefits of new JSX transform,
 
-* It enables you to use JSX without having to import React.
-* The compiled output relatively improves the bundle size.
-* The future improvements provides the flexibility to reduce the number of concepts to learn React.
+- It enables you to use JSX without having to import React.
+- The compiled output relatively improves the bundle size.
+- The future improvements provides the flexibility to reduce the number of concepts to learn React.
 
 <div align="right">
     <b><a href="#table-of-contents">↥ back to top</a></b>
@@ -843,18 +840,15 @@ Writing comments in React components can be done just like comment in regular Ja
 
 ```js
 function App() {
-
   // Single line Comment
 
   /*
-  * multi
-  * line
-  * comment
-  **/
+   * multi
+   * line
+   * comment
+   **/
 
-  return (
-    <h1>My Application</h1>
-  );
+  return <h1>My Application</h1>;
 }
 ```
 
@@ -916,11 +910,11 @@ A JSX expression must have only one outer element. For Example:
 
 ```js
 const headings = (
-    <div id = "outermost-element">
-       <h1>I am a heading </h1>
-       <h2>I am also a heading</h2>
-    </div>
-)
+  <div id="outermost-element">
+    <h1>I am a heading </h1>
+    <h2>I am also a heading</h2>
+  </div>
+);
 ```
 
 <div align="right">
@@ -942,7 +936,7 @@ const animals = [
   { id: 2, animal: "Bird" },
   { id: 3, animal: "Cat" },
   { id: 4, animal: "Mouse" },
-  { id: 5, animal: "Horse" }
+  { id: 5, animal: "Horse" },
 ];
 
 export default function App() {
@@ -1030,7 +1024,7 @@ export default function App() {
   return (
     <div
       dangerouslySetInnerHTML={{
-        __html: "<p>This text is set using <b>dangerouslySetInnerHTML</b></p>"
+        __html: "<p>This text is set using <b>dangerouslySetInnerHTML</b></p>",
       }}
     ></div>
   );
@@ -1049,14 +1043,14 @@ export default function App() {
 
 ```js
 const AddToCart = ({ available }) => {
-  if (!available) return null
+  if (!available) return null;
 
   return (
     <div className="full tr">
       <button className="product--cart-button">Add to Cart</button>
     </div>
-  )
-}
+  );
+};
 ```
 
 **2. Ternary Display:**
@@ -1113,14 +1107,14 @@ In React, a **Stateful Component** is a component that holds some state. A **Sta
 **1. Stateless Component:**
 
 ```js
-import React from 'react'
+import React from "react";
 
 const ExampleComponent = (props) => {
-    return <h1>Stateless Component - {props.message}</h1>;
+  return <h1>Stateless Component - {props.message}</h1>;
 };
 
 const App = () => {
-  const message = 'React Interview Questions'
+  const message = "React Interview Questions";
   return (
     <div>
       <ExampleComponent message={message} />
@@ -1136,23 +1130,20 @@ The above example shows a stateless component named ExampleComponent which is in
 **2. Stateful Component:**
 
 ```js
-import React, { useState } from 'react'
+import React, { useState } from "react";
 
 const ExampleComponent = (props) => {
-  const [email, setEmail] = useState(props.defaultEmail)
+  const [email, setEmail] = useState(props.defaultEmail);
 
   const changeEmailHandler = (e) => {
-    setEmail(e.target.value)
-  }
+    setEmail(e.target.value);
+  };
 
-  return (
-    <input type="text" value={email} onChange={changeEmailHandler} />
-  );
-}
-
+  return <input type="text" value={email} onChange={changeEmailHandler} />;
+};
 
 const App = () => {
-  const defaultEmail = "suniti.mukhopadhyay@gmail.com"
+  const defaultEmail = "suniti.mukhopadhyay@gmail.com";
   return (
     <div>
       <ExampleComponent defaultEmail={defaultEmail} />
@@ -1179,22 +1170,22 @@ For example, this is a presentational component. It gets data from its props, an
 
 ```js
 /**
- * Presentational Component 
+ * Presentational Component
  */
-const Users = props => (
+const Users = (props) => (
   <ul>
-    {props.users.map(user => (
+    {props.users.map((user) => (
       <li>{user}</li>
     ))}
   </ul>
-)
+);
 ```
 
 On the other hand this is a container component. It manages and stores its own data, and uses the presentational component to display it.
 
 ```js
 /**
- * Container Component 
+ * Container Component
  */
 class UsersContainer extends React.Component {
   constructor() {
@@ -1223,23 +1214,22 @@ class UsersContainer extends React.Component {
 
 ```js
 // Importing combination
-import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
+import React, { Component } from "react";
+import ReactDOM from "react-dom";
 
 // Wrapping components with braces if no default exports
-import { Button }  from './Button';
+import { Button } from "./Button";
 
 // Default exports ( recommended )
-import  Button  from './Button';
- 
+import Button from "./Button";
+
 class DangerButton extends Component {
-    render()
-    {
-        return <Button color="red" />;
-    }
+  render() {
+    return <Button color="red" />;
+  }
 }
 
-export default DangerButton; 
+export default DangerButton;
 // or export DangerButton;
 ```
 
@@ -1260,7 +1250,7 @@ const string = "Hi there , I'm a web developer";
 let removeSpace = "";
 for (let i = 0; i < i.string.length; i++) {
   if (string[i] === " ") removeSpace += "-";
-  else removeSpace += string[i]; 
+  else removeSpace += string[i];
 }
 console.log(removeSpace);
 ```
@@ -1274,17 +1264,11 @@ It is a programming paradigm that expresses the logic of a computation without d
 **Example:**
 
 ```js
-const { render } = ReactDOM
+const { render } = ReactDOM;
 const Welcome = () => (
-  <div id="App">
-    //your HTML code 
-    //your react components
-  </div>
-)
-render(
-<App />,
-document.getElementById('root')
-)
+  <div id="App">//your HTML code //your react components</div>
+);
+render(<App />, document.getElementById("root"));
 ```
 
 React is declarative. Here, the **Welcome** component describes the DOM that should be rendered. The render function uses the instructions declared in the component to build the DOM, abstracting away the details of how the DOM is to be rendered. We can clearly see that we want to render our **Welcome** component into the element with the ID of 'target'.
@@ -1301,7 +1285,7 @@ It is a simple object that describes a DOM node and its attributes or properties
 
 ```js
 const element = <h1>React Element Example!</h1>;
-ReactDOM.render(element, document.getElementById('app'));
+ReactDOM.render(element, document.getElementById("app"));
 ```
 
 **2. React Component:**
@@ -1312,7 +1296,7 @@ It is a function or class that accepts an input and returns a React element. It 
 function Message() {
   return <h2>React Component Example!</h2>;
 }
-ReactDOM.render(<Message />, document.getElementById('app'));
+ReactDOM.render(<Message />, document.getElementById("app"));
 ```
 
 <div align="right">
@@ -1338,7 +1322,7 @@ function LogInComponent(props) {
 
 ReactDOM.render(
   <LogInComponent isLoggedIn={false} />,
-  document.getElementById('root')
+  document.getElementById("root")
 );
 ```
 
@@ -1415,14 +1399,14 @@ export default class App extends React.Component {
   constructor() {
     super();
     this.state = {
-      countOfClicks: 0
+      countOfClicks: 0,
     };
     this.handleClick = this.handleClick.bind(this);
   }
 
   handleClick() {
     this.setState({
-      countOfClicks: this.state.countOfClicks + 1
+      countOfClicks: this.state.countOfClicks + 1,
     });
   }
 
@@ -1436,7 +1420,9 @@ export default class App extends React.Component {
     return (
       <div>
         <h2>shouldComponentUpdate Example</h2>
-        <p>Count of clicks: <b>{this.state.countOfClicks}</b></p>
+        <p>
+          Count of clicks: <b>{this.state.countOfClicks}</b>
+        </p>
         <button onClick={this.handleClick}>CLICK ME</button>
       </div>
     );
@@ -1476,19 +1462,19 @@ export default function App() {
 
 React StrictMode, in order to be efficient and avoid potential problems by any side-effects, needs to trigger some methods and lifecycle hooks twice. These are:
 
-* Class component constructor() method
-* The render() method
-* setState() updater functions (the first argument)
-* The static getDerivedStateFromProps() lifecycle
-* React.useState() function
+- Class component constructor() method
+- The render() method
+- setState() updater functions (the first argument)
+- The static getDerivedStateFromProps() lifecycle
+- React.useState() function
 
 **Benefits of StrictMode:**
 
-* Identifying components with unsafe lifecycles
-* Warning about legacy string ref API usage
-* Warning about deprecated findDOMNode usage
-* Detecting unexpected side effects
-* Detecting legacy context API
+- Identifying components with unsafe lifecycles
+- Warning about legacy string ref API usage
+- Warning about deprecated findDOMNode usage
+- Detecting unexpected side effects
+- Detecting legacy context API
 
 <div align="right">
     <b><a href="#table-of-contents">↥ back to top</a></b>
@@ -1516,7 +1502,7 @@ export default class App extends Component {
     super(props);
 
     this.state = {
-      news: []
+      news: [],
     };
   }
 
@@ -1528,7 +1514,7 @@ export default class App extends Component {
       .then((result) => {
         if (this._isMounted) {
           this.setState({
-            news: result.data.hits
+            news: result.data.hits,
           });
         }
       });
@@ -1587,7 +1573,7 @@ export default class App extends React.Component {
     arr[id] = 1;
     this.setState({
       playerName: name,
-      selectedPlayer: arr
+      selectedPlayer: arr,
     });
   }
   render() {
@@ -1668,11 +1654,11 @@ The special thing about children is that React provides support through its `Rea
 const Picture = (props) => {
   return (
     <div>
-      <img src={props.src}/>
+      <img src={props.src} />
       {props.children}
     </div>
-  )
-}
+  );
+};
 ```
 
 This component contains an `<img>` that is receiving some props and then it is displaying `{props.children}`.
@@ -1714,12 +1700,12 @@ function App() {
         Actions <span aria-hidden>▾</span>
       </MenuButton>
       <MenuList>
-        <MenuItem onSelect={() => alert('Download')}>Download</MenuItem>
-        <MenuItem onSelect={() => alert('Copy')}>Create a Copy</MenuItem>
-        <MenuItem onSelect={() => alert('Delete')}>Delete</MenuItem>
+        <MenuItem onSelect={() => alert("Download")}>Download</MenuItem>
+        <MenuItem onSelect={() => alert("Copy")}>Create a Copy</MenuItem>
+        <MenuItem onSelect={() => alert("Delete")}>Delete</MenuItem>
       </MenuList>
     </Menu>
-  )
+  );
 }
 ```
 
@@ -1748,10 +1734,7 @@ function Welcome(props) {
 
 const element = <Welcome name="World!" />;
 
-ReactDOM.render(
-  element,
-  document.getElementById('root')
-);
+ReactDOM.render(element, document.getElementById("root"));
 ```
 
 **&#9885; [Try this example on CodeSandbox](https://codepen.io/learning-zone/pen/MWmEmRj?editors=0010)**
@@ -1779,10 +1762,7 @@ class Welcome extends React.Component {
 
 const element = <Welcome name="World!" />;
 
-ReactDOM.render(
-  element,
-  document.getElementById('root')
-);
+ReactDOM.render(element, document.getElementById("root"));
 ```
 
 **&#9885; [Try this example on CodeSandbox](https://codepen.io/learning-zone/pen/BaRwZyB)**
@@ -1793,20 +1773,20 @@ ReactDOM.render(
 
 ## Q. What is the recommended ordering of methods in class component?
 
-* static methods
-* constructor()
-* getChildContext()
-* componentWillMount()
-* componentDidMount()
-* componentWillReceiveProps()
-* shouldComponentUpdate()
-* componentWillUpdate()
-* componentDidUpdate()
-* componentWillUnmount()
-* click handlers or event handlers like `onClickSubmit()` or `onChangeDescription()`
-* getter methods for render like `getSelectReason()` or `getFooterContent()`
-* optional render methods like `renderNavigation()` or `renderProfilePicture()`
-* render()
+- static methods
+- constructor()
+- getChildContext()
+- componentWillMount()
+- componentDidMount()
+- componentWillReceiveProps()
+- shouldComponentUpdate()
+- componentWillUpdate()
+- componentDidUpdate()
+- componentWillUnmount()
+- click handlers or event handlers like `onClickSubmit()` or `onChangeDescription()`
+- getter methods for render like `getSelectReason()` or `getFooterContent()`
+- optional render methods like `renderNavigation()` or `renderProfilePicture()`
+- render()
 
 <div align="right">
     <b><a href="#table-of-contents">↥ back to top</a></b>
@@ -1819,50 +1799,50 @@ ReactDOM.render(
  * Generate dynamic table in React
  */
 class Table extends React.Component {
-   constructor(props) {
-      super(props)
-      this.state = {
-         employees: [
-            { id: 10, name: 'Swarna Sachdeva', email: 'swarna@email.com' },
-            { id: 20, name: 'Sarvesh Date', email: 'sarvesh@email.com' },
-            { id: 30, name: 'Diksha Meka', email: 'diksha@email.com' }
-         ]
-      }
-   }
+  constructor(props) {
+    super(props);
+    this.state = {
+      employees: [
+        { id: 10, name: "Swarna Sachdeva", email: "swarna@email.com" },
+        { id: 20, name: "Sarvesh Date", email: "sarvesh@email.com" },
+        { id: 30, name: "Diksha Meka", email: "diksha@email.com" },
+      ],
+    };
+  }
 
-   renderTableHeader() {
-      let header = Object.keys(this.state.employees[0])
-      return header.map((key, index) => {
-         return <th key={index}>{key.toUpperCase()}</th>
-      })
-   }
+  renderTableHeader() {
+    let header = Object.keys(this.state.employees[0]);
+    return header.map((key, index) => {
+      return <th key={index}>{key.toUpperCase()}</th>;
+    });
+  }
 
-   renderTableData() {
-      return this.state.employees.map((employee, index) => {
-         const { id, name, email } = employee 
-         return (
-            <tr key={id}>
-               <td>{id}</td>
-               <td>{name}</td>
-               <td>{email}</td>
-            </tr>
-         )
-      })
-   }
-
-   render() {
+  renderTableData() {
+    return this.state.employees.map((employee, index) => {
+      const { id, name, email } = employee;
       return (
-         <div>
-            <h1 id='title'>React Dynamic Table</h1>
-            <table id='employees'>
-               <tbody>
-                  <tr>{this.renderTableHeader()}</tr>
-                  {this.renderTableData()}
-               </tbody>
-            </table>
-         </div>
-      )
-   }
+        <tr key={id}>
+          <td>{id}</td>
+          <td>{name}</td>
+          <td>{email}</td>
+        </tr>
+      );
+    });
+  }
+
+  render() {
+    return (
+      <div>
+        <h1 id="title">React Dynamic Table</h1>
+        <table id="employees">
+          <tbody>
+            <tr>{this.renderTableHeader()}</tr>
+            {this.renderTableData()}
+          </tbody>
+        </table>
+      </div>
+    );
+  }
 }
 ```
 
@@ -1884,11 +1864,7 @@ function WarningBanner(props) {
     return null;
   }
 
-  return (
-    <div className="warning">
-      Warning!
-    </div>
-  );
+  return <div className="warning">Warning!</div>;
 }
 ```
 
@@ -1896,33 +1872,30 @@ function WarningBanner(props) {
 class Page extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {showWarning: true};
+    this.state = { showWarning: true };
     this.handleToggleClick = this.handleToggleClick.bind(this);
   }
 
   handleToggleClick() {
-    this.setState(state => ({
-      showWarning: !state.showWarning
+    this.setState((state) => ({
+      showWarning: !state.showWarning,
     }));
   }
 
   render() {
     return (
       <div>
-        { /* Prevent component render if value of the prop is false */}
+        {/* Prevent component render if value of the prop is false */}
         <WarningBanner warn={this.state.showWarning} />
         <button onClick={this.handleToggleClick}>
-          {this.state.showWarning ? 'Hide' : 'Show'}
+          {this.state.showWarning ? "Hide" : "Show"}
         </button>
       </div>
     );
   }
 }
 
-ReactDOM.render(
-  <Page />,
-  document.getElementById('root')
-);
+ReactDOM.render(<Page />, document.getElementById("root"));
 ```
 
 **&#9885; [Try this example on CodeSandbox](https://codepen.io/learning-zone/pen/GRmMvWr?editors=0110)**
@@ -1940,31 +1913,24 @@ Using `setInterval()` inside React components allows us to execute a function or
 ```js
 class Clock extends React.Component {
   constructor(props) {
-    super(props)
+    super(props);
     this.state = {
-      time: new Date().toLocaleString()
-    }
+      time: new Date().toLocaleString(),
+    };
   }
   componentDidMount() {
-    this.intervalID = setInterval(
-      () => this.tick(),
-      1000
-    )
+    this.intervalID = setInterval(() => this.tick(), 1000);
   }
   componentWillUnmount() {
-    clearInterval(this.intervalID)
+    clearInterval(this.intervalID);
   }
   tick() {
     this.setState({
-      time: new Date().toLocaleString()
-    })
+      time: new Date().toLocaleString(),
+    });
   }
   render() {
-    return (
-      <p className="App-clock">
-        The time is {this.state.time}.
-      </p>
-    )
+    return <p className="App-clock">The time is {this.state.time}.</p>;
   }
 }
 ```
@@ -1978,7 +1944,7 @@ class Clock extends React.Component {
 Stateful and stateless components have many different names. They are also known as:
 
 – Container vs Presentational components  
-– Smart vs Dumb components  
+– Smart vs Dumb components
 
 The literal difference is that one has state, and the other does not. That means the stateful components are keeping track of changing data, while stateless components print out what is given to them via props, or they always render the same thing.
 
@@ -2000,14 +1966,14 @@ function welcome(props) {
 }
 ```
 
-|Class Components                               |Functional Components                                 |
-|-----------------------------------------------|-------------------------------------------------------|
-|Class components need to extend the component from "React.Component" and create a render function that returns the required element. | Functional components are like normal functions which take "props" as the argument and return the required element.|
-|They are also known as stateful components.    |They are also known as stateless components.|
-|They implement logic and the state of the component.|They accept some kind of data and display it in the UI.|
-|Lifecycle methods can be used inside them.     |Lifecycle methods cannot be used inside them.|
-|It needs to store state therefore constructors are used.|Constructors are not used in it.|
-|It has to have a "render()" method inside that. |It does not require a render method.|
+| Class Components                                                                                                                     | Functional Components                                                                                               |
+| ------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------- |
+| Class components need to extend the component from "React.Component" and create a render function that returns the required element. | Functional components are like normal functions which take "props" as the argument and return the required element. |
+| They are also known as stateful components.                                                                                          | They are also known as stateless components.                                                                        |
+| They implement logic and the state of the component.                                                                                 | They accept some kind of data and display it in the UI.                                                             |
+| Lifecycle methods can be used inside them.                                                                                           | Lifecycle methods cannot be used inside them.                                                                       |
+| It needs to store state therefore constructors are used.                                                                             | Constructors are not used in it.                                                                                    |
+| It has to have a "render()" method inside that.                                                                                      | It does not require a render method.                                                                                |
 
 <div align="right">
     <b><a href="#table-of-contents">↥ back to top</a></b>
@@ -2023,17 +1989,17 @@ The `super()` keyword is used to call the parent constructor. `super(props)` wou
  */
 class App extends React.Component {
   constructor(props) {
-      super(props)
-      this.state = {}
-   }
+    super(props);
+    this.state = {};
+  }
 
   // React says we have to define render()
   render() {
-    return <div>Hello world</div>
+    return <div>Hello world</div>;
   }
 }
 
-export default App
+export default App;
 ```
 
 Here, `super(props)` would call the `React.Component` constructor passing in props as the argument.
@@ -2048,10 +2014,10 @@ Here, `super(props)` would call the `React.Component` constructor passing in pro
 
 A React Element is just a plain old JavaScript Object without own methods. It has essentially four properties:
 
-* **type**: a String representing an HTML tag or a reference referring to a React Component
-* **key**: a String to uniquely identify an React Element
-* **ref**: a reference to access either the underlying DOM node or React Component Instance)
-* **props**: (properties Object)
+- **type**: a String representing an HTML tag or a reference referring to a React Component
+- **key**: a String to uniquely identify an React Element
+- **ref**: a reference to access either the underlying DOM node or React Component Instance)
+- **props**: (properties Object)
 
 A React Element is not an instance of a React Component. It is just a simplified "description" of how the React Component Instance to be created should look like.
 
@@ -2067,28 +2033,28 @@ A React Component can contain state and has access to the React Lifecycle method
 /**
  * React Component Instances
  */
-import React from 'react'
-import ReactDOM from 'react-dom'
+import React from "react";
+import ReactDOM from "react-dom";
 
 class MyComponent extends React.Component {
   constructor(props) {
-    super(props)
-    console.log('This is a component instance:' + this)
+    super(props);
+    console.log("This is a component instance:" + this);
   }
 
   render() {
-    const another_element = <div>Hello, World!</div>
-    console.log('This is also an element:' + another_element)
-    return another_element
+    const another_element = <div>Hello, World!</div>;
+    console.log("This is also an element:" + another_element);
+    return another_element;
   }
 }
 
-console.log('This is a component:' + MyComponent)
+console.log("This is a component:" + MyComponent);
 
-const element = <MyComponent/>
-console.log('This is an element:' + element)
+const element = <MyComponent />;
+console.log("This is an element:" + element);
 
-ReactDOM.render(element, document.getElementById('root'));
+ReactDOM.render(element, document.getElementById("root"));
 ```
 
 <div align="right">
@@ -2105,7 +2071,7 @@ The default implementation of this function returns true so to stop the re-rende
 shouldComponentUpdate(nextProps, nextState) {
   console.log(nextProps, nextState)
   console.log(this.props, this.state)
-  return false  
+  return false
 }
 ```
 
@@ -2127,15 +2093,15 @@ The React class components uses render() function. It is used to update the UI.
 
 **Purpose of render():**
 
-* React renders HTML to the web page by using a function called render().
-* The purpose of the function is to display the specified HTML code inside the specified HTML element.
-* In the render() method, we can read props and state and return our JSX code to the root component of our app.
-* In the render() method, we cannot change the state, and we cannot cause side effects ( such as making an HTTP request to the webserver).
+- React renders HTML to the web page by using a function called render().
+- The purpose of the function is to display the specified HTML code inside the specified HTML element.
+- In the render() method, we can read props and state and return our JSX code to the root component of our app.
+- In the render() method, we cannot change the state, and we cannot cause side effects ( such as making an HTTP request to the webserver).
 
 ```js
 /**
  * render() function
- * 
+ *
  * React v18.0.0
  */
 import React from "react";
@@ -2170,32 +2136,32 @@ React provides several methods that notify us when certain stage of this process
   <img src="assets/react-lifecycle.png" alt="React component lifecycle" width="800px" />
 </p>
 
-**1. Mounting:**  
+**1. Mounting:**
 
 These methods are called in the following order when an instance of a component is being created and inserted into the DOM:
 
-* `constructor()`
-* `getDerivedStateFromProps()`
-* `render()`
-* `componentDidMount()`
+- `constructor()`
+- `getDerivedStateFromProps()`
+- `render()`
+- `componentDidMount()`
 
-**2. Updating:**  
+**2. Updating:**
 
 The next phase in the lifecycle is when a component is updated. A component is updated whenever there is a change in the component\'s state or props.
 
 React has five built-in methods that gets called, in this order, when a component is updated:
 
-* `getDerivedStateFromProps()`
-* `shouldComponentUpdate()`
-* `render()`
-* `getSnapshotBeforeUpdate()`
-* `componentDidUpdate()`
+- `getDerivedStateFromProps()`
+- `shouldComponentUpdate()`
+- `render()`
+- `getSnapshotBeforeUpdate()`
+- `componentDidUpdate()`
 
-**3. Unmounting:**  
+**3. Unmounting:**
 
 The next phase in the lifecycle is when a component is removed from the DOM, or unmounting as React likes to call it.
 
-* `componentWillUnmount()`
+- `componentWillUnmount()`
 
 <div align="right">
     <b><a href="#table-of-contents">↥ back to top</a></b>
@@ -2212,10 +2178,10 @@ The `componentDidMount()` lifecycle hook can be used with class components. Any 
 ```js
 class Homepage extends React.Component {
   componentDidMount() {
-    trackPageView('Homepage')
+    trackPageView("Homepage");
   }
   render() {
-    return <div>Homepage</div>
+    return <div>Homepage</div>;
   }
 }
 ```
@@ -2224,32 +2190,32 @@ class Homepage extends React.Component {
 
 The `useEffect()` hook can be used with function components. The `useEffect()` hook is more flexible than the lifecycle methods used for class components. It receives two parameters:
 
-* The first parameter it takes is a callback function to be executed.
-* The optional second parameter it takes is an array containing any variables that are to be tracked.
+- The first parameter it takes is a callback function to be executed.
+- The optional second parameter it takes is an array containing any variables that are to be tracked.
 
 The value passed as the second argument controls when the callback is executed:
 
-* If the second parameter is **undefined**, the callback is executed every time that the component is rendered.
-* If the second parameter contains an array of variables, then the callback will be executed as part of the first render cycle and will be executed again each time an item in the array is modified.
-* If the second parameter contains an empty array, the callback will be executed only once as part of the first render cycle.
+- If the second parameter is **undefined**, the callback is executed every time that the component is rendered.
+- If the second parameter contains an array of variables, then the callback will be executed as part of the first render cycle and will be executed again each time an item in the array is modified.
+- If the second parameter contains an empty array, the callback will be executed only once as part of the first render cycle.
 
 **Example:**
 
 ```js
 const Homepage = () => {
   useEffect(() => {
-    trackPageView('Homepage')
-  }, [])
-  
-  return <div>Homepage</div>
-}
+    trackPageView("Homepage");
+  }, []);
+
+  return <div>Homepage</div>;
+};
 ```
 
 <div align="right">
     <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
 
-## Q. What is the typical pattern for rendering a list of components from an array of data?  
+## Q. What is the typical pattern for rendering a list of components from an array of data?
 
 The usual pattern for rendering lists of components often ends with delegating all of the responsibilities of each child component to the entire list container component. But with a few optimizations, we can make a change in a child component not cause the parent component to re-render.
 
@@ -2317,11 +2283,11 @@ export default SampleComponent;
 
 When `useEffect()` is used to get data from server.
 
-* The first argument is a callback that will be fired after browser layout and paint. Therefore it does not block the painting process of the browser.
-* The second argument is an array of values (usually props).
-* If any of the value in the array changes, the callback will be fired after every render.
-* When it is not present, the callback will always be fired after every render.
-* When it is an empty list, the callback will only be fired once, similar to componentDidMount.
+- The first argument is a callback that will be fired after browser layout and paint. Therefore it does not block the painting process of the browser.
+- The second argument is an array of values (usually props).
+- If any of the value in the array changes, the callback will be fired after every render.
+- When it is not present, the callback will always be fired after every render.
+- When it is an empty list, the callback will only be fired once, similar to componentDidMount.
 
 <div align="right">
     <b><a href="#table-of-contents">↥ back to top</a></b>
@@ -2360,40 +2326,35 @@ The `componentDidMount()` is executed after the first render only on the client 
 **Example:**
 
 ```js
-import React, { Component } from 'react'
+import React, { Component } from "react";
 
 class App extends Component {
-
   constructor(props) {
-    super(props)
+    super(props);
     this.state = {
-      data: 'Alex Belfort'
-    }
+      data: "Alex Belfort",
+    };
   }
 
-  getData(){
+  getData() {
     setTimeout(() => {
-      console.log('Our data is fetched')
+      console.log("Our data is fetched");
       this.setState({
-        data: 'Hello Alex'
-      })
-    }, 1000)
+        data: "Hello Alex",
+      });
+    }, 1000);
   }
 
   componentDidMount() {
-    this.getData()
+    this.getData();
   }
 
   render() {
-    return (
-      <div>
-        {this.state.data}
-      </div>
-    )
+    return <div>{this.state.data}</div>;
   }
 }
 
-export default App
+export default App;
 ```
 
 **componentWillMount():**
@@ -2403,43 +2364,38 @@ The `componentWillMount()` method is executed before rendering, on both the serv
 **Example:**
 
 ```js
-import React, { Component } from 'react'
+import React, { Component } from "react";
 
 class App extends Component {
-
   constructor(props) {
-    super(props)
+    super(props);
     this.state = {
-      data: 'Alex Belfort'
-    }
+      data: "Alex Belfort",
+    };
   }
   componentWillMount() {
-    console.log('First this called')
+    console.log("First this called");
   }
 
   getData() {
     setTimeout(() => {
-      console.log('Our data is fetched')
+      console.log("Our data is fetched");
       this.setState({
-        data: 'Hello Alex'
-      })
-    }, 1000)
+        data: "Hello Alex",
+      });
+    }, 1000);
   }
 
   componentDidMount() {
-    this.getData()
+    this.getData();
   }
 
   render() {
-    return (
-      <div>
-        {this.state.data}
-      </div>
-    )
+    return <div>{this.state.data}</div>;
   }
 }
 
-export default App
+export default App;
 ```
 
 <div align="right">
@@ -2456,14 +2412,13 @@ Make async calls for component initialization in `componentDidMount()` instead o
 
 ```js
 function componentDidMount() {
-  axios.get(`api/messages`)
-    .then((result) => {
-      const messages = result.data
-      console.log("COMPONENT WILL Mount messages : ", messages);
-      this.setState({
-        messages: [...messages.content]
-      })
-    })
+  axios.get(`api/messages`).then((result) => {
+    const messages = result.data;
+    console.log("COMPONENT WILL Mount messages : ", messages);
+    this.setState({
+      messages: [...messages.content],
+    });
+  });
 }
 ```
 
@@ -2515,10 +2470,10 @@ const ComponentExample => () => {
 
 **Features of React Pure Components:**
 
-* Prevents re-rendering of Component if props or state is the same
-* Takes care of `shouldComponentUpdate()` implicitly
-* `State()` and `Props` are Shallow Compared
-* Pure Components are more performant in certain cases
+- Prevents re-rendering of Component if props or state is the same
+- Takes care of `shouldComponentUpdate()` implicitly
+- `State()` and `Props` are Shallow Compared
+- Pure Components are more performant in certain cases
 
 **Example:**
 
@@ -2532,12 +2487,12 @@ export default class App extends React.PureComponent {
   constructor() {
     super();
     this.state = {
-      userArray: [1, 2, 3, 4, 5]
+      userArray: [1, 2, 3, 4, 5],
     };
     // Here we are creating the new Array Object during setState using "Spread" Operator
     setInterval(() => {
       this.setState({
-        userArray: [...this.state.userArray, 6]
+        userArray: [...this.state.userArray, 6],
       });
     }, 1000);
   }
@@ -2563,9 +2518,9 @@ On the other hand, a pure component will not rerender if its parent rerenders, u
 
 **When to use React.PureComponent:**
 
-* State/Props should be an immutable object
-* State/Props should not have a hierarchy
-* We should call forceUpdate when data changes
+- State/Props should be an immutable object
+- State/Props should not have a hierarchy
+- We should call forceUpdate when data changes
 
 **Example:**
 
@@ -2573,14 +2528,14 @@ On the other hand, a pure component will not rerender if its parent rerenders, u
 // Regular class component
 class App extends React.Component {
   render() {
-    return <h1>Component Example !</h1>
+    return <h1>Component Example !</h1>;
   }
 }
 
 // React Pure class component
 class Message extends React.Component {
   render() {
-    return <h1>PureComponent Example !</h1>
+    return <h1>PureComponent Example !</h1>;
   }
 }
 ```
@@ -2612,7 +2567,7 @@ class MouseTracker extends React.Component {
       <div>
         <h1>Move the mouse around!</h1>
         {/* define the render function as instance method */}
-        <Mouse render={this.renderTheCat} /> 
+        <Mouse render={this.renderTheCat} />
       </div>
     );
   }
@@ -2625,14 +2580,14 @@ class MouseTracker extends React.Component {
 
 ## Q. When to use PureComponent over Component?
 
-* We want to avoid re-rendering cycles of component when its props and state are not changed
-* The state and props of component are immutable
-* We do not plan to implement own `shouldComponentUpdate()` lifecycle method.
+- We want to avoid re-rendering cycles of component when its props and state are not changed
+- The state and props of component are immutable
+- We do not plan to implement own `shouldComponentUpdate()` lifecycle method.
 
 On the other hand, we should not use `PureComponent()` as a base component if:
 
-* props or state are not immutable
-* Plan to implement own `shouldComponentUpdate()` lifecycle method.
+- props or state are not immutable
+- Plan to implement own `shouldComponentUpdate()` lifecycle method.
 
 <div align="right">
     <b><a href="#table-of-contents">↥ back to top</a></b>
@@ -2688,9 +2643,9 @@ App = Hoc(App);
 
 **Note:**
 
-* A HOC does not modify or mutate components. It creates a new one.
-* A HOC is used to compose components for code reuse.
-* A HOC is a pure function. It has no side effects, returning only a new component.
+- A HOC does not modify or mutate components. It creates a new one.
+- A HOC is used to compose components for code reuse.
+- A HOC is a pure function. It has no side effects, returning only a new component.
 
 **&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-hoc-3qrt5b?file=/src/App.js)**
 
@@ -2702,17 +2657,17 @@ App = Hoc(App);
 
 **Benefits:**
 
-* Importantly they provided a way to reuse code when using ES6 classes.
-* No longer have method name clashing if two HOC implement the same one.
-* It is easy to make small reusable units of code, thereby supporting the single responsibility principle.
-* Apply multiple HOCs to one component by composing them. The readability can be improve using a compose function like in Recompose.
+- Importantly they provided a way to reuse code when using ES6 classes.
+- No longer have method name clashing if two HOC implement the same one.
+- It is easy to make small reusable units of code, thereby supporting the single responsibility principle.
+- Apply multiple HOCs to one component by composing them. The readability can be improve using a compose function like in Recompose.
 
 **Problems:**
 
-* Boilerplate code like setting the **displayName** with the HOC function name e.g. (**`withHOC(Component)`**) to help with debugging.
-* Ensure all relevant props are passed through to the component.
-* Hoist static methods from the wrapped component.
-* It is easy to compose several HOCs together and then this creates a deeply nested tree making it difficult to debug.
+- Boilerplate code like setting the **displayName** with the HOC function name e.g. (**`withHOC(Component)`**) to help with debugging.
+- Ensure all relevant props are passed through to the component.
+- Hoist static methods from the wrapped component.
+- It is easy to compose several HOCs together and then this creates a deeply nested tree making it difficult to debug.
 
 <div align="right">
     <b><a href="#table-of-contents">↥ back to top</a></b>
@@ -2722,8 +2677,8 @@ App = Hoc(App);
 
 Creating a higher order component basically involves manipulating WrappedComponent which can be done in two ways:
 
-* Props Proxy
-* Inheritance Inversion
+- Props Proxy
+- Inheritance Inversion
 
 Both enable different ways of manipulating the WrappedComponent.
 
@@ -2735,20 +2690,20 @@ In this approach, the render method of the HOC returns a React Element of the ty
 
 ```js
 function ppHOC(WrappedComponent) {
-   return class PP extends React.Component {
-     render() {
-       return <WrappedComponent {...this.props}/>
-     }
-   }
+  return class PP extends React.Component {
+    render() {
+      return <WrappedComponent {...this.props} />;
+    }
+  };
 }
 ```
 
 Props Proxy can be implemented via a number of ways
 
-* Manipulating props
-* Accessing the instance via Refs
-* Abstracting State
-* Wrapping the WrappedComponent with other elements
+- Manipulating props
+- Accessing the instance via Refs
+- Abstracting State
+- Wrapping the WrappedComponent with other elements
 
 **2. Inheritance Inversion:**
 
@@ -2758,18 +2713,18 @@ Inheritance Inversion allows the HOC to have access to the WrappedComponent inst
 
 ```js
 function iiHOC(WrappedComponent) {
-   return class Enhancer extends WrappedComponent {
-     render() {
-       return super.render()
-     }
-   }
+  return class Enhancer extends WrappedComponent {
+    render() {
+      return super.render();
+    }
+  };
 }
 ```
 
 Inheritance Inversion can be used in:
 
-* Conditional Rendering (Render Highjacking)
-* State Manipulation
+- Conditional Rendering (Render Highjacking)
+- State Manipulation
 
 <div align="right">
     <b><a href="#table-of-contents">↥ back to top</a></b>
@@ -2787,38 +2742,34 @@ Inheritance Inversion gives the HOC access to the WrappedComponent instance via 
  */
 class Welcome extends React.Component {
   render() {
-    return (
-      <div> Welcome {his.props.user}</div>
-    )
+    return <div> Welcome {his.props.user}</div>;
   }
 }
 
 const withUser = (WrappedComponent) => {
   return class extends React.Component {
     render() {
-      if(this.props.user) {
-        return  (
-          <WrappedComponent {...this.props} />
-        )
+      if (this.props.user) {
+        return <WrappedComponent {...this.props} />;
       }
-      return <div>Welcome Guest!</div>
+      return <div>Welcome Guest!</div>;
     }
-  }
-}
+  };
+};
 
 const withLoader = (WrappedComponent) => {
   return class extends WrappedComponent {
     render() {
-      const { isLoader } = this.props
-      if(!isLoaded) {
-        return <div>Loading...</div>
+      const { isLoader } = this.props;
+      if (!isLoaded) {
+        return <div>Loading...</div>;
       }
-      return super.render()
+      return super.render();
     }
-  }
-}
+  };
+};
 
-export default withLoader(withUser(Welcome))
+export default withLoader(withUser(Welcome));
 ```
 
 <div align="right">
@@ -2835,25 +2786,24 @@ We can create `props` passed to the component using props proxy pattern as below
 
 ```js
 const propsProxyHOC = (WrappedComponent) => {
-
   return class extends React.Component {
     render() {
       const newProps = {
-        user: currentLoggedInUser
-      }
+        user: currentLoggedInUser,
+      };
 
-      return <WrappedComponent {...this.props} {...newProps} />
+      return <WrappedComponent {...this.props} {...newProps} />;
     }
-  }
-}
+  };
+};
 ```
 
 **Props Proxy HOCs are useful to the following situations:**
 
-* Manipulating props
-* Accessing the instance via Refs (be careful, avoid using refs)
-* Abstracting State
-* Wrapping/Composing the WrappedComponent with other elements
+- Manipulating props
+- Accessing the instance via Refs (be careful, avoid using refs)
+- Abstracting State
+- Wrapping/Composing the WrappedComponent with other elements
 
 <div align="right">
     <b><a href="#table-of-contents">↥ back to top</a></b>
@@ -2874,7 +2824,7 @@ export const withUniqueId = (Target) => {
       return <Target {...this.props} uuid={this.uid} />;
     }
   };
-}
+};
 ```
 
 ```js
@@ -2893,7 +2843,7 @@ const App = () => (
 );
 ```
 
-*Note: Decorators are an experimental feature in React that may change in future releases.*
+_Note: Decorators are an experimental feature in React that may change in future releases._
 
 **&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-decorators-386v5?file=/src/index.js:113-361)**
 
@@ -2909,15 +2859,18 @@ The **displayName** string is used in debugging messages. Usually, you don\'t ne
 
 ```js
 function withSubscription(WrappedComponent) {
-  
-  class WithSubscription extends React.Component {/* ... */}
-  
-  WithSubscription.displayName = `WithSubscription(${getDisplayName(WrappedComponent)})`;
+  class WithSubscription extends React.Component {
+    /* ... */
+  }
+
+  WithSubscription.displayName = `WithSubscription(${getDisplayName(
+    WrappedComponent
+  )})`;
   return WithSubscription;
 }
 
 function getDisplayName(WrappedComponent) {
-  return WrappedComponent.displayName || WrappedComponent.name || 'Component';
+  return WrappedComponent.displayName || WrappedComponent.name || "Component";
 }
 ```
 
@@ -2939,10 +2892,10 @@ React.lazy() takes a function that returns a promise as it\'s argument, the func
 
 ```js
 // Without Lazy
-import MyComponent from './MyComponent';
- 
+import MyComponent from "./MyComponent";
+
 // With Lazy
-const MyComponent = React.lazy(() => import('./MyComponent'));
+const MyComponent = React.lazy(() => import("./MyComponent"));
 ```
 
 **2. SUSPENSE:**
@@ -2953,9 +2906,9 @@ const MyComponent = React.lazy(() => import('./MyComponent'));
 /**
  * Suspense
  */
-import React, { Suspense } from 'react';
+import React, { Suspense } from "react";
 
-const MyComponent = React.lazy(() => import('./MyComponent'));
+const MyComponent = React.lazy(() => import("./MyComponent"));
 
 const App = () => {
   return (
@@ -2965,7 +2918,7 @@ const App = () => {
       </Suspense>
     </div>
   );
-}
+};
 ```
 
 **Example:**
@@ -2983,21 +2936,27 @@ const HelpPage = lazy(() => import("./Help"));
 
 export default function App() {
   return (
-      <Router>
-        <ul>
-          <li><Link to="/">Home</Link></li>
-          <li><Link to="/contact-us">ContactUs</Link></li>
-          <li><Link to="/help">HelpPage</Link></li>
-        </ul>
-        <hr />
-        <Suspense fallback={<h1>Loading...</h1>}>
-          <Switch>
-            <Route exact component={Home} path="/" />
-            <Route component={ContactUs} path="/contact-us" />
-            <Route component={HelpPage} path="/help" />
-          </Switch>
-        </Suspense>
-      </Router>
+    <Router>
+      <ul>
+        <li>
+          <Link to="/">Home</Link>
+        </li>
+        <li>
+          <Link to="/contact-us">ContactUs</Link>
+        </li>
+        <li>
+          <Link to="/help">HelpPage</Link>
+        </li>
+      </ul>
+      <hr />
+      <Suspense fallback={<h1>Loading...</h1>}>
+        <Switch>
+          <Route exact component={Home} path="/" />
+          <Route component={ContactUs} path="/contact-us" />
+          <Route component={HelpPage} path="/help" />
+        </Switch>
+      </Suspense>
+    </Router>
   );
 }
 ```
@@ -3067,27 +3026,22 @@ The `defaultProps` can be defined as a property on the component class itself to
  * Default Props
  */
 class MessageComponent extends React.Component {
-   render() {
-        return (
-          <div>Hello, {this.props.value}.</div>
-        )
-    }
+  render() {
+    return <div>Hello, {this.props.value}.</div>;
+  }
 }
 
 // Default Props
 MessageComponent.defaultProps = {
-  value: 'World'  
-}
+  value: "World",
+};
+
+ReactDOM.render(<MessageComponent />, document.getElementById("default"));
 
 ReactDOM.render(
-  <MessageComponent />, 
-  document.getElementById('default')
-)
-
-ReactDOM.render(
-  <MessageComponent value='Folks'/>, 
-  document.getElementById('custom')
-)
+  <MessageComponent value="Folks" />,
+  document.getElementById("custom")
+);
 ```
 
 **&#9885; [Try this example on CodeSandbox](https://codepen.io/learning-zone/pen/oNWoNPm?editors=1010)**
@@ -3124,15 +3078,14 @@ class App extends Component {
       <div>
         <img
           alt="React Logo"
-  
           // Using ES6 template literals
-          src={`${this.props.image}`} 
+          src={`${this.props.image}`}
         />
       </div>
     );
   }
 }
-  
+
 export default App;
 ```
 
@@ -3185,7 +3138,7 @@ const MyComponent = ({ prop1, prop2 }) => (
     <div>Prop1: {String(prop1)}</div>
     <div>Prop2: {String(prop2)}</div>
   </div>
-) 
+);
 
 function App() {
   return (
@@ -3234,14 +3187,14 @@ App.defaultProps = {
   propBool: true,
   propArray: [10, 20, 30],
   propNumber: 100,
-  propString: "Hello React!"
+  propString: "Hello React!",
 };
 
 App.propTypes = {
   propBool: PropTypes.bool.isRequired,
   propArray: PropTypes.array.isRequired,
   propNumber: PropTypes.number,
-  propString: PropTypes.string
+  propString: PropTypes.string,
 };
 ```
 
@@ -3274,8 +3227,8 @@ const Component = (props) => (
 Component.propTypes = {
   badge: PropTypes.shape({
     src: PropTypes.string.isRequired,
-    alt: PropTypes.string.isRequired
-  })
+    alt: PropTypes.string.isRequired,
+  }),
 };
 
 const App = () => (
@@ -3312,18 +3265,18 @@ The `PropTypes.objectOf()` validator is used when describing an object whose key
 /**
  * PropTypes
  */
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 
 // Expected prop object - dynamic keys (i.e. user ids)
 const myProp = {
-  25891102: 'Shila Jayashri',
-  34712915: 'Employee',
-  76912999: 'shila.jayashri@email.com'
+  25891102: "Shila Jayashri",
+  34712915: "Employee",
+  76912999: "shila.jayashri@email.com",
 };
 
 // PropTypes validation for the prop object
 MyComponent.propTypes = {
-  myProp: PropTypes.objectOf(PropTypes.number)
+  myProp: PropTypes.objectOf(PropTypes.number),
 };
 ```
 
@@ -3335,16 +3288,16 @@ MyComponent.propTypes = {
 
 **Benefits:**
 
-* Reuse code across components when using ES6 classes.
-* The lowest level of indirection - it\'s clear which component is called and the state is isolated.
-* No naming collision issues for props, state and class methods.
-* No need to deal with boiler code and hoisting static methods.
+- Reuse code across components when using ES6 classes.
+- The lowest level of indirection - it\'s clear which component is called and the state is isolated.
+- No naming collision issues for props, state and class methods.
+- No need to deal with boiler code and hoisting static methods.
 
 **Problems:**
 
-* Caution using **`shouldComponentUpdate()`** as the render prop might close over data it is unaware of.
-* There could also be minor memory issues when defining a closure for every render. But be sure to measure first before  making performance changes as it might not be an issue for your app.
-* Another small annoyance is the render props callback is not so neat in JSX as it needs to be wrapped in an expression.  Rendering the result of an HOC does look cleaner.
+- Caution using **`shouldComponentUpdate()`** as the render prop might close over data it is unaware of.
+- There could also be minor memory issues when defining a closure for every render. But be sure to measure first before making performance changes as it might not be an issue for your app.
+- Another small annoyance is the render props callback is not so neat in JSX as it needs to be wrapped in an expression. Rendering the result of an HOC does look cleaner.
 
 <div align="right">
     <b><a href="#table-of-contents">↥ back to top</a></b>
@@ -3361,12 +3314,12 @@ function withMouse(Component) {
   return class extends React.Component {
     render() {
       return (
-        <Mouse render={mouse => (
-          <Component {...this.props} mouse={mouse} />
-        )}/>
+        <Mouse
+          render={(mouse) => <Component {...this.props} mouse={mouse} />}
+        />
       );
     }
-  }
+  };
 }
 ```
 
@@ -3376,7 +3329,7 @@ function withMouse(Component) {
 
 ## Q. Explain HOC vs render props in react.js?
 
-The Higher-Order Components, Render Props and Hooks are three patterns to implement **state-** or **behaviour*-** sharing between components. All three have their own use cases and none of them is a full replacement of the others.
+The Higher-Order Components, Render Props and Hooks are three patterns to implement **state-** or **behaviour\*-** sharing between components. All three have their own use cases and none of them is a full replacement of the others.
 
 **1. Higher-order components:**
 
@@ -3386,7 +3339,7 @@ Essentially HOC are similar to the decorator pattern, a function that takes a co
 
 ```js
 function withExample(Component) {
-  return function(props) {
+  return function (props) {
     // cross cutting logic added here
     return <Component {...props} />;
   };
@@ -3461,7 +3414,7 @@ The `React.cloneElement()` works if child is a single React element.
 
 For almost everything `{this.props.children}` is used. Cloning is useful in some more advanced scenarios, where a parent sends in an element and the child component needs to change some props on that element or add things like `ref` for accessing the actual DOM element.
 
-**React.Children:**  
+**React.Children:**
 
 Since `{this.props.children}` can have one element, multiple elements, or none at all, its value is respectively a single child node, an array of child nodes or undefined. Sometimes, we want to transform our children before rendering them — for example, to add additional props to every child. If we wanted to do that, we\'d have to take the possible types of `this.props.children` into account. For example, if there is only one child, we can not map it.
 
@@ -3483,22 +3436,21 @@ export default class App extends React.Component {
 }
 
 class Widget extends React.Component {
-
   render() {
-    return 
-      <div>
-        <h2>First Example:</h2>
-        <App>
-          <div>10</div>
-          <div>20</div>
-          <div>30</div>
-        </App>
-        <h2>Second Example:</h2>
-        <App>
-          <div>A</div>
-          <div>B</div>
-        </App>
-      </div>
+    return;
+    <div>
+      <h2>First Example:</h2>
+      <App>
+        <div>10</div>
+        <div>20</div>
+        <div>30</div>
+      </App>
+      <h2>Second Example:</h2>
+      <App>
+        <div>A</div>
+        <div>B</div>
+      </App>
+    </div>;
   }
 }
 ```
@@ -3530,7 +3482,7 @@ The ES6 Spread operator or Rest Parameters is use to pass `props` to a React com
 
 ```js
 function App() {
-  return <Hello firstName="Pallav" lastName="Hegde" />
+  return <Hello firstName="Pallav" lastName="Hegde" />;
 }
 ```
 
@@ -3538,8 +3490,8 @@ Using the Spread operator, it become like this
 
 ```js
 function App() {
-  const props = {firstName: 'Pallav', lastName: 'Hegde'}
-  return <Hello {...props} />
+  const props = { firstName: "Pallav", lastName: "Hegde" };
+  return <Hello {...props} />;
 }
 ```
 
@@ -3552,22 +3504,22 @@ Let us suppose we have a state with a nested object in our component:
 ```js
 this.state = {
   stateObj: {
-    attr1: '',
-    attr2: '',
+    attr1: "",
+    attr2: "",
   },
-}
+};
 ```
 
 We can use the Spread syntax to update the nested state object.
 
 ```js
-this.setState(state => ({
+this.setState((state) => ({
   person: {
     ...state.stateObj,
-    attr1: 'value1',
-    attr2: 'value2',
+    attr1: "value1",
+    attr2: "value2",
   },
-}))
+}));
 ```
 
 <div align="right">
@@ -3581,27 +3533,27 @@ When we spread props we run into the risk of adding unknown HTML attributes, whi
 **Problem:** This will try to add the unknown HTML attribute `flag` to the DOM element.
 
 ```js
-const Sample = () => (<Spread flag={true} className="content"/>);
-const Spread = (props) => (<div {...props}>Test</div>);
+const Sample = () => <Spread flag={true} className="content" />;
+const Spread = (props) => <div {...props}>Test</div>;
 ```
 
 **Solution:** By creating props specifically for DOM attribute, we can safely spread.
 
 ```js
-const Sample = () => (<Spread flag={true} domProps={{className: "content"}}/>);
-const Spread = (props) => (<div {...props.domProps}>Test</div>);
+const Sample = () => <Spread flag={true} domProps={{ className: "content" }} />;
+const Spread = (props) => <div {...props.domProps}>Test</div>;
 ```
 
 Or alternatively we can use prop destructuring with `...rest`:
 
 ```js
-const Sample = () => (<Spread flag={true} className="content"/>);
-const Spread = ({ flag, ...domProps }) => (<div {...domProps}>Test</div>);
+const Sample = () => <Spread flag={true} className="content" />;
+const Spread = ({ flag, ...domProps }) => <div {...domProps}>Test</div>;
 ```
 
 **Note:**
 
-*In scenarios where you use a PureComponent, when an update happens it re-renders the component even if domProps did not change. This is because PureComponent only shallowly compares the objects.*
+_In scenarios where you use a PureComponent, when an update happens it re-renders the component even if domProps did not change. This is because PureComponent only shallowly compares the objects._
 
 <div align="right">
     <b><a href="#table-of-contents">↥ back to top</a></b>
@@ -3611,7 +3563,7 @@ const Spread = ({ flag, ...domProps }) => (<div {...domProps}>Test</div>);
 
 Using props to generate state in `getInitialState` often leads to duplication of "source of truth", i.e. where the real data is. This is because getInitialState is only invoked when the component is first created.
 
-The danger is that if the `props` on the component are changed without the component being *'refreshed'*, the new prop value will never be displayed because the constructor function (or getInitialState) will never update the current state of the component. The initialization of state from `props` only runs when the component is first created.
+The danger is that if the `props` on the component are changed without the component being _'refreshed'_, the new prop value will never be displayed because the constructor function (or getInitialState) will never update the current state of the component. The initialization of state from `props` only runs when the component is first created.
 
 **Bad:**
 
@@ -3619,19 +3571,18 @@ The below component won\'t display the updated input value
 
 ```js
 class App extends React.Component {
-
   // constructor function (or getInitialState)
   constructor(props) {
-    super(props)
+    super(props);
 
     this.state = {
       records: [],
-      inputValue: this.props.inputValue
-    }
+      inputValue: this.props.inputValue,
+    };
   }
 
   render() {
-    return <div>{this.state.inputValue}</div>
+    return <div>{this.state.inputValue}</div>;
   }
 }
 ```
@@ -3642,18 +3593,17 @@ Using props inside render method will update the value:
 
 ```js
 class App extends React.Component {
-
   // constructor function (or getInitialState)
   constructor(props) {
-    super(props)
+    super(props);
 
     this.state = {
-      records: []
-    }
+      records: [],
+    };
   }
 
   render() {
-    return <div>{this.props.inputValue}</div>
+    return <div>{this.props.inputValue}</div>;
   }
 }
 ```
@@ -3669,18 +3619,18 @@ JSX elements will be transpiled to `React.createElement()` functions to create R
 The `React.cloneElement()` function returns a copy of a specified element. Additional props and children can be passed on in the function. We shoul use this function when a parent component wants to add or modify the `props` of its children.
 
 ```js
-import React from 'react'
+import React from "react";
 
 export default class App extends React.Component {
   // rendering the parent and child component
   render() {
     return (
       <ParentComp>
-        <MyButton/>
-        <br/>
-        <MyButton/>
+        <MyButton />
+        <br />
+        <MyButton />
       </ParentComp>
-    )
+    );
   }
 }
 
@@ -3690,18 +3640,16 @@ export default class App extends React.Component {
 class ParentComp extends React.Component {
   render() {
     // The new prop to the added.
-    let newProp = 'red'
-      // Looping over the parent's entire children,
-      // cloning each child, adding a new prop.
+    let newProp = "red";
+    // Looping over the parent's entire children,
+    // cloning each child, adding a new prop.
     return (
       <div>
-        {React.Children.map(this.props.children,
-          child => {
-            return React.cloneElement(child,
-            {newProp}, null)
+        {React.Children.map(this.props.children, (child) => {
+          return React.cloneElement(child, { newProp }, null);
         })}
       </div>
-    )
+    );
   }
 }
 
@@ -3710,9 +3658,7 @@ class ParentComp extends React.Component {
  */
 class MyButton extends React.Component {
   render() {
-    return <button style =
-    {{ color: this.props.newProp }}>
-    Hello World!</button>
+    return <button style={{ color: this.props.newProp }}>Hello World!</button>;
   }
 }
 ```
@@ -3729,14 +3675,14 @@ The `React.cloneElement` only works if your child is a single React element.
 
 ```js
 <ReactCSSTransitionGroup
-     component="div"
-     transitionName="example"
-     transitionEnterTimeout={500}
-     transitionLeaveTimeout={500}
-     >
-     {React.cloneElement(this.props.children, {
-       key: this.props.location.pathname
-      })}
+  component="div"
+  transitionName="example"
+  transitionEnterTimeout={500}
+  transitionLeaveTimeout={500}
+>
+  {React.cloneElement(this.props.children, {
+    key: this.props.location.pathname,
+  })}
 </ReactCSSTransitionGroup>
 ```
 
@@ -3752,7 +3698,7 @@ class Users extends React.Component {
         <h2>Users</h2>
         {this.props.children}
       </div>
-    )
+    );
   }
 }
 ```
@@ -3763,7 +3709,7 @@ class Users extends React.Component {
 
 ## Q. How to pass JSON Objects from Child to Parent Component?
 
-**Using callback function:** 
+**Using callback function:**
 
 ```js
 /**
@@ -3773,7 +3719,7 @@ export default class App extends React.Component {
   constructor() {
     super();
     this.state = {
-      message: ""
+      message: "",
     };
     this.onSubmitMessage = this.onSubmitMessage.bind(this);
   }
@@ -3808,7 +3754,7 @@ export default class Child extends React.Component {
   constructor() {
     super();
     this.state = {
-      greetingMessag: ""
+      greetingMessag: "",
     };
     this.onMessageChange = this.onMessageChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
@@ -3853,40 +3799,35 @@ It is called spread operator (ES6 feature) and its aim is to make the passing of
 **Example:**
 
 ```js
-<div {...this.props}>
-  Content Here
-</div>
+<div {...this.props}>Content Here</div>
 ```
 
 It is equal to Class Component
 
 ```js
 const person = {
-    name: "Alex",
-    age: 26,
-    country: "India"
-}
+  name: "Alex",
+  age: 26,
+  country: "India",
+};
 
 class SpreadExample extends React.Component {
-    render() {
-      const {name, age, country} = {...this.props}
-      return (
-        <div>
-            <h3> Person Information: </h3>
-            <ul>
-              <li>name={name}</li>
-              <li>age={age}</li>
-              <li>country={country}</li>
-            </ul>
-        </div>
-      )
-    }
+  render() {
+    const { name, age, country } = { ...this.props };
+    return (
+      <div>
+        <h3> Person Information: </h3>
+        <ul>
+          <li>name={name}</li>
+          <li>age={age}</li>
+          <li>country={country}</li>
+        </ul>
+      </div>
+    );
+  }
 }
 
-ReactDOM.render(
-    <SpreadExample {...person}/>
-    , mountNode
-)
+ReactDOM.render(<SpreadExample {...person} />, mountNode);
 ```
 
 <div align="right">
@@ -3912,7 +3853,7 @@ export default class Employee extends React.Component {
     super();
     this.state = {
       id: 100,
-      name: "Sarita Mangat"
+      name: "Sarita Mangat",
     };
   }
 
@@ -3950,7 +3891,7 @@ export default class App extends React.Component {
     super(props);
 
     this.state = {
-      color: "blue"
+      color: "blue",
     };
   }
 
@@ -3995,10 +3936,9 @@ A **callback function** which will be invoked when `setState()` has finished and
 **Example:**
 
 ```js
-this.setState(
-  { username: 'Lila' },
-  () => console.log('setState has finished and the component has re-rendered.')
-)
+this.setState({ username: "Lila" }, () =>
+  console.log("setState has finished and the component has re-rendered.")
+);
 ```
 
 The setState() will always lead to a re-render unless `shouldComponentUpdate()` returns **false**. To avoid unnecessary renders, calling setState() only when the new state differs from the previous state makes sense and can avoid calling setState() in an infinite loop within certain lifecycle methods like `componentDidUpdate()`.
@@ -4015,29 +3955,30 @@ Instead of directly modifying the state using `this.state()`, we use `this.setSt
 
 ```js
 this.state = {
-  user: { name: 'Vasuda Handa', age: 22 }
-}
+  user: { name: "Vasuda Handa", age: 22 },
+};
 ```
 
-* **Using Object.assign()**
+- **Using Object.assign()**
 
 ```js
-this.setState(prevState => {
-  let user = Object.assign({}, prevState.user);  // creating copy of state variable user
-  user.name = 'Sai Gupta';                            // update the name property, assign a new value
-  return { user };                                 // return new object user object
-})
+this.setState((prevState) => {
+  let user = Object.assign({}, prevState.user); // creating copy of state variable user
+  user.name = "Sai Gupta"; // update the name property, assign a new value
+  return { user }; // return new object user object
+});
 ```
 
-* **Using spread syntax**
+- **Using spread syntax**
 
 ```js
-this.setState(prevState => ({
-    user: {                   // object that we want to update
-        ...prevState.user,    // keep all other key-value pairs
-        name: 'Niraj Gara'       // update the value of specific key
-    }
-}))
+this.setState((prevState) => ({
+  user: {
+    // object that we want to update
+    ...prevState.user, // keep all other key-value pairs
+    name: "Niraj Gara", // update the value of specific key
+  },
+}));
 ```
 
 **&#9885; [Try this example on CodeSandbox](https://codepen.io/learning-zone/pen/abWVaKr?editors=0010)**
@@ -4055,25 +3996,24 @@ Inside constructor uses `this.state = {}` directly, other places use `this.setSt
 **Example:**
 
 ```js
-import React, { Component } from 'react'
+import React, { Component } from "react";
 
 class Food extends Component {
-
   constructor(props) {
-    super(props)
+    super(props);
 
     this.state = {
-      fruits: ['apple', 'orange'],
-      count: 0
-    }
+      fruits: ["apple", "orange"],
+      count: 0,
+    };
   }
   render() {
     return (
-      <div className = "container">
+      <div className="container">
         <h2> Hello!!!</h2>
         <p> I have {this.state.count} fruit(s)</p>
       </div>
-    )
+    );
   }
 }
 ```
@@ -4093,53 +4033,50 @@ The setState() will always trigger a re-render unless conditional rendering logi
 **Example:**
 
 ```js
-import React, { Component } from 'react'
+import React, { Component } from "react";
 
 class App extends Component {
   constructor(props) {
-    super(props)
+    super(props);
 
     this.state = {
       list: [
-        { id: '1', age: 42 },
-        { id: '2', age: 33 },
-        { id: '3', age: 68 },
+        { id: "1", age: 42 },
+        { id: "2", age: 33 },
+        { id: "3", age: 68 },
       ],
-    }
+    };
   }
 
-  onRemoveItem = id => {
-    this.setState(state => {
-      const list = state.list.filter(item => item.id !== id)
+  onRemoveItem = (id) => {
+    this.setState((state) => {
+      const list = state.list.filter((item) => item.id !== id);
 
       return {
         list,
-      }
-    })
-  }
+      };
+    });
+  };
 
   render() {
     return (
       <div>
         <ul>
-          {this.state.list.map(item => (
+          {this.state.list.map((item) => (
             <li key={item.id}>
               The person is {item.age} years old.
-              <button
-                type="button"
-                onClick={() => this.onRemoveItem(item.id)}
-              >
+              <button type="button" onClick={() => this.onRemoveItem(item.id)}>
                 Remove
               </button>
             </li>
           ))}
         </ul>
       </div>
-    )
+    );
   }
 }
 
-export default App
+export default App;
 ```
 
 **&#9885; [Try this example on CodeSandbox](https://codepen.io/learning-zone/pen/mdmqzmB?editors=0010)**
@@ -4193,20 +4130,20 @@ The following example generates a random number whenever it loads. Upon clicking
  * forceUpdate()
  */
 export default class App extends React.Component {
-  constructor(){
+  constructor() {
     super();
     this.forceUpdateHandler = this.forceUpdateHandler.bind(this);
-  };
-  
-  forceUpdateHandler(){
+  }
+
+  forceUpdateHandler() {
     this.forceUpdate();
-  };
-  
-  render(){
-    return(
+  }
+
+  render() {
+    return (
       <div>
-        <button onClick= {this.forceUpdateHandler} >FORCE UPDATE</button>
-        <h4>Random Number : { Math.random() }</h4>
+        <button onClick={this.forceUpdateHandler}>FORCE UPDATE</button>
+        <h4>Random Number : {Math.random()}</h4>
       </div>
     );
   }
@@ -4215,7 +4152,7 @@ export default class App extends React.Component {
 
 **&#9885; [Try this example on CodeSandbox](https://codepen.io/learning-zone/pen/ZEKaqWN?editors=0010)**
 
-*Note: We should try to avoid all uses of `forceUpdate()` and only read from `this.props` and `this.state` in render().*
+_Note: We should try to avoid all uses of `forceUpdate()` and only read from `this.props` and `this.state` in render()._
 
 <div align="right">
     <b><a href="#table-of-contents">↥ back to top</a></b>
@@ -4231,9 +4168,9 @@ The solution is to **pass a function to setState()**, with the previous state as
 
 ```js
 // assuming this.state.count === 0
-this.setState({count: this.state.count + 1});
-this.setState({count: this.state.count + 1});
-this.setState({count: this.state.count + 1});
+this.setState({ count: this.state.count + 1 });
+this.setState({ count: this.state.count + 1 });
+this.setState({ count: this.state.count + 1 });
 // this.state.count === 1, not 3
 ```
 
@@ -4243,13 +4180,13 @@ this.setState({count: this.state.count + 1});
 
 ```js
 this.setState((prevState) => ({
-  count: prevState.count + 1
+  count: prevState.count + 1,
 }));
 this.setState((prevState) => ({
-  count: prevState.count + 1
+  count: prevState.count + 1,
 }));
 this.setState((prevState) => ({
-  count: prevState.count + 1
+  count: prevState.count + 1,
 }));
 // this.state.count === 3 as expected
 ```
@@ -4269,18 +4206,18 @@ We can pass the old nested object using the spread operator and then override th
 ```js
 // Nested object
 state = {
-  name: 'Vyasa Agarwal',
+  name: "Vyasa Agarwal",
   address: {
-    colony: 'Old Cross Rds, Mehdipatnam',
-    city: 'Patna',
-    state: 'Jharkhand'
-  }
+    colony: "Old Cross Rds, Mehdipatnam",
+    city: "Patna",
+    state: "Jharkhand",
+  },
 };
-  
+
 handleUpdate = () => {
   // Overriding the city property of address object
-  this.setState({ address: { ...this.state.address, city: "Ranchi" } })
-}
+  this.setState({ address: { ...this.state.address, city: "Ranchi" } });
+};
 ```
 
 **&#9885; [Try this example on CodeSandbox](https://codepen.io/learning-zone/pen/VwbyYqv?editors=0010)**
@@ -4291,16 +4228,16 @@ handleUpdate = () => {
 
 ## Q. What is the difference between state and props?
 
-|Props                             |State                             |
-|----------------------------------|----------------------------------|
-|Props are read-only.              |State changes can be asynchronous.|
-|Props are immutable.              |State is mutable.                 |
-|Props allow you to pass data from one component to other components as an argument.|	State holds information about the components.|
-|Props can be accessed by the child component.    |State cannot be accessed by child components.|
-|Props are used to communicate between components.|States can be used for rendering dynamic changes with the component.|
-|Stateless component can have Props.            |Stateless components cannot have State.|
-|Props make components reusable.                 |State cannot make components reusable.|
-|Props are external and controlled by whatever renders the component.|The State is internal and controlled by the React Component itself.|
+| Props                                                                               | State                                                                |
+| ----------------------------------------------------------------------------------- | -------------------------------------------------------------------- |
+| Props are read-only.                                                                | State changes can be asynchronous.                                   |
+| Props are immutable.                                                                | State is mutable.                                                    |
+| Props allow you to pass data from one component to other components as an argument. | State holds information about the components.                        |
+| Props can be accessed by the child component.                                       | State cannot be accessed by child components.                        |
+| Props are used to communicate between components.                                   | States can be used for rendering dynamic changes with the component. |
+| Stateless component can have Props.                                                 | Stateless components cannot have State.                              |
+| Props make components reusable.                                                     | State cannot make components reusable.                               |
+| Props are external and controlled by whatever renders the component.                | The State is internal and controlled by the React Component itself.  |
 
 <div align="right">
     <b><a href="#table-of-contents">↥ back to top</a></b>
@@ -4308,7 +4245,7 @@ handleUpdate = () => {
 
 ## Q. How to set state with a dynamic key name?
 
-If you are using ES6 or the Babel transpiler to transform your JSX code then you can accomplish this with *computed property* names.
+If you are using ES6 or the Babel transpiler to transform your JSX code then you can accomplish this with _computed property_ names.
 
 ```js
 inputChangeHandler : function (event) {
@@ -4338,11 +4275,11 @@ In functional component, listen state changes with useEffect hook like this
 
 ```js
 export function MyComponent(props) {
-    const [myState, setMystate] = useState('initialState')
+  const [myState, setMystate] = useState("initialState");
 
-    useEffect(() => {
-        console.log(myState, '- Has changed')
-    },[myState]) // <-- here put the parameter to listen
+  useEffect(() => {
+    console.log(myState, "- Has changed");
+  }, [myState]); // <-- here put the parameter to listen
 }
 ```
 
@@ -4384,11 +4321,11 @@ class App extends React.Component {
 
 class Child extends React.Component {
   state = {
-    name: "Message from Child Component!"
+    name: "Message from Child Component!",
   };
   getMsg = (msg) => {
     this.setState({
-      name: msg
+      name: msg,
     });
   };
   render() {
@@ -4448,45 +4385,45 @@ Because `this.props` and `this.state` may be updated asynchronously, we should n
 **Example**: setState Callback in a Class Component
 
 ```js
-import React, { Component } from 'react'
+import React, { Component } from "react";
 
 class App extends Component {
   constructor(props) {
-    super(props)
+    super(props);
     this.state = {
       age: 0,
-    }
-  }
-  
-  // this.checkAge is passed as the callback to setState
-  updateAge = (value) => {
-    this.setState({ age: value}, this.checkAge)
+    };
   }
 
+  // this.checkAge is passed as the callback to setState
+  updateAge = (value) => {
+    this.setState({ age: value }, this.checkAge);
+  };
+
   checkAge = () => {
-    const { age } = this.state
+    const { age } = this.state;
     if (age !== 0 && age >= 21) {
       // Make API call to /beer
     } else {
       // Throw error 404, beer not found
     }
-  }
+  };
 
   render() {
-    const { age } = this.state
+    const { age } = this.state;
     return (
       <div>
         <p>Drinking Age Checker</p>
         <input
           type="number"
           value={age}
-          onChange={e => this.updateAge(e.target.value)}
+          onChange={(e) => this.updateAge(e.target.value)}
         />
       </div>
-    )
+    );
   }
 }
-export default App
+export default App;
 ```
 
 **Example:** setState Callback in a Functional Component
@@ -4496,7 +4433,7 @@ import React, { useEffect, useState } from 'react'
 
 function App() {
   const [age, setAge] = useState(0)
-  
+
   updateAge(value) {
     setAge(value)
   }
@@ -4514,7 +4451,7 @@ function App() {
       <p>Drinking Age Checker</p>
       <input
         type="number"
-        value={age} 
+        value={age}
         onChange={e => setAge(e.target.value)}
       />
     </div>
@@ -4539,11 +4476,11 @@ This is data maintained inside a component. It is local or owned by that specifi
 ```js
 class AppComponent extends React.component {
   state = {
-      msg : 'Hello World!'
-  }
+    msg: "Hello World!",
+  };
 
   render() {
-      return <div>Message {this.state.msg}</div>
+    return <div>Message {this.state.msg}</div>;
   }
 }
 ```
@@ -4555,7 +4492,7 @@ Data passed in from a parent component. `props` are read-only in the child compo
 **Example:** The parent can pass a props by using this
 
 ```js
-<ChildComponent color='red' />
+<ChildComponent color="red" />
 ```
 
 Inside the ChildComponent constructor we could access the props
@@ -4563,8 +4500,8 @@ Inside the ChildComponent constructor we could access the props
 ```js
 class ChildComponent extends React.Component {
   constructor(props) {
-    super(props)
-    console.log(props.color)
+    super(props);
+    console.log(props.color);
   }
 }
 ```
@@ -4574,8 +4511,8 @@ Props can be used to set the internal state based on a prop value in the constru
 ```js
 class ChildComponent extends React.Component {
   constructor(props) {
-    super(props)
-    this.state.colorName = props.color
+    super(props);
+    this.state.colorName = props.color;
   }
 }
 ```
@@ -4584,14 +4521,14 @@ Props should never be changed in a child component. Props are also used to allow
 
 **Difference between State and Props:**
 
-|  Props                                          | State                            |
-|-------------------------------------------------|----------------------------------|
-|Props are read-only.                             |State changes can be asynchronous.|
-|Props allow to pass data from one component to other components as an argument.| State holds information about the components.|
-|Props can be accessed by the child component.    |State cannot be accessed by child components.|
-|Props are used to communicate between components.|States can be used for rendering dynamic changes with the component.|
-|Stateless component can have Props.              |Stateless components cannot have State.|
-|Props are external and controlled by whatever renders the component.| The State is internal and controlled by the React Component itself.|
+| Props                                                                           | State                                                                |
+| ------------------------------------------------------------------------------- | -------------------------------------------------------------------- |
+| Props are read-only.                                                            | State changes can be asynchronous.                                   |
+| Props allow to pass data from one component to other components as an argument. | State holds information about the components.                        |
+| Props can be accessed by the child component.                                   | State cannot be accessed by child components.                        |
+| Props are used to communicate between components.                               | States can be used for rendering dynamic changes with the component. |
+| Stateless component can have Props.                                             | Stateless components cannot have State.                              |
+| Props are external and controlled by whatever renders the component.            | The State is internal and controlled by the React Component itself.  |
 
 <div align="right">
     <b><a href="#table-of-contents">↥ back to top</a></b>
@@ -4605,8 +4542,8 @@ Props should never be changed in a child component. Props are also used to allow
 
 Handling events with React elements is very similar to handling events on DOM elements. There are some syntax differences:
 
-* React events are named using camelCase, rather than lowercase.
-* With JSX you pass a function as the event handler, rather than a string.
+- React events are named using camelCase, rather than lowercase.
+- With JSX you pass a function as the event handler, rather than a string.
 
 **Example:**
 
@@ -4622,7 +4559,7 @@ export default class Toggle extends React.Component {
 
   handleClick() {
     this.setState((state) => ({
-      isToggleOn: !state.isToggleOn
+      isToggleOn: !state.isToggleOn,
     }));
   }
 
@@ -4672,37 +4609,31 @@ export default class App extends React.Component {
 **Example:**
 
 ```js
-import React, {useState} from "react";
+import React, { useState } from "react";
 import "./styles.css";
 
 export default function App() {
-  return (
-    <Container/>
-  );
+  return <Container />;
 }
 
 const Container = () => {
   const [counter, setCounter] = useState(0);
-  
+
   const handleCustomClick = () => {
-    setCounter(counter + 1)
-  }
+    setCounter(counter + 1);
+  };
 
   return (
     <div>
       <div>Counter: {counter}</div>
-      <CustomButton onCustomClick={handleCustomClick}/>
+      <CustomButton onCustomClick={handleCustomClick} />
     </div>
   );
-}
+};
 
-const CustomButton = ({onCustomClick}) => {
-  return (
-    <button onClick={onCustomClick}>
-      My Custom Button
-    </button>
-  );
-}
+const CustomButton = ({ onCustomClick }) => {
+  return <button onClick={onCustomClick}>My Custom Button</button>;
+};
 ```
 
 **&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-event-handler-ijru1?file=/src/App.js)**
@@ -4728,11 +4659,11 @@ In React, the attribute name is camelCase and are passed the function reference 
 In HTML, `false` can be returned to prevent default behavior, whereas in React `preventDefault()` has to be called explicitly.
 
 ```js
-<a href="#" onclick="console.log('The link was clicked.'); return false" />
+<a href="#" onclick="console.log('The link was clicked.'); return false" />;
 
 function handleClick(e) {
-  e.preventDefault()
-  console.log("The link was clicked.")
+  e.preventDefault();
+  console.log("The link was clicked.");
 }
 ```
 
@@ -4750,10 +4681,10 @@ We can bind the handler when it is called in the render method using `bind()` me
 
 ```js
 handleClick() {
-  // ...       
+  // ...
 }
 
-<button onClick={this.handleClick.bind(this)}>Click</button> 
+<button onClick={this.handleClick.bind(this)}>Click</button>
 ```
 
 **&#9885; [Try this example on CodeSandbox](https://codepen.io/learning-zone/pen/jOmYGMp?editors=0010)**
@@ -4764,10 +4695,10 @@ In this approach we are binding the event handler implicitly. This approach is t
 
 ```js
 handleClick() {
-  // ...       
+  // ...
 }
 
-<button onClick={() => this.handleClick()}>Click</button> 
+<button onClick={() => this.handleClick()}>Click</button>
 ```
 
 **&#9885; [Try this example on CodeSandbox](https://codepen.io/learning-zone/pen/QWvaqdB?editors=0010)**
@@ -4784,7 +4715,7 @@ constructor(props) {
 }
 
 handleClick() {
-  // ...       
+  // ...
 }
 
 <button onClick={this.handleClick}>Click</button>
@@ -4801,7 +4732,9 @@ handleClick() {
 In Class Components, when we pass the event handler function reference as a callback like this
 
 ```js
-<button type="button" onClick={this.handleClick}>Click Me</button>
+<button type="button" onClick={this.handleClick}>
+  Click Me
+</button>
 ```
 
 the event handler method loses its **implicitly bound** context. When the event occurs and the handler is invoked, the `this` value falls back to **default binding** and is set to `undefined`, as class declarations and prototype methods run in strict mode.
@@ -4867,14 +4800,14 @@ export default class App extends React.Component {
     super(props);
     this.state = {
       justClicked: null,
-      letters: Array.from({ length: 26 }, (_, i) => String.fromCharCode(A + i))
+      letters: Array.from({ length: 26 }, (_, i) => String.fromCharCode(A + i)),
     };
   }
 
   handleClick(letter) {
     this.setState({ justClicked: letter });
   }
-  
+
   render() {
     return (
       <>
@@ -4907,8 +4840,8 @@ Arrow functions do not redefine the value of `this` within their function body. 
 **Example:**
 
 ```js
-import React from 'react'
-import ReactDOM from 'react-dom'
+import React from "react";
+import ReactDOM from "react-dom";
 
 class Button extends React.Component {
   render() {
@@ -4916,18 +4849,15 @@ class Button extends React.Component {
       <button onClick={this.handleClick} style={this.state}>
         Set background to red
       </button>
-    )
+    );
   }
 
   handleClick = () => {
-    this.setState({ backgroundColor: 'red' })
-  }
+    this.setState({ backgroundColor: "red" });
+  };
 }
 
-ReactDOM.render(
-  <Button />,
-  document.getElementById('root')
-)
+ReactDOM.render(<Button />, document.getElementById("root"));
 ```
 
 1. When we use `this` it generates a new function on every render, which will obviously have a new reference.
@@ -5016,8 +4946,8 @@ class App extends React.Component {
 
   deleteUser = id => {
     this.setState(prevState => {
-      return { 
-        users: prevState.users.filter(user => user.id !== id) 
+      return {
+        users: prevState.users.filter(user => user.id !== id)
       };
     });
   };
@@ -5053,15 +4983,16 @@ Usually when we want to access this inside a class method we would need to bind 
 ```js
 class Button extends Component {
   constructor(props) {
-    super(props)
-    this.state = { clicked: false }
+    super(props);
+    this.state = { clicked: false };
   }
-  handleClick = () => this.setState({ clicked: true })
+  handleClick = () => this.setState({ clicked: true });
   render() {
-    return <button onClick={this.handleClick}>Click Me</button>
+    return <button onClick={this.handleClick}>Click Me</button>;
   }
 }
 ```
+
 Binding `this` to `handleClick()` in the `constructor()` allows us to use `this.setState()` from Component inside `handleClick()`.
 
 **2. Bind in Render:**
@@ -5098,14 +5029,14 @@ There are several ways to make sure functions have access to component attribute
 ```js
 class App extends Component {
   constructor(props) {
-    super(props)
-    this.handleClick = this.handleClick.bind(this)
+    super(props);
+    this.handleClick = this.handleClick.bind(this);
   }
   handleClick() {
-    console.log('Click happened')
+    console.log("Click happened");
   }
   render() {
-    return <button onClick={this.handleClick}>Click Me</button>
+    return <button onClick={this.handleClick}>Click Me</button>;
   }
 }
 ```
@@ -5116,10 +5047,10 @@ class App extends Component {
 class App extends Component {
   // Note: this syntax is experimental and not standardized yet.
   handleClick = () => {
-    console.log('Click happened')
-  }
+    console.log("Click happened");
+  };
   render() {
-    return <button onClick={this.handleClick}>Click Me</button>
+    return <button onClick={this.handleClick}>Click Me</button>;
   }
 }
 ```
@@ -5129,30 +5060,30 @@ class App extends Component {
 ```js
 class App extends Component {
   handleClick() {
-    console.log('Click happened')
+    console.log("Click happened");
   }
   render() {
-    return <button onClick={this.handleClick.bind(this)}>Click Me</button>
+    return <button onClick={this.handleClick.bind(this)}>Click Me</button>;
   }
 }
 ```
 
-*Note: Using `Function.prototype.bind` in render creates a new function each time the component renders, which may have performance implications*
+_Note: Using `Function.prototype.bind` in render creates a new function each time the component renders, which may have performance implications_
 
 **4. Arrow Function in Render:**
 
 ```js
 class App extends Component {
   handleClick() {
-    console.log('Click happened')
+    console.log("Click happened");
   }
   render() {
-    return <button onClick={() => this.handleClick()}>Click Me</button>
+    return <button onClick={() => this.handleClick()}>Click Me</button>;
   }
 }
 ```
 
-*Note: Using an arrow function in render creates a new function each time the component renders, which may break optimizations based on strict identity comparison.*
+_Note: Using an arrow function in render creates a new function each time the component renders, which may break optimizations based on strict identity comparison._
 
 <div align="right">
     <b><a href="#table-of-contents">↥ back to top</a></b>
@@ -5182,7 +5113,7 @@ export default class App extends React.Component {
 
   handleCount() {
     this.setState((state) => ({
-      count: state.count + 1
+      count: state.count + 1,
     }));
   }
 
@@ -5266,8 +5197,8 @@ The following piece of code will log null because event has been reused inside t
 ```js
 function handleClick(event) {
   setTimeout(function () {
-    console.log(event.target.name)
-  }, 1000)
+    console.log(event.target.name);
+  }, 1000);
 }
 ```
 
@@ -5275,10 +5206,10 @@ To avoid this we need to store the event\'s property:
 
 ```js
 function handleClick(event) {
-  let name = event.target.name
+  let name = event.target.name;
   setTimeout(function () {
-    console.log(name)
-  }, 1000)
+    console.log(name);
+  }, 1000);
 }
 ```
 
@@ -5314,20 +5245,20 @@ The `SyntheticEvent` is pooled. This means that the SyntheticEvent object will b
 
 ```js
 function onClick(event) {
-  console.log(event) // => nullified object.
-  console.log(event.type) // => "click"
-  const eventType = event.type // => "click"
+  console.log(event); // => nullified object.
+  console.log(event.type); // => "click"
+  const eventType = event.type; // => "click"
 
-  setTimeout(function() {
-    console.log(event.type) // => null
-    console.log(eventType) // => "click"
-  }, 0)
+  setTimeout(function () {
+    console.log(event.type); // => null
+    console.log(eventType); // => "click"
+  }, 0);
 
   // Won't work. this.state.clickEvent will only contain null values.
-  this.setState({clickEvent: event})
+  this.setState({ clickEvent: event });
 
   // You can still export event properties.
-  this.setState({eventType: event.type})
+  this.setState({ eventType: event.type });
 }
 ```
 
@@ -5345,22 +5276,21 @@ We can use `ref` prop to acquire a reference to the underlying `HTMLInputElement
 
 ```js
 class MyComponent extends React.Component {
-
   render() {
     return (
       <div onClick={this.handleClick}>
-        <input ref={input => this.inputElement = input} />
+        <input ref={(input) => (this.inputElement = input)} />
       </div>
-    )
+    );
   }
 
   handleClick = (e) => {
-    this.inputElement.click()
-  }
+    this.inputElement.click();
+  };
 }
 ```
 
-*Note: The `ES6 arrow function` provides the correct lexical scope for `this` in the callback.*
+_Note: The `ES6 arrow function` provides the correct lexical scope for `this` in the callback._
 
 <div align="right">
     <b><a href="#table-of-contents">↥ back to top</a></b>
@@ -5403,9 +5333,8 @@ class OutsideAlerter extends Component {
 }
 
 OutsideAlerter.propTypes = {
-  children: PropTypes.element.isRequired
+  children: PropTypes.element.isRequired,
 };
-
 ```
 
 **&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-click-event-jdf3f?file=/src/App.js)**
@@ -5474,129 +5403,128 @@ The API of pointer events works in the same manner as existing various event han
 
 The following event types are now available in React DOM
 
-* onPointerDown
-* onPointerMove
-* onPointerUp
-* onPointerCancel
-* onGotPointerCapture
-* onLostPointerCapture
-* onPointerEnter
-* onPointerLeave
-* onPointerOver
-* onPointerOut
+- onPointerDown
+- onPointerMove
+- onPointerUp
+- onPointerCancel
+- onGotPointerCapture
+- onLostPointerCapture
+- onPointerEnter
+- onPointerLeave
+- onPointerOver
+- onPointerOut
 
 **Example:** Drag and Drop using Point Events
 
 ```js
 // App Component
-import React, { Component } from 'react'
-import logo from './logo.svg'
-import './App.css'
-import DragItem from './DragItem'
+import React, { Component } from "react";
+import logo from "./logo.svg";
+import "./App.css";
+import DragItem from "./DragItem";
 
 class App extends Component {
-   render() {
-      return (
-        <div className="App">
-          <header className="App-header">
-            <img src={logo} className="App-logo" alt="logo" />
-            <h1 className="App-title">Welcome to React sample of Point Events</h1>
-          </header>
-          <div className="App-intro">
-            <DragItem />
-          </div>
+  render() {
+    return (
+      <div className="App">
+        <header className="App-header">
+          <img src={logo} className="App-logo" alt="logo" />
+          <h1 className="App-title">Welcome to React sample of Point Events</h1>
+        </header>
+        <div className="App-intro">
+          <DragItem />
         </div>
-      )
-   }
+      </div>
+    );
+  }
 }
-export default App
+export default App;
 ```
 
 DragItem Component
 
 ```js
-import React from 'react'
-const CIRCLE_DIAMETER = 100
+import React from "react";
+const CIRCLE_DIAMETER = 100;
 
 export default class DragItem extends React.Component {
-
   state = {
-     gotCapture: false,
-     circleLeft: 500,
-     circleTop: 100
-  }
-  isDragging = false
-  previousLeft = 0
-  previousTop = 0
+    gotCapture: false,
+    circleLeft: 500,
+    circleTop: 100,
+  };
+  isDragging = false;
+  previousLeft = 0;
+  previousTop = 0;
 
-  onDown = e => {
-     this.isDragging = true
-     e.target.setPointerCapture(e.pointerId)
-     this.getDelta(e)
-  }
-  onMove = e => {
-      if (!this.isDragging) {
-         return
-      }
-  
-      const {left, top} = this.getDelta(e)
-      this.setState(({circleLeft, circleTop}) => ({
-         circleLeft: circleLeft + left,
-         circleTop: circleTop + top
-      }))
-  }
-  onUp = e => (this.isDragging = false)
-  onGotCapture = e => this.setState({gotCapture: true})
-  onLostCapture = e => this.setState({gotCapture: false})
-  getDelta = e => {
-      const left = e.pageX
-      const top = e.pageY
-      const delta = {
-         left: left - this.previousLeft,
-         top: top - this.previousTop,
-      }
-      this.previousLeft = left
-      this.previousTop = top
+  onDown = (e) => {
+    this.isDragging = true;
+    e.target.setPointerCapture(e.pointerId);
+    this.getDelta(e);
+  };
+  onMove = (e) => {
+    if (!this.isDragging) {
+      return;
+    }
 
-      return delta
-  }
+    const { left, top } = this.getDelta(e);
+    this.setState(({ circleLeft, circleTop }) => ({
+      circleLeft: circleLeft + left,
+      circleTop: circleTop + top,
+    }));
+  };
+  onUp = (e) => (this.isDragging = false);
+  onGotCapture = (e) => this.setState({ gotCapture: true });
+  onLostCapture = (e) => this.setState({ gotCapture: false });
+  getDelta = (e) => {
+    const left = e.pageX;
+    const top = e.pageY;
+    const delta = {
+      left: left - this.previousLeft,
+      top: top - this.previousTop,
+    };
+    this.previousLeft = left;
+    this.previousTop = top;
+
+    return delta;
+  };
   render() {
-      const {gotCapture, circleLeft, circleTop} = this.state
-      const boxStyle = {
-         border: '2px solid #cccccc',
-         margin: '10px 0 20px',
-         minHeight: 400,
-         width: '100%',
-         position: 'relative',
-      }
-      const circleStyle = {
-         width: CIRCLE_DIAMETER,
-         height: CIRCLE_DIAMETER,
-         borderRadius: CIRCLE_DIAMETER / 2,
-         position: 'absolute',
-         left: circleLeft,
-         top: circleTop,
-         backgroundColor: gotCapture ? 'red' : 'green',
-         touchAction: 'none',
-      }
-      return (
-         <div style={boxStyle}>
-            <div
-               style={circleStyle}
-               onPointerDown={this.onDown}
-               onPointerMove={this.onMove}
-               onPointerUp={this.onUp}
-               onPointerCancel={this.onUp}
-               onGotPointerCapture={this.onGotCapture}
-               onLostPointerCapture={this.onLostCapture}
-            />
-         </div>
-      )
+    const { gotCapture, circleLeft, circleTop } = this.state;
+    const boxStyle = {
+      border: "2px solid #cccccc",
+      margin: "10px 0 20px",
+      minHeight: 400,
+      width: "100%",
+      position: "relative",
+    };
+    const circleStyle = {
+      width: CIRCLE_DIAMETER,
+      height: CIRCLE_DIAMETER,
+      borderRadius: CIRCLE_DIAMETER / 2,
+      position: "absolute",
+      left: circleLeft,
+      top: circleTop,
+      backgroundColor: gotCapture ? "red" : "green",
+      touchAction: "none",
+    };
+    return (
+      <div style={boxStyle}>
+        <div
+          style={circleStyle}
+          onPointerDown={this.onDown}
+          onPointerMove={this.onMove}
+          onPointerUp={this.onUp}
+          onPointerCancel={this.onUp}
+          onGotPointerCapture={this.onGotCapture}
+          onLostPointerCapture={this.onLostCapture}
+        />
+      </div>
+    );
   }
 }
 ```
 
-*Note: It work only in browsers that support the Pointer Events specification*
+_Note: It work only in browsers that support the Pointer Events specification_
 
 <div align="right">
     <b><a href="#table-of-contents">↥ back to top</a></b>
@@ -5608,16 +5536,15 @@ export default class DragItem extends React.Component {
 
 ```js
 class App extends Component {
-
   constructor(props) {
-    super(props)
-    this.handleClick = this.handleClick.bind(this)
+    super(props);
+    this.handleClick = this.handleClick.bind(this);
   }
   handleClick() {
-    console.log('Clicked !')
+    console.log("Clicked !");
   }
   render() {
-    return <button onClick={this.handleClick}>Click Me</button>
+    return <button onClick={this.handleClick}>Click Me</button>;
   }
 }
 ```
@@ -5626,12 +5553,11 @@ class App extends Component {
 
 ```js
 class App extends Component {
-
   handleClick() {
-    console.log('Clicked !')
+    console.log("Clicked !");
   }
   render() {
-    return <button onClick={this.handleClick.bind(this)}>Click Me</button>
+    return <button onClick={this.handleClick.bind(this)}>Click Me</button>;
   }
 }
 ```
@@ -5640,12 +5566,11 @@ class App extends Component {
 
 ```js
 class App extends Component {
-
   handleClick() {
-    console.log('Clicked !')
+    console.log("Clicked !");
   }
   render() {
-    return <button onClick={() => this.handleClick()}>Click Me</button>
+    return <button onClick={() => this.handleClick()}>Click Me</button>;
   }
 }
 ```
@@ -5666,8 +5591,8 @@ Using an arrow function in render creates a new function each time the component
 class Button extends React.Component {
   // no binding
   handleClick = (e) => {
-    console.log('clicked !');
-  }
+    console.log("clicked !");
+  };
   render() {
     return <button onClick={this.handleClick}>Click Me</button>;
   }
@@ -5699,8 +5624,8 @@ export default class App extends Component {
     lists: [
       { id: 0, context: "Success" },
       { id: 1, context: "Warning" },
-      { id: 2, context: "Danger" }
-    ]
+      { id: 2, context: "Danger" },
+    ],
   };
 
   render() {
@@ -5733,11 +5658,9 @@ Keys help React identify which items have changed, are added, or are removed. Ke
 ```js
 const numbers = [10, 20, 30, 40, 50];
 
-const listItems = numbers.map((number) =>
-  <li key={number.toString()}>
-    {number}
-  </li>
-);
+const listItems = numbers.map((number) => (
+  <li key={number.toString()}>{number}</li>
+));
 ```
 
 React recommends that you do not use indexes as keys, if the order of items may change. It could impact performance negatively and could lead to some unstable component behaviour.
@@ -5777,7 +5700,7 @@ export default function App() {
 const items = [
   { name: "AngularJS", description: "" },
   { name: "React", description: "" },
-  { name: "Vue.js", description: "" }
+  { name: "Vue.js", description: "" },
 ];
 const ArrayList = (props) => (
   <div>
@@ -5788,7 +5711,6 @@ const ArrayList = (props) => (
   </div>
 );
 
-
 /**
  * String Component
  */
@@ -5798,7 +5720,6 @@ const StringList = (props) => (
     {["test", "render", "array", "list"]}
   </div>
 );
-
 
 /**
  * Number Component
@@ -5838,7 +5759,7 @@ export default class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      users: []
+      users: [],
     };
   }
 
@@ -5932,7 +5853,7 @@ import axios from "axios";
 export default class PersonList extends React.Component {
   state = {
     name: "",
-    result: []
+    result: [],
   };
 
   handleChange = (event) => {
@@ -5943,7 +5864,7 @@ export default class PersonList extends React.Component {
     event.preventDefault();
 
     const user = {
-      name: this.state.name
+      name: this.state.name,
     };
 
     axios
@@ -5985,7 +5906,7 @@ The Fetch API provides a `fetch()` method defined on the window object. It also 
 **Example:**
 
 ```js
-fetch('path-to-the-resource-to-be-fetched')
+fetch("path-to-the-resource-to-be-fetched")
   .then((response) => {
     // Code for handling the response
   })
@@ -6001,7 +5922,8 @@ Axios is a Javascript library used to make HTTP requests from node.js or XMLHttp
 **Example:**
 
 ```js
-axios.get('url')
+axios
+  .get("url")
   .then((response) => {
     // Code for handling the response
   })
@@ -6012,18 +5934,18 @@ axios.get('url')
 
 **Differences:**
 
-| Axios()                         | Fetch()                            |
-|---------------------------------|------------------------------------|
-|Axios has **url** in request object. | Fetch has no url in request object.|
-|Axios is a stand-alone third party package that can be easily installed.|Fetch is built into most modern browsers|
-|Axios has built-in XSRF protection.|Fetch does not.|
-|Axios uses the **data** property.  |Fetch uses the **body** property.|
-|Axios data contains the object.    |Fetch\'s body has to be stringified.|
-|Axios request is ok when status is 200 and statusText is 'OK'.|Fetch request is ok when response object contains the ok property.|
-|Axios performs automatic transforms of JSON data.|Fetch is a two-step process when handling JSON data- first, to make the actual request; second, to call the `.json()` method on the response.|
-|Axios allows cancelling request and request timeout.|Fetch does not.|
-|Axios has the ability to intercept HTTP requests.|Fetch, by default, doesn\'t provide a way to intercept requests.|
-|Axios has built-in support for download progress.|Fetch does not support upload progress.|
+| Axios()                                                                  | Fetch()                                                                                                                                       |
+| ------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------- |
+| Axios has **url** in request object.                                     | Fetch has no url in request object.                                                                                                           |
+| Axios is a stand-alone third party package that can be easily installed. | Fetch is built into most modern browsers                                                                                                      |
+| Axios has built-in XSRF protection.                                      | Fetch does not.                                                                                                                               |
+| Axios uses the **data** property.                                        | Fetch uses the **body** property.                                                                                                             |
+| Axios data contains the object.                                          | Fetch\'s body has to be stringified.                                                                                                          |
+| Axios request is ok when status is 200 and statusText is 'OK'.           | Fetch request is ok when response object contains the ok property.                                                                            |
+| Axios performs automatic transforms of JSON data.                        | Fetch is a two-step process when handling JSON data- first, to make the actual request; second, to call the `.json()` method on the response. |
+| Axios allows cancelling request and request timeout.                     | Fetch does not.                                                                                                                               |
+| Axios has the ability to intercept HTTP requests.                        | Fetch, by default, doesn\'t provide a way to intercept requests.                                                                              |
+| Axios has built-in support for download progress.                        | Fetch does not support upload progress.                                                                                                       |
 
 <div align="right">
     <b><a href="#table-of-contents">↥ back to top</a></b>
@@ -6044,17 +5966,15 @@ It allows you to write or execute a piece of your code before the request gets s
 ```js
 // Request Handler
 const requestHandler = (request) => {
-  const token = localStorageService.getAccessToken()
+  const token = localStorageService.getAccessToken();
   if (token) {
-    request.headers['Authorization'] = 'Bearer ' + token
+    request.headers["Authorization"] = "Bearer " + token;
   }
-  return request
-}
+  return request;
+};
 
 // Request Interceptor
-axios.interceptors.request.use(
-  request => requestHandler(request)
-)
+axios.interceptors.request.use((request) => requestHandler(request));
 ```
 
 **2. Response Interceptor:**
@@ -6069,21 +5989,21 @@ const errorHandler = (error) => {
   if (isHandlerEnabled(error.config)) {
     // Handle errors
   }
-  return Promise.reject({ ...error })
-}
+  return Promise.reject({ ...error });
+};
 
 const successHandler = (response) => {
   if (isHandlerEnabled(response.config)) {
     // Handle responses
   }
-  return response
-}
+  return response;
+};
 
 // Response Interceptors
 axios.interceptors.response.use(
-  response => successHandler(response),
-  error => errorHandler(error)
-)
+  (response) => successHandler(response),
+  (error) => errorHandler(error)
+);
 ```
 
 <div align="right">
@@ -6094,10 +6014,10 @@ axios.interceptors.response.use(
 
 In React, caching data can be achieved in multiple ways
 
-* Local Storage
-* Redux Store
-* Keep data between mouting and unmounting
-* useMemo()
+- Local Storage
+- Redux Store
+- Keep data between mouting and unmounting
+- useMemo()
 
 **1. Memoizing Fetched Data:**
 
@@ -6106,36 +6026,36 @@ Memoization is a technique we would use to make sure that we don\'t hit the API 
 **Example:**
 
 ```js
-const cache = {}
+const cache = {};
 
 const useFetch = (url) => {
-  const [status, setStatus] = useState('idle')
-  const [data, setData] = useState([])
+  const [status, setStatus] = useState("idle");
+  const [data, setData] = useState([]);
 
   useEffect(() => {
-    if (!url) return
+    if (!url) return;
 
     const fetchData = async () => {
-      setStatus('fetching')
+      setStatus("fetching");
 
       if (cache[url]) {
-        const data = cache[url]
-        setData(data)
-        setStatus('fetched')
+        const data = cache[url];
+        setData(data);
+        setStatus("fetched");
       } else {
-        const response = await fetch(url)
-        const data = await response.json()
-        cache[url] = data // set response in cache
-        setData(data)
-        setStatus('fetched')
+        const response = await fetch(url);
+        const data = await response.json();
+        cache[url] = data; // set response in cache
+        setData(data);
+        setStatus("fetched");
       }
-    }
+    };
 
-    fetchData()
-  }, [url])
+    fetchData();
+  }, [url]);
 
-  return { status, data }
-}
+  return { status, data };
+};
 ```
 
 Here, we\'re mapping URLs to their data. So, if we make a request to fetch some existing data, we set the data from our local cache, else, we go ahead to make the request and set the result in the cache. This ensures we do not make an API call when we have the data available to us locally.
@@ -6146,34 +6066,34 @@ With `useRef()`, we can set and retrieve mutable values at ease and its value pe
 
 ```js
 const useFetch = (url) => {
-  const cache = useRef({})
-  const [status, setStatus] = useState('idle')
-  const [data, setData] = useState([])
+  const cache = useRef({});
+  const [status, setStatus] = useState("idle");
+  const [data, setData] = useState([]);
 
   useEffect(() => {
-    if (!url) return
+    if (!url) return;
 
     const fetchData = async () => {
-      setStatus('fetching')
+      setStatus("fetching");
 
       if (cache.current[url]) {
-        const data = cache.current[url]
-        setData(data)
-        setStatus('fetched')
+        const data = cache.current[url];
+        setData(data);
+        setStatus("fetched");
       } else {
-        const response = await fetch(url)
-        const data = await response.json()
-        cache.current[url] = data // set response in cache
-        setData(data)
-        setStatus('fetched')
+        const response = await fetch(url);
+        const data = await response.json();
+        cache.current[url] = data; // set response in cache
+        setData(data);
+        setStatus("fetched");
       }
-    }
+    };
 
-    fetchData()
-  }, [url])
+    fetchData();
+  }, [url]);
 
-  return { status, data }
-}
+  return { status, data };
+};
 ```
 
 **3. Using localStorage():**
@@ -6208,43 +6128,42 @@ export default App
 **4. Keep data between Mouting and Unmounting:**
 
 ```js
-import React, { Component } from 'react'
+import React, { Component } from "react";
 
 // Set initial state
-let state = { counter: 5 }
+let state = { counter: 5 };
 
 class Counter extends Component {
+  constructor(props) {
+    super(props);
 
- constructor(props) {
-  super(props)
+    // Retrieve the last state
+    this.state = state;
 
-  // Retrieve the last state
-  this.state = state
+    this.onClick = this.onClick.bind(this);
+  }
 
-  this.onClick = this.onClick.bind(this)
+  componentWillUnmount() {
+    // Remember state for the next mount
+    state = this.state;
+  }
+
+  onClick(e) {
+    e.preventDefault();
+    this.setState((prev) => ({ counter: prev.counter + 1 }));
+  }
+
+  render() {
+    return (
+      <div>
+        <span>{this.state.counter}</span>
+        <button onClick={this.onClick}>Increase</button>
+      </div>
+    );
+  }
 }
 
-componentWillUnmount() {
-  // Remember state for the next mount
-  state = this.state
-}
-
-onClick(e) {
-  e.preventDefault()
-  this.setState(prev => ({ counter: prev.counter + 1 }))
-}
-
-render() {
-  return (
-    <div>
-      <span>{ this.state.counter }</span>
-      <button onClick={this.onClick}>Increase</button>
-    </div>
-  )
- }
-}
-
-export default Counter
+export default Counter;
 ```
 
 <div align="right">
@@ -6269,7 +6188,7 @@ export default class App extends React.Component {
     this.state = {
       error: null,
       isLoaded: false,
-      users: []
+      users: [],
     };
   }
 
@@ -6279,13 +6198,13 @@ export default class App extends React.Component {
       .then((result) => {
         this.setState({
           isLoaded: true,
-          users: result.data
+          users: result.data,
         });
       })
       .catch((error) => {
         this.setState({
           isLoaded: false,
-          error
+          error,
         });
       });
   }
@@ -6320,7 +6239,6 @@ export default class App extends React.Component {
 **Example:**
 
 ```js
-
 class App extends Component {
   // ...
   async componentDidMount() {
@@ -6367,30 +6285,27 @@ RxJS is a library for reactive programming using Observables, to make it easier 
 
 **RxJS Terminology:**
 
-* **Observable**: An Observable is a data stream that houses data that can be passed through different threads.
-* **Observer**: An Observer consumes the data supplied by an Observable
-* **Subscription**: In order for Observer to consume data from Observable, Observer has to subscribe it to the Observable.
-* **Subject**: An RxJS Subject can act as both an Observable and an Observer at the same time. In this way, values can be multicasted to many Observers from it so that when a Subject receives any data, that data can be forwarded to every Observer subscribed to it.
-* **Operators**: Operators are methods that can use on Observables and subjects to manipulate, filter or change the Observable in a specified manner into a new Observable.
-* **BehaviorSubject**: It allows multiple observers to listen on stream and events multicasted to the observers, BehaviorSubject stores the latest value and broadcasts it to any new subscribers.
+- **Observable**: An Observable is a data stream that houses data that can be passed through different threads.
+- **Observer**: An Observer consumes the data supplied by an Observable
+- **Subscription**: In order for Observer to consume data from Observable, Observer has to subscribe it to the Observable.
+- **Subject**: An RxJS Subject can act as both an Observable and an Observer at the same time. In this way, values can be multicasted to many Observers from it so that when a Subject receives any data, that data can be forwarded to every Observer subscribed to it.
+- **Operators**: Operators are methods that can use on Observables and subjects to manipulate, filter or change the Observable in a specified manner into a new Observable.
+- **BehaviorSubject**: It allows multiple observers to listen on stream and events multicasted to the observers, BehaviorSubject stores the latest value and broadcasts it to any new subscribers.
 
 **Example:**
 
 ```js
 // messageService.js
-import { BehaviourSubject } from 'rxjs'
+import { BehaviourSubject } from "rxjs";
 
-const subscriber = new BehaviourSubject(0)
+const subscriber = new BehaviourSubject(0);
 
 const messageService = {
-   send: function(msg) {
-     subscriber.next(msg)
-   }
-}
-export {
-  messageService,
-  subscriber
-}
+  send: function (msg) {
+    subscriber.next(msg);
+  },
+};
+export { messageService, subscriber };
 ```
 
 The messageService object has a send function, which takes a msg parameter which holds the data we need to broadcast all listening components, in the function body we call the emit method in the subscriber object it multicasts the data to the subscribing components.
@@ -6499,7 +6414,7 @@ The ConsumerA and ConsumerB components keep a state counter individual. In their
 
 **Reference:**
 
-* *[https://www.learnrxjs.io/](https://www.learnrxjs.io/)*
+- _[https://www.learnrxjs.io/](https://www.learnrxjs.io/)_
 
 <div align="right">
     <b><a href="#table-of-contents">↥ back to top</a></b>
@@ -6515,11 +6430,10 @@ The ConsumerA and ConsumerB components keep a state counter individual. In their
 
 ```js
 class App extends React.Component {
-
   constructor(props) {
     super(props);
     this.state = {
-      colors: {}
+      colors: {},
     };
     this.selectColor = this.selectColor.bind(this);
   }
@@ -6533,8 +6447,8 @@ class App extends React.Component {
       colors: {
         "#ff0000": "Red",
         "#00ff00": "Green",
-        "#0000ff": "Blue"
-      }
+        "#0000ff": "Blue",
+      },
     });
   }
 
@@ -6594,22 +6508,33 @@ export default function App() {
     <form onSubmit={handleSubmit}>
       <h1>Create Account</h1>
 
-      <label>Email:
-        <input name="email" type="email" value={email}
+      <label>
+        Email:
+        <input
+          name="email"
+          type="email"
+          value={email}
           onChange={(e) => setEmail(e.target.value)}
           required
         />
       </label>
 
-      <label>Password:
-        <input name="password" type="password" value={password}
+      <label>
+        Password:
+        <input
+          name="password"
+          type="password"
+          value={password}
           onChange={(e) => setPassword(e.target.value)}
           required
         />
       </label>
 
-      <label>Country:
-        <select name="country" value={country}
+      <label>
+        Country:
+        <select
+          name="country"
+          value={country}
           onChange={(e) => setCountry(e.target.value)}
           required
         >
@@ -6620,7 +6545,10 @@ export default function App() {
         </select>
       </label>
 
-      <label><input name="acceptedTerms" type="checkbox"
+      <label>
+        <input
+          name="acceptedTerms"
+          type="checkbox"
           onChange={(e) => setAcceptedTerms(e.target.value)}
           required
         />
@@ -6673,12 +6601,12 @@ const useStyles = makeStyles((theme) => ({
 
     "& .MuiTextField-root": {
       margin: theme.spacing(1),
-      width: "300px"
+      width: "300px",
     },
     "& .MuiButtonBase-root": {
-      margin: theme.spacing(2)
-    }
-  }
+      margin: theme.spacing(2),
+    },
+  },
 }));
 
 const Form = ({ handleClose }) => {
@@ -6781,7 +6709,7 @@ The React Hook Form provides a hook called `useForm()`, consisting of methods an
 
 In a controlled component, form data is handled by a React component. The alternative is uncontrolled components, where form data is handled by the DOM itself.
 
-**1. Controlled Components:**  
+**1. Controlled Components:**
 
 In a controlled component, the form data is handled by the state within the component. The state within the component serves as “the single source of truth” for the input elements that are rendered by the component.
 
@@ -6795,12 +6723,12 @@ import React, { Component } from "react";
 
 export default class App extends Component {
   state = {
-    message: ""
+    message: "",
   };
   updateMessage = (newText) => {
     console.log(newText);
     this.setState(() => ({
-      message: newText
+      message: newText,
     }));
   };
   render() {
@@ -6823,7 +6751,7 @@ export default class App extends Component {
 
 **&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-controlled-components-1ilt72?file=/src/App.js)**
 
-**2. Uncontrolled Components:**  
+**2. Uncontrolled Components:**
 
 Uncontrolled components act more like traditional HTML form elements. The data for each input element is stored in the DOM, not in the component. Instead of writing an event handler for all of your state updates, It uses `ref` to retrieve values from the DOM. `Refs` provide a way to access DOM nodes or React elements created in the render method.
 
@@ -6907,23 +6835,23 @@ React Hooks are in-built functions that allow to use **state** and **lifecycle**
 
 **Rules of Hooks:**
 
-* Hooks should not be called inside loops, conditions, or nested functions.
-* Hooks should be used inside React function components
+- Hooks should not be called inside loops, conditions, or nested functions.
+- Hooks should be used inside React function components
 
 **Built-in Hooks:**
 
-| Hooks               | Description                                                                     |
-|---------------------|---------------------------------------------------------------------------------|
-|useState()           |To manage states. Returns a stateful value and an updater function to update it. |
-|useEffect()          |To manage side-effects like API calls, subscriptions, timers, mutations, and more.|
-|useContext()         |To return the current value for a context.|
-|useReducer()         |A useState alternative to help with complex state management.|
-|useCallback()        |It returns a memorized version of a callback to help a child component not re-render unnecessarily.|
-|useMemo()            |It returns a memoized value that helps in performance optimizations.|
-|useRef()             |It returns a ref object with a `.current` property. The ref object is mutable. It is mainly used to access a child component imperatively.|
-|useImperativeHandle()|It customizes the instance value that is exposed to parent components when using ref.|
-|useLayoutEffect()    |It fires at the end of all DOM mutations. It\'s best to use useEffect as much as possible over this one as the useLayoutEffect fires synchronously.|
-|useDebugValue()      |Helps to display a label in React DevTools for custom hooks.
+| Hooks                 | Description                                                                                                                                         |
+| --------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------- |
+| useState()            | To manage states. Returns a stateful value and an updater function to update it.                                                                    |
+| useEffect()           | To manage side-effects like API calls, subscriptions, timers, mutations, and more.                                                                  |
+| useContext()          | To return the current value for a context.                                                                                                          |
+| useReducer()          | A useState alternative to help with complex state management.                                                                                       |
+| useCallback()         | It returns a memorized version of a callback to help a child component not re-render unnecessarily.                                                 |
+| useMemo()             | It returns a memoized value that helps in performance optimizations.                                                                                |
+| useRef()              | It returns a ref object with a `.current` property. The ref object is mutable. It is mainly used to access a child component imperatively.          |
+| useImperativeHandle() | It customizes the instance value that is exposed to parent components when using ref.                                                               |
+| useLayoutEffect()     | It fires at the end of all DOM mutations. It\'s best to use useEffect as much as possible over this one as the useLayoutEffect fires synchronously. |
+| useDebugValue()       | Helps to display a label in React DevTools for custom hooks.                                                                                        |
 
 **Example:**
 
@@ -6952,13 +6880,13 @@ export default function App() {
 
 ## Q. What are advantages of using React Hooks?
 
-* Hooks are easier to work with and to test (as separated functions from React components*) and make the code look cleaner, easier to read — a related logic can be tightly coupled in a custom hook.
-* Hooks allow to do by breaking the logic between components into small functions and using them inside the components.
-* Improved code reuse
-* Better code composition
-* Better defaults
-* Sharing non-visual logic with the use of custom hooks
-* Flexibility in moving up and down the components tree.
+- Hooks are easier to work with and to test (as separated functions from React components\*) and make the code look cleaner, easier to read — a related logic can be tightly coupled in a custom hook.
+- Hooks allow to do by breaking the logic between components into small functions and using them inside the components.
+- Improved code reuse
+- Better code composition
+- Better defaults
+- Sharing non-visual logic with the use of custom hooks
+- Flexibility in moving up and down the components tree.
 
 <div align="right">
     <b><a href="#table-of-contents">↥ back to top</a></b>
@@ -6970,10 +6898,10 @@ React also allows us to create custom Hooks with unique features that extracts c
 
 A custom Hooks has following features:
 
-* As a function, it takes input and returns output.
-* Its name starts with **use** like useQuery, useMedia…
-* Unlike functional components, custom hooks return a normal, non-jsx data.
-* Unlike normal functions, custom hooks can use other hooks such as useState, useRef… and other custom hooks.
+- As a function, it takes input and returns output.
+- Its name starts with **use** like useQuery, useMedia…
+- Unlike functional components, custom hooks return a normal, non-jsx data.
+- Unlike normal functions, custom hooks can use other hooks such as useState, useRef… and other custom hooks.
 
 **Example:** Custom Hook - useFetch()
 
@@ -7076,7 +7004,7 @@ export default function App() {
 Hooks were designed to replace `class` and provide another great alternative to compose behavior into your components. Higher Order Components are also useful for composing behavior. Hooks encapsulate the functionality to easily reusable functions
 
 ```js
-const [active, setActive] = useState(defaultActive)
+const [active, setActive] = useState(defaultActive);
 ```
 
 There are few build-in Hooks
@@ -7100,41 +7028,36 @@ A Higher Order Component (HOC) is a component that takes a component and returns
 **Example:** logger API
 
 ```js
-import React, { useEffect } from 'react'
+import React, { useEffect } from "react";
 
-const withLogging = Component => props => {
+const withLogging = (Component) => (props) => {
   useEffect(() => {
-    fetch(`/logger?location=${ window.location}`)
-  }, [])
-  return <Component {...props } />
-}
-export default withLogging
+    fetch(`/logger?location=${window.location}`);
+  }, []);
+  return <Component {...props} />;
+};
+export default withLogging;
 ```
 
 To use it, you can mix it into an HOC that you\’ll wrap around every page:
 
 ```js
-import React from 'react'
-import withAuth from './with-auth.js'
-import withLogging from './with-logging.js'
-import withLayout from './with-layout.js'
+import React from "react";
+import withAuth from "./with-auth.js";
+import withLogging from "./with-logging.js";
+import withLayout from "./with-layout.js";
 
-const page = compose(
-  withRedux,
-  withAuth,
-  withLogging,
-  withLayout('default'),
-)
-export default page
+const page = compose(withRedux, withAuth, withLogging, withLayout("default"));
+export default page;
 ```
 
 To use this for a page
 
 ```js
-import page from '../hocs/page.js'
-import MyPageComponent from './my-page-component.js'
+import page from "../hocs/page.js";
+import MyPageComponent from "./my-page-component.js";
 
-export default page(MyPageComponent)
+export default page(MyPageComponent);
 ```
 
 <div align="right">
@@ -7188,60 +7111,63 @@ In the hook, we create a ref with the **useRef** hook to create a non-reactive p
 **1. Using React Hooks:**
 
 ```js
-import React, { useLayoutEffect, useState } from 'react'
+import React, { useLayoutEffect, useState } from "react";
 
 function useWindowSize() {
-
-  const [size, setSize] = useState([0, 0])
+  const [size, setSize] = useState([0, 0]);
 
   useLayoutEffect(() => {
     function updateSize() {
-      setSize([window.innerWidth, window.innerHeight])
+      setSize([window.innerWidth, window.innerHeight]);
     }
-    window.addEventListener('resize', updateSize)
-    updateSize()
-    return () => window.removeEventListener('resize', updateSize)
-  }, [])
+    window.addEventListener("resize", updateSize);
+    updateSize();
+    return () => window.removeEventListener("resize", updateSize);
+  }, []);
 
-  return size
+  return size;
 }
 
 function ShowWindowDimensions(props) {
-
-  const [width, height] = useWindowSize()
-  return <span>Window size: {width} x {height}</span>
+  const [width, height] = useWindowSize();
+  return (
+    <span>
+      Window size: {width} x {height}
+    </span>
+  );
 }
 ```
 
 **2. Using React Class:**
 
 ```js
-import React from 'react'
+import React from "react";
 
 class ShowWindowDimensions extends React.Component {
-  
-  state = { width: 0, height: 0 }
-  
+  state = { width: 0, height: 0 };
+
   updateDimensions = () => {
-    this.setState({ width: window.innerWidth, height: window.innerHeight })
-  }
+    this.setState({ width: window.innerWidth, height: window.innerHeight });
+  };
   /**
    * Add event listener
    */
   componentDidMount() {
-    window.addEventListener('resize', this.updateDimensions)
+    window.addEventListener("resize", this.updateDimensions);
   }
   /**
    * Remove event listener
    */
   componentWillUnmount() {
-    window.removeEventListener('resize', this.updateDimensions)
+    window.removeEventListener("resize", this.updateDimensions);
   }
 
   render() {
     return (
-      <span>Window size: {this.state.width} x {this.state.height}</span>
-    )
+      <span>
+        Window size: {this.state.width} x {this.state.height}
+      </span>
+    );
   }
 }
 ```
@@ -7256,8 +7182,8 @@ The **useState()** or **useReducer()** hooks can be used to force a React compon
 
 The example below is equivalent to **forceUpdate()** method in class-based components. This hook works in the following way:
 
-* The `useState()` hook returns an array with two elements, a value and an updater function.
-* Here, we are instantly calling the updater function, which in this case is called with `undefined`, so it is the same as calling `updater(undefined)`.
+- The `useState()` hook returns an array with two elements, a value and an updater function.
+- Here, we are instantly calling the updater function, which in this case is called with `undefined`, so it is the same as calling `updater(undefined)`.
 
 **Example:**
 
@@ -7288,18 +7214,18 @@ export default function App() {
 The `useState()` is a Hook that allows to have state variables in functional components.
 
 ```js
-import React, { useState } from 'react'
+import React, { useState } from "react";
 
 const App = () => {
-  const [count, setCount] = React.useState(0)
+  const [count, setCount] = React.useState(0);
 
   const handleIncrease = () => {
-    setCount(count + 1)
-  }
+    setCount(count + 1);
+  };
 
   const handleDecrease = () => {
-    setCount(count - 1)
-  }
+    setCount(count - 1);
+  };
 
   return (
     <div>
@@ -7314,8 +7240,8 @@ const App = () => {
         </button>
       </div>
     </div>
-  )
-}
+  );
+};
 ```
 
 The useState() function takes as argument a value for the initial state. In this case, the count starts out with 0. In addition, the hook returns an array of two values: **count** and **setCount**. It\'s up to you to name the two values, because they are `destructured from the returned array` where renaming is allowed.
@@ -7339,15 +7265,15 @@ const Component = () => {
 **Example:** State with Various Data Types
 
 ```js
-const [count, setCount] = useState(0)
-const [color, setColor] = useState('#526b2d')
-const [isHidden, setIsHidden] = useState(true)
-const [products, setProducts] = useState([])
+const [count, setCount] = useState(0);
+const [color, setColor] = useState("#526b2d");
+const [isHidden, setIsHidden] = useState(true);
+const [products, setProducts] = useState([]);
 const [user, setUser] = useState({
-    username: '',
-    avatar: '',
-    email: '',
-})
+  username: "",
+  avatar: "",
+  email: "",
+});
 ```
 
 <div align="right">
@@ -7363,31 +7289,35 @@ Although `useState()` is a Basic Hook and `useReducer()` is an Additional Hook, 
 **Example:**
 
 ```js
-import React, { useReducer } from 'react'
+import React, { useReducer } from "react";
 
-const initialState = 0
+const initialState = 0;
 const reducer = (state, action) => {
   switch (action) {
-    case 'increment': return state + 1
-    case 'decrement': return state - 1
-    case 'reset': return 0
-    default: throw new Error('Unexpected action')
+    case "increment":
+      return state + 1;
+    case "decrement":
+      return state - 1;
+    case "reset":
+      return 0;
+    default:
+      throw new Error("Unexpected action");
   }
-}
+};
 
 const ReducerExample = () => {
-  const [count, dispatch] = useReducer(reducer, initialState)
+  const [count, dispatch] = useReducer(reducer, initialState);
   return (
     <div>
       {count}
-      <button onClick={() => dispatch('increment')}>+1</button>
-      <button onClick={() => dispatch('decrement')}>-1</button>
-      <button onClick={() => dispatch('reset')}>reset</button>
+      <button onClick={() => dispatch("increment")}>+1</button>
+      <button onClick={() => dispatch("decrement")}>-1</button>
+      <button onClick={() => dispatch("reset")}>reset</button>
     </div>
-  )
-}
+  );
+};
 
-export default ReducerExample
+export default ReducerExample;
 ```
 
 Here, we first define an initialState and a reducer. When a user clicks a button, it will dispatch an action which updates the count and the updated count will be displayed. We could define as many actions as possible in the reducer, but the limitation of this pattern is that actions are finite.
@@ -7406,15 +7336,15 @@ The `setState()` is the API method provided with the library so that the user is
 **Example:**
 
 ```js
-import React, { Component } from 'react'
+import React, { Component } from "react";
 
 class Search extends Component {
   constructor(props) {
-    super(props)
+    super(props);
 
     this.state = {
-      searchString: ''
-    }
+      searchString: "",
+    };
   }
 }
 ```
@@ -7422,7 +7352,7 @@ class Search extends Component {
 we are passing an empty string as a value and, to update the state of searchString, we have to call setState().
 
 ```js
-setState({ searchString: event.target.value })
+setState({ searchString: event.target.value });
 ```
 
 Here, we are passing an object to setState(). The object contains the part of the state we want to update which, in this case, is the value of searchString. This is basically kicking off a process that React calls **reconciliation**. The reconciliation process is the way React updates the DOM, by making changes to the component based on the change in state.
@@ -7494,30 +7424,30 @@ The `useMemo()` is similar to `useCallback()` except it allows you to apply memo
 React application which renders a list of users and allows us to filter the users by their name. The filter happens only when a user explicitly clicks a button; not already when the user types into the input field.
 
 ```js
-import React from 'react'
+import React from "react";
 
 const users = [
-  { id: 'a', name: 'Robin' },
-  { id: 'b', name: 'Dennis' },
-]
+  { id: "a", name: "Robin" },
+  { id: "b", name: "Dennis" },
+];
 
 const App = () => {
-  const [text, setText] = React.useState('')
-  const [search, setSearch] = React.useState('')
+  const [text, setText] = React.useState("");
+  const [search, setSearch] = React.useState("");
 
   const handleText = (event) => {
-    setText(event.target.value)
-  }
+    setText(event.target.value);
+  };
 
   const handleSearch = () => {
-    setSearch(text)
-  }
+    setSearch(text);
+  };
 
   // useMemo Hooks
   const filteredUsers = React.useMemo(
     () =>
       users.filter((user) => {
-        console.log('Filter function is running ...');
+        console.log("Filter function is running ...");
         return user.name.toLowerCase().includes(search.toLowerCase());
       }),
     [search]
@@ -7532,8 +7462,8 @@ const App = () => {
 
       <List list={filteredUsers} />
     </div>
-  )
-}
+  );
+};
 
 const List = ({ list }) => {
   return (
@@ -7542,14 +7472,14 @@ const List = ({ list }) => {
         <ListItem key={item.id} item={item} />
       ))}
     </ul>
-  )
-}
+  );
+};
 
 const ListItem = ({ item }) => {
-  return <li>{item.name}</li>
-}
+  return <li>{item.name}</li>;
+};
 
-export default App
+export default App;
 ```
 
 Here, the **filteredUsers** function is only executed once the search state changes. It doesn\'t run if the text state changes, because that\'s not a dependency for this filter function and thus not a dependency in the dependency array for the useMemo hook.
@@ -7584,34 +7514,30 @@ As far as scheduling, this works the same way as `componentDidMount` and `compon
 **Example:**
 
 ```js
-import React, { useState, useLayoutEffect } from 'react'
-import ReactDOM from 'react-dom'
+import React, { useState, useLayoutEffect } from "react";
+import ReactDOM from "react-dom";
 
 const BlinkyRender = () => {
-  const [value, setValue] = useState(0)
+  const [value, setValue] = useState(0);
 
   useLayoutEffect(() => {
     if (value === 0) {
-      setValue(10 + Math.random() * 200)
+      setValue(10 + Math.random() * 200);
     }
-  }, [value])
+  }, [value]);
 
-  console.log('render', value)
+  console.log("render", value);
 
-  return (
-    <div onClick={() => setValue(0)}>
-      value: {value}
-    </div>
-  )
-}
+  return <div onClick={() => setValue(0)}>value: {value}</div>;
+};
 
-ReactDOM.render( <BlinkyRender />, document.querySelector('#root'))
+ReactDOM.render(<BlinkyRender />, document.querySelector("#root"));
 ```
 
 **useLayoutEffect vs useEffect:**
 
-* **useLayoutEffect**: If you need to mutate the DOM and/or do need to perform measurements
-* **useEffect**: If you don\'t need to interact with the DOM at all or your DOM changes are unobservable (seriously, most of the time you should use this).
+- **useLayoutEffect**: If you need to mutate the DOM and/or do need to perform measurements
+- **useEffect**: If you don\'t need to interact with the DOM at all or your DOM changes are unobservable (seriously, most of the time you should use this).
 
 **5. useDebugValue():**
 
@@ -7621,15 +7547,15 @@ ReactDOM.render( <BlinkyRender />, document.querySelector('#root'))
 
 ```js
 function useFriendStatus(friendID) {
-  const [isOnline, setIsOnline] = useState(null)
+  const [isOnline, setIsOnline] = useState(null);
 
   // ...
 
   // Show a label in DevTools next to this Hook
   // e.g. "FriendStatus: Online"
-  useDebugValue(isOnline ? 'Online' : 'Offline')
+  useDebugValue(isOnline ? "Online" : "Offline");
 
-  return isOnline
+  return isOnline;
 }
 ```
 
@@ -7655,52 +7581,52 @@ If your component renders the same result given the same props, you can wrap it 
 
 **Example:** Let\'s take an example of search functionality. In the example below, the App component contains:
 
-* Search input for the fruit name
-* A button and a child component where the user search will be displayed
-* A count of the number of times a user has clicked the button
+- Search input for the fruit name
+- A button and a child component where the user search will be displayed
+- A count of the number of times a user has clicked the button
 
 ```js
 export default function App() {
-   const fruits = ["apple", "orange", "banana"];
-   const [fruitName, setFruitName] = useState("");
-   const [searchedFruit, setSearchedFruit] = useState(
-     "Search your favorite fruit"
-   );
-   const [count, setCount] = useState(0);
-   const searchFruitName = () => {
-     if (fruits.includes(fruitName)) {
-       setSearchedFruit(fruitName);
-     } else {
-       setSearchedFruit("No results Found");
-     }
-     setCount(count+1);
-   };
-    const showAllFruits = () => {
-     return fruits.map((fruit, index) => {
-       return (
-         <span key={index} className="fruitname">
-           {fruit}
-         </span>
-       );
-     });
-   };
-   return (
-     <div className="App">
-       <h3>Count: {count}</h3>
-       <div className="fruits">{showAllFruits()}</div>
-       <div>
-         <input
-           type="text"
-           placeholder="Search.."
-           onChange={event => setFruitName(event.target.value)}
-           value={fruitName}
-         />
-         <button onClick={searchFruitName}>Search</button>
-       </div>
-       <SearchComponent searchedFruitName={searchedFruit} />
-     </div>
-   );
- }
+  const fruits = ["apple", "orange", "banana"];
+  const [fruitName, setFruitName] = useState("");
+  const [searchedFruit, setSearchedFruit] = useState(
+    "Search your favorite fruit"
+  );
+  const [count, setCount] = useState(0);
+  const searchFruitName = () => {
+    if (fruits.includes(fruitName)) {
+      setSearchedFruit(fruitName);
+    } else {
+      setSearchedFruit("No results Found");
+    }
+    setCount(count + 1);
+  };
+  const showAllFruits = () => {
+    return fruits.map((fruit, index) => {
+      return (
+        <span key={index} className="fruitname">
+          {fruit}
+        </span>
+      );
+    });
+  };
+  return (
+    <div className="App">
+      <h3>Count: {count}</h3>
+      <div className="fruits">{showAllFruits()}</div>
+      <div>
+        <input
+          type="text"
+          placeholder="Search.."
+          onChange={(event) => setFruitName(event.target.value)}
+          value={fruitName}
+        />
+        <button onClick={searchFruitName}>Search</button>
+      </div>
+      <SearchComponent searchedFruitName={searchedFruit} />
+    </div>
+  );
+}
 ```
 
 **&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-memo-yp7hb?file=/src/App.js)**
@@ -7728,7 +7654,6 @@ const MemoText = React.memo(
   },
   (preprops, nextprops) => true
 );
-
 ```
 
 ```js
@@ -7906,7 +7831,7 @@ import React, { Component } from "react";
 import ReactDOM from "react-dom";
 
 const MyContext = React.createContext({
-  name: "Context Type"
+  name: "Context Type",
 });
 
 const { Provider, Consumer } = MyContext;
@@ -7916,7 +7841,7 @@ const { Provider, Consumer } = MyContext;
  */
 class StoreProvider extends Component {
   state = {
-    count: 0
+    count: 0,
   };
 
   incrementCount = () => {
@@ -7930,7 +7855,7 @@ class StoreProvider extends Component {
       <Provider
         value={{
           state: this.state,
-          incrementCount: this.incrementCount
+          incrementCount: this.incrementCount,
         }}
       >
         {this.props.children}
@@ -8028,7 +7953,7 @@ Here, We are storing data in component state in which we want to use context and
 
 React passes data to child components via props from top to bottom. While there are few props or child components, it is easy to manage and pass down data. But when the application grows, and want to pass data from the top level component to a 3rd or 4th level level component but we end up passing these data to components on each level of the tree. This is called **Prop-drilling**.
 
-**Using Context API:**  
+**Using Context API:**
 
 The Context API solves some of these prop drilling problems. It let pass data to all of the components in the tree without writing them manually in each of them. Shared data can be anything: state, functions, objects, we name it, and it is accessible to all nested levels that are in the scope of the context.
 
@@ -8160,7 +8085,9 @@ The `<Link>` component is used to navigate the different routes on the site. But
 **NavLink:**
 
 ```js
-<NavLink to="/" activeClassName="active">Home</NavLink>
+<NavLink to="/" activeClassName="active">
+  Home
+</NavLink>
 ```
 
 **Example:**
@@ -8176,13 +8103,18 @@ index.css
 Routes.js
 
 ```js
-import ReactDOM from 'react-dom'
-import './index.css'
-import { Route, NavLink, BrowserRouter as Router, Switch } from 'react-router-dom'
-import App from './App'
-import Users from './users'
-import Contact from './contact'
-import Notfound from './notfound'
+import ReactDOM from "react-dom";
+import "./index.css";
+import {
+  Route,
+  NavLink,
+  BrowserRouter as Router,
+  Switch,
+} from "react-router-dom";
+import App from "./App";
+import Users from "./users";
+import Contact from "./contact";
+import Notfound from "./notfound";
 
 const Routes = (
   <Router>
@@ -8213,9 +8145,9 @@ const Routes = (
       </Switch>
     </div>
   </Router>
-)
+);
 
-ReactDOM.render(Routes, document.getElementById('root'))
+ReactDOM.render(Routes, document.getElementById("root"));
 ```
 
 <div align="right">
@@ -8229,26 +8161,26 @@ ReactDOM.render(Routes, document.getElementById('root'))
 **Example:**
 
 ```js
-import React from "react"
-import PropTypes from "prop-types"
-import { withRouter } from "react-router"
+import React from "react";
+import PropTypes from "prop-types";
+import { withRouter } from "react-router";
 
 // A simple component that shows the pathname of the current location
 class ShowTheLocation extends React.Component {
   static propTypes = {
     match: PropTypes.object.isRequired,
     location: PropTypes.object.isRequired,
-    history: PropTypes.object.isRequired
-  }
+    history: PropTypes.object.isRequired,
+  };
 
   render() {
-    const { match, location, history } = this.props
+    const { match, location, history } = this.props;
 
-    return <div>You are now at {location.pathname}</div>
+    return <div>You are now at {location.pathname}</div>;
   }
 }
 
-const ShowTheLocationWithRouter = withRouter(ShowTheLocation)
+const ShowTheLocationWithRouter = withRouter(ShowTheLocation);
 ```
 
 <div align="right">
@@ -8259,8 +8191,8 @@ const ShowTheLocationWithRouter = withRouter(ShowTheLocation)
 
 React Router is a wrapper around the history library which handles interaction with the browser\'s `window.history` with its browser and hash histories. React Router provides two API\'s
 
-* BrowserRouter
-* HashRouter
+- BrowserRouter
+- HashRouter
 
 ```js
 // <BrowserRouter>
@@ -8307,7 +8239,14 @@ The `useNavigate()` hook returns a function that lets you navigate programmatica
  * useNavigate()
  */
 import React from "react";
-import { NavLink, Link, Routes, Route,  useParams, useNavigate } from "react-router-dom";
+import {
+  NavLink,
+  Link,
+  Routes,
+  Route,
+  useParams,
+  useNavigate,
+} from "react-router-dom";
 import "./styles.css";
 
 function Home() {
@@ -8317,7 +8256,9 @@ function Home() {
 function Users() {
   return (
     <ul>
-      <li><Link to={"/users/1"}>User 1</Link></li>
+      <li>
+        <Link to={"/users/1"}>User 1</Link>
+      </li>
     </ul>
   );
 }
@@ -8352,8 +8293,14 @@ export default function App() {
     <div className="App">
       <nav>
         <ul>
-          <li><NavLink to="/" end>Home Page</NavLink></li>
-          <li><NavLink to="/users">Users Page</NavLink></li>
+          <li>
+            <NavLink to="/" end>
+              Home Page
+            </NavLink>
+          </li>
+          <li>
+            <NavLink to="/users">Users Page</NavLink>
+          </li>
         </ul>
       </nav>
       <AppRoutes />
@@ -8379,8 +8326,8 @@ In order to get query parameters from the URL, we can use **URLSearchParams**. I
 
 const queryParams = new URLSearchParams(window.location.search);
 
-const id = queryParams.get('id');
-const name = queryParams.get('name');
+const id = queryParams.get("id");
+const name = queryParams.get("name");
 
 console.log(id, name); // 100 react
 ```
@@ -8401,15 +8348,28 @@ The **useNavigate()** hook has been added to React Router v6 to replace the `use
 /**
  * React Router
  */
-import { BrowserRouter, Routes, NavLink, Route, useParams, useNavigate } from "react-router-dom";
+import {
+  BrowserRouter,
+  Routes,
+  NavLink,
+  Route,
+  useParams,
+  useNavigate,
+} from "react-router-dom";
 
 export default function App() {
   return (
     <BrowserRouter>
       <div>
         <ul>
-          <li><NavLink to="/">Home</NavLink></li>
-          <li><NavLink to="/user/Bhavya/bhavyasingh@email.com">User Profile</NavLink></li>
+          <li>
+            <NavLink to="/">Home</NavLink>
+          </li>
+          <li>
+            <NavLink to="/user/Bhavya/bhavyasingh@email.com">
+              User Profile
+            </NavLink>
+          </li>
         </ul>
         <Routes>
           <Route path="/user/:name/:email" element={<User />} />
@@ -8428,7 +8388,9 @@ function Home() {
 function User() {
   let { name, email } = useParams();
   return (
-    <h2>Name: {name} <br /> Email: {email}</h2>
+    <h2>
+      Name: {name} <br /> Email: {email}
+    </h2>
   );
 }
 
@@ -8441,7 +8403,9 @@ function HomeButton() {
 
   return (
     <>
-      <button type="button" onClick={handleClick}>Go Home</button>
+      <button type="button" onClick={handleClick}>
+        Go Home
+      </button>
     </>
   );
 }
@@ -8463,7 +8427,13 @@ In contrast to the Navigate component and its declarative redirect, we can perfo
 /**
  * Automatic Redirect in router-v6
  */
-import { NavLink, BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import {
+  NavLink,
+  BrowserRouter,
+  Routes,
+  Route,
+  Navigate,
+} from "react-router-dom";
 
 export default function App() {
   return (
@@ -8484,7 +8454,7 @@ export default function App() {
 }
 ```
 
-*Note: To keep the history clean, you should set `replace` prop. This will avoid extra redirects after the user click back.*
+_Note: To keep the history clean, you should set `replace` prop. This will avoid extra redirects after the user click back._
 
 **&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-automatic-redirect-odw0yn?file=/src/App.js)**
 
@@ -8502,7 +8472,13 @@ export default function App() {
 /**
  * Pass additional data while redirecting
  */
-import { BrowserRouter, Link, Route, Routes, useLocation } from "react-router-dom";
+import {
+  BrowserRouter,
+  Link,
+  Route,
+  Routes,
+  useLocation,
+} from "react-router-dom";
 
 /**
  * View User Component
@@ -8529,7 +8505,7 @@ function User() {
         to="/view-user"
         state={{
           name: "Kalini Khalsa",
-          email: "kalini.khalsa@email.com"
+          email: "kalini.khalsa@email.com",
         }}
       >
         <button>View User</button>
@@ -8588,8 +8564,12 @@ const RouterExample = () => <h2>Home Page</h2>;
 const App = () => (
   <BrowserRouter>
     <ul>
-      <li><NavLink to="/">Home</NavLink></li>
-      <li><NavLink to="/greeting/pradeep">Greeting</NavLink></li>
+      <li>
+        <NavLink to="/">Home</NavLink>
+      </li>
+      <li>
+        <NavLink to="/greeting/pradeep">Greeting</NavLink>
+      </li>
     </ul>
     <hr />
     <Routes>
@@ -8619,16 +8599,28 @@ export default App;
  * useParams()
  */
 import React from "react";
-import { BrowserRouter, Route, Routes, Link, useParams } from "react-router-dom";
+import {
+  BrowserRouter,
+  Route,
+  Routes,
+  Link,
+  useParams,
+} from "react-router-dom";
 
 export default function App() {
   return (
     <BrowserRouter>
       <div>
         <ul>
-          <li><Link to="/home">Home</Link></li>
-          <li><Link to="/contact-us">Contact Us</Link></li>
-          <li><Link to="/help">Help</Link></li>
+          <li>
+            <Link to="/home">Home</Link>
+          </li>
+          <li>
+            <Link to="/contact-us">Contact Us</Link>
+          </li>
+          <li>
+            <Link to="/help">Help</Link>
+          </li>
         </ul>
         <Routes>
           <Route path="/:id" element={<Child />} />
@@ -8656,10 +8648,10 @@ function Child() {
 
 **1. BrowserRouter:**
 
-* The widely popular router and a router for modern browsers which user HTML5 pushState API. (i.e. `pushState`, `replaceState` and `popState` API).
-* It routes as normal URL in browser, you can\'t differentiate whether it is server rendered page or client rendered page through the URL.
-* It assumes, your server handles all the request URL (eg., `/`, `/about`) and points to root `index.html`. From there, BrowserRouter take care of routing the relevant page.
-* It accepts `forceRefresh` props to support legacy browsers which doesn\'t support HTML5 pushState API
+- The widely popular router and a router for modern browsers which user HTML5 pushState API. (i.e. `pushState`, `replaceState` and `popState` API).
+- It routes as normal URL in browser, you can\'t differentiate whether it is server rendered page or client rendered page through the URL.
+- It assumes, your server handles all the request URL (eg., `/`, `/about`) and points to root `index.html`. From there, BrowserRouter take care of routing the relevant page.
+- It accepts `forceRefresh` props to support legacy browsers which doesn\'t support HTML5 pushState API
 
 **Syntax:**
 
@@ -8700,8 +8692,12 @@ export default function App() {
     <section className="App">
       <BrowserRouter>
         <ul>
-          <li><Link to="/home">Home</Link></li>
-          <li><Link to="/about">About</Link></li>
+          <li>
+            <Link to="/home">Home</Link>
+          </li>
+          <li>
+            <Link to="/about">About</Link>
+          </li>
         </ul>
         <Routes>
           <Route exact path="/home" element={<HomePage />} />
@@ -8717,10 +8713,10 @@ export default function App() {
 
 **2. HashRouter:**
 
-* A router which uses client side hash routing.
-* Whenever, there is a new route get rendered, it updated the browser URL with hash routes. (eg., `/#/about`)
-* Hash portion of the URL won\'t be handled by server, server will always send the `index.html` for every request and ignore hash value. Hash value will be handled by react router.
-* It is used to support legacy browsers which usually doesn\'t support HTML `pushState` API
+- A router which uses client side hash routing.
+- Whenever, there is a new route get rendered, it updated the browser URL with hash routes. (eg., `/#/about`)
+- Hash portion of the URL won\'t be handled by server, server will always send the `index.html` for every request and ignore hash value. Hash value will be handled by react router.
+- It is used to support legacy browsers which usually doesn\'t support HTML `pushState` API
 
 **Syntax:**
 
@@ -8760,8 +8756,12 @@ export default function App() {
     <section className="App">
       <HashRouter>
         <ul>
-          <li><Link to="/home">Home</Link></li>
-          <li><Link to="/about">About</Link></li>
+          <li>
+            <Link to="/home">Home</Link>
+          </li>
+          <li>
+            <Link to="/about">About</Link>
+          </li>
         </ul>
         <Routes>
           <Route exact path="/home" element={<HomePage />} />
@@ -8824,15 +8824,15 @@ export default function App() {
 **Example:**
 
 ```js
-import React, { lazy } from 'react'
+import React, { lazy } from "react";
 
-const MyComponent = React.lazy(() => import('./MyComponent'))
+const MyComponent = React.lazy(() => import("./MyComponent"));
 
 const App = () => {
   <div>
     <MyComponent />
-  </div>
-}
+  </div>;
+};
 ```
 
 <div align="right">
@@ -8845,9 +8845,9 @@ Code-Splitting is a feature supported by bundlers like **Webpack**, **Rollup** a
 
 Code splitting uses `React.lazy` and `Suspense` library, which helps to load a dependency lazily and only load it when needed by the user. The code splitting improves:
 
-* The performance of the app
-* The impact on memory
-* The downloaded Kilobytes (or Megabytes) size
+- The performance of the app
+- The impact on memory
+- The downloaded Kilobytes (or Megabytes) size
 
 **React.lazy and Suspense:**
 
@@ -8856,9 +8856,9 @@ The `React.lazy` function allows us to render a dynamic import as a regular comp
 **Example:**
 
 ```js
-import React, { Suspense } from 'react';
+import React, { Suspense } from "react";
 
-const UsersComponent = React.lazy(() => import('./UsersComponent'));
+const UsersComponent = React.lazy(() => import("./UsersComponent"));
 
 function MyComponent() {
   return (
@@ -8884,9 +8884,9 @@ The lazy component should then be rendered inside a Suspense component, which al
 **Example:**
 
 ```js
-import React, { Suspense } from 'react';
+import React, { Suspense } from "react";
 
-const UsersComponent = React.lazy(() => import('./UsersComponent'));
+const UsersComponent = React.lazy(() => import("./UsersComponent"));
 
 function MyComponent() {
   return (
@@ -8916,16 +8916,16 @@ npm install @loadable/component
 **Example:**
 
 ```js
-import loadable from '@loadable/component'
+import loadable from "@loadable/component";
 
-const UsersComponent = loadable(() => import('./UsersComponent'))
+const UsersComponent = loadable(() => import("./UsersComponent"));
 
 function MyComponent() {
   return (
     <div>
       <UsersComponent />
     </div>
-  )
+  );
 }
 ```
 
@@ -8947,7 +8947,7 @@ Use **static getDerivedStateFromError()** to render a fallback UI after an error
 
 ```js
 <ErrorBoundary>
-   <User/>
+  <User />
 </ErrorBoundary>
 ```
 
@@ -8979,7 +8979,7 @@ class ErrorBoundary extends React.Component {
       return <h1>Something went wrong.</h1>;
     }
 
-    return this.props.children; 
+    return this.props.children;
   }
 }
 ```
@@ -9018,7 +9018,7 @@ function Users() {
         <Users />
       </ErrorBoundary>
     </div>
-  )
+  );
 }
 ```
 
@@ -9046,9 +9046,9 @@ Component Stack Trace prints all errors that occurred during rendering to the co
 
 To create an error boundary, we simply have to create a class component and define a state variable for determining whether the error boundary has caught an error. Our class component should also have at least three methods:
 
-* A static method called **getDerivedStateFromError()**, which is used to update the error boundary\'s state
-* A **componentDidCatch()** lifecycle method for performing operations when our error boundaries catch an error, such as logging to an error logging service
-* A **render()** method for rendering our error boundary\'s child or the fallback UI in case of an error
+- A static method called **getDerivedStateFromError()**, which is used to update the error boundary\'s state
+- A **componentDidCatch()** lifecycle method for performing operations when our error boundaries catch an error, such as logging to an error logging service
+- A **render()** method for rendering our error boundary\'s child or the fallback UI in case of an error
 
 **Example:**
 
@@ -9078,7 +9078,7 @@ class ErrorBoundary extends React.Component {
       return <h1>Something went wrong.</h1>;
     }
 
-    return this.props.children; 
+    return this.props.children;
   }
 }
 ```
@@ -9104,26 +9104,26 @@ Refs also provide some flexibility for referencing elements within a child compo
  * Refs
  */
 class App extends React.Component {
-    constructor(props) {
-      super(props)
-      // create a ref to store the textInput DOM element
-      this.textInput = React.createRef()
-      this.state = {
-        value: ''
-      }
-    }
-  
-  // Set the state for the ref
-  handleSubmit = e => {
-    e.preventDefault()
-    this.setState({ value: this.textInput.current.value })
+  constructor(props) {
+    super(props);
+    // create a ref to store the textInput DOM element
+    this.textInput = React.createRef();
+    this.state = {
+      value: "",
+    };
   }
+
+  // Set the state for the ref
+  handleSubmit = (e) => {
+    e.preventDefault();
+    this.setState({ value: this.textInput.current.value });
+  };
 
   render() {
     return (
       <div>
         <h1>React Ref - createRef</h1>
-         {/** This is what will update **/}
+        {/** This is what will update **/}
         <h3>Value: {this.state.value}</h3>
         <form onSubmit={this.handleSubmit}>
           {/** Call the ref on <input> so we can use it to update the <h3> value **/}
@@ -9131,21 +9131,21 @@ class App extends React.Component {
           <button>Submit</button>
         </form>
       </div>
-    )
+    );
   }
 }
 ```
 
-**When to Use Refs:**  
+**When to Use Refs:**
 
-* Managing focus, text selection, or media playback.
-* Triggering imperative animations.
-* Integrating with third-party DOM libraries.
+- Managing focus, text selection, or media playback.
+- Triggering imperative animations.
+- Integrating with third-party DOM libraries.
 
-**When not to use refs:**  
+**When not to use refs:**
 
-* Should not be used with functional components because they dont have instances.
-* Not to be used on things that can be done declaritvely.
+- Should not be used with functional components because they dont have instances.
+- Not to be used on things that can be done declaritvely.
 
 <div align="right">
     <b><a href="#table-of-contents">↥ back to top</a></b>
@@ -9164,7 +9164,7 @@ import React, { useRef } from "react";
 export default function App() {
   const arr = [10, 20, 30];
   // multiple refs
-  const refs = useRef([]); 
+  const refs = useRef([]);
 
   return (
     <div>
@@ -9308,11 +9308,11 @@ The legacy approach of using `findDOMNode()`:
 ```js
 class MyComponent extends Component {
   componentDidMount() {
-    findDOMNode(this).scrollIntoView()
+    findDOMNode(this).scrollIntoView();
   }
 
   render() {
-    return <div />
+    return <div />;
   }
 }
 ```
@@ -9322,11 +9322,11 @@ The recommended approach is:
 ```js
 class MyComponent extends Component {
   componentDidMount() {
-    this.node.scrollIntoView()
+    this.node.scrollIntoView();
   }
 
   render() {
-    return <div ref={node => this.node = node} />
+    return <div ref={(node) => (this.node = node)} />;
   }
 }
 ```
@@ -9341,16 +9341,15 @@ Refs can be used to access DOM nodes or React components that are rendered in th
 
 ```js
 class AutoFocusTextInput extends React.Component {
-
   constructor(props) {
-    super(props)
-    this.textInput = React.createRef()
+    super(props);
+    this.textInput = React.createRef();
   }
   componentDidMount() {
-    this.textInput.current.focus()
+    this.textInput.current.focus();
   }
   render() {
-    return <input ref={this.textInput} />
+    return <input ref={this.textInput} />;
   }
 }
 ```
@@ -9408,7 +9407,7 @@ const App = () => (
     <Hello name="React Refs" />
     <CustomText />
   </div>
-)
+);
 ```
 
 **&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-refs-hiw59?file=/src/index.js)**
@@ -9429,25 +9428,25 @@ We can forward a `ref` to a component by using the `React.forwardRef()` function
 // Ref.js
 const TextInput = React.forwardRef((props, ref) => (
   <input type="text" placeholder="Hello World" ref={ref} />
-))
+));
 
-const inputRef = React.createRef()
+const inputRef = React.createRef();
 
 class CustomTextInput extends React.Component {
-  handleSubmit = e => {
-    e.preventDefault()
-    console.log(inputRef.current.value)
-  }
+  handleSubmit = (e) => {
+    e.preventDefault();
+    console.log(inputRef.current.value);
+  };
 
   render() {
     return (
       <div>
-        <form onSubmit={e => this.handleSubmit(e)}>
+        <form onSubmit={(e) => this.handleSubmit(e)}>
           <TextInput ref={inputRef} />
           <button>Submit</button>
         </form>
       </div>
-    )
+    );
   }
 }
 ```
@@ -9455,7 +9454,7 @@ class CustomTextInput extends React.Component {
 In the example above, we have a component called TextInput that has a child which is an input field. First, we start by creating a ref with the line of code below:
 
 ```js
-const inputRef = React.createRef()
+const inputRef = React.createRef();
 ```
 
 We pass our ref down to `<TextInput ref={inputRef}>` by specifying it as a JSX attribute. React then forwards the `ref` to the `forwardRef()` function as a second argument. Next, We forward this `ref` argument down to `<input ref={ref}>`. The value of the DOM node can now be accessed at `inputRef.current`.
@@ -9522,7 +9521,7 @@ function App() {
 
 ## Q. What is difference between useRef() and useState() in React?
 
-*ToDo*
+_ToDo_
 
 <div align="right">
     <b><a href="#table-of-contents">↥ back to top</a></b>
@@ -9574,7 +9573,7 @@ export default class App extends ParentClass {
 
 **&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-inheritance-c6uc64?file=/src/App.js)**
 
-*Note: React does not use inheritance except in the initial component class, which extends from the **react** package.*
+_Note: React does not use inheritance except in the initial component class, which extends from the **react** package._
 
 <div align="right">
     <b><a href="#table-of-contents">↥ back to top</a></b>
@@ -9662,7 +9661,9 @@ class HeaderComponent extends React.Component {
   render() {
     return (
       <div>
-        <h1 style={{backgroundColor: "lightblue"}}>Header Component Style!</h1>
+        <h1 style={{ backgroundColor: "lightblue" }}>
+          Header Component Style!
+        </h1>
         <p>Add a little style!</p>
       </div>
     );
@@ -9688,7 +9689,7 @@ class HeaderComponent extends React.Component {
       color: "white",
       backgroundColor: "DodgerBlue",
       padding: "10px",
-      fontFamily: "Arial"
+      fontFamily: "Arial",
     };
     return (
       <div>
@@ -9725,7 +9726,7 @@ body {
 /**
  * CSS Stylesheet
  */
-import './App.css';
+import "./App.css";
 
 class HeaderComponent extends React.Component {
   render() {
@@ -9761,7 +9762,7 @@ CSS Modules are convenient for components that are placed in separate files
 /**
  * CSS Modules
  */
-import styles from './mystyle.module.css'; 
+import styles from "./mystyle.module.css";
 
 class HeaderComponent extends React.Component {
   render() {
@@ -9786,14 +9787,14 @@ class HeaderComponent extends React.Component {
 ```js
 class App extends Component {
   constructor() {
-    super()
-    this.state = { isRed: true }
+    super();
+    this.state = { isRed: true };
   }
 
   render() {
-    const isRed = this.state.isRed
+    const isRed = this.state.isRed;
 
-    return <p style={{ color: isRed ? 'red' : 'blue' }}>Example Text</p>
+    return <p style={{ color: isRed ? "red" : "blue" }}>Example Text</p>;
   }
 }
 ```
@@ -9810,21 +9811,21 @@ class App extends Component {
 
 ```js
 const box = {
-    color: "green",
-    fontSize: '23px'
-}
+  color: "green",
+  fontSize: "23px",
+};
 
 const shadow = {
-    background: "orange",
-    boxShadow: "1px 1px 1px 1px #cccd"
-}
+  background: "orange",
+  boxShadow: "1px 1px 1px 1px #cccd",
+};
 
-export default function App(){
-    return (
-      <div style={{...box, ...shadow}}>
-         <h1>Hello React</h1>
-      </div>
-    )
+export default function App() {
+  return (
+    <div style={{ ...box, ...shadow }}>
+      <h1>Hello React</h1>
+    </div>
+  );
 }
 ```
 
@@ -9836,13 +9837,13 @@ export default function App(){
 
 ## Q. What are the popular package for animation in React JS?
 
-* [React Transition Group](https://reactcommunity.org/react-transition-group/)
-* [React Spring](https://react-spring.io/)
-* [Framer Motion](https://www.framer.com/motion/)
-* [React Motion](https://github.com/chenglou/react-motion)
-* [React Move](https://react-move.js.org/#/getting-started/features)
-* [React Animations](https://github.com/FormidableLabs/react-animations)
-* [React Reveal](https://www.react-reveal.com/)
+- [React Transition Group](https://reactcommunity.org/react-transition-group/)
+- [React Spring](https://react-spring.io/)
+- [Framer Motion](https://www.framer.com/motion/)
+- [React Motion](https://github.com/chenglou/react-motion)
+- [React Move](https://react-move.js.org/#/getting-started/features)
+- [React Animations](https://github.com/FormidableLabs/react-animations)
+- [React Reveal](https://www.react-reveal.com/)
 
 <div align="right">
     <b><a href="#table-of-contents">↥ back to top</a></b>
@@ -9856,10 +9857,10 @@ But using CSS modules helps to create separate CSS files for each component and 
 
 **Benefits of CSS modules:**
 
-* Using CSS modules avoid namespace collision for CSS classes
-* You can use the same CSS class in multiple CSS files
-* You can confidently update any CSS file without worrying about affecting other pages
-* Using CSS Modules generates random CSS classes when displayed in the browser
+- Using CSS modules avoid namespace collision for CSS classes
+- You can use the same CSS class in multiple CSS files
+- You can confidently update any CSS file without worrying about affecting other pages
+- Using CSS Modules generates random CSS classes when displayed in the browser
 
 <div align="right">
     <b><a href="#table-of-contents">↥ back to top</a></b>
@@ -9874,24 +9875,24 @@ The `styled-components` comes with a collection of helper methods, each correspo
 **Example:**
 
 ```js
-import styled from 'styled-components'
+import styled from "styled-components";
 
 const Button = styled.button`
   color: black;
   //...
-`
+`;
 
 const WhiteButton = Button.extend`
   color: white;
   //...
-`
+`;
 
 render(
   <div>
     <Button>A black button, like all buttons</Button>
     <WhiteButton>A white button</WhiteButton>
   </div>
-)
+);
 ```
 
 <div align="right">
@@ -9904,11 +9905,11 @@ React Spring is a spring-physics based animation library that powers most UI rel
 
 There are 5 hooks in react-spring currently:
 
-* **useSpring** a single spring, moves data from a -> b
-* **useSprings** multiple springs, for lists, where each spring moves data from a -> b
-* **useTrail** multiple springs with a single dataset, one spring follows or trails behind the other
-* **useTransition** for mount/unmount transitions (lists where items are added/removed/updated)
-* **useChain** to queue or chain multiple animations together
+- **useSpring** a single spring, moves data from a -> b
+- **useSprings** multiple springs, for lists, where each spring moves data from a -> b
+- **useTrail** multiple springs with a single dataset, one spring follows or trails behind the other
+- **useTransition** for mount/unmount transitions (lists where items are added/removed/updated)
+- **useChain** to queue or chain multiple animations together
 
 **1. useSpring():**
 
@@ -9928,7 +9929,7 @@ export default function App() {
   const [message, setMessage] = React.useState(false);
   const contentProps = useSpring({
     opacity: message ? 1 : 0,
-    marginTop: message ? 0 : -500
+    marginTop: message ? 0 : -500,
   });
   return (
     <div className="container">
@@ -9967,7 +9968,7 @@ export default function App() {
   const items = [
     { color: "red", opacity: 1 },
     { color: "blue", opacity: 0.6 },
-    { color: "green", opacity: 0.2 }
+    { color: "green", opacity: 0.2 },
   ];
 
   const springs = useSprings(
@@ -9976,8 +9977,8 @@ export default function App() {
       from: { color: "#fff", opacity: 0 },
       to: {
         color: on ? item.color : "#fff",
-        opacity: on ? item.opacity : 0
-      }
+        opacity: on ? item.opacity : 0,
+      },
     }))
   );
 
@@ -10012,7 +10013,7 @@ export default function App() {
 
   const springs = useTrail(3, {
     to: { opacity: on ? 1 : 0 },
-    config: { tension: 250 }
+    config: { tension: 250 },
   });
 
   return (
@@ -10037,26 +10038,27 @@ It allows to create an animated transition group. It takes in the elements of th
 **Example:**
 
 ```js
-import React, { useState } from 'react'
-import { animated, useTransition } from 'react-spring'
+import React, { useState } from "react";
+import { animated, useTransition } from "react-spring";
 
-const [on, toggle] = useState(false)
+const [on, toggle] = useState(false);
 
 const transition = useTransition(on, null, {
   from: { opacity: 0 },
   enter: { opacity: 1 },
-  leave: { opacity: 0 }
+  leave: { opacity: 0 },
 });
 
 return (
-<div>
-  {transition.map(({ item, key, props }) => (
-  item && <animated.div style={props} >Hello world</animated.div>
-  ))}
+  <div>
+    {transition.map(
+      ({ item, key, props }) =>
+        item && <animated.div style={props}>Hello world</animated.div>
+    )}
 
-  <button onClick={() => toggle(!on)}>Change</button>
-</div>
-)
+    <button onClick={() => toggle(!on)}>Change</button>
+  </div>
+);
 ```
 
 **5. useChain():**
@@ -10066,40 +10068,41 @@ It allows to set the execution sequence of previously defined animation hooks. T
 **Example:**
 
 ```js
-import React, { useState, useRef } from 'react'
-import { animated, useSpring, useTrail, useChain} from 'react-spring'
-
+import React, { useState, useRef } from "react";
+import { animated, useSpring, useTrail, useChain } from "react-spring";
 
 const App = () => {
-  const [on, toggle] = useState(false)
+  const [on, toggle] = useState(false);
 
-  const springRef = useRef()
+  const springRef = useRef();
   const spring = useSpring({
     ref: springRef,
-    from: { opacity: .5 },
-    to: { opacity: on ? 1 : .5 },
-    config: { tension: 250 }
-  })
+    from: { opacity: 0.5 },
+    to: { opacity: on ? 1 : 0.5 },
+    config: { tension: 250 },
+  });
 
-  const trailRef = useRef()
+  const trailRef = useRef();
   const trail = useTrail(5, {
     ref: trailRef,
-    from: { fontSize: '10px' },
-    to: { fontSize: on ? '45px' : '10px' }
-  })
+    from: { fontSize: "10px" },
+    to: { fontSize: on ? "45px" : "10px" },
+  });
 
-  useChain(on ? [springRef, trailRef] : [trailRef, springRef])
+  useChain(on ? [springRef, trailRef] : [trailRef, springRef]);
 
   return (
     <div>
       {trail.map((animation, index) => (
-        <animated.h1 style={{ ...animation, ...spring }} key={index}>Hello World</animated.h1>
+        <animated.h1 style={{ ...animation, ...spring }} key={index}>
+          Hello World
+        </animated.h1>
       ))}
 
       <button onClick={() => toggle(!on)}>Change</button>
     </div>
-  )
-}
+  );
+};
 ```
 
 **&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-usechain-ltxk82?file=/src/App.js)**
@@ -10125,16 +10128,16 @@ const App = () => {
 ```
 
 ```js
-import React from 'react'
-import './DottedBox.css'
+import React from "react";
+import "./DottedBox.css";
 
 const DottedBox = () => (
   <div className="DottedBox">
     <p className="DottedBox_content">Get started with CSS styling</p>
   </div>
-)
+);
 
-export default DottedBox
+export default DottedBox;
 ```
 
 **2. Inline styling:**
@@ -10142,28 +10145,28 @@ export default DottedBox
 In React, inline styles are not specified as a string. Instead they are specified with an object whose **key** is the **camelCased** version of the style name, and whose value is the style\'s value, usually a string.
 
 ```js
-import React from 'react'
+import React from "react";
 
 const divStyle = {
-  margin: '40px',
-  border: '5px solid pink'
-}
+  margin: "40px",
+  border: "5px solid pink",
+};
 const pStyle = {
-  fontSize: '15px',
-  textAlign: 'center'
-}
+  fontSize: "15px",
+  textAlign: "center",
+};
 
 const Box = () => (
   <div style={divStyle}>
     <p style={pStyle}>Get started with inline style</p>
   </div>
-)
+);
 
-export default Box
+export default Box;
 ```
 
-* We can create a variable that stores style properties and then pass it to the element like `style={nameOfvariable}`
-* We can also pass the styling directly `style={{color: 'pink'}}`
+- We can create a variable that stores style properties and then pass it to the element like `style={nameOfvariable}`
+- We can also pass the styling directly `style={{color: 'pink'}}`
 
 **3. CSS Modules:**
 
@@ -10171,32 +10174,32 @@ A CSS Module is a CSS file in which all class names and animation names are scop
 
 ```css
 :local(.container) {
-   margin: 40px;
-   border: 5px dashed pink;
- }
- :local(.content) {
-   font-size: 15px;
-   text-align: center;
- }
+  margin: 40px;
+  border: 5px dashed pink;
+}
+:local(.content) {
+  font-size: 15px;
+  text-align: center;
+}
 ```
 
 ```js
-import React from 'react'
-import styles from './DashedBox.css'
+import React from "react";
+import styles from "./DashedBox.css";
 
 const DashedBox = () => (
   <div className={styles.container}>
     <p className={styles.content}>Get started with CSS Modules style</p>
   </div>
-)
+);
 
-export default DashedBox
+export default DashedBox;
 ```
 
 we import css file `import styles './DashedBox.css'`, then we access to className as we access to object.
 
-* `:local(.className)`- this when you use create-react-app because of webpack configurations
-* `.className` - this if you use your own react boilerplate.
+- `:local(.className)`- this when you use create-react-app because of webpack configurations
+- `.className` - this if you use your own react boilerplate.
 
 **4. Styled-components:**
 
@@ -10207,15 +10210,15 @@ npm install styled-components --save
 ```
 
 ```js
-import React from 'react'
-import styled from 'styled-components'
+import React from "react";
+import styled from "styled-components";
 
 const Div = styled.div`
   margin: 40px;
   border: 5px outset pink;
   &:hover {
-   background-color: yellow;
- }
+    background-color: yellow;
+  }
 `;
 
 const Paragraph = styled.p`
@@ -10227,9 +10230,9 @@ const OutsetBox = () => (
   <Div>
     <Paragraph>Get started with styled-components</Paragraph>
   </Div>
-)
+);
 
-export default OutsetBox
+export default OutsetBox;
 ```
 
 <div align="right">
@@ -10247,7 +10250,7 @@ const divStyle = {
   padding: "20px",
   margin: "20px",
   WebkitTransition: "all", // note the capital 'W' here
-  msTransition: "all" // 'ms' is the only lowercase vendor prefix
+  msTransition: "all", // 'ms' is the only lowercase vendor prefix
 };
 ```
 
@@ -10271,26 +10274,24 @@ ReactCSSTransitionGroup is a high-level API based on ReactTransitionGroup and is
 **Example:**
 
 ```js
-import ReactCSSTransitionGroup from 'react-transition-group'
+import ReactCSSTransitionGroup from "react-transition-group";
 
 class AnimationComponent extends React.Component {
   constructor(props) {
-    super(props)
-    this.state = {items: ['hello', 'world', 'click', 'me']}
-    this.handleAdd = this.handleAdd.bind(this)
+    super(props);
+    this.state = { items: ["hello", "world", "click", "me"] };
+    this.handleAdd = this.handleAdd.bind(this);
   }
 
   handleAdd() {
-    const newItems = this.state.items.concat([
-      prompt('Enter some text')
-    ])
-    this.setState({items: newItems})
+    const newItems = this.state.items.concat([prompt("Enter some text")]);
+    this.setState({ items: newItems });
   }
 
   handleRemove(i) {
-    let newItems = this.state.items.slice()
-    newItems.splice(i, 1)
-    this.setState({items: newItems})
+    let newItems = this.state.items.slice();
+    newItems.splice(i, 1);
+    this.setState({ items: newItems });
   }
 
   render() {
@@ -10298,7 +10299,7 @@ class AnimationComponent extends React.Component {
       <div key={item} onClick={() => this.handleRemove(i)}>
         {item}
       </div>
-    ))
+    ));
 
     return (
       <div>
@@ -10306,11 +10307,12 @@ class AnimationComponent extends React.Component {
         <ReactCSSTransitionGroup
           transitionName="example"
           transitionEnterTimeout={500}
-          transitionLeaveTimeout={300}>
+          transitionLeaveTimeout={300}
+        >
           {items}
         </ReactCSSTransitionGroup>
       </div>
-    )
+    );
   }
 }
 ```
@@ -10324,11 +10326,11 @@ In this component, when a new item is added to ReactCSSTransitionGroup it will g
 ## Q. How to display style based on props value?
 
 ```js
-import styled from 'styled-components'
+import styled from "styled-components";
 
 const Button = styled.button`
-  background: ${props => props.primary ? 'palevioletred' : 'white'}
-  color: ${props => props.primary ? 'white' : 'palevioletred'}
+  background: ${(props) => (props.primary ? "palevioletred" : "white")}
+  color: ${(props) => (props.primary ? "white" : "palevioletred")}
 `;
 
 function MyPureComponent(props) {
@@ -10337,7 +10339,7 @@ function MyPureComponent(props) {
       <Button>Normal</Button>
       <Button primary>Primary</Button>
     </div>
-  )
+  );
 }
 ```
 
@@ -10377,14 +10379,14 @@ i18n
     resources: {
       en: {
         translations: {
-          "Welcome to React": "Welcome to React and react-i18next"
-        }
+          "Welcome to React": "Welcome to React and react-i18next",
+        },
       },
       hi: {
         translations: {
-          "Welcome to React": "React और react-i18next में आपका स्वागत है"
-        }
-      }
+          "Welcome to React": "React और react-i18next में आपका स्वागत है",
+        },
+      },
     },
     fallbackLng: "en",
     debug: true,
@@ -10396,8 +10398,8 @@ i18n
     keySeparator: false, // we use content as keys
 
     interpolation: {
-      escapeValue: false
-    }
+      escapeValue: false,
+    },
   });
 
 export default i18n;
@@ -10433,7 +10435,7 @@ export default function App() {
 
 **Reference:**
 
-* *[https://react.i18next.com/guides/quick-start](https://react.i18next.com/guides/quick-start)*
+- _[https://react.i18next.com/guides/quick-start](https://react.i18next.com/guides/quick-start)_
 
 <div align="right">
     <b><a href="#table-of-contents">↥ back to top</a></b>
@@ -10478,7 +10480,7 @@ Test-driven development is an approach when developers create a product backward
 
 Jest is a JavaScript unit testing framework, used by Facebook to test services and React applications. Jest acts as a **test runner**, **assertion library**, and **mocking library**.
 
-Jest also provides Snapshot testing, the ability to create a rendered *snapshot* of a component and compare it to a previously saved *snapshot*. The test will fail if the two do not match.
+Jest also provides Snapshot testing, the ability to create a rendered _snapshot_ of a component and compare it to a previously saved _snapshot_. The test will fail if the two do not match.
 
 **2. Enzyme:**
 
@@ -10548,15 +10550,14 @@ describe("App component", () => {
     expect(mockCallBack.mock.calls.length).toEqual(1);
   });
 });
-
 ```
 
 **&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-test-qz363f?file=/src/App.test.js)**
 
 **Reference:**
 
-* *[https://jestjs.io/docs/en/tutorial-react](https://jestjs.io/docs/en/tutorial-react)*
-* *[https://enzymejs.github.io/enzyme/](https://enzymejs.github.io/enzyme/)*
+- _[https://jestjs.io/docs/en/tutorial-react](https://jestjs.io/docs/en/tutorial-react)_
+- _[https://enzymejs.github.io/enzyme/](https://enzymejs.github.io/enzyme/)_
 
 <div align="right">
     <b><a href="#table-of-contents">↥ back to top</a></b>
@@ -10565,25 +10566,25 @@ describe("App component", () => {
 ## Q. Explain unit test structure in React?
 
 ```js
-describe('Component Description', () => {
+describe("Component Description", () => {
   beforeAll(() => {
     /* Runs before all tests */
-  })
+  });
   afterAll(() => {
     /* Runs after all tests */
-  })
+  });
   beforeEach(() => {
     /* Runs before each test */
-  })
+  });
   afterEach(() => {
     /* Runs after each test */
-  })
+  });
 
-  test('test case decription', () => {
-    const actual = fn(['one', 'Two', 'Three'])
-    expect(actual).toEqual(['1 => One', '2 => Two', '3 => Three'])
-  })
-})
+  test("test case decription", () => {
+    const actual = fn(["one", "Two", "Three"]);
+    expect(actual).toEqual(["1 => One", "2 => Two", "3 => Three"]);
+  });
+});
 ```
 
 <div align="right">
@@ -10594,74 +10595,76 @@ describe('Component Description', () => {
 
 **1. Basic matchers:**
 
-| Method   |Example                       | Description              |
-|----------|------------------------------|--------------------------|
-|toBe()    |expect(42).toBe(42)           | Strict equality (===)    |
-|not.toBe()|expect(42).not.toBe(3)        | Strict equality (!==)    |
-|toEqual() |expect({ a: undefined, b: 2 }).toEqual({ b: 2 }) |Deep equality|
-|not.toStrictEqual()|expect({ a: undefined, b: 2 }).not.toStrictEqual({ b: 2 })|Strict equality|
+| Method              | Example                                                    | Description           |
+| ------------------- | ---------------------------------------------------------- | --------------------- |
+| toBe()              | expect(42).toBe(42)                                        | Strict equality (===) |
+| not.toBe()          | expect(42).not.toBe(3)                                     | Strict equality (!==) |
+| toEqual()           | expect({ a: undefined, b: 2 }).toEqual({ b: 2 })           | Deep equality         |
+| not.toStrictEqual() | expect({ a: undefined, b: 2 }).not.toStrictEqual({ b: 2 }) | Strict equality       |
 
 **2. Truthiness:**
 
-| Method   |Example                       | Description              |
-|----------|------------------------------|--------------------------|
-|toBeTruthy()|expect('foo').toBeTruthy()| Matches anything that an if statement treats as true (not false, 0, '', null, undefined, NaN)|
-|toBeFalsy()|expect('').toBeFalsy() |Matches anything that an if statement treats as false (false, 0, '', null, undefined, NaN)|
-|toBeNull()|expect(null).toBeNull()|Matches only null|
-|toBeUndefined()|expect(undefined).toBeUndefined()|Matches only undefined|
-|toBeDefined()|expect(7).toBeDefined()|The opposite of toBeUndefined|
-|toEqual()  |expect(true).toEqual(expect.any(Boolean)) |Matches true or false|
-|toBeInTheDocument()|expect(getByText(/React/i)).toBeInTheDocument()| Return true/false |
+| Method              | Example                                         | Description                                                                                   |
+| ------------------- | ----------------------------------------------- | --------------------------------------------------------------------------------------------- |
+| toBeTruthy()        | expect('foo').toBeTruthy()                      | Matches anything that an if statement treats as true (not false, 0, '', null, undefined, NaN) |
+| toBeFalsy()         | expect('').toBeFalsy()                          | Matches anything that an if statement treats as false (false, 0, '', null, undefined, NaN)    |
+| toBeNull()          | expect(null).toBeNull()                         | Matches only null                                                                             |
+| toBeUndefined()     | expect(undefined).toBeUndefined()               | Matches only undefined                                                                        |
+| toBeDefined()       | expect(7).toBeDefined()                         | The opposite of toBeUndefined                                                                 |
+| toEqual()           | expect(true).toEqual(expect.any(Boolean))       | Matches true or false                                                                         |
+| toBeInTheDocument() | expect(getByText(/React/i)).toBeInTheDocument() | Return true/false                                                                             |
 
 **3. Numbers:**
 
-| Method   |Example                       | Description              |
-|----------|------------------------------|--------------------------|
-|toBeGreaterThan()|expect(2).toBeGreaterThan(1)| |
-|toBeGreaterThanOrEqual()|expect(1).toBeGreaterThanOrEqual(1)| |
-|toBeLessThan() | expect(1).toBeLessThan(2)| |
-|toBeLessThanOrEqual()|expect(1).toBeLessThanOrEqual(1)| |
-|toBeCloseTo()|expect(0.2 + 0.1).toBeCloseTo(0.3, 5) | |
-|toEqual()    |expect(NaN).toEqual(expect.any(Number))| |
+| Method                   | Example                                 | Description |
+| ------------------------ | --------------------------------------- | ----------- |
+| toBeGreaterThan()        | expect(2).toBeGreaterThan(1)            |             |
+| toBeGreaterThanOrEqual() | expect(1).toBeGreaterThanOrEqual(1)     |             |
+| toBeLessThan()           | expect(1).toBeLessThan(2)               |             |
+| toBeLessThanOrEqual()    | expect(1).toBeLessThanOrEqual(1)        |             |
+| toBeCloseTo()            | expect(0.2 + 0.1).toBeCloseTo(0.3, 5)   |             |
+| toEqual()                | expect(NaN).toEqual(expect.any(Number)) |             |
 
 **4. Strings:**
 
-| Method   |Example                       | Description              |
-|----------|------------------------------|--------------------------|
-|toMatch() |expect('long string').toMatch('str')| |
-|toEqual() |expect('string').toEqual(expect.any(String))| |
-|toMatch() |expect('coffee').toMatch(/ff/) | |
-|not.toMatch()|expect('pizza').not.toMatch('coffee')| |
-|toEqual() | expect(['pizza', 'coffee']).toEqual([expect.stringContaining('zz'), expect.stringMatching(/ff/)])| |
+| Method        | Example                                                                                           | Description |
+| ------------- | ------------------------------------------------------------------------------------------------- | ----------- |
+| toMatch()     | expect('long string').toMatch('str')                                                              |             |
+| toEqual()     | expect('string').toEqual(expect.any(String))                                                      |             |
+| toMatch()     | expect('coffee').toMatch(/ff/)                                                                    |             |
+| not.toMatch() | expect('pizza').not.toMatch('coffee')                                                             |             |
+| toEqual()     | expect(['pizza', 'coffee']).toEqual([expect.stringContaining('zz'), expect.stringMatching(/ff/)]) |             |
 
 **5. Arrays:**
 
-| Method   |Example                       | Description              |
-|----------|------------------------------|--------------------------|
-|toEqual() |expect([]).toEqual(expect.any(Array))|  |
-|toHaveLength()|expect(['Alice', 'Bob', 'Eve']).toHaveLength(3)| |
-|toContain() |expect(['Alice', 'Bob', 'Eve']).toContain('Alice')| |
-|toContainEqual()|expect([{ a: 1 }, { a: 2 }]).toContainEqual({ a: 1 })| |
-|toEqual() |expect(['Alice', 'Bob', 'Eve']).toEqual(expect.arrayContaining(['Alice', 'Bob']))| |
+| Method           | Example                                                                           | Description |
+| ---------------- | --------------------------------------------------------------------------------- | ----------- |
+| toEqual()        | expect([]).toEqual(expect.any(Array))                                             |             |
+| toHaveLength()   | expect(['Alice', 'Bob', 'Eve']).toHaveLength(3)                                   |             |
+| toContain()      | expect(['Alice', 'Bob', 'Eve']).toContain('Alice')                                |             |
+| toContainEqual() | expect([{ a: 1 }, { a: 2 }]).toContainEqual({ a: 1 })                             |             |
+| toEqual()        | expect(['Alice', 'Bob', 'Eve']).toEqual(expect.arrayContaining(['Alice', 'Bob'])) |             |
 
 **6. Objects:**
 
-| Method   |Example                       | Description              |
-|----------|------------------------------|--------------------------|
-|toHaveProperty()|expect({ a: 1 }).toHaveProperty('a')| |
-|toMatchObject()|expect({ a: 1, b: 2 }).toMatchObject({ a: 1 })| |
+| Method           | Example                                        | Description |
+| ---------------- | ---------------------------------------------- | ----------- |
+| toHaveProperty() | expect({ a: 1 }).toHaveProperty('a')           |             |
+| toMatchObject()  | expect({ a: 1, b: 2 }).toMatchObject({ a: 1 }) |             |
 
 **7. Exceptions:**
 
 ```js
-const fn = () => { throw new Error('Throw some custom error!') }
+const fn = () => {
+  throw new Error("Throw some custom error!");
+};
 ```
 
-| Method   |Example                       | Description              |
-|----------|------------------------------|--------------------------|
-|toThrow() |expect(fn).toThrow()| |
-|toThrow() |expect(fn).toThrow('Out of cheese')| |
-|toThrowErrorMatchingSnapshot()|expect(fn).toThrowErrorMatchingSnapshot()| |
+| Method                         | Example                                   | Description |
+| ------------------------------ | ----------------------------------------- | ----------- |
+| toThrow()                      | expect(fn).toThrow()                      |             |
+| toThrow()                      | expect(fn).toThrow('Out of cheese')       |             |
+| toThrowErrorMatchingSnapshot() | expect(fn).toThrowErrorMatchingSnapshot() |             |
 
 <div align="right">
     <b><a href="#table-of-contents">↥ back to top</a></b>
@@ -10676,7 +10679,7 @@ This package makes it easy to grab a snapshot of the platform view hierarchy (si
 **Example:**
 
 ```js
-import TestRenderer from 'react-test-renderer';
+import TestRenderer from "react-test-renderer";
 
 function Link(props) {
   return <a href={props.page}>{props.children}</a>;
@@ -10700,13 +10703,13 @@ console.log(testRenderer.toJSON());
 
 **ReactTestUtils** is used to test React-based components. It can simulate all the JavaScript-based events, which ReactJS supports. Some of its frequently methods are
 
-* `act()`
-* `mockComponent()`
-* `isElement()`
-* `isElementOfType()`
-* `isDOMComponent()`
-* `renderIntoDocument()`
-* `Simulate()`
+- `act()`
+- `mockComponent()`
+- `isElement()`
+- `isElementOfType()`
+- `isDOMComponent()`
+- `renderIntoDocument()`
+- `Simulate()`
 
 **act():**
 
@@ -10715,69 +10718,67 @@ To prepare a component for assertions, wrap the code rendering it and performing
 ```js
 class Counter extends React.Component {
   constructor(props) {
-    super(props)
-    this.state = {count: 0}
-    this.handleClick = this.handleClick.bind(this)
+    super(props);
+    this.state = { count: 0 };
+    this.handleClick = this.handleClick.bind(this);
   }
   componentDidMount() {
-    document.title = `You clicked ${this.state.count} times`
+    document.title = `You clicked ${this.state.count} times`;
   }
   componentDidUpdate() {
-    document.title = `You clicked ${this.state.count} times`
+    document.title = `You clicked ${this.state.count} times`;
   }
   handleClick() {
-    this.setState(state => ({
+    this.setState((state) => ({
       count: state.count + 1,
-    }))
+    }));
   }
   render() {
     return (
       <div>
         <p>You clicked {this.state.count} times</p>
-        <button onClick={this.handleClick}>
-          Click me
-        </button>
+        <button onClick={this.handleClick}>Click me</button>
       </div>
-    )
+    );
   }
 }
 ```
 
 ```js
-import React from 'react'
-import ReactDOM from 'react-dom'
-import { act } from 'react-dom/test-utils'
-import Counter from './Counter'
+import React from "react";
+import ReactDOM from "react-dom";
+import { act } from "react-dom/test-utils";
+import Counter from "./Counter";
 
-let container
+let container;
 
 beforeEach(() => {
-  container = document.createElement('div')
-  document.body.appendChild(container)
-})
+  container = document.createElement("div");
+  document.body.appendChild(container);
+});
 
 afterEach(() => {
-  document.body.removeChild(container)
-  container = null
-})
+  document.body.removeChild(container);
+  container = null;
+});
 
-it('can render and update a counter', () => {
+it("can render and update a counter", () => {
   // Test first render and componentDidMount
   act(() => {
-    ReactDOM.render(<Counter />, container)
-  })
-  const button = container.querySelector('button')
-  const label = container.querySelector('p')
-  expect(label.textContent).toBe('You clicked 0 times')
-  expect(document.title).toBe('You clicked 0 times')
+    ReactDOM.render(<Counter />, container);
+  });
+  const button = container.querySelector("button");
+  const label = container.querySelector("p");
+  expect(label.textContent).toBe("You clicked 0 times");
+  expect(document.title).toBe("You clicked 0 times");
 
   // Test second render and componentDidUpdate
   act(() => {
-    button.dispatchEvent(new MouseEvent('click', {bubbles: true}))
-  })
-  expect(label.textContent).toBe('You clicked 1 times')
-  expect(document.title).toBe('You clicked 1 times')
-})
+    button.dispatchEvent(new MouseEvent("click", { bubbles: true }));
+  });
+  expect(label.textContent).toBe("You clicked 1 times");
+  expect(document.title).toBe("You clicked 1 times");
+});
 ```
 
 <div align="right">
@@ -10822,36 +10823,31 @@ HTML structure and css classes tend to change due to design changes. Which will 
 
 ```js
 // APP Component
-import React from 'react'
-import './App.scss'
+import React from "react";
+import "./App.scss";
 
 function App() {
-  return (
-    <div data-testid='app-header'>
-      Hello React
-    </div>
-  )
+  return <div data-testid="app-header">Hello React</div>;
 }
-export default App
+export default App;
 ```
 
 ```js
-import React from 'react'
+import React from "react";
 import { cleanup, render, screen } from "@testing-library/react";
-import App from './App'
+import App from "./App";
 afterEach(cleanup);
 
-describe('APP Component', () => {
-
-  let wrapper
+describe("APP Component", () => {
+  let wrapper;
   beforeEach(() => {
-    wrapper = render(<Header/>)
-  })
+    wrapper = render(<Header />);
+  });
 
-  test('should check for the title', () => {
+  test("should check for the title", () => {
     expect(screen.getByText(/Hello React/i)).toBeInTheDocument();
-  })
-})
+  });
+});
 ```
 
 <div align="right">
@@ -10860,7 +10856,7 @@ describe('APP Component', () => {
 
 ## Q. How to write unit test for multiple fetch with Promise.all using jest?
 
-*ToDo*
+_ToDo_
 
 <div align="right">
     <b><a href="#table-of-contents">↥ back to top</a></b>
@@ -10875,31 +10871,30 @@ describe('APP Component', () => {
 The **React.cloneElement()** function returns a copy of a specified element. Additional props and children can be passed on in the function. This function is used when a parent component wants to add or modify the prop(s) of its children.
 
 ```js
-React.cloneElement(element, [props], [...children])
+React.cloneElement(element, [props], [...children]);
 ```
 
 The react.cloneElement() method accepts three arguments.
 
-* element: Element we want to clone.
-* props: props we need to pass to the cloned element.
-* children: we can also pass children to the cloned element (passing new children replaces the old children).
+- element: Element we want to clone.
+- props: props we need to pass to the cloned element.
+- children: we can also pass children to the cloned element (passing new children replaces the old children).
 
 **Example:**
 
 ```js
-import React from 'react'
+import React from "react";
 
 export default class App extends React.Component {
-
   // rendering the parent and child component
   render() {
     return (
       <ParentComp>
-        <MyButton/>
+        <MyButton />
         <br></br>
-        <MyButton/>
+        <MyButton />
       </ParentComp>
-    )
+    );
   }
 }
 
@@ -10907,27 +10902,23 @@ export default class App extends React.Component {
 class ParentComp extends React.Component {
   render() {
     // The new prop to the added.
-    let newProp = 'red'
-      // Looping over the parent's entire children,
-      // cloning each child, adding a new prop.
+    let newProp = "red";
+    // Looping over the parent's entire children,
+    // cloning each child, adding a new prop.
     return (
       <div>
-        {React.Children.map(this.props.children,
-          child => {
-            return React.cloneElement(child,
-            {newProp}, null)
+        {React.Children.map(this.props.children, (child) => {
+          return React.cloneElement(child, { newProp }, null);
         })}
       </div>
-    )
+    );
   }
 }
 
 // The child component
 class MyButton extends React.Component {
   render() {
-    return <button style =
-    {{ color: this.props.newProp }}>
-    Hello World!</button>
+    return <button style={{ color: this.props.newProp }}>Hello World!</button>;
   }
 }
 ```
@@ -10944,10 +10935,10 @@ The phenomena of **render hijacking** is the ability to control what a component
 
 In Render Highjacking we can:
 
-* Read, add, edit, remove props in any of the React Elements outputted by render
-* Read, and modify the React Elements tree outputted by render
-* Conditionally display the elements tree
-* Wrapping the element\'s tree for styling purposes.
+- Read, add, edit, remove props in any of the React Elements outputted by render
+- Read, and modify the React Elements tree outputted by render
+- Conditionally display the elements tree
+- Wrapping the element\'s tree for styling purposes.
 
 <div align="right">
     <b><a href="#table-of-contents">↥ back to top</a></b>
@@ -10973,7 +10964,6 @@ function renderRow(props) {
 }
 
 export default function VirtualizedList() {
-
   return (
     <div>
       <FixedSizeList height={400} width={200} itemSize={46} itemCount={100000}>
@@ -11027,7 +11017,7 @@ React.memo is a higher order component. It\'s similar to `React.PureComponent` b
 ```js
 const MyComponent = React.memo(function MyComponent(props) {
   /* render using props */
-})
+});
 ```
 
 If your function component renders the same result given the same props, you can wrap it in a call to `React.memo` for a performance boost in some cases by memoizing the result. This means that React will skip rendering the component, and reuse the last rendered result.
@@ -11044,7 +11034,7 @@ React\'s production build improves react apps performance. The file size of the 
 
 **Reference:**
 
-* *[https://reactjs.org/docs/optimizing-performance.html](https://reactjs.org/docs/optimizing-performance.html)*
+- _[https://reactjs.org/docs/optimizing-performance.html](https://reactjs.org/docs/optimizing-performance.html)_
 
 <div align="right">
     <b><a href="#table-of-contents">↥ back to top</a></b>
@@ -11088,13 +11078,13 @@ The example above shows a React component, IntervalExample, scheduling a new int
 
 MVW stands for **Model-View-Whatever**
 
-* `MVC` - Model-View-Controller
-* `MVP` - Model-View-Presenter
-* `MVVM` - Model-View-ViewModel
-* `MVW / MV* / MVx` - Model-View-Whatever
-* `HMVC` - Hierarchical Model-View-Controller
-* `MMV` - Multiuse Model View
-* `MVA` - Model-View-Adapter
+- `MVC` - Model-View-Controller
+- `MVP` - Model-View-Presenter
+- `MVVM` - Model-View-ViewModel
+- `MVW / MV* / MVx` - Model-View-Whatever
+- `HMVC` - Hierarchical Model-View-Controller
+- `MMV` - Multiuse Model View
+- `MVA` - Model-View-Adapter
 
 MVW is easy to manage in a simple application, with few models/controllers. But we can easily start to witness problems as we grow in size with the following problems:
 
@@ -11162,14 +11152,20 @@ function Message(props) {
  */
 export default class App extends React.Component {
   state = {
-    showMessage: false
+    showMessage: false,
   };
 
   render() {
     return (
       <div>
-        <button onClick={() => this.setState({ showMessage: true })}> Show Message </button>
-        <button onClick={() => this.setState({ showMessage: false })}> Hide Message </button>
+        <button onClick={() => this.setState({ showMessage: true })}>
+          {" "}
+          Show Message{" "}
+        </button>
+        <button onClick={() => this.setState({ showMessage: false })}>
+          {" "}
+          Hide Message{" "}
+        </button>
         {this.state.showMessage && <Message name="Hello React!" />}
       </div>
     );
@@ -11257,10 +11253,10 @@ Static type checkers like `Flow` and `TypeScript` identify certain types of prob
 
 React Fiber is the new **reconciliation algorithm**. Reconciliation is the process of comparing or diffing old trees with a new tree in order to find what is changed or modified. In the original reconciliation algorithm (now called **Stack Reconciler**), the processing of component trees was done synchronously in a single pass, so the main thread was not available for other UI related tasks like animation, layouts, and gesture handling. Fiber Reconciler has different goals:
 
-* Ability to split interruptible work in chunks.
-* Ability to prioritize, rebase, and reuse work in progress.
-* Ability to yield back and forth between parents and children to support layout in React.
-* Ability to return multiple elements from `render()`.
+- Ability to split interruptible work in chunks.
+- Ability to prioritize, rebase, and reuse work in progress.
+- Ability to yield back and forth between parents and children to support layout in React.
+- Ability to return multiple elements from `render()`.
 
 A fiber is a JavaScript object that contains information about a component, its input, and output. At any time, a component instance has at most two fibers that correspond to it: the current fiber and the work-in-progress fiber. A fiber can be defined as a unit of work.
 
@@ -11268,19 +11264,19 @@ React Fiber performs reconciliation in two phases: Render and Commit
 
 **1. Lifecycle methods called during render phase:**
 
-* `UNSAFE_componentWillMount()`
-* `UNSAFE_componentWillReceiveProps()`
-* `getDerivedStateFromProps()`
-* `shouldComponentUpdate()`
-* `UNSAFE_componentWillUpdate()`
-* `render()`
+- `UNSAFE_componentWillMount()`
+- `UNSAFE_componentWillReceiveProps()`
+- `getDerivedStateFromProps()`
+- `shouldComponentUpdate()`
+- `UNSAFE_componentWillUpdate()`
+- `render()`
 
 **2. Lifecycle methods called during commit phase:**
 
-* `getSnapshotBeforeUpdate()`
-* `componentDidMount()`
-* `componentDidUpdate()`
-* `componentWillUnmount()`
+- `getSnapshotBeforeUpdate()`
+- `componentDidMount()`
+- `componentDidUpdate()`
+- `componentWillUnmount()`
 
 The earlier whole reconciliation process was synchronous (recursive), but in Fiber, it is divided into two phases. Render phase (a.k.a. Reconciliation phase) is asynchronous, so three of the lifecycle methods were marked unsafe because putting the code with side-effects inside these methods can cause problems, as lifecycle methods of different components are not guaranteed to fire in a predictable order.
 
@@ -11288,14 +11284,14 @@ React Fiber uses `requestIdleCallback()` to schedule the low priority work and `
 
 **Problems with Current Implementation:**
 
-* Long-running tasks cause frame drops.
-* Different tasks have different priorities.
+- Long-running tasks cause frame drops.
+- Different tasks have different priorities.
 
 **How React Fiber works:**
 
-* It makes apps more fluid and responsible.
-* In the future, it could parallelize work a.k.a. Time Slicing.
-* It would improve startup time while rendering components using React Suspense.
+- It makes apps more fluid and responsible.
+- In the future, it could parallelize work a.k.a. Time Slicing.
+- It would improve startup time while rendering components using React Suspense.
 
 Fiber is currently available for use but it runs in compatibility mode with the current implementation.
 
@@ -11331,23 +11327,27 @@ Web Components often expose an imperative API to implement its functions. To acc
 ```js
 var proto = Object.create(HTMLElement.prototype, {
   createdCallback: {
-    value: function() {
-      var mountPoint = document.createElement('span');
+    value: function () {
+      var mountPoint = document.createElement("span");
       this.createShadowRoot().appendChild(mountPoint);
 
-      var name = this.getAttribute('name');
-      var url = 'https://www.google.com/search?q=' + encodeURIComponent(name);
+      var name = this.getAttribute("name");
+      var url = "https://www.google.com/search?q=" + encodeURIComponent(name);
       ReactDOM.render(<a href={url}>{name}</a>, mountPoint);
-    }
-  }
+    },
+  },
 });
-document.registerElement('x-search', {prototype: proto});
+document.registerElement("x-search", { prototype: proto });
 ```
 
 ```js
 class SearchComponent extends React.Component {
   render() {
-    return <div>Results: <x-search>{this.props.name}</x-search>!</div>;
+    return (
+      <div>
+        Results: <x-search>{this.props.name}</x-search>!
+      </div>
+    );
   }
 }
 ```
@@ -11360,8 +11360,8 @@ class SearchComponent extends React.Component {
 
 The ESLint plugin ( **eslint-plugin-react-hooks** ) enforces rules of Hooks to avoid bugs. It assumes that any function starting with "use" and a capital letter right after it is a Hook. In particular, the rule enforces that,
 
-* Calls to Hooks are either inside a PascalCase function (assumed to be a component) or another useSomething function (assumed to be a custom Hook).
-* Hooks are called in the same order on every render.
+- Calls to Hooks are either inside a PascalCase function (assumed to be a component) or another useSomething function (assumed to be a custom Hook).
+- Hooks are called in the same order on every render.
 
 ```js
 // ESLint configuration
@@ -11378,7 +11378,7 @@ The ESLint plugin ( **eslint-plugin-react-hooks** ) enforces rules of Hooks to a
 }
 ```
 
-*Note: This plugin is included by default in Create React App.*
+_Note: This plugin is included by default in Create React App._
 
 <div align="right">
     <b><a href="#table-of-contents">↥ back to top</a></b>
@@ -11406,18 +11406,18 @@ To install a service worker, you need to register it in script. Registration inf
 
 ```js
 // Check for browser support of service worker
-if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('service-worker.js')
+if ("serviceWorker" in navigator) {
+  navigator.serviceWorker
+    .register("service-worker.js")
 
- .then(function(registration) {
-   // Successful registration
-   console.log('Registration successful, scope is:', registration.scope);
-
- }).catch(function(err) {
-   // Failed registration, service worker won\'t be installed
-   console.log('Service worker registration failed, error:', error);
-
- });
+    .then(function (registration) {
+      // Successful registration
+      console.log("Registration successful, scope is:", registration.scope);
+    })
+    .catch(function (err) {
+      // Failed registration, service worker won\'t be installed
+      console.log("Service worker registration failed, error:", error);
+    });
 }
 ```
 
@@ -11425,7 +11425,7 @@ if ('serviceWorker' in navigator) {
 
 Service workers are event driven. The installation and activation processes fire off corresponding **install** and **activate** events to which the service workers can respond.
 
-With the service worker registered, the first time a user hits your PWA, the install event will be triggered and this is where you\'ll want to cache the static assets for the page. 
+With the service worker registered, the first time a user hits your PWA, the install event will be triggered and this is where you\'ll want to cache the static assets for the page.
 
 <div align="right">
     <b><a href="#table-of-contents">↥ back to top</a></b>
@@ -11440,14 +11440,86 @@ React creates a service worker for you without any configuration by default. The
 ```js
 // index.js
 
-import React from 'react';
-import ReactDOM from 'react-dom';
-import App from './App';
-import registerServiceWorker from './registerServiceWorker';
+import React from "react";
+import ReactDOM from "react-dom";
+import App from "./App";
+import registerServiceWorker from "./registerServiceWorker";
 
-ReactDOM.render(<App />, document.getElementById('root'));
+ReactDOM.render(<App />, document.getElementById("root"));
 registerServiceWorker();
 ```
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## Q. How Virtual-DOM is more efficient than Dirty checking?
+
+<p align="center">
+  <img src="assets/virtualdom-vs-realdom.png" alt="Virtual DOM" with="500px" />
+</p>
+
+**React Virtual DOM:**
+
+In React, Each time the DOM updates or data of page changes, a new Virtual DOM representation of the user interface is made. It is just a lightweight copy or DOM.
+
+Virtual DOM in React has almost same properties like a real DOM, but it can not directly change the content on the page. Working with Virtual DOM is faster as it does not update anything on the screen at the same time. In a simple way, Working with Virtual DOM is like working with a copy of real DOM nothing more than that.
+
+Updating virtual DOM in ReactJS is faster because ReactJS uses
+
+1. It is efficient diff algorithm.
+1. It batched update operations
+1. It efficient update of sub tree only
+1. It uses observable instead of dirty checking to detect change
+
+**How Virtual DOM works in React:**
+
+When we render a JSX element, each virtual DOM updates. This approach updates everything very quickly. Once the Virtual DOM updates, React matches the virtual DOM with a virtual DOM copy that was taken just before the update. By Matching the new virtual DOM with pre-updated version, React calculates exactly which virtual DOM has changed. This entire process is called **diffing**.
+
+When React knows which virtual DOM has changed, then React updated those objects. and only those object, in the real DOM. React only updates the necessary parts of the DOM. React\'s reputation for performance comes largely from this innovation.
+
+In brief, here is what happens when we update the DOM in React:
+
+1. The entire virtual DOM gets updated.
+1. The virtual DOM gets compared to what it looked like before you updated it. React matches out which objects have changed.
+1. The changed objects and the changed objects only get updated on the real DOM.
+1. Changes on the real DOM cause the screen to change finally.
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## Q. What is the difference between DOM and virtual DOM?
+
+**1. DOM:**
+
+DOM stands for "Document Object Model". The HTML DOM provides an interface (API) to traverse and modify the nodes. It contains methods like `getElementById()` or `removeChild()`.
+
+The DOM is represented as a tree data structure. Because of that, the changes and updates to the DOM are fast. But after the change, the updated element and it\'s children have to be re-rendered to update the application UI. The re-rendering or re-painting of the UI is what makes it slow.
+
+**2. Virtual DOM:**
+
+The virtual DOM is only a virtual representation of the DOM. Everytime the state of our application changes, the virtual DOM gets updated instead of the real DOM.
+
+The Virtual DOM is an abstraction of the HTML DOM. It is lightweight and detached from the browser-specific implementation details. Since the DOM itself was already an abstraction, the virtual DOM is, in fact, an abstraction of an abstraction.
+
+**Why Virtual DOM is faster:**
+
+When new elements are added to the UI, a virtual DOM, which is represented as a tree is created. Each element is a node on this tree. If the state of any of these elements changes, a new virtual DOM tree is created. This tree is then compared or “diffed” with the previous virtual DOM tree.
+
+Once this is done, the virtual DOM calculates the best possible method to make these changes to the real DOM. This ensures that there are minimal operations on the real DOM. Hence, reducing the performance cost of updating the real DOM.
+
+**Pros of Virtual DOM:**
+
+- Updates process is optimized and accelerated.
+- JSX makes components/blocks code readable.
+- React data binding establishes conditions for creation dynamic applications.
+- Virtual DOM is ideal for mobile first applications.
+- Prompt rendering. Using comprises methods to minimize number of DOM operations helps to optimize updating process and accelerate it.
+
+<p align="center">
+  <img src="assets/dom.png" alt="Real DOM and Virtual DOM" width="500px" />
+</p>
 
 <div align="right">
     <b><a href="#table-of-contents">↥ back to top</a></b>
