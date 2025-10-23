@@ -11675,3 +11675,89 @@ When an entry is made in the first input field, React creates a new tree. The ne
 <div align="right">
     <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
+
+## Q. What are portals in React?
+
+Portals provide a quick and seamless way to render children into a DOM node that exists outside the DOM hierarchy of the parent component.
+
+Normally, a functional or a class component renders a tree of React elements (usually generated from JSX). The React element defines how the DOM of the parent component should look.
+
+```js
+ReactDOM.createPortal(child, container)
+```
+
+**Features:**
+
+* It transports its children component into a new React portal which is appended by default to `document.body`.
+* It can also target user specified DOM element.
+* It supports server-side rendering
+* It supports returning arrays (no wrapper div\'s needed)
+* It uses `<Portal />` and `<PortalWithState />` so there is no compromise between flexibility and convenience.
+
+**Installation:**
+
+```bash
+npm install react-portal --save
+```
+
+**Example:**
+
+```js
+/**
+ * React Portal
+ */
+import PortalExample from "./PortalExample.js";
+
+export default function App() {
+  return (
+    <div>
+      <h2>React Component Example</h2>
+      <PortalExample />
+    </div>
+  );
+}
+
+
+/**
+ * Portal Component
+ */
+import React from "react";
+import ReactDOM from "react-dom";
+
+
+export default function PortalExample() {
+  return ReactDOM.createPortal(
+    <h2>React Portal Example</h2>,
+    document.getElementById("portal-root")
+  );
+}
+```
+
+Now, open the Index.html file and add a `<div id="portal-root"></div>` element to access the child component outside the root node.
+
+```html
+<!-- index.html -->
+
+<!DOCTYPE html>  
+<html lang="en">  
+  <head>  
+    <meta charset="utf-8" />  
+    <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico" />  
+    <meta name="viewport" content="width=device-width, initial-scale=1" />  
+    <meta name="theme-color" content="#000000" />  
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />  
+    <title>React App using Portal</title>  
+  </head>  
+  <body>  
+    <noscript>It is required to enable JavaScript to run this app.</noscript>  
+    <div id="root"></div>  
+    <div id="portal-root"></div>  
+  </body>  
+</html>  
+```
+
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/keen-clarke-y10jp2?file=/src/App.js)**
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
