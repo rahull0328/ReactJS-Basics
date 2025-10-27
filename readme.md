@@ -11881,3 +11881,74 @@ node server/index.js
 <div align="right">
     <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
+
+## Q. How can automated tooling be used to improve the accessibility of a React application?
+
+There are two main categories of automated tools that can be used to identify accessibility issues:
+
+**1. Static Analysis Tools:**
+
+Linting tools like `ESLint` can be used with plugins such as `eslint-plugin-jsx-a11y` to analyse React projects at a component level. Static analysis tools run very quickly, so they bring a good benefit at a low cost.
+
+**2. Browser Tools:**  
+
+Browser accessibility tools such as `aXe` and `Google Lighthouse` perform automated accessibility at the app level. This can discover more real-world issues, because a browser is used to simulate the way that a user interacts with a website.
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+#### Q. How to do SEO on react?
+#### Q. How to create a Micro Frontend application using React?
+
+*ToDo*
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## # 1. REDUX OVERVIEW
+
+<br/>
+
+## Q. What is Redux?
+
+Redux is a state management tool. While it is mostly used with React, it can be used with any other JavaScript framework or library. With Redux, the state of your application is kept in a store, and each component can access any state that it needs from this store.
+
+**Architecture:**
+
+In Redux architecture, application event is denoted as an Action, which is dispatched to the reducer, the pure function. Then reducer updates the centralized store with new data based on the kind of action it receives. Store creates a new state and sends an update to view. At that time, the view was recreated to reflect the update.
+
+<p align="center">
+  <img src="assets/redux-architecture.png" alt="Redux Architecture" width="500px" />
+</p>
+
+There is a central store that holds the entire state of the application. Each component can access the stored state without having to send down props from one component to another. There are three building parts: `actions`, `store`, and `reducers`.
+
+## Q. What are the benefits of using Redux?
+
+**1. State transfer:**
+
+State is stored together in a single place called the ‘store.’ While you do not need to store all the state variables in the ‘store,’ it is especially important to when state is being shared by multiple components or in a more complex architecture. It also allows you to call state data from any component easily.
+
+**2. Predictability:**
+
+Redux is “a predictable state container for Javascript apps.” Because reducers are pure functions, the same result will always be produced when a state and action are passed in.
+
+**3. Maintainability:**
+
+Redux provides a strict structure for how the code and state should be managed, which makes the architecture easy to replicate and scale for somebody who has previous experience with Redux.
+
+**4. Ease of testing and debugging:**
+
+Redux makes it easy to test and debug your code since it offers powerful tools such as Redux DevTools in which you can time travel to debug, track your changes, and much more to streamline your development process.
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## Q. What are redux core concepts?
+
+<p align="center">
+  <img src="assets/redux-components.jpg" alt="Redux Components" width="400px" />
+</p>
