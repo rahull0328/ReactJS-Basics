@@ -11952,3 +11952,137 @@ Redux makes it easy to test and debug your code since it offers powerful tools s
 <p align="center">
   <img src="assets/redux-components.jpg" alt="Redux Components" width="400px" />
 </p>
+
+**1. Actions in Redux:**
+
+Action is static information about the event that initiates a state change. When you update your state with Redux, you always start with an action. Actions are in the form of Javascript objects, containing a `type` and an optional `payload`. Actions are sent using the `store.dispatch()` method. Actions are created via an action creator.
+
+**Action creators:** are simple functions that help to create actions. They are functions that return action objects, and then, the returned object is sent to various reducers in the application.
+
+**2. Reducers in Redux:**
+
+Reducers are pure functions that take the current state of an application, perform an action, and return a new state. These states are stored as objects, and they specify how the state of an application changes in response to an action sent to the store.
+
+It is based on the reduce function in JavaScript, where a single value is calculated from multiple values after a callback function has been carried out.
+
+**combine multiple reducers:** The `combineReducers()` helper function turns an object whose values are different reducing functions into a single reducing function you can pass to createStore.
+
+**Syntax:**
+
+```js
+const rootReducers = combineReducer(reducer1, reducer2)
+```
+
+**3. Store in Redux:**
+
+A Store is an object that holds the whole state tree of your application. The Redux store is the application state stored as objects. Whenever the store is updated, it will update the React components subscribed to it. The store has the responsibility of storing, reading, and updating state.
+
+When using Redux with React, states will no longer need to be lifted up; thus, it makes it easier to trace which action causes any change.
+
+**4. Dispatch:**
+
+Dispatch is a method that triggers an action with type and payload to Reducer.
+
+```js
+store.dispatch() 
+```
+
+**5. Subscribe:**
+
+Subscribe is a method that is used to subscribe data/state from the Store.
+
+```js
+store.subscribe()
+```
+
+**6. Provider:**
+
+The Provider is a component that has a reference to the Store and provides the data from the Store to the component it wraps.
+
+**7. Connect:**
+
+Connect is a function that communicates with the Provider.
+
+**8. Middleware:**
+
+Middleware is the suggested way to extend Redux with custom functionality. Middlewares are used to dispatch async functions. We configure Middleware\'s while creating a store.
+
+**Syntax:**
+
+```js
+const store = createStore(reducers, initialState, middleware);
+```
+
+**Example:**
+
+```js
+/**
+ * React Redux Simple Example
+ */
+import React from "react";
+import "./styles.css";
+import { signIn, signOut } from "./actions";
+import { useSelector, useDispatch } from "react-redux";
+
+export default function App() {
+  const isLogged = useSelector((state) => state.isLogged);
+  const dispatch = useDispatch();
+
+  return (
+    <div className="App">
+      <h1>React Redux Example</h1>
+      <button onClick={() => dispatch(signIn())}>SignIn</button>
+      <button onClick={() => dispatch(signOut())}>SignOut</button>
+
+      {isLogged ? <h2>You are now logged in...</h2> : ""}
+    </div>
+  );
+}
+```
+
+```js
+/**
+ * Actions
+ */
+export const signIn = () => {
+  return {
+    type: "SIGN_IN"
+  };
+};
+
+export const signOut = () => {
+  return {
+    type: "SIGN_OUT"
+  };
+};
+```
+
+```js
+/**
+ * Reducers
+ */
+import { combineReducers } from "redux";
+
+const loggedReducer = (state = false, action) => {
+  switch (action.type) {
+    case "SIGN_IN":
+      return true;
+    case "SIGN_OUT":
+      return false;
+    default:
+      return state;
+  }
+};
+
+const allReducers = combineReducers({
+  isLogged: loggedReducer
+});
+
+export default allReducers;
+```
+
+**&#9885; [Try this example on CodeSandbox](https://codesandbox.io/s/react-redux-simple-example-y3i7u6?file=/src/App.js)**
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
