@@ -12086,3 +12086,118 @@ export default allReducers;
 <div align="right">
     <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
+
+## Q. What is difference between presentational component and container component in react redux?
+
+**1. Container Components:**
+
+* Container components are primarily concerned with how things work
+* They rarely have any HTML tags of their own, aside from a wrapping `<div>`
+* They are often stateful
+* They are responsible for providing data and behavior to their children (usually presentational components)
+
+Container is an informal term for a React component that is `connect`-ed to a redux store. Containers receive Redux state updates and `dispatch` actions, and they usually don\'t render DOM elements; they delegate rendering to **presentational** child components.
+
+**Example:**
+
+```js
+class Collage extends Component {
+   constructor(props) {
+      super(props);
+
+      this.state = {
+         images: []
+      };
+   }
+   componentDidMount() {
+      fetch('/api/current_user/image_list')
+         .then(response => response.json())
+         .then(images => this.setState({images}));
+   }
+   render() {
+      return (
+         <div className="image-list">
+            {this.state.images.map(image => {
+               <div className="image">
+                  <img src={book.image_url} />
+               </div>
+            })}
+         </div>
+      )
+   }
+}
+```
+
+**2. Presentational Components:**
+
+* Presentational Components are primarily concerned with how things look
+* Probably only contain a render method and little else logic
+* They do not know how to load or alter the data that they render
+* They are best written as stateless functional components
+
+**Example:**
+
+```js
+//defining the component as a React Component
+class Image extends Component {
+   render() {
+      return <img src={this.props.image} />;
+   }
+}
+export default Image
+//defining the component as a constant
+const Image = props => (
+   <img src={props.image} />
+)
+export default Image
+```
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## # 2. REDUX SETUP
+
+<br/>
+
+## Q. How to add redux into create react app?
+
+Redux is the most popular State container library for frontend apps. It helps you manage your state in a predictable and easy way.
+
+**Installation:**
+
+React Redux 8.x requires React 16.8.3 or later / React Native 0.59 or later, in order to make use of React Hooks.
+
+```js
+# Redux + Plain JS template
+npx create-react-app my-app --template redux
+
+# Redux + TypeScript template
+npx create-react-app my-app --template redux-typescript
+```
+
+**An Existing React App:**
+
+To use React Redux with your React app, install it as a dependency:
+
+```js
+# If you use npm:
+npm install redux react-redux redux-thunk --save
+
+# Or if you use Yarn:
+yarn add redux react-redux redux-thunk --save
+```
+
+**Folder structure:**
+
+<p align="center">
+  <img src="assets/redux-setup.png" alt="React Redux Folder structure" width="200px" />
+</p>
+
+**Reference:**
+
+* *[https://react-redux.js.org/introduction/getting-started](https://react-redux.js.org/introduction/getting-started)*
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
