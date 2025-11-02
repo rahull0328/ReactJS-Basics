@@ -12201,3 +12201,76 @@ yarn add redux react-redux redux-thunk --save
 <div align="right">
     <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
+
+## Q. How to structure Redux top level directories?
+
+The most of the applications has several top-level directories as below:
+
+* **Components** - Contains all 'dumb' or presentational components, consisting only of HTML and styling.
+* **Containers** - Contains all corresponding components with logic in them. Each container will have one or more component depending on the view represented by the container.
+* **Actions** - All Redux actions
+* **Reducers** - All Redux reducers
+* **API** - API connectivity related code. Handler usually involves setting up an API connector centrally with authentication and other necessary headers.
+* **Utils** - Other logical codes that are not React specific. For example, authUtils would have functions to process the JWT token from the API to determine the user scopes.
+* **Store** - Used for redux store initialization.
+
+**Example:**
+
+```js
+└── src
+    ├── actions
+    │   ├── articleActions.js
+    │   ├── categoryActions.js
+    │   └── userActions.js
+    ├── api
+    │   ├── apiHandler.js
+    │   ├── articleApi.js
+    │   ├── categoryApi.js
+    │   └── userApi.js
+    ├── components
+    │   ├── ArticleComponent.jsx
+    │   ├── ArticleListComponent.jsx
+    │   ├── CategoryComponent.jsx
+    │   ├── CategoryPageComponent.jsx
+    │   └── HomePageComponent.jsx
+    ├── containers
+    │   ├── ArticleContainer.js
+    │   ├── CategoryPageContainer.js
+    │   └── HomePageContainer.js
+    ├── index.js
+    ├── reducers
+    │   ├── articleReducer.js
+    │   ├── categoryReducer.js
+    │   └── userReducer.js
+    ├── routes.js
+    ├── store.js
+    └── utils
+        └── authUtils.js
+```
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## # 3. REDUX DATA FLOW
+
+<br/>
+
+## Q. How to set the dataflow using react with redux?
+
+<p align="center">
+  <img src="assets/redux-data-flow.gif" alt="Redux Data Flow" width="400px" />
+</p>
+
+Redux offers this data sharing of components possible by maintaining one single state in the store. A single source of truth. All the components which want to get state data at some point are subscribed to the store and they will receive the state each time it gets updated.
+
+Redux has five main entities. Action Creators, Dispatching Function, Reducers, State and Store.
+
+* An action is dispatched when a user interacts with the application.
+* The root reducer function is called with the current state and the dispatched action. The root reducer may divide the task among smaller reducer functions, which ultimately returns a new state.
+* The store notifies the view by executing their callback functions.
+* The view can retrieve updated state and re-render again.
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
