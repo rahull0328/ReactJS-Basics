@@ -12,7 +12,6 @@
 - _[Jest Quick Reference](jest-quick-reference.md)_
 - _[React Best Practices](best-practices.md)_
 - _[React MCQ's](react-mcq.md)_
-- _[React Unit Testing](https://github.com/learning-zone/react-unit-testing)_
 - _[React Project - ToDo App](https://github.com/rahull0328/ToDo-React)_
 
 <br/>
@@ -12425,6 +12424,124 @@ The following are details of how Redux works:
 <p align="center">
   <img src="assets/redux-workflow.png" alt="Redux Workflow" width="400px" />
 </p>
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## # 4. REDUX STORE
+
+<br/>
+
+## Q. What is a store in Redux?
+
+A store is an object that holds the whole state tree of your application. The Redux store is the application state stored as objects. Whenever the store is updated, it will update the React components subscribed to it. The store has the responsibility of storing, reading, and updating state.
+
+**Example:**
+
+```js
+/**
+ * store in Redux
+ */
+import { createRoot } from "react-dom/client";
+import { Provider } from "react-redux";
+import { createStore } from "redux";
+import rootReducer from "./reducers";
+import App from "./components/App";
+
+const rootElement = document.getElementById("root");
+const root = createRoot(rootElement);
+
+// create store
+const store = createStore(rootReducer);
+
+root.render(
+  <provider store="{store}">
+    <App />
+  </provider>
+);
+```
+
+When using Redux with React, states will no longer need to be lifted up; thus, it makes it easier to trace which action causes any change.
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## Q. What is the best way to access redux store outside a react component?
+
+To access redux store outside a react component, Redux `connect` function works great for regular React components.
+
+In the examples below shows how to access a JWT token from the Redux store.
+
+**Option 1:** Export the Store
+
+```js
+import { createStore } from 'redux'
+import reducer from './reducer'
+
+const store = createStore(reducer)
+
+export default store
+```
+
+Here, we are creating the store and exporting it. This will make it available to other files. Here we\'ll see an `api` file making a call where we need to pass a JWT token to the server:
+
+```js
+import store from './store'
+
+export function getProtectedThing() {
+  // grab current state
+  const state = store.getState()
+
+  // get the JWT token out of it
+  // (obviously depends on how your store is structured)
+  const authToken = state.currentUser.token
+
+  // Pass the token to the server
+  return fetch('/user/thing', {
+    method: 'GET',
+    headers: {
+      Authorization: `Bearer ${authToken}`
+    }
+  }).then(res => res.json())
+}
+```
+
+**Option 2:** Pass the value from a React Component
+
+It\'s simple to get access to the store inside a React component – no need to pass the store as a prop or import it, just use the `connect()` function from React Redux, and supply a `mapStateToProps()` function that pulls out the data.
+
+```js
+import React from 'react'
+import { connect } from 'react-redux'
+import * as api from 'api'
+
+const ItemList = ({ authToken, items }) => {
+  return (
+    <ul>
+      {items.map(item => (
+        <li key={item.id}>
+          {item.name}
+          <button
+            onClick={
+              () => api.deleteItem(item, authToken)
+            }>
+            DELETE THIS ITEM
+          </button>
+        </li>
+      )}
+    </ul>
+  )
+}
+
+const mapStateToProps = state => ({
+  authToken: state.currentUser && state.currentUser.authToken,
+  items: state.items
+})
+
+export connect(mapStateToProps)(ItemList)
+```
 
 <div align="right">
     <b><a href="#table-of-contents">↥ back to top</a></b>
