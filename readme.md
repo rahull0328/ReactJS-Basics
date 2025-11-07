@@ -12546,3 +12546,77 @@ export connect(mapStateToProps)(ItemList)
 <div align="right">
     <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
+
+## Q. Should all component states be kept in Redux Store
+
+There is no "right" answer for this. Some users prefer to keep every single piece of data in Redux, to maintain a fully serializable and controlled version of their application at all times. Others prefer to keep non-critical or UI state, such as "is this dropdown currently open", inside a component\'s internal state.
+
+Some common rules for determining what kind of data should be put into Redux:
+
+* Do other parts of the application needs data to be shared.
+* Is the same data being used to drive multiple components.
+* Do you want to cache the data.
+* Do you want to keep this data consistent while hot-reloading UI components.
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## Q. How to use connect from React Redux?
+
+The `connect()` function connects a React component to a Redux store. It provides its connected component with the pieces of the data it needs from the store, and the functions it can use to dispatch actions to the store.
+
+It does not modify the component class passed to it; instead, it returns a new, connected component class that wraps the component you passed in.
+
+* **Use `mapStateToProps()`:** It maps the state variables from your store to the props that you specify.
+* **Connect props to container:** The object returned by the `mapStateToProps` function is connected to the container.
+
+**Example:**
+
+```js
+import React from 'react'
+import { connect } from 'react-redux'
+
+class App extends React.Component {
+  render() {
+    return <div>{this.props.containerData}</div>
+  }
+}
+
+function mapStateToProps(state) {
+  return { containerData: state.data }
+}
+
+export default connect(mapStateToProps)(App)
+```
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## # 5. REDUX ACTIONS
+
+<br/>
+
+## Q. What is an action in Redux?
+
+**Actions** are plain JavaScript objects or **payloads** of information that send data from your application to your store. They are the only source of information for the store. Actions must have a type property that indicates the type of action being performed.
+
+An action is an object that contains two keys and their values. The state update that happens in the reducer is always dependent on the value of action.type.
+
+**Example:**
+
+```js
+const action = {
+  type: 'NEW_CONTACT',
+  name: 'Alex K',
+  location: 'Lagos Nigeria',
+  email: 'alex@example.com'
+}
+```
+
+There is typically a payload value that contains what the user is sending and would be used to update the state of the application. It is important to note that action.type is required, but action.payload is optional. Making use of payload brings a level of structure to how the action object looks like.
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
