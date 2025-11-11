@@ -12692,3 +12692,78 @@ export const mapDispatchToProps = dispatch => ({
 <div align="right">
     <b><a href="#table-of-contents">↥ back to top</a></b>
 </div>
+
+## Q. How to dispatch an action on load?
+
+You can dispatch an action in `componentDidMount()` method and in `render()` method you can verify the data.
+
+**Example:**
+
+```js
+/**
+ * Dispatch an action on load
+ */
+class App extends Component {
+  componentDidMount() {
+    this.props.fetchData()
+  }
+
+  render() {
+    return this.props.isLoaded
+      ? <div>{'Loaded'}</div>
+      : <div>{'Not Loaded'}</div>
+  }
+}
+
+const mapStateToProps = (state) => ({
+  isLoaded: state.isLoaded
+})
+
+const mapDispatchToProps = { fetchData }
+
+export default connect(mapStateToProps, mapDispatchToProps)(App)
+```
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## # 6. REDUX REDUCERS
+
+<br/>
+
+## Q. What is reducers in redux?
+
+Reducers are pure functions that take the current state of an application, perform an action, and return a new state. These states are stored as objects, and they specify how the state of an application changes in response to an action sent to the store.
+
+It is based on the reduce function in JavaScript, where a single value is calculated from multiple values after a callback function has been carried out.
+
+**Example:**
+
+```js
+const LoginComponent = (state = initialState, action) => {
+    switch (action.type) {
+
+      // This reducer handles any action with type "LOGIN"
+      case "LOGIN":
+          return state.map(user => {
+              if (user.username !== action.username) {
+                  return user
+              }
+
+              if (user.password == action.password) {
+                  return {
+                      ...user,
+                      login_status: "LOGGED IN"
+                  }
+              }
+          });
+      default:
+          return state;
+      }
+}
+```
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
