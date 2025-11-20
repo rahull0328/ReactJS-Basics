@@ -12994,7 +12994,7 @@ npm install --save redux react-redux redux-thunk
 
 We are going to use Redux Thunk to asynchronously fetch the most recently updated repos by username from Github using this REST URL:
 
-https://api.github.com/users/learning-zone/repos?sort=updated
+https://api.github.com/users/rahull0328/repos?sort=updated
 
 ```js
 import { applyMiddleware, combineReducers, createStore } from 'redux'
@@ -13145,6 +13145,171 @@ ReactDOM.render(
   document.getElementById('root')
 )
 ```
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## Q. What are typical middleware choices for handling asynchronous calls in Redux?
+
+By default, Redux\'s actions are dispatched synchronously, which is a problem for any non-trivial app that needs to communicate with an external API or perform side effects. Redux also allows for middleware that sits between an action being dispatched and the action reaching the reducers.
+
+There are three very popular middleware libraries that allow for side effects and asynchronous actions: `Redux Thunk` `Redux Saga` and `Redux Promise`.
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## Q. How can I represent "side effects" such as AJAX calls? Why do we need things like "action creators", "thunks", and "middleware" to do async behavior?
+
+Any meaningful web app needs to execute complex logic, usually including asynchronous work such as making AJAX requests. That code is no longer purely a function of its inputs, and the interactions with the outside world are known as "side effects".
+
+Redux is inspired by functional programming, and out of the box, has no place for side effects to be executed. In particular, reducer functions must always be pure functions of `(state, action) => newState`. However, Redux\'s middleware (eg. **Redux Thunk**, **Redux Saga**) makes it possible to intercept dispatched actions and add additional complex behavior around them, including side effects.
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ back to top</a></b>
+</div>
+
+## Q. Are there any similarities between Redux and RxJS?
+
+**Redux**:
+
+Predictable state container for JavaScript apps. Redux helps you write applications that behave consistently, run in different environments (client, server, and native), and are easy to test. On top of that, it provides a great developer experience, such as live code editing combined with a time traveling debugger. However, Redux has one, but very significant problem - it doesn\'t handle asynchronous operations very well by itself.
+
+**RxJS:**
+
+The Reactive Extensions for JavaScript. RxJS is a library for reactive programming using Observables, to make it easier to compose asynchronous or callback-based code.
+
+Redux belongs to "State Management Library" category of the tech stack, while RxJS can be primarily classified under "Concurrency Frameworks".
+
+| Redux                         | RxJS                               |
+|-------------------------------|------------------------------------|
+|Redux is a tool for managing state throughout the application.| RxJS is a reactive programming library|
+|It is usually used as an architecture for UIs. |It is usually used as a tool to accomplish asynchronous tasks in JavaScript.|
+|Redux uses the Reactive paradigm because the Store is reactive. The Store observes actions from a distance, and changes itself.|RxJS also uses the Reactive paradigm, but instead of being an architecture, it gives you basic building blocks, Observables, to accomplish this pattern.|
+
+**Example:** React, Redux and RxJS
+
+```js
+import React from 'react';  
+import ReactDOM from 'react-dom';  
+import { Subject } from 'rxjs/Subject';
+
+// create our stream as a subject so arbitrary data can be sent on the stream
+const action$ = new Subject();
+
+// Initial State
+const initState = { name: 'Alex' };
+
+// Redux reducer
+const reducer = (state, action) => {  
+  switch(action.type) {
+    case 'NAME_CHANGED':
+      return {
+        ...state,
+        name: action.payload
+      };
+    default:
+      return state;
+  }
+}
+
+// Reduxification
+const store$ = action$  
+    .startWith(initState)
+    .scan(reducer);
+
+// Higher order function to send actions to the stream
+const actionDispatcher = (func) => (...args) =>  
+  action$.next(func(...args));
+
+// Example action function
+const changeName = actionDispatcher((payload) => ({  
+  type: 'NAME_CHANGED',
+  payload
+}));
+
+// React view component
+const App = (props) => {  
+  const { name } = props;
+  return (
+    <div>
+      <h1>{ name }</h1>
+      <button onClick={() => changeName('Alex')} >Alex</button>
+      <button onClick={() => changeName('John')} >John</button>
+    </div>
+  );
+}
+
+// subscribe and render the view
+const dom =  document.getElementById('app');  
+store$.subscribe((state) =>  
+    ReactDOM.render(<App {...state} />, dom));
+```
+
+**Async actions:**
+
+Let\'s say we want to do something asynchronous like fetch some information from a rest api all we need to do is send an ajax stream in place of our action payload and then use one of the lodash style stream operators, `flatMap()` to squash the results of the asynchronous operation back onto the `action$` stream.
+
+```js
+import { isObservable } from './utils';
+
+// Action creator
+const actionCreator = (func) => (...args) => {  
+  const action = func.call(null, ...args);
+  action$.next(action);
+  if (isObservable(action.payload))
+    action$.next(action.payload);
+  return action;
+};
+
+// method called from button click
+const loadUsers = actionCreator(() => {  
+  return {
+    type: 'USERS_LOADING',
+    payload: Observable.ajax('/api/users')
+      .map(({response}) => map(response, 'username'))
+      .map((users) => ({
+        type: 'USERS_LOADED',
+        payload: users
+      }))
+  };
+});
+
+// Reducer
+export default function reducer(state, action) {  
+  switch (action.type) {
+    case 'USERS_LOADING':
+      return {
+        ...state,
+        isLoading: true
+      };
+    case 'USERS_LOADED':
+      return {
+        ...state,
+        isLoading: false,
+        users: action.payload,
+      };
+    //...
+  }
+}
+
+// rest of code...
+
+// Wrap input to ensure we only have a stream of observables
+const ensureObservable = (action) =>  
+  isObservable(action)
+    ? action
+    : Observable.from([action]);
+
+// Using flatMap to squash async streams
+const action$  
+    .flatMap(wrapActionToObservable)
+    .startWith(initState)
+    .scan(reducer);
+```
+
+The advantage of swapping the action payload for a stream is so we can send data updates at the start and the end of the async operation
 
 <div align="right">
     <b><a href="#table-of-contents">↥ back to top</a></b>
